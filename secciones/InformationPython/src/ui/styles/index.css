@@ -1,0 +1,58 @@
+/* src/ui/styles/index.css */
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Cascadia Code PL';
+    src: url('/fonts/CascadiaCodePL.woff2') format('woff2'); 
+    font-weight: 400; 
+    font-style: normal;
+    font-display: swap;
+}
+/*Comentario de prueba*/
+@theme {
+    /* Tipos de Letras */
+    --font-cascadia: 'Cascadia Code PL', monospace;
+
+    /* Colores Primarios - Azules */
+    --color-azul-fuerte: #4d82bc;
+    --color-azul: #84b6f4;
+    --color-azul-claro: #c4dafa; 
+    
+    /* Colores Acento - Amarillos */
+    --color-amarillo: #fdfd96;
+    --color-amarillo-claro: #f8f8c3;
+    
+    /* Colores Neutrales - Grises */
+    --color-gris-oscuro: #3c3c3c;
+    --color-gris-mamalon: #585858;
+    --color-gris: #515151;
+    --color-gris-medio: #666666;
+    --color-gris-claro: #8c8c8c;
+}
+
+/* Estilos base */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+code, pre {
+    font-family: var(--font-cascadia);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-gris-oscuro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gris-medio);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-azul-fuerte);
+}
