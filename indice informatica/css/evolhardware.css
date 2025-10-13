@@ -1,0 +1,71 @@
+/* hardware.css — estilo formal, legible y espacioso */
+:root{
+  --accent: #1b6b61;
+  --dark: #21313a;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --surface: #f7fafb;
+  --max-w: 1100px;
+}
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin:0;
+  color:#1f2937;
+  background:linear-gradient(180deg,#f4f6f8 0%, #ffffff 100%);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+.container{ max-width:var(--max-w); margin:0 auto; padding:0 16px; }
+
+/* Header */
+.site-header{ background:var(--dark); color:white; padding:28px 16px; text-align:left; }
+.header-inner{ max-width:var(--max-w); margin:0 auto; position:relative; }
+.header-inner h1{ margin:0; font-size:1.6rem; }
+.subtitle{ margin-top:6px; opacity:0.9; }
+
+/* breadcrumb */
+.breadcrumb{ background:transparent; padding:10px 0; color:var(--muted); }
+.breadcrumb a{ color:var(--accent); text-decoration:none }
+
+/* page layout */
+.page{ display:grid; grid-template-columns: 1fr 320px; gap:28px; max-width:var(--max-w); margin:18px auto; padding:0 16px; }
+.content{ }
+
+/* text blocks */
+.text-block{ background:var(--card-bg); border-radius:10px; padding:20px; margin-bottom:18px; box-shadow:0 6px 18px rgba(33,49,58,0.04); }
+.text-block h2{ margin-top:0; color:var(--dark); }
+.text-block p{ margin-bottom:12px; text-align:justify; }
+
+/* sidebar */
+.sidebar{ position:relative; top:0; }
+.widget{ background:var(--card-bg); padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(33,49,58,0.04); margin-bottom:18px; }
+.widget h3{ margin-top:0; }
+
+/* activities */
+.activity{ grid-column: 1 / -1; }
+.activity .text-block{ padding:18px; }
+.btn{ background:var(--accent); color:#fff; border: none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.btn.hidden{ display:none; }
+.feedback{ font-weight:700; }
+
+/* ordenar juego */
+.tarjetas{ display:flex; flex-direction:column; gap:10px; margin-bottom:12px; }
+.card{ background:var(--card-bg); padding:14px; border-radius:8px; border:1px dashed #d6e6e3; cursor:grab; box-shadow:0 4px 8px rgba(0,0,0,0.03); }
+.card:active{ cursor:grabbing; transform:scale(.995); }
+
+/* trivia */
+#options{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+#options button{ background:transparent; border:1px solid #e6eef0; padding:10px; border-radius:8px; cursor:pointer; text-align:left; }
+#options button:hover{ background:#f0fcf9; }
+
+/* memoria */
+.memory-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:12px; }
+.memory-card{ background:var(--dark); height:84px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:transparent; font-weight:800; cursor:pointer; user-select:none; transition:transform .18s, box-shadow .18s; }
+.memory-card.revealed{ background:#1abc9c; color:#fff; box-shadow:0 8px 14px rgba(0,0,0,0.08); transform:none; }
+
+/* responsive */
+@media (max-width: 980px){
+  .page{ grid-template-columns: 1fr; padding-bottom:30px; }
+  .memory-grid{ grid-template-columns: repeat(3, 1fr); }
+}

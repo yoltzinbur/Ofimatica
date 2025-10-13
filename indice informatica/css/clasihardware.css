@@ -1,0 +1,69 @@
+/* style-clasificacion.css — formal, limpio y legible */
+:root{
+  --accent: #1b6b61;
+  --dark: #21313a;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --surface: #f7fafb;
+}
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin:0;
+  color:#1f2937;
+  background:linear-gradient(180deg,#f4f6f8 0%, #ffffff 100%);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+.container{ max-width:1100px; margin:0 auto; padding:0 16px; }
+
+/* header */
+.site-header{ background:var(--dark); color:white; padding:24px 16px; }
+.header-inner h1{ margin:0; font-size:1.5rem; }
+.subtitle{ opacity:0.9; margin-top:6px; }
+.back-link{ color:#cfeee6; text-decoration:none }
+
+/* layout */
+.page{ display:grid; grid-template-columns: 1fr 320px; gap:28px; max-width:1100px; margin:18px auto; padding:0 16px; }
+.content{}
+.text-block{ background:var(--card-bg); border-radius:10px; padding:18px; margin-bottom:18px; box-shadow:0 6px 18px rgba(33,49,58,0.04); }
+.text-block h2{ margin-top:0; color:var(--dark) }
+.text-block ul{ margin-left:18px }
+
+/* cards flip */
+.card-grid{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
+.flip-card{ width:180px; height:110px; perspective:1000px; }
+.flip-inner{ position:relative; width:100%; height:100%; transition: transform 0.6s; transform-style: preserve-3d; }
+.flip-card:hover .flip-inner{ transform: rotateY(180deg); }
+.flip-front, .flip-back{ position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:8px; display:flex; align-items:center; justify-content:center; padding:10px; box-shadow:0 6px 12px rgba(2,6,23,0.04); }
+.flip-front{ background:var(--dark); color:white; font-weight:700 }
+.flip-back{ background:var(--surface); color:var(--dark); transform: rotateY(180deg); text-align:center }
+
+/* buttons */
+.btn{ background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.btn.ghost{ background:transparent; border:1px solid #d6e6e3; color:var(--dark) }
+
+/* quiz */
+.q-text{ font-weight:700; margin-bottom:12px }
+.q-options button{ display:block; width:100%; margin:8px 0; padding:12px; background:transparent; border:1px solid #e6eef0; border-radius:8px; text-align:left; cursor:pointer }
+.q-options button:hover{ background:#f0fcf9 }
+
+/* drag & drop */
+.drag-wrap{ display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap }
+.drag-items{ min-width:220px; display:flex; flex-direction:column; gap:10px }
+.drag-item{ padding:10px 12px; background:var(--surface); border-radius:8px; cursor:grab; border:1px dashed #d9eae6 }
+.drop-zones{ flex:1; display:grid; grid-template-columns: 1fr; gap:10px }
+.drop-slot{ min-height:60px; padding:12px; background:#fff; border-radius:8px; border:2px dashed #e6eef0; display:flex; align-items:center; justify-content:center; text-align:center }
+
+/* feedback */
+.q-feedback{ margin-top:10px; font-weight:700 }
+
+/* sidebar */
+.sidebar{ position:relative; top:0; }
+.widget{ background:var(--card-bg); padding:12px; border-radius:8px; box-shadow:0 6px 12px rgba(0,0,0,0.04); }
+
+/* responsive */
+@media (max-width:980px){
+  .page{ grid-template-columns: 1fr; padding-bottom:30px }
+  .card-grid{ justify-content:center }
+}

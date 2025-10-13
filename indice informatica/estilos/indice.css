@@ -1,0 +1,105 @@
+/* Fondo oscuro degradado */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: #FFFFFF; /* Letras blancas */
+  overflow-x: hidden;
+}
+
+/* Canvas de partículas y lluvia */
+#particleCanvas,
+#rainCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Contenido principal */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+/* Títulos */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Subtemas */
+.subtemas {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subtemas a {
+  display: block;
+  padding: 1.2rem;
+  background: rgba(51, 204, 255, 0.1);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #FFFFFF; /* Letras blancas */
+  font-size: 1.3rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.subtemas a:hover {
+  background: rgba(51, 204, 255, 0.25);
+  transform: scale(1.05);
+}
+
+/* Botones de resumen */
+.info {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  display: none;
+  line-height: 1.4;
+  color: #FFFFFF; /* Letras blancas */
+}
+
+.show-info {
+  display: block;
+}
+
+.toggle-info {
+  margin-top: 0.3rem;
+  background: rgba(51, 204, 255, 0.2);
+  border: none;
+  color: #FFFFFF; /* Letras blancas */
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.toggle-info:hover {
+  background: rgba(51, 204, 255, 0.35);
+}
+/* Botón "Volver al inicio" */
+.btn-back {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF; /* letras blancas */
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}

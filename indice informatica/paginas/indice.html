@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índice Partículas</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Temas de la Guía</h1>
+
+  <div class="subtemas">
+    <div>
+      <a href="computadora.html">1. ¿Qué es una computadora?</a>
+      <button class="toggle-info" data-target="info1">Ver resumen</button>
+      <div class="info" id="info1">Definición, componentes básicos y cómo procesa la información.</div>
+    </div>
+    <div>
+      <a href="historia.html">2. Historia</a>
+      <button class="toggle-info" data-target="info2">Ver resumen</button>
+      <div class="info" id="info2">Desde el ábaco hasta la era digital.</div>
+    </div>
+    <div>
+      <a href="hardware-evol.html">3. Evolución del hardware</a>
+      <button class="toggle-info" data-target="info3">Ver resumen</button>
+      <div class="info" id="info3">De tubos de vacío a microprocesadores y computación cuántica.</div>
+    </div>
+    <div>
+      <a href="hardware-clas.html">4. Clasificación del hardware</a>
+      <button class="toggle-info" data-target="info4">Ver resumen</button>
+      <div class="info" id="info4">Entrada, salida, procesamiento y almacenamiento.</div>
+    </div>
+    <div>
+      <a href="software-evol.html">5. Evolución del software</a>
+      <button class="toggle-info" data-target="info5">Ver resumen</button>
+      <div class="info" id="info5">Tarjetas perforadas, lenguajes de alto nivel, interfaces gráficas y nube.</div>
+    </div>
+    <div>
+      <a href="software-clas.html">6. Clasificación del software</a>
+      <button class="toggle-info" data-target="info6">Ver resumen</button>
+      <div class="info" id="info6">Software de sistema, de aplicación y de desarrollo.</div>
+    </div>
+    <div>
+      <a href="licencias.html">7. Licencias (privado y uso libre)</a>
+      <button class="toggle-info" data-target="info7">Ver resumen</button>
+      <div class="info" id="info7">Diferencias entre software propietario, libre y de código abierto.</div>
+      <a href="../index.html" class="btn-back">Volver al inicio</a>
+    </div>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var target = document.getElementById(btn.dataset.target);
+    target.classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

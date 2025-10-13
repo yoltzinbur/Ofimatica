@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofimática Básica - Guía Completa de Windows, Office y LibreOffice</title>
+    <meta name="description" content="Aprende ofimática básica paso a paso: Windows, manejo de archivos, Bloc de notas, Microsoft Office (Word, Excel, PowerPoint) y LibreOffice. Guía completa y gratuita.">
+    <meta name="author" content="Guía Educativa de Ofimática">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ofimática Básica - Guía Completa de Windows, Office y LibreOffice">
+    <meta property="og:description" content="Aprende ofimática básica paso a paso: Windows, manejo de archivos, Bloc de notas, Microsoft Office (Word, Excel, PowerPoint) y LibreOffice. Guía completa y gratuita.">
+    <meta property="og:type" content="website">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i data-lucide="monitor" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                <h1>Ofimática Básica</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="#windows" class="nav-link" onclick="scrollToSection('windows')">Windows</a>
+                <a href="#archivos" class="nav-link" onclick="scrollToSection('archivos')">Archivos y Carpetas</a>
+                <a href="#bloc-notas" class="nav-link" onclick="scrollToSection('bloc-notas')">Bloc de Notas</a>
+                <a href="#ms-office" class="nav-link" onclick="scrollToSection('ms-office')">MS Office</a>
+                <a href="#libre-office" class="nav-link" onclick="scrollToSection('libre-office')">LibreOffice</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-button" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" id="menu-icon" style="width: 20px; height: 20px;"></i>
+                <i data-lucide="x" id="close-icon" style="width: 20px; height: 20px; display: none;"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="nav-mobile" id="mobile-nav">
+            <nav>
+                <a href="#windows" class="nav-link" onclick="scrollToSection('windows')">Windows</a>
+                <a href="#archivos" class="nav-link" onclick="scrollToSection('archivos')">Archivos y Carpetas</a>
+                <a href="#bloc-notas" class="nav-link" onclick="scrollToSection('bloc-notas')">Bloc de Notas</a>
+                <a href="#ms-office" class="nav-link" onclick="scrollToSection('ms-office')">MS Office</a>
+                <a href="#libre-office" class="nav-link" onclick="scrollToSection('libre-office')">LibreOffice</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ofimática </h1>
+            <p>Aprende los fundamentos de la informática y las herramientas esenciales para el trabajo digital moderno</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                <button class="btn btn-primary" onclick="scrollToSection('topics')" style="font-size: 1.125rem; padding: 1rem 2rem;">
+                    Comenzar aprendizaje
+                    <i data-lucide="arrow-down" style="width: 20px; height: 20px; margin-left: 0.5rem;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section benefits">
+        <div class="container">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="section-title">¿Por qué aprender ofimática?</h2>
+                <p class="section-description">
+                    Las habilidades de ofimática son fundamentales en el mundo laboral actual
+                </p>
+            </div>
+            
+            <div class="grid grid-md-2 grid-lg-3 animate-slide-up">
+                <div class="card benefit-card">
+                    <div class="card-content">
+                        <i data-lucide="check-circle" class="benefit-icon"></i>
+                        <h3 class="benefit-title">Productividad</h3>
+                        <p class="benefit-description">Optimiza tu tiempo y eficiencia en tareas diarias</p>
+                    </div>
+                </div>
+                <div class="card benefit-card">
+                    <div class="card-content">
+                        <i data-lucide="check-circle" class="benefit-icon"></i>
+                        <h3 class="benefit-title">Oportunidades Laborales</h3>
+                        <p class="benefit-description">Habilidades esenciales demandadas en cualquier trabajo</p>
+                    </div>
+                </div>
+                <div class="card benefit-card">
+                    <div class="card-content">
+                        <i data-lucide="check-circle" class="benefit-icon"></i>
+                        <h3 class="benefit-title">Organización Personal</h3>
+                        <p class="benefit-description">Mejora la gestión de tu información y documentos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section id="topics" class="section">
+        <div class="container">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="section-title">Temas</h2>
+                <p class="section-description">
+                    Explorar areas de conocimiento 
+                </p>
+            </div>
+            
+            <div class="grid grid-md-2 grid-lg-3">
+                <!-- Windows Card -->
+                <div class="card topic-card primary animate-fade-in">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <div class="icon-wrapper">
+                                <i data-lucide="monitor" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Sistema Operativo Windows</h3>
+                                <p class="card-description">Fundamentos del uso de Windows</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li><span class="feature-dot primary"></span>Interfaz y escritorio</li>
+                            <li><span class="feature-dot primary"></span>Menú inicio y barra de tareas</li>
+                            <li><span class="feature-dot primary"></span>Configuración del sistema</li>
+                            <li><span class="feature-dot primary"></span>Accesibilidad y personalización</li>
+                        </ul>
+                        <button class="btn btn-outline w-full group" onclick="scrollToSection('windows')">
+                            Ver más detalles
+                            <i data-lucide="arrow-right" class="transition-transform group-hover-translate" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Archivos Card -->
+                <div class="card topic-card accent animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <div class="icon-wrapper">
+                                <i data-lucide="folder-open" style="width: 24px; height: 24px; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Manejo de Archivos y Carpetas</h3>
+                                <p class="card-description">Organización y gestión de documentos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li><span class="feature-dot accent"></span>Explorador de archivos</li>
+                            <li><span class="feature-dot accent"></span>Crear y organizar carpetas</li>
+                            <li><span class="feature-dot accent"></span>Copiar, mover y eliminar</li>
+                            <li><span class="feature-dot accent"></span>Búsqueda de archivos</li>
+                        </ul>
+                        <button class="btn btn-outline w-full group" onclick="scrollToSection('archivos')">
+                            Ver más detalles
+                            <i data-lucide="arrow-right" class="transition-transform group-hover-translate" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bloc de Notas Card -->
+                <div class="card topic-card success animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <div class="icon-wrapper">
+                                <i data-lucide="file-text" style="width: 24px; height: 24px; color: var(--success);"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Bloc de Notas</h3>
+                                <p class="card-description">Editor de texto básico para notas rápidas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li><span class="feature-dot success"></span>Edición de texto simple</li>
+                            <li><span class="feature-dot success"></span>Formato básico</li>
+                            <li><span class="feature-dot success"></span>Guardar y abrir archivos</li>
+                            <li><span class="feature-dot success"></span>Buscar y reemplazar</li>
+                        </ul>
+                        <button class="btn btn-outline w-full group" onclick="scrollToSection('bloc-notas')">
+                            Ver más detalles
+                            <i data-lucide="arrow-right" class="transition-transform group-hover-translate" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MS Office Card -->
+                <div class="card topic-card primary animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <div class="icon-wrapper">
+                                <i data-lucide="layout" style="width: 24px; height: 24px; color: var(--primary);"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Microsoft Office</h3>
+                                <p class="card-description">Suite de productividad profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li><span class="feature-dot primary"></span>Word - Procesador de textos</li>
+                            <li><span class="feature-dot primary"></span>Excel - Hojas de cálculo</li>
+                            <li><span class="feature-dot primary"></span>PowerPoint - Presentaciones</li>
+                            <li><span class="feature-dot primary"></span>Integración entre aplicaciones</li>
+                        </ul>
+                        <button class="btn btn-outline w-full group" onclick="scrollToSection('ms-office')">
+                            Ver más detalles
+                            <i data-lucide="arrow-right" class="transition-transform group-hover-translate" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LibreOffice Card -->
+                <div class="card topic-card accent animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="card-header">
+                        <div class="topic-icon">
+                            <div class="icon-wrapper">
+                                <i data-lucide="book-open" style="width: 24px; height: 24px; color: var(--accent);"></i>
+                            </div>
+                            <div>
+                                <h3 class="card-title">LibreOffice</h3>
+                                <p class="card-description">Suite ofimática gratuita y de código abierto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="feature-list">
+                            <li><span class="feature-dot accent"></span>Writer - Procesador de textos</li>
+                            <li><span class="feature-dot accent"></span>Calc - Hojas de cálculo</li>
+                            <li><span class="feature-dot accent"></span>Impress - Presentaciones</li>
+                            <li><span class="feature-dot accent"></span>Alternativa gratuita a Office</li>
+                        </ul>
+                        <button class="btn btn-outline w-full group" onclick="scrollToSection('libre-office')">
+                            Ver más detalles
+                            <i data-lucide="arrow-right" class="transition-transform group-hover-translate" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Sección Windows -->
+<section id="windows" class="topic-section">
+    <div class="container">
+        <div class="card topic-section-card primary">
+            <div class="topic-section-header">
+                <div class="topic-section-icon">
+                    <div class="topic-section-icon-wrapper">
+                        <i data-lucide="monitor" style="width: 32px; height: 32px; color: var(--primary);"></i>
+                    </div>
+                </div>
+                <h2 class="topic-section-title">Sistema Operativo Windows</h2>
+                <p class="topic-section-description">
+                    Fundamentos del uso de Windows para el trabajo diario y la gestión eficiente del sistema operativo.
+                </p>
+            </div>
+
+            <div class="card-content">
+                <div class="accordion">
+
+                    <!-- Sistema operativo Windows -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>¿Qué es Windows?</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p><strong>Windows</strong> es un <strong>sistema operativo</strong> desarrollado por Microsoft. 
+                                Un <strong>sistema operativo (SO)</strong> es el programa principal que permite que la computadora funcione, ya que administra el hardware (procesador, memoria, discos, dispositivos) y permite que los programas se ejecuten.</p>
+                                <p><strong>Funciones principales de Windows:</strong></p>
+                                <ul>
+                                    <li>📂 <strong>Gestión de archivos:</strong> crear, copiar, mover y eliminar carpetas y documentos.</li>
+                                    <li>🖥️ <strong>Interfaz gráfica:</strong> facilita el uso del equipo con ventanas, íconos y menús.</li>
+                                    <li>⚙️ <strong>Gestión de recursos:</strong> administra memoria, procesador y dispositivos conectados.</li>
+                                    <li>👤 <strong>Gestión de usuarios:</strong> permite crear cuentas y protegerlas con contraseña.</li>
+                                    <li>🔌 <strong>Compatibilidad de software:</strong> ejecuta programas como Word, Excel, navegadores, juegos, etc.</li>
+                                    <li>🌐 <strong>Conectividad:</strong> se conecta a internet y redes locales.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partes de la Interfaz -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Partes de la Interfaz de Windows</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <ol>
+                                    <li><strong>Escritorio:</strong> pantalla principal que aparece al iniciar sesión. Contiene íconos de acceso directo y puede personalizarse.</li>
+                                    <li><strong>Barra de tareas:</strong> normalmente en la parte inferior, muestra programas abiertos, reloj, Wi-Fi, volumen y botón de inicio.</li>
+                                    <li><strong>Menú inicio:</strong> se abre al presionar el botón de inicio o la tecla Windows; permite abrir programas, apagar el equipo, buscar archivos y acceder a configuraciones.</li>
+                                    <li><strong>Íconos:</strong> pequeños accesos a programas o carpetas que se abren con doble clic.</li>
+                                    <li><strong>Ventanas:</strong> cada programa se abre en una ventana que puedes mover, maximizar, minimizar o cerrar.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navegación básica -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Navegación Básica</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>🔌 <strong>Encender el equipo:</strong> Presiona el botón de encendido en la computadora y espera a que cargue Windows.</p>
+                                <p>⏻ <strong>Apagar el equipo:</strong></p>
+                                <ol>
+                                    <li>Haz clic en el botón de <strong>Inicio</strong>.</li>
+                                    <li>Selecciona <strong>Apagar</strong> o <strong>Suspender</strong>.</li>
+                                    <li>Si no aparece, selecciona <strong>Icono de energía → Apagar</strong>.</li>
+                                </ol>
+                                <p>📂 <strong>Abrir programas:</strong> Desde el menú inicio o escribiendo el nombre en la barra de búsqueda. Si está en el escritorio, doble clic sobre el ícono.</p>
+                                <p>🖱️ <strong>Mover una ventana:</strong> clic y arrastra desde la barra superior.</p>
+                                <p>⬜ <strong>Maximizar:</strong> clic en el ícono de cuadrado en la esquina superior derecha.</p>
+                                <p>➖ <strong>Minimizar:</strong> clic en el ícono de guion (—) para ocultarla en la barra de tareas.</p>
+                                <p>❌ <strong>Cerrar:</strong> clic en la X de la esquina superior derecha.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configuraciones Básicas -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Configuraciones Básicas</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>🎨 <strong>Cambiar fondo de pantalla:</strong></p>
+                                <ol>
+                                    <li>Clic derecho en el escritorio.</li>
+                                    <li>Selecciona <strong>Personalizar</strong>.</li>
+                                    <li>Entra en <strong>Fondo</strong> y elige imagen o color.</li>
+                                </ol>
+                                <p>⏱️ <strong>Ajustar hora/fecha:</strong></p>
+                                <ol>
+                                    <li>Clic derecho sobre la hora en la barra de tareas.</li>
+                                    <li>Selecciona <strong>Ajustar fecha y hora</strong>.</li>
+                                    <li>Activa/desactiva hora automática o ajusta manualmente.</li>
+                                </ol>
+                                <p>🌐 <strong>Cambiar idioma:</strong></p>
+                                <ol>
+                                    <li>Configuración → Hora e idioma.</li>
+                                    <li>Selecciona <strong>Idioma y región</strong>.</li>
+                                    <li>Agrega o cambia el idioma preferido.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atajos de teclado -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Atajos de Teclado Útiles</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <table class="shortcut-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Atajo</th>
+                                            <th>Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><strong>Win + E</strong></td><td>Abre el <strong>Explorador de archivos</strong>.</td></tr>
+                                        <tr><td><strong>Alt + Tab</strong></td><td>Cambia rápidamente entre ventanas abiertas.</td></tr>
+                                        <tr><td><strong>Ctrl + Alt + Supr</strong></td><td>Abre el menú para Administrador de tareas, cerrar sesión o apagar.</td></tr>
+                                        <tr><td><strong>Win + L</strong></td><td>Bloquea la sesión actual.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botón volver arriba -->
+                <div class="flex justify-center mt-8">
+                    <button class="btn btn-outline group" onclick="scrollToTop()">
+                        <i data-lucide="chevron-up" style="width: 16px; height: 16px; margin-right: 0.5rem; transition: transform 0.2s;" class="group-hover:-translate-y-1"></i>
+                        Volver al inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Archivos Section -->
+<section id="archivos" class="topic-section">
+    <div class="container">
+        <div class="card topic-section-card accent">
+            <div class="topic-section-header">
+                <div class="topic-section-icon">
+                    <div class="topic-section-icon-wrapper">
+                        <i data-lucide="folder-open" style="width: 32px; height: 32px; color: var(--accent);"></i>
+                    </div>
+                </div>
+                <h2 class="topic-section-title">Manejo de Archivos y Carpetas</h2>
+                <p class="topic-section-description">
+                    Organización y gestión eficiente de documentos y carpetas en el sistema operativo
+                </p>
+            </div>
+            <div class="card-content">
+                <div class="accordion">
+
+                    <!-- Explorador de Archivos -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Explorador de Archivos</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>El <strong>Explorador de archivos</strong> es la herramienta principal para visualizar, abrir y gestionar archivos y carpetas.</p>
+                                <ul>
+                                    <li><strong>Panel de navegación:</strong> Muestra accesos rápidos a Documentos, Imágenes, Descargas y Unidades de disco.</li>
+                                    <li><strong>Barra de direcciones:</strong> Indica la ubicación actual de la carpeta y permite navegar escribiendo la ruta.</li>
+                                    <li><strong>Panel principal:</strong> Donde se visualizan los archivos y carpetas contenidos en la ubicación actual.</li>
+                                    <li><strong>Barra de búsqueda:</strong> Permite localizar archivos por nombre, tipo o fecha de modificación.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organización de Carpetas -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Organización de Carpetas</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Las <strong>carpetas</strong> son contenedores donde se almacenan archivos. Puedes crear jerarquías de carpetas para mantener el orden:</p>
+                                <ul>
+                                    <li><strong>Crear carpeta:</strong> Clic derecho → <em>Nuevo</em> → <em>Carpeta</em>. Asigna un nombre descriptivo.</li>
+                                    <li><strong>Renombrar:</strong> Selecciona la carpeta → tecla <kbd>F2</kbd> → escribe el nuevo nombre.</li>
+                                    <li><strong>Buenas prácticas:</strong> Usa nombres claros, por ejemplo <em>2025_ProyectoVentas</em> en lugar de “Nueva carpeta”.</li>
+                                    <li><strong>Subcarpetas:</strong> Divide por categorías (por ejemplo: Documentos, Imágenes, Reportes).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operaciones Básicas -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Operaciones Básicas</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Las operaciones más comunes para trabajar con archivos y carpetas son:</p>
+                                <ul>
+                                    <li><strong>Copiar:</strong> Duplicar un archivo en otra ubicación (<kbd>Ctrl + C</kbd>).</li>
+                                    <li><strong>Cortar:</strong> Mover un archivo a otro lugar (<kbd>Ctrl + X</kbd>).</li>
+                                    <li><strong>Pegar:</strong> Colocar el archivo en la carpeta destino (<kbd>Ctrl + V</kbd>).</li>
+                                    <li><strong>Eliminar:</strong> Selecciona el archivo y presiona <kbd>Supr</kbd>. Quedará en la Papelera de Reciclaje.</li>
+                                    <li><strong>Restaurar:</strong> Desde la Papelera de Reciclaje puedes devolverlo a su ubicación original.</li>
+                                </ul>
+                                <p>También puedes usar el <strong>ratón</strong> (clic derecho → copiar/cortar/pegar) o arrastrar archivos de una carpeta a otra.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tipos de Archivos -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Tipos de Archivos Comunes</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Cada archivo tiene una <strong>extensión</strong> que indica su tipo. Ejemplos:</p>
+                                <ul>
+                                    <li><strong>.docx</strong> → Documentos de Word.</li>
+                                    <li><strong>.xlsx</strong> → Hojas de cálculo de Excel.</li>
+                                    <li><strong>.pptx</strong> → Presentaciones de PowerPoint.</li>
+                                    <li><strong>.txt</strong> → Archivos de texto plano (Bloc de Notas).</li>
+                                    <li><strong>.jpg / .png</strong> → Imágenes.</li>
+                                    <li><strong>.pdf</strong> → Documentos en formato universal de lectura.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Búsqueda Avanzada -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Búsqueda Avanzada</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Para encontrar archivos rápidamente:</p>
+                                <ul>
+                                    <li>Usa la <strong>barra de búsqueda</strong> del explorador de archivos.</li>
+                                    <li>Filtra por <strong>tipo de archivo</strong> (por ejemplo, escribe <em>*.pdf</em> para ver solo PDFs).</li>
+                                    <li>Filtra por <strong>fecha de modificación</strong> si recuerdas cuándo lo editaste.</li>
+                                    <li>Windows también puede buscar <strong>por contenido</strong> si el archivo es de texto.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón para volver al inicio -->
+                <div class="flex justify-center mt-8">
+                    <button class="btn btn-outline group" onclick="scrollToTop()">
+                        <i data-lucide="chevron-up" style="width: 16px; height: 16px; margin-right: 0.5rem; transition: transform 0.2s;" class="group-hover:-translate-y-1"></i>
+                        Volver al inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+   <!-- Bloc de Notas Section -->
+<section id="bloc-notas" class="topic-section">
+    <div class="container">
+        <div class="card topic-section-card success">
+            <div class="topic-section-header">
+                <div class="topic-section-icon">
+                    <div class="topic-section-icon-wrapper">
+                        <i data-lucide="file-text" style="width: 32px; height: 32px; color: var(--success);"></i>
+                    </div>
+                </div>
+                <h2 class="topic-section-title">Bloc de Notas</h2>
+                <p class="topic-section-description">
+                    Editor de texto básico perfecto para notas rápidas y edición de archivos de texto simple
+                </p>
+            </div>
+            <div class="card-content">
+                <div class="accordion">
+
+                    <!-- Qué es -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>¿Qué es el Bloc de Notas?</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>El <strong>Bloc de notas</strong> (Notepad) es un editor de texto muy ligero incluido en Windows. Trabaja con <strong>texto plano</strong>, lo que significa que no añade formato (negritas, tamaños, etc.) al guardar. Es ideal para tomar notas rápidas, editar archivos de configuración, escribir pequeños scripts y crear archivos HTML sencillos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cómo abrir y crear archivos -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Cómo abrir y crear archivos</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Formas comunes de abrir el Bloc de notas y crear archivos:</p>
+                                <ul>
+                                    <li><strong>Desde el Menú Inicio:</strong> Haz clic en Inicio y escribe <em>Bloc de notas</em> (o <em>Notepad</em>) y ábrelo.</li>
+                                    <li><strong>Ejecutar:</strong> Presiona <kbd>Win + R</kbd>, escribe <code>notepad</code> y presiona Enter.</li>
+                                    <li><strong>Desde el Explorador de archivos:</strong> Clic derecho en un espacio vacío → <em>Nuevo → Documento de texto</em>. Esto crea un archivo <code>.txt</code> que puedes editar con Notepad.</li>
+                                    <li><strong>Abrir archivos existentes:</strong> Dentro de Notepad: <em>Archivo → Abrir</em> y usa el selector de tipo para mostrar <em>Todos los archivos (*.*)</em> si quieres abrir .html, .css, .bat, etc.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Funciones básicas -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Funciones Básicas</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Notepad permite escribir y editar texto plano. Algunas funciones útiles incorporadas:</p>
+                                <ul>
+                                    <li><strong>Ajuste de línea (Word Wrap):</strong> hace que las líneas largas se visualicen en varias líneas en pantalla (no inserta saltos de línea en el archivo).</li>
+                                    <li><strong>Cambiar fuente:</strong> <em>Formato → Fuente</em> para seleccionar tipo de letra y tamaño (solo afecta la vista, no el archivo).</li>
+                                    <li><strong>Buscar y reemplazar:</strong> localizar texto con <kbd>Ctrl + F</kbd> o reemplazar con <kbd>Ctrl + H</kbd>.</li>
+                                    <li><strong>Guardar codificación:</strong> al guardar puedes elegir la codificación (p. ej. UTF-8, ANSI).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guardar Documentos -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Guardar Documentos</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Cómo guardar correctamente y qué opciones debes tener en cuenta:</p>
+                                <ul>
+                                    <li><strong>Guardar rápido:</strong> <kbd>Ctrl + S</kbd> guarda el archivo con su nombre y ubicación actuales.</li>
+                                    <li><strong>Guardar como:</strong> <em>Archivo → Guardar como</em>. Aquí puedes cambiar el nombre, la extensión y la codificación.</li>
+                                    <li><strong>Extensión correcta:</strong> Para crear una página web guarda con <code>.html</code> (por ejemplo <em>mipagina.html</em>); para scripts guarda con <code>.bat</code> o la extensión correspondiente.</li>
+                                    <li><strong>Tipo de archivo:</strong> En "Guardar como" selecciona <em>Todos los archivos (*.*)</em> si quieres escribir tu propia extensión (por ejemplo .html, .css, .js).</li>
+                                    <li><strong>Codificación:</strong> Selecciona <strong>UTF-8</strong> para máxima compatibilidad (recomendado para páginas web y archivos compartidos). Si tu sistema pide otra codificación, elige la que corresponda.</li>
+                                </ul>
+
+                                <p><strong>Ejemplo — crear una página HTML sencilla:</strong></p>
+                                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mi página de ejemplo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola desde Notepad&lt;/h1&gt;
+  &lt;p&gt;Este archivo fue creado y guardado desde el Bloc de notas.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                                <p>Guarda ese contenido como <code>mipagina.html</code> eligiendo "Todos los archivos" y <strong>UTF-8</strong> en la codificación. Luego abre el archivo en un navegador para ver el resultado.</p>
+
+                                <p><strong>Ejemplo — crear un archivo por lotes (.bat):</strong></p>
+                                <pre><code>@echo off
+echo Hola mundo
+pause
+</code></pre>
+                                <p>Guarda como <code>hola.bat</code> y ejecútalo con doble clic para ver la consola con el mensaje.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buscar y Reemplazar -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Buscar y Reemplazar</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Notepad incluye herramientas básicas para localizar y cambiar texto:</p>
+                                <ul>
+                                    <li><strong>Buscar:</strong> <kbd>Ctrl + F</kbd> abre la caja de búsqueda para localizar texto en el documento.</li>
+                                    <li><strong>Reemplazar:</strong> <kbd>Ctrl + H</kbd> para buscar un texto y sustituirlo por otro (útil para cambios masivos).</li>
+                                    <li><strong>Buscar siguiente/Anterior:</strong> puedes navegar por cada aparición del texto encontrado sin perder la posición actual.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atajos útiles -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Atajos útiles</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <table class="shortcut-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Atajo</th>
+                                            <th>Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><kbd>Ctrl + N</kbd></td><td>Nuevo documento.</td></tr>
+                                        <tr><td><kbd>Ctrl + O</kbd></td><td>Abrir archivo.</td></tr>
+                                        <tr><td><kbd>Ctrl + S</kbd></td><td>Guardar documento.</td></tr>
+                                        <tr><td><kbd>Ctrl + Shift + S</kbd></td><td>Guardar como (algunas versiones usan Archivo → Guardar como).</td></tr>
+                                        <tr><td><kbd>Ctrl + Z</kbd></td><td>Deshacer la última acción.</td></tr>
+                                        <tr><td><kbd>Ctrl + F</kbd></td><td>Buscar texto.</td></tr>
+                                        <tr><td><kbd>Ctrl + H</kbd></td><td>Reemplazar texto.</td></tr>
+                                        <tr><td><kbd>Ctrl + A</kbd></td><td>Seleccionar todo el texto.</td></tr>
+                                        <tr><td><kbd>Ctrl + C</kbd></td><td>Copiar selección.</td></tr>
+                                        <tr><td><kbd>Ctrl + V</kbd></td><td>Pegar desde el portapapeles.</td></tr>
+                                        <tr><td><kbd>Ctrl + X</kbd></td><td>Cortar selección.</td></tr>
+                                        <tr><td><kbd>Ctrl + P</kbd></td><td>Imprimir (Archivo → Imprimir).</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configuración y consejos -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Configuración y consejos prácticos</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <ul>
+                                    <li><strong>Ajuste de línea (Word Wrap):</strong> Actívalo si prefieres que las líneas largas se vean en varias líneas en pantalla; desactívalo si necesitas ver saltos de línea reales.</li>
+                                    <li><strong>Fuente:</strong> Cambia la apariencia (Formato → Fuente). Esto solo afecta la vista en Notepad, no el contenido del archivo.</li>
+                                    <li><strong>Archivos grandes:</strong> Notepad no está optimizado para archivos muy grandes; para archivos de miles de líneas usa editores más potentes.</li>
+                                    <li><strong>Copiar texto sin formato:</strong> Si pegas texto desde Word o páginas web y quieres quitar formato, pégalos primero en Notepad y luego vuelve a copiarlos (Notepad elimina todo el formato).</li>
+                                    <li><strong>Respaldos:</strong> Antes de editar archivos de sistema o configuraciones importantes, haz una copia de seguridad del archivo original.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usos prácticos y alternativas -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Usos prácticos y alternativas</span>
+                            <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Ejemplos de uso:</p>
+                                <ul>
+                                    <li>Tomar notas rápidas o listas de tareas.</li>
+                                    <li>Crear y editar archivos <code>.txt</code>, <code>.html</code>, <code>.css</code>, <code>.js</code>, <code>.bat</code> y otros archivos de texto simple.</li>
+                                    <li>Editar archivos de configuración (.ini, .conf) o revisar registros (logs).</li>
+                                    <li>Quitar formato de texto copiado desde otras aplicaciones.</li>
+                                </ul>
+                                <p><strong>Alternativas más potentes:</strong> si necesitas funciones avanzadas (numeración de líneas, búsqueda avanzada, pestañas, resaltado de sintaxis), considera usar <em>Notepad++</em>, <em>Visual Studio Code</em> o <em>Sublime Text</em>. Para documentos con formato enriquecido usa <em>Word</em> o <em>WordPad</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botón volver arriba -->
+                <div class="flex justify-center mt-8">
+                    <button class="btn btn-outline group" onclick="scrollToTop()">
+                        <i data-lucide="chevron-up" style="width: 16px; height: 16px; margin-right: 0.5rem; transition: transform 0.2s;" class="group-hover:-translate-y-1"></i>
+                        Volver al inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- MS Office Section -->
+    <section id="ms-office" class="topic-section">
+        <div class="container">
+            <div class="card topic-section-card primary">
+                <div class="topic-section-header">
+                    <div class="topic-section-icon">
+                        <div class="topic-section-icon-wrapper">
+                            <i data-lucide="layout" style="width: 32px; height: 32px; color: var(--primary);"></i>
+                        </div>
+                    </div>
+                    <h2 class="topic-section-title">Microsoft Office</h2>
+                    <p class="topic-section-description">
+                        Suite de productividad profesional líder en el mercado para crear documentos, presentaciones y hojas de cálculo
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Microsoft Word</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Word es el procesador de textos líder para crear documentos profesionales. Incluye herramientas de formato, revisión ortográfica, tablas, imágenes y plantillas para diversos tipos de documentos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Microsoft Excel</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Excel es una potente hoja de cálculo para análisis de datos, creación de gráficos, tablas dinámicas y automatización mediante fórmulas y macros. Ideal para gestión financiera y análisis estadístico.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Microsoft PowerPoint</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>PowerPoint permite crear presentaciones profesionales con diapositivas, animaciones, transiciones y elementos multimedia. Incluye plantillas y herramientas de diseño para impactar en la audiencia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Integración Office</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Las aplicaciones de Office se integran perfectamente, permitiendo insertar hojas de Excel en Word, gráficos en PowerPoint y mantener vínculos dinámicos entre documentos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-8">
+                        <button class="btn btn-outline group" onclick="scrollToTop()">
+                            <i data-lucide="chevron-up" style="width: 16px; height: 16px; margin-right: 0.5rem; transition: transform 0.2s;" class="group-hover:-translate-y-1"></i>
+                            Volver al inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LibreOffice Section -->
+    <section id="libre-office" class="topic-section">
+        <div class="container">
+            <div class="card topic-section-card accent">
+                <div class="topic-section-header">
+                    <div class="topic-section-icon">
+                        <div class="topic-section-icon-wrapper">
+                            <i data-lucide="book-open" style="width: 32px; height: 32px; color: var(--accent);"></i>
+                        </div>
+                    </div>
+                    <h2 class="topic-section-title">LibreOffice</h2>
+                    <p class="topic-section-description">
+                        Suite ofimática gratuita y de código abierto, alternativa completa a Microsoft Office
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>LibreOffice Writer</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Writer es el procesador de textos de LibreOffice, compatible con documentos de Word. Ofrece herramientas profesionales de formato, estilos, tablas de contenido y referencias cruzadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>LibreOffice Calc</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Calc es la hoja de cálculo que compite con Excel, ofreciendo funciones matemáticas, estadísticas, gráficos y tablas dinámicas. Compatible con archivos de Excel y otros formatos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>LibreOffice Impress</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>Impress permite crear presentaciones atractivas con efectos de transición, animaciones y plantillas prediseñadas. Compatible con archivos de PowerPoint para máxima flexibilidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Ventajas de LibreOffice</span>
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform 0.2s;"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-content-inner">
+                                    <p>LibreOffice es completamente gratuito, de código abierto, multiplataforma y ofrece actualizaciones regulares. Ideal para usuarios que buscan una alternativa económica a Microsoft Office.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-8">
+                        <button class="btn btn-outline group" onclick="scrollToTop()">
+                            <i data-lucide="chevron-up" style="width: 16px; height: 16px; margin-right: 0.5rem; transition: transform 0.2s;" class="group-hover:-translate-y-1"></i>
+                            Volver al inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="font-size: 0.875rem;">
+                © 2025  Ofimática Básica
+            </p>
+        </div>
+    </footer>
+<script src="script.js"></script>
+
+</body>
+</html>

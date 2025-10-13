@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Licencias de Software</title>
+  <link rel="stylesheet" href="css/licencias.css">
+</head>
+<body>
+  <header>
+    <h1>Licencias de Software</h1>
+    <p>Tipos de licencias: propietario, libre y de código abierto</p>
+    <!-- Botón volver al inicio -->
+    <div class="volver-inicio">
+      <a href="index.html">⬅ Volver al Inicio</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contenido Extenso -->
+    <section class="contenido">
+      <h2>Explicación Detallada</h2>
+      <p>
+        Las licencias de software determinan cómo los usuarios pueden usar, modificar y distribuir los programas. Existen principalmente tres tipos: licencias propietarias, licencias libres y licencias de código abierto. Comprenderlas es fundamental para usar software de manera legal y ética, así como para decidir qué tipo de software se adapta mejor a una organización o proyecto personal.
+      </p>
+      <p>
+        <strong>Licencia de software propietario:</strong> El software propietario es aquel cuyo código fuente no está disponible para el público y cuya distribución y modificación están restringidas por el titular de los derechos de autor. Ejemplos incluyen Microsoft Windows, Adobe Photoshop y muchas aplicaciones comerciales. Los usuarios deben aceptar los términos de uso y no pueden modificar ni redistribuir el software sin autorización. Estas licencias suelen incluir soporte técnico y actualizaciones, pero limitan la libertad de los usuarios.
+      </p>
+      <p>
+        La historia de las licencias propietarias se remonta a los primeros programas comerciales de los años 70 y 80, cuando empresas comenzaron a vender software como producto independiente. Este modelo generó ingresos y financiamiento para el desarrollo continuo, pero también limitó la innovación abierta, ya que el acceso al código fuente estaba restringido. Hoy en día, la mayoría de los programas de productividad y entretenimiento utilizan licencias propietarias.
+      </p>
+      <p>
+        <strong>Licencia de software libre:</strong> El software libre permite a los usuarios ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software. Ejemplos incluyen GNU/Linux, LibreOffice y GIMP. Estas licencias promueven la colaboración y el intercambio de conocimiento. Los usuarios pueden adaptar el software a sus necesidades y contribuir con mejoras al proyecto original.
+      </p>
+      <p>
+        Richard Stallman, fundador del movimiento del software libre, estableció principios claros sobre la libertad de usar y modificar programas. El software libre fomenta comunidades de desarrollo activas, mejora la seguridad y permite la educación tecnológica. Licencias como GNU GPL aseguran que las libertades otorgadas se mantengan en versiones futuras del software.
+      </p>
+      <p>
+        <strong>Licencia de software de código abierto:</strong> Similar al software libre, el código abierto permite estudiar, modificar y distribuir el software. Sin embargo, algunas licencias de código abierto pueden imponer restricciones adicionales, como requerir atribución o prohibir usos comerciales. Ejemplos incluyen proyectos como Apache, MySQL y Mozilla Firefox.
+      </p>
+      <p>
+        La diferencia principal entre software libre y código abierto radica en la filosofía: mientras el software libre enfatiza la libertad del usuario, el código abierto se centra en la disponibilidad del código y la calidad técnica. Ambos modelos han impulsado la innovación, la transparencia y la seguridad en la industria del software.
+      </p>
+      <p>
+        Las licencias también influyen en la adopción empresarial. Las compañías que buscan soluciones económicas y adaptables suelen preferir software libre o de código abierto. Por otro lado, quienes requieren soporte garantizado y responsabilidades legales tienden a usar software propietario. La elección de una licencia adecuada depende del contexto de uso, los objetivos del proyecto y las políticas de la organización.
+      </p>
+      <p>
+        Además, las licencias determinan la distribución de software educativo, herramientas de desarrollo, aplicaciones móviles y plataformas en la nube. Entenderlas ayuda a garantizar el cumplimiento legal, fomentar la innovación y proteger los derechos de los desarrolladores y usuarios. Las licencias de software reflejan cómo la informática se integra con la ética, la economía y la sociedad en general.
+      </p>
+      <p>
+        Hoy en día, los modelos híbridos también son comunes, donde algunas partes del software son propietarias y otras son de código abierto. Esta estrategia permite combinar control sobre funciones críticas y colaboración en componentes no críticos. Comprender estos modelos es esencial para cualquier profesional de informática, desarrollador o estudiante que desee aprovechar al máximo las herramientas tecnológicas disponibles.
+      </p>
+      <p>
+        <!-- Continúa agregando párrafos hasta superar las 3500 palabras si deseas -->
+      </p>
+    </section>
+
+    <!-- Trivia -->
+    <section class="juego">
+      <h2>Trivia: Licencias de Software</h2>
+      <div id="quiz">
+        <p id="quiz-question"></p>
+        <div id="quiz-options"></div>
+        <p id="quiz-feedback"></p>
+        <button id="quiz-next" disabled>Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Drag & Drop -->
+    <section class="juego">
+      <h2>Arrastra cada software a su licencia correcta</h2>
+      <div class="drag-container">
+        <div id="drag-items" class="items"></div>
+        <div class="drop-area">
+          <div class="drop-slot" data-category="Propietario">Propietario</div>
+          <div class="drop-slot" data-category="Libre">Libre</div>
+          <div class="drop-slot" data-category="Código abierto">Código Abierto</div>
+        </div>
+      </div>
+      <button id="check-drag">Comprobar</button>
+      <button id="reset-drag">Reiniciar</button>
+      <p id="drag-feedback"></p>
+    </section>
+
+  </main>
+
+  <script src="js/juego7.js"></script>
+</body>
+</html>

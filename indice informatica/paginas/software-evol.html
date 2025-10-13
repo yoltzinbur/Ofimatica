@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolución del software</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Evolución del software</h1>
+
+  <p>
+    El software ha evolucionado desde programas simples escritos para computadoras específicas hasta sistemas complejos accesibles en múltiples dispositivos y plataformas.
+  </p>
+
+  <button class="toggle-info" data-target="info1">Software de la primera generación</button>
+  <div class="info" id="info1">
+    <p>
+      Programas escritos en lenguaje máquina (código binario), difíciles de entender y depurar. Usados principalmente para cálculos matemáticos y tareas básicas.
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Software de la segunda generación</button>
+  <div class="info" id="info2">
+    <p>
+      Aparecen lenguajes de alto nivel como Fortran y COBOL, permitiendo mayor facilidad de programación y portabilidad entre equipos.
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Software moderno</button>
+  <div class="info" id="info3">
+    <ul>
+      <li>Sistemas operativos gráficos (Windows, macOS, Linux).</li>
+      <li>Aplicaciones de oficina, diseño gráfico, multimedia.</li>
+      <li>Aplicaciones móviles y software en la nube.</li>
+      <li>Inteligencia artificial y aprendizaje automático.</li>
+      <li>Videojuegos, simulaciones científicas y software educativo.</li>
+    </ul>
+  </div>
+
+  <button class="toggle-info" data-target="info4">Tendencias actuales</button>
+  <div class="info" id="info4">
+    <p>
+      Software basado en la nube, colaboración remota, Big Data, desarrollo ágil, entornos de programación multiplataforma y software de código abierto.
+    </p>
+    <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Historia de la Computadora — Informática Básica</title>
+  <link rel="stylesheet" href="css/historia.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>Historia de la Computadora</h1>
+      <p class="subtitle">Desde herramientas antiguas hasta la era digital</p>
+      <a class="back-link" href="index.html">← Volver al índice</a>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="navegación secundaria">
+    <a href="index.html">Inicio</a> › <span>Historia</span>
+  </nav>
+
+  <main class="page">
+    <article class="content">
+      <!-- Intro -->
+      <section id="intro" class="text-block">
+        <h2>Resumen rápido</h2>
+        <div class="summary-card">
+          <p>La historia de la computadora es una sucesión de inventos, descubrimientos y mejoras tecnológicas que transformaron cálculos mecánicos en sistemas electrónicos programables.</p>
+          <p>En esta página encontrarás secciones para leer a fondo, una línea de tiempo interactiva y ejercicios para practicar el orden cronológico de eventos importantes.</p>
+        </div>
+      </section>
+
+      <!-- Contenedores para texto largo -->
+      <section id="origenes" class="text-block">
+        <h2>Orígenes y precursores</h2>
+        <p><!-- Aquí pega el Bloque 1 de texto (orígenes) --> </p>
+      </section>
+
+      <section id="era-mecanica" class="text-block">
+        <h2>Mecanización y siglo XIX</h2>
+        <p><!-- Aquí pega el Bloque 2 de texto (Babbage, Ada, etc.) --> </p>
+      </section>
+
+      <section id="era-electronica" class="text-block">
+        <h2>Computadoras electrónicas y la era moderna</h2>
+        <p><!-- Aquí pega el Bloque 3 de texto (ENIAC, transistores, microprocesador, PC) --> </p>
+      </section>
+
+      <section id="tendencias" class="text-block">
+        <h2>Tendencias recientes y futuro</h2>
+        <p><!-- Aquí pega más contenido sobre redes, cloud, IA, etc. --> </p>
+      </section>
+
+      <!-- Actividades -->
+      <section id="timeline-activity" class="section-activity">
+        <h2>Línea de tiempo interactiva</h2>
+        <p>Mueve el control deslizante para explorar eventos históricos.</p>
+        <input id="timeline-range" type="range" min="0" max="6" value="0" />
+        <div id="timeline-card" class="timeline-card"></div>
+        <div class="timeline-controls">
+          <button id="tl-prev" class="btn ghost">Anterior</button>
+          <button id="tl-next" class="btn">Siguiente</button>
+        </div>
+      </section>
+
+      <section id="order-activity" class="section-activity">
+        <h2>Actividad: Ordena los eventos</h2>
+        <p>Arrastra las tarjetas y colócalas en el orden correcto.</p>
+        <div id="order-pool" class="order-pool"></div>
+        <div id="order-target" class="order-target"></div>
+        <div style="margin-top:12px;">
+          <button id="order-check" class="btn">Comprobar orden</button>
+          <button id="order-reset" class="btn ghost">Reiniciar</button>
+          <div id="order-feedback" class="q-feedback" style="margin-top:10px"></div>
+        </div>
+      </section>
+
+      <section id="quiz-activity" class="section-activity">
+        <h2>Mini-quiz cronológico</h2>
+        <div id="hist-quiz">
+          <div id="hist-q-text" class="q-text"></div>
+          <div id="hist-q-options" class="q-options"></div>
+          <div id="hist-q-feedback" class="q-feedback"></div>
+          <div style="margin-top:10px;">
+            <button id="hist-next" class="btn" disabled>Siguiente</button>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <div class="widget">
+        <h3>Índice rápido</h3>
+        <ol>
+          <li><a href="#origenes">Orígenes</a></li>
+          <li><a href="#era-mecanica">Siglo XIX</a></li>
+          <li><a href="#era-electronica">Era electrónica</a></li>
+          <li><a href="#tendencias">Tendencias</a></li>
+        </ol>
+      </div>
+
+      <div class="widget">
+        <h3>Recursos</h3>
+        <ul>
+          <li><a href="#" class="small-link">Lecturas recomendadas</a></li>
+          <li><a href="#" class="small-link">Líneas de tiempo externas</a></li>
+          <li><a href="#" class="small-link">Documentales y vídeos</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Informática Básica — Historia</p>
+    </div>
+  </footer>
+
+  <script src="js/juego2.js"></script>
+</body>
+</html>
