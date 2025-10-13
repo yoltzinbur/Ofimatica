@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bases de Datos - Guía Completa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            font-family: Georgia, serif;
+            line-height: 1.7;
+            color: var(--dark);
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        /* Navegación mejorada */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-top {
+            padding: 1.5rem 4rem;
+        }
+
+        .nav-top ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-top a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-top a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-top a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-top a:hover::after {
+            width: 80%;
+        }
+
+        /* Encabezado hero */
+        .encabezado {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .imagen {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .texto-superpuesto {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            font-size: 5.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor principal */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .section {
+            padding: 6rem 4rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-minititle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto 4rem auto;
+            line-height: 1.8;
+        }
+
+        /* Tarjetas de características */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Tarjetas de contenido */
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .content-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-card h3 i {
+            color: var(--primary);
+        }
+
+        .content-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content-card p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        .content-card ul {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--gray);
+        }
+
+        .content-card ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        /* ACID Properties Visual */
+        .acid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .acid-card {
+            background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .acid-card:nth-child(1) { border-top-color: var(--primary); }
+        .acid-card:nth-child(2) { border-top-color: var(--secondary); }
+        .acid-card:nth-child(3) { border-top-color: var(--accent); }
+        .acid-card:nth-child(4) { border-top-color: var(--success); }
+
+        .acid-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .acid-letter {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .acid-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Diagrama ER Container */
+        .er-diagram-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 3rem 0;
+        }
+
+        .er-image-placeholder {
+            width: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            position: relative;
+            border: 2px dashed var(--gray);
+        }
+
+        .er-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .er-image-placeholder::before {
+            font-size: 1.5rem;
+            color: var(--gray);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .er-image-placeholder::after {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        /* Símbolos ER */
+        .er-symbols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .er-symbol {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .er-symbol-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Herramientas Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .tool-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .tool-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .tool-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Tabla Comparativa Mejorada */
+        .comparison-advanced {
+            overflow-x: auto;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-advanced table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        .comparison-advanced th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .comparison-advanced td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease;
+            vertical-align: top;
+        }
+
+        .comparison-advanced tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .comparison-advanced .check-icon {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .comparison-advanced .times-icon {
+            color: var(--danger);
+            font-size: 1.2rem;
+        }
+
+        .comparison-advanced .db-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Proceso de diseño */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            border-top: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .process-step h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 42%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border: 5px solid var(--white);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.2);
+            z-index: 2;
+        }
+
+        .timeline-image {
+            width: 42%;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .timeline-image::before {
+           
+            position: absolute;
+            color: var(--gray);
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        /* Tipos de bases de datos */
+        .db-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .db-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .db-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .db-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .db-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .db-card h4 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .db-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .db-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .db-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .db-image::before {
+          
+            position: absolute;
+            font-size: 2rem;
+        }
+
+        /* Tabla de comparación */
+        .comparison-table {
+            overflow-x: auto;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .comparison-table strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Aplicaciones */
+        .aplicaciones {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 6rem 2rem;
+        }
+
+        .aplicaciones-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .titulo_aplicaciones {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .aplicaciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .app-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+        }
+
+        .app-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .app-card h3 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .app-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Ejemplo práctico */
+        .ejemplo-uso {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        .ejemplo-uso h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ejemplo-uso h4 i {
+            color: var(--primary);
+        }
+
+        .ejemplo-uso p {
+            color: var(--dark);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Lenguajes de BD */
+        .language-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .language-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--primary);
+        }
+
+        .language-card:nth-child(2) {
+            border-top-color: var(--secondary);
+        }
+
+        .language-card:nth-child(3) {
+            border-top-color: var(--accent);
+        }
+
+        .language-card:nth-child(4) {
+            border-top-color: #8b5cf6;
+        }
+
+        .language-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .language-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-card h3 i {
+            color: var(--primary);
+        }
+
+        .language-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .language-card b {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Info adicional */
+        .more-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 3.5rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e2e8f0;
+        }
+
+        .more-info h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .more-info p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Arquitecturas de BD */
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .architecture-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .architecture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .architecture-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 1.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .architecture-card h3 i {
+            color: var(--primary);
+        }
+
+        .architecture-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .architecture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .architecture-image::before {
+            position: absolute;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        footer p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-size: 1.05rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-top {
+                padding: 1rem;
+            }
+
+            .nav-top ul {
+                gap: 1rem;
+            }
+
+            .texto-superpuesto {
+                font-size: 3rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+
+            .timeline-content,
+            .timeline-image {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .aplicaciones-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .db-grid,
+            .language-cards,
+            .tools-grid,
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-advanced {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-top">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#conceptos">Introducción</a></li>
+                <li><a href="#diseno">Diseño</a></li>
+                <li><a href="#tipos">Tipos</a></li>
+                <li><a href="#arquitectura">Arquitectura</a></li>
+                <li><a href="#lenguajes">Comandos</a></li>
+                <li><a href="#aplicaciones">Aplicaciones</a></li>
+                <li><a href="#evolucion">Evolución</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="encabezado" id="inicio">
+        <img class="imagen" src="img/Base.jpg" alt="Base de datos">
+        <div class="texto-superpuesto">Bases de<br>Datos</div>
+    </section>
+
+    <main class="content">
+        <section class="section" id="conceptos">
+            <h2 class="section-title">Fundamentos Esenciales</h2>
+            <h3 class="section-minititle">¿Qué es una base de datos?</h3>
+            <p class="section-subtitle">Una base de datos es una colección organizada y estructurada de información que permite almacenar, gestionar, consultar y recuperar datos de manera eficiente, segura y sistemática en sistemas informáticos modernos. Es el corazón de prácticamente todas las aplicaciones digitales actuales.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Velocidad</h3>
+                    <p class="feature-description">Permite buscar, filtrar y analizar millones de registros en milisegundos usando lenguajes de consulta optimizados como SQL y sistemas de indexación avanzados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Seguridad</h3>
+                    <p class="feature-description">Ofrece mecanismos robustos de autenticación, autorización, cifrado de datos y auditoría para proteger información sensible de accesos no autorizados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Integridad</h3>
+                    <p class="feature-description">Garantiza la consistencia y coherencia de los datos mediante reglas de validación, restricciones de integridad referencial y transacciones ACID.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Escalabilidad</h3>
+                    <p class="feature-description">Capacidad de crecer vertical u horizontalmente para manejar volúmenes crecientes de datos y usuarios concurrentes sin degradar el rendimiento.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="ejemplo-uso">
+            <h4><i class="fa fa-book"></i> Ejemplo Práctico: Sistema de Biblioteca Digital</h4>
+            <p>Una biblioteca digital moderna necesita gestionar libros en múltiples formatos, usuarios con diferentes roles, préstamos físicos y digitales, reservas, multas, recomendaciones personalizadas y devoluciones de manera eficiente, escalable y automatizada.</p>
+            <p><b>Diseño de la solución:</b> El sistema utilizaría <b>tablas relacionadas</b> (Libros, Usuarios, Préstamos, Multas, Reservas) con claves foráneas para mantener estricta integridad referencial entre entidades. Se implementarían <b>índices compuestos</b> en columnas frecuentemente consultadas como ISBN, título, autor y género para búsquedas ultrarrápidas. Se usarían <b>triggers automáticos</b> para calcular fechas de devolución, generar notificaciones por email/SMS, y calcular multas por retraso. Las <b>vistas materializadas</b> permitirían consultar libros disponibles, estadísticas de préstamos y usuarios activos sin afectar el rendimiento. Los <b>procedimientos almacenados</b> encapsularían la lógica de negocio compleja. Finalmente, se aplicarían <b>restricciones de integridad</b> (CHECK, UNIQUE, NOT NULL) para evitar préstamos duplicados, validar existencia de libros antes de prestarlos, y limitar el número de préstamos simultáneos por usuario.</p>
+        </section>
+
+        <section class="aplicaciones" id="aplicaciones">
+            <div class="aplicaciones-container">
+                <h2 class="titulo_aplicaciones">Casos de Uso y Aplicaciones Reales</h2>
+                <p class="section-subtitle">Las bases de datos son fundamentales en prácticamente todas las industrias y sectores modernos</p>
+                <div class="aplicaciones-grid">
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Comercio Electrónico</h3>
+                        <p>Gestión integral de catálogos masivos de productos con atributos dinámicos, inventario multi-almacén en tiempo real, procesamiento de millones de pedidos simultáneos, historiales de compra para análisis, recomendaciones personalizadas con ML, carritos de compra persistentes, y transacciones de pago seguras con PCI compliance.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Sistemas de Salud</h3>
+                        <p>Historiales clínicos electrónicos (EHR) completos con estándares HL7/FHIR, gestión de citas médicas multi-especialidad, prescripciones digitales con verificación de interacciones medicamentosas, seguimiento longitudinal de tratamientos crónicos, almacenamiento seguro de imagenología médica (DICOM), y análisis epidemiológicos para investigación y salud pública.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Servicios Financieros</h3>
+                        <p>Transacciones bancarias en tiempo real con garantía ACID, gestión de cuentas corrientes/ahorro/inversión, procesamiento de préstamos hipotecarios y crediticios, análisis predictivo de riesgo crediticio con modelos ML, detección proactiva de fraudes y lavado de dinero, trading de alta frecuencia, y cumplimiento estricto de regulaciones (Basel III, GDPR, SOX).</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Redes Sociales</h3>
+                        <p>Perfiles de usuario altamente dinámicos con preferencias y configuraciones, publicaciones multimedia con metadatos enriquecidos, grafos complejos de conexiones sociales (amigos, seguidores, grupos), mensajería instantánea con historial persistente, algoritmos sofisticados de recomendación de contenido personalizado, análisis de tendencias virales en tiempo real, y moderación de contenido automatizada.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Educación y E-Learning</h3>
+                        <p>Gestión académica integral (inscripciones, horarios, aulas), registro histórico de calificaciones y transcripciones, administración de cursos y contenidos educativos multimedia, seguimiento personalizado y adaptativo del progreso estudiantil, analíticas de aprendizaje para identificar estudiantes en riesgo, evaluaciones automatizadas, certificaciones digitales con blockchain, y plataformas LMS completas.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Gaming y Entretenimiento</h3>
+                        <p>Perfiles de jugadores persistentes cross-platform, sistemas complejos de logros y recompensas gamificadas, tablas de clasificación globales con millones de jugadores, estadísticas detalladas y analíticas de rendimiento individual y por equipos, economías virtuales complejas con ítems comercializables, matchmaking inteligente basado en habilidades, y sistemas anti-trampas con detección de anomalías.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>IoT e Industria 4.0</h3>
+                        <p>Ingesta masiva de telemetría de millones de sensores industriales, monitoreo en tiempo real de cadenas de producción, mantenimiento predictivo con ML para prevenir fallas, optimización de recursos energéticos, control de calidad automatizado con visión computacional, trazabilidad completa de productos desde fabricación hasta entrega, y gemelos digitales de plantas industriales completas.</p>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Business Intelligence y Analytics</h3>
+                        <p>Data warehouses empresariales con arquitectura dimensional (esquema estrella/copo de nieve), ETL/ELT para integración de fuentes heterogéneas, OLAP cubes para análisis multidimensional interactivo, dashboards ejecutivos en tiempo real, reportes regulatorios automatizados, análisis de tendencias históricas, forecasting predictivo, y minería de datos para descubrir patrones ocultos de negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+                    <div class="more-info">
+                <h2>Historia y Evolución de SQL</h2>
+                <p>Los lenguajes de bases de datos han existido desde los primeros sistemas de gestión de datos en los años 60 y 70. Con el paso del tiempo, han evolucionado significativamente para adaptarse a los nuevos requerimientos de manejo de volúmenes masivos de información, procesamiento distribuido paralelo, optimización de consultas complejas, y necesidades de acceso más controladas, auditadas y seguras.</p>
+
+                <p>El concepto revolucionario de bases de datos relacionales fue introducido en 1970 por <b>Edgar F. Codd</b>, un científico informático de IBM, quien también sentó las bases teóricas matemáticas (álgebra relacional y cálculo relacional) para los primeros lenguajes estructurados de consulta. SQL (Structured Query Language) se desarrolló posteriormente en IBM como SEQUEL (Structured English Query Language) en los años 70, y se convirtió en el estándar universal de la industria tras su estandarización oficial por ANSI en 1986 e ISO en 1987.</p>
+
+                <p>Estos lenguajes son esenciales e indispensables para la gestión efectiva de las bases de datos modernas, permitiendo no solo el acceso eficiente y optimizado a la información almacenada, sino también garantizando su seguridad multicapa, integridad referencial robusta, consistencia transaccional en entornos multi-usuario concurrentes, y cumplimiento de normativas y regulaciones en entornos distribuidos globales.</p>
+
+                <p>Hoy en día, con la proliferación y diversificación de bases de datos NoSQL, NewSQL y multimodelo, el panorama tecnológico se ha diversificado enormemente. Aunque SQL sigue siendo absolutamente dominante en aplicaciones empresariales críticas, han surgido innovadores enfoques complementarios como las APIs RESTful, GraphQL para consultas de grafos flexibles, consultas mediante JavaScript nativo (como en MongoDB con el Aggregation Framework), lenguajes de consulta específicos para grafos como Cypher (Neo4j), Gremlin (Apache TinkerPop), y lenguajes declarativos para procesamiento de streams como KSQL.</p>
+            </div>
+        </section>
+
+        <section class="section" id="evolucion">
+            <h2 class="section-title">Línea Temporal de la Evolución</h2>
+            <p class="section-subtitle">Desde los primeros sistemas de archivos hasta las bases de datos en la nube con inteligencia artificial</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-image">
+                       <img src="img/archivos_planos.jpg">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1960s</div>
+                        <h3>Sistemas de Archivos</h3>
+                        <p>Los primeros sistemas de gestión de datos eran básicamente sistemas de archivos planos con programas específicos para cada aplicación. IBM desarrolló el IMS (Information Management System) para el programa espacial Apollo, marcando el inicio de las bases de datos jerárquicas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1970</div>
+                        <h3>Modelo Relacional</h3>
+                        <p>Edgar F. Codd revolucionó el campo con su modelo relacional, introduciendo conceptos matemáticos como tablas, filas, columnas, álgebra relacional y cálculo relacional. Esto sentó las bases teóricas fundamentales para SQL y todos los RDBMS modernos que conocemos hoy.</p>
+                    </div>
+                    <div class="timeline-image">
+                       <img src="img/edgarcodd.jpg">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-image">
+                       <img src="img/sistemas-gestores-de-bases-de-datos.jpg">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1980s</div>
+                        <h3>Comercialización y Estandarización</h3>
+                        <p>Aparecieron los primeros sistemas comerciales exitosos como Oracle Database, DB2 de IBM y SQL Server de Microsoft. El lenguaje SQL se estandarizó oficialmente (ANSI SQL en 1986 e ISO SQL en 1987), facilitando la portabilidad de aplicaciones entre diferentes sistemas de gestión de bases de datos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1990s</div>
+                        <h3>Bases de Datos Orientadas a Objetos</h3>
+                        <p>Surgieron las bases de datos orientadas a objetos (OODB) para manejar datos más complejos y estructurados, integrando conceptos de programación orientada a objetos. También aparecieron las primeras aplicaciones web dinámicas (comercio electrónico, portales) que requerían nuevos enfoques de gestión y acceso a datos distribuidos.</p>
+                    </div>
+                    <div class="timeline-image">
+                      <img src="img/objeto.jpg">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-image">
+                       <img src="img/bigdata.jpg">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2000s</div>
+                        <h3>Era del Big Data y NoSQL</h3>
+                        <p>Con el crecimiento exponencial de datos generados por internet, redes sociales y dispositivos móviles, aparecieron tecnologías revolucionarias como Hadoop para procesamiento distribuido, bases de datos NoSQL como MongoDB, Cassandra y Redis, y sistemas distribuidos masivamente escalables para manejar petabytes de información no estructurada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2010s-Presente</div>
+                        <h3>Nube, AI y Tiempo Real</h3>
+                        <p>Las bases de datos en la nube (DBaaS) como Amazon RDS, Google Cloud SQL, Azure Database y bases de datos serverless dominan el mercado empresarial. La integración con inteligencia artificial, machine learning, procesamiento de streams en tiempo real, bases de datos multimodelo, blockchain y computación edge definen la era actual y futura.</p>
+                    </div>
+                    <div class="timeline-image">
+                       <img src="img/cloudy.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="tipos">
+            <h2 class="section-title">Tipos de Bases de Datos</h2>
+            <p class="section-subtitle">Explorando las diferentes arquitecturas, modelos de datos y paradigmas de almacenamiento</p>
+
+            <div class="content-card">
+                <h3><i class="fa fa-table"></i> Bases de Datos Relacionales (SQL)</h3>
+                <p>Organizan los datos en tablas estructuradas bidimensionales con filas (registros) y columnas (atributos), utilizando relaciones entre ellas mediante claves primarias y foráneas. Son ideales para aplicaciones transaccionales que requieren consistencia estricta, integridad referencial y garantías ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad). Dominan el mercado empresarial desde hace décadas.</p>
+            </div>
+
+            <div class="db-grid">
+                <div class="db-card">
+                    <div class="db-image">
+                        <img src="img/mysql.png">
+                    </div>
+                    <div class="db-icon">
+                        <i class="fa fa-database"></i>
+                    </div>
+                    <h4>MySQL</h4>
+                    <p>Base de datos open-source más popular del mundo, propiedad de Oracle. Ideal para aplicaciones web, comercio electrónico, sistemas de gestión de contenidos (WordPress, Drupal) y startups. Ofrece alta eficiencia, fiabilidad comprobada, facilidad de uso y una enorme comunidad de soporte y desarrolladores.</p>
+                </div>
+                <div class="db-card">
+                    <div class="db-image">
+                       <img src="img/postgreSQL.png">
+                    </div>
+                    <div class="db-icon">
+                        <i class="fa fa-server"></i>
+                    </div>
+                    <h4>PostgreSQL</h4>
+                    <p>Sistema avanzado de código abierto considerado el más robusto y completo. Soporta datos complejos, JSON/JSONB, arrays, funciones geoespaciales (PostGIS), búsqueda de texto completo y consultas avanzadas. Admite transacciones complejas, procedimientos almacenados en múltiples lenguajes, triggers sofisticados, vistas materializadas e integridad referencial avanzada. Preferido por desarrolladores técnicos.</p>
+                </div>
+                <div class="db-card">
+                    <div class="db-image">
+                       <img src="img/oracle.png">
+                    </div>
+                    <div class="db-icon">
+                        <i class="fa fa-building"></i>
+                    </div>
+                    <h4>Oracle Database</h4>
+                    <p>Solución empresarial líder del mercado con características premium de seguridad avanzada, alta disponibilidad (RAC), recuperación ante desastres, particionamiento inteligente, optimización automática y soporte 24/7. Cuenta con diferentes ediciones (Express, Standard, Enterprise) que se adaptan a diversos requisitos empresariales críticos y presupuestos corporativos.</p>
+                </div>
+                <div class="db-card">
+                    <div class="db-image">
+                       <img src="img/sqlServer.png">
+                    </div>
+                    <div class="db-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h4>SQL Server</h4>
+                    <p>Base de datos empresarial de Microsoft que se integra perfectamente con el ecosistema Windows, .NET, Azure Cloud y herramientas de Microsoft. Ofrece herramientas avanzadas de business intelligence (SSRS, SSIS, SSAS), análisis de datos, machine learning integrado y opciones de escalabilidad flexible para diferentes cargas de trabajo empresariales.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-project-diagram"></i> Bases de Datos NoSQL</h3>
+                <p>Diseñadas específicamente para manejar datos no estructurados, semi-estructurados o de estructura variable y dinámica. Ofrecen mayor flexibilidad en el esquema de datos, escalabilidad horizontal masiva (sharding), mejor rendimiento para ciertos patrones de acceso específicos, y están optimizadas para aplicaciones web modernas, Big Data, IoT y análisis en tiempo real.</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo NoSQL</th>
+                            <th>Descripción y Características</th>
+                            <th>Casos de Uso Ideales</th>
+                            <th>Ejemplos Populares</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Documentos</strong></td>
+                            <td>Almacena datos en documentos flexibles tipo JSON/BSON con esquema dinámico que puede variar entre documentos. Permite consultas complejas y anidamiento de estructuras</td>
+                            <td>CMS, catálogos de productos variables, perfiles de usuario complejos, aplicaciones móviles, configuraciones dinámicas</td>
+                            <td>MongoDB, CouchDB, Firestore, RavenDB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clave-Valor</strong></td>
+                            <td>Estructura simple y ultra-rápida de pares clave única y valor asociado. Optimizada para lecturas/escrituras extremadamente rápidas en memoria</td>
+                            <td>Caché de aplicaciones, gestión de sesiones HTTP, carritos de compra en tiempo real, configuraciones, colas de mensajes</td>
+                            <td>Redis, DynamoDB, Riak, Memcached</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Columnas Anchas</strong></td>
+                            <td>Organiza datos en familias de columnas distribuidas horizontalmente. Optimizada para escrituras masivas y consultas analíticas sobre grandes datasets</td>
+                            <td>Big Data, IoT con millones de sensores, análisis de series temporales, registros de eventos, telemetría, logs distribuidos</td>
+                            <td>Cassandra, HBase, ScyllaDB, Google Bigtable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grafos</strong></td>
+                            <td>Modela datos como nodos (entidades) y aristas (relaciones) con propiedades. Ideal para consultas de relaciones complejas y caminos entre nodos</td>
+                            <td>Redes sociales, motores de recomendación, detección de fraude, grafos de conocimiento, rutas logísticas, análisis de redes</td>
+                            <td>Neo4j, Amazon Neptune, ArangoDB, JanusGraph</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+         <!-- NUEVA SECCIÓN: COMPARATIVA DE BASES DE DATOS -->
+        <section class="section" id="comparativa">
+            <h2 class="section-title">¿Cuándo Usar Qué Base de Datos?</h2>
+            <p class="section-subtitle">Guía práctica para elegir la tecnología de base de datos adecuada según tus necesidades</p>
+
+            <div class="content-card">
+                <h3><i class="fa fa-balance-scale"></i> Criterios de Selección</h3>
+                <p>La elección de la base de datos correcta depende de múltiples factores que deben evaluarse cuidadosamente:</p>
+                <ul>
+                    <li><strong>Estructura de datos:</strong> ¿Son estructurados, semi-estructurados o no estructurados?</li>
+                    <li><strong>Volumen de datos:</strong> ¿Cuántos datos necesitas almacenar? ¿GB, TB, PB?</li>
+                    <li><strong>Patrones de lectura/escritura:</strong> ¿Más lecturas o escrituras? ¿Ambas por igual?</li>
+                    <li><strong>Requisitos de consistencia:</strong> ¿Necesitas ACID o eventual consistency está bien?</li>
+                    <li><strong>Escalabilidad:</strong> ¿Vertical u horizontal? ¿Cuánto crecimiento esperas?</li>
+                    <li><strong>Latencia:</strong> ¿Qué tan rápidas deben ser las consultas? ¿Milisegundos? ¿Segundos?</li>
+                    <li><strong>Complejidad de consultas:</strong> ¿Joins complejos o consultas simples?</li>
+                    <li><strong>Presupuesto:</strong> ¿Open-source o empresarial? ¿Cloud o on-premise?</li>
+                    <li><strong>Expertise del equipo:</strong> ¿Qué tecnologías conoce tu equipo?</li>
+                </ul>
+            </div>
+
+            <div class="comparison-advanced">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Base de Datos</th>
+                            <th>Ideal Para</th>
+                            <th>NO Usar Para</th>
+                            <th>Escala</th>
+                            <th>Complejidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="db-name">MySQL</span></td>
+                            <td>Aplicaciones web tradicionales, WordPress, e-commerce pequeño-mediano, startups con presupuesto limitado</td>
+                            <td>Big Data, análisis en tiempo real, estructuras de datos muy complejas, alta concurrencia extrema</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Vertical<br><i class="fas fa-times-circle times-icon"></i> Horizontal limitada</td>
+                            <td>Baja-Media</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">PostgreSQL</span></td>
+                            <td>Aplicaciones empresariales complejas, análisis de datos, GIS/mapas, aplicaciones con lógica en BD, cuando necesitas features avanzados</td>
+                            <td>Cachés simples, cuando solo necesitas key-value, aplicaciones extremadamente simples</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Vertical excelente<br><i class="fas fa-check-circle check-icon"></i> Horizontal (con extensions)</td>
+                            <td>Media-Alta</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">MongoDB</span></td>
+                            <td>Esquemas variables, desarrollo ágil, catálogos de productos diversos, aplicaciones móviles, prototipos rápidos</td>
+                            <td>Transacciones financieras críticas, cuando necesitas ACID estricto, consultas con muchos joins complejos</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Horizontal nativa<br><i class="fas fa-check-circle check-icon"></i> Vertical</td>
+                            <td>Baja-Media</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">Redis</span></td>
+                            <td>Caché, sesiones, colas, leaderboards, rate limiting, datos temporales, pub/sub en tiempo real</td>
+                            <td>Almacenamiento primario de datos críticos, consultas complejas, almacenamiento a largo plazo sin persistencia</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Horizontal (clustering)<br><i class="fas fa-times-circle times-icon"></i> Vertical limitada</td>
+                            <td>Baja</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">Cassandra</span></td>
+                            <td>Write-heavy workloads, IoT masivo, series temporales, logs a gran escala, necesitas alta disponibilidad sin punto único de fallo</td>
+                            <td>Transacciones ACID, consultas ad-hoc complejas, joins, cuando consistencia inmediata es crítica</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Horizontal excelente<br><i class="fas fa-check-circle check-icon"></i> Multi-datacenter</td>
+                            <td>Alta</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">Elasticsearch</span></td>
+                            <td>Búsqueda de texto completo, análisis de logs, catálogos con búsqueda avanzada, monitoreo y observabilidad</td>
+                            <td>Base de datos primaria transaccional, almacenamiento ACID, cuando no necesitas capacidades de búsqueda</td>
+                            <td><i class="fas fa-check-circle check-icon"></i> Horizontal</td>
+                            <td>Media-Alta</td>
+                        </tr>
+                        <tr>
+                            <td><span class="db-name">Neo4j</span></td>
+                            <td>Redes sociales, grafos de conocimiento, motores de recomendación, detección de fraude, análisis de relaciones complejas</td>
+                            <td>Datos tabulares simples, cuando no hay relaciones complejas, almacenamiento masivo de datos no relacionales</td>
+                            <td><i class="fas fa-times-circle times-icon"></i> Horizontal complejo<br><i class="fas fa-check-circle check-icon"></i> Vertical</td>
+                            <td>Media-Alta</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-lightbulb"></i> Escenarios Prácticos de Decisión</h3>
+
+                <h4>Escenario 1: E-commerce Tradicional</h4>
+                <p><strong>Recomendación:</strong> PostgreSQL o MySQL</p>
+                <p><strong>Razón:</strong> Necesitas transacciones ACID para procesar pagos de forma segura, relaciones claras entre productos, usuarios y pedidos, y consultas con joins para reportes de ventas. La estructura de datos es bien definida y predecible.</p>
+
+                <h4>Escenario 2: Red Social</h4>
+                <p><strong>Recomendación:</strong> Combinación - Neo4j (grafos sociales) + PostgreSQL (datos de usuario) + Redis (caché)</p>
+                <p><strong>Razón:</strong> Las relaciones sociales (amigos, seguidores) se modelan mejor en grafos. Los datos estructurados de perfil van en relacional. El caché acelera feeds y notificaciones.</p>
+
+                <h4>Escenario 3: Plataforma IoT con Millones de Sensores</h4>
+                <p><strong>Recomendación:</strong> Cassandra o InfluxDB (Time-Series)</p>
+                <p><strong>Razón:</strong> Altísimo volumen de escrituras, datos de series temporales, necesitas escalabilidad horizontal masiva, y eventual consistency es aceptable.</p>
+
+                <h4>Escenario 4: CMS con Contenido Muy Variable</h4>
+                <p><strong>Recomendación:</strong> MongoDB</p>
+                <p><strong>Razón:</strong> Diferentes tipos de contenido (artículos, videos, podcasts) tienen campos muy diferentes. El esquema flexible de documentos permite evolucionar el modelo sin migraciones complejas.</p>
+
+                <h4>Escenario 5: Sistema Bancario</h4>
+                <p><strong>Recomendación:</strong> Oracle o PostgreSQL</p>
+                <p><strong>Razón:</strong> Transacciones ACID son absolutamente críticas. Necesitas máxima confiabilidad, auditoría completa, consistencia estricta y soporte empresarial robusto.</p>
+
+                <h4>Escenario 6: Startup MVP (Producto Mínimo Viable)</h4>
+                <p><strong>Recomendación:</strong> PostgreSQL o MongoDB + Heroku/Cloud</p>
+                <p><strong>Razón:</strong> Necesitas velocidad de desarrollo, flexibilidad para pivotar, bajo costo inicial, y tecnología que tu equipo conozca. Cloud reduce complejidad operacional.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-exclamation-triangle"></i> Errores Comunes al Elegir</h3>
+                <ul>
+                    <li><strong>Seguir la moda:</strong> No uses MongoDB solo porque es "moderno" si una BD relacional funciona mejor para tu caso</li>
+                    <li><strong>Optimización prematura:</strong> No elijas Cassandra "por si acaso" escalas a millones cuando tienes 100 usuarios</li>
+                    <li><strong>Ignorar el expertise del equipo:</strong> Una BD "inferior" que tu equipo domina es mejor que la "mejor" BD que nadie conoce</li>
+                    <li><strong>No considerar costos operacionales:</strong> Algunas BDs son "gratis" pero requieren expertos costosos para mantener</li>
+                    <li><strong>Una BD para todo:</strong> Está bien usar múltiples bases de datos especializadas (polyglot persistence)</li>
+                    <li><strong>No planear migración:</strong> Considera qué tan fácil será migrar si te equivocas en la elección</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="arquitectura">
+            <h2 class="section-title">Arquitecturas de Bases de Datos</h2>
+            <p class="section-subtitle">Modelos de despliegue y organización física de sistemas de bases de datos</p>
+
+            <div class="architecture-grid">
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                        <img src="img/arquictectura.png">
+                    </div>
+                    <h3><i class="fa fa-server"></i> Arquitectura Centralizada</h3>
+                    <p>Todos los datos residen en un único servidor o clúster. Simple de administrar y mantener integridad, pero puede convertirse en cuello de botella. Ideal para aplicaciones pequeñas a medianas con usuarios en una ubicación geográfica.</p>
+                </div>
+
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                        <img src="img/distribuida.png">
+                    </div>
+                    <h3><i class="fa fa-network-wired"></i> Arquitectura Distribuida</h3>
+                    <p>Los datos se distribuyen across múltiples nodos o servidores, posiblemente en diferentes ubicaciones geográficas. Ofrece mejor disponibilidad, tolerancia a fallos y escalabilidad horizontal. Requiere protocolos de consistencia y sincronización complejos.</p>
+                </div>
+
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                       <img src="img/nube.jpg">
+                    </div>
+                    <h3><i class="fa fa-cloud"></i> Arquitectura en la Nube</h3>
+                    <p>Bases de datos alojadas en plataformas cloud (AWS, Azure, GCP) con servicios administrados. Ofrece elasticidad automática, backups gestionados, alta disponibilidad multi-región y modelo de pago por uso. Reduce significativamente la carga operacional.</p>
+                </div>
+
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                       <img src="img/maestro.jpg">
+                    </div>
+                    <h3><i class="fa fa-copy"></i> Replicación Maestro-Esclavo</h3>
+                    <p>Un servidor maestro maneja escrituras y múltiples esclavos manejan lecturas, replicando datos del maestro. Mejora rendimiento de lectura y proporciona failover automático. Común en aplicaciones con muchas más lecturas que escrituras.</p>
+                </div>
+
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                       <img src="img/sharding.png">
+                    </div>
+                    <h3><i class="fa fa-th"></i> Sharding (Particionamiento)</h3>
+                    <p>Los datos se dividen horizontalmente across múltiples bases de datos basándose en una clave de sharding (ej: ID de usuario, región geográfica). Permite escalar horizontalmente para manejar datasets masivos. Requiere lógica de aplicación para rutear queries correctamente.</p>
+                </div>
+
+                <div class="architecture-card">
+                    <div class="architecture-image">
+                        <img src="img/microservicio.png">
+                    </div>
+                    <h3><i class="fa fa-cubes"></i> Base de Datos por Microservicio</h3>
+                    <p>Cada microservicio tiene su propia base de datos independiente, evitando acoplamiento entre servicios. Permite equipos autónomos y diferentes tecnologías de BD por servicio. Desafío: mantener consistencia across servicios requiere patrones como Saga y Event Sourcing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="diseno">
+            <h2 class="section-title">Conceptos Fundamentales del Diseño</h2>
+            <p class="section-subtitle">Los pilares sobre los que se construye todo buen diseño de base de datos relacional y no relacional</p>
+
+            <div class="content-card">
+                <h3><i class="fa fa-lightbulb"></i> ¿Qué es el Diseño de Bases de Datos?</h3>
+                <p>El diseño de bases de datos es un proceso sistemático, iterativo y metodológico que involucra la planificación, estructuración y organización de los datos para crear un sistema de almacenamiento eficiente, escalable y mantenible. Este proceso abarca desde la identificación inicial de requisitos del negocio hasta la implementación física en un sistema de gestión específico, pasando por múltiples etapas de modelado conceptual, lógico y físico.</p>
+
+                <p>Un diseño efectivo debe considerar múltiples aspectos críticos: la naturaleza, volumen y velocidad de crecimiento de los datos; los patrones de acceso y consulta más frecuentes; los requisitos de rendimiento y tiempos de respuesta aceptables; las necesidades de escalabilidad futura tanto vertical como horizontal; las restricciones tecnológicas del sistema; el presupuesto disponible; y los requisitos de negocio específicos del dominio de aplicación.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-database"></i> Componentes Fundamentales</h3>
+
+                <h4>Entidades y Atributos</h4>
+                <p>Las entidades representan objetos, conceptos o eventos del mundo real que son relevantes para el sistema y sobre los cuales necesitamos almacenar información (como Cliente, Producto, Pedido, Empleado, Transacción). Los atributos son las características, propiedades o datos específicos que describen cada entidad. Cada entidad debe tener al menos un atributo que la identifique de forma única e inequívoca, conocido como clave primaria o identificador único.</p>
+
+                <h4>Relaciones y Cardinalidad</h4>
+                <p>Las relaciones definen cómo las entidades se conectan, interactúan o se asocian entre sí en el contexto del sistema. Pueden ser de uno a uno (1:1), donde una instancia de una entidad se relaciona con exactamente una instancia de otra; uno a muchos (1:N), donde una instancia se relaciona con múltiples instancias de otra entidad; o muchos a muchos (M:N), donde múltiples instancias de ambas entidades pueden relacionarse entre sí, requiriendo generalmente una tabla intermedia de asociación. Cada tipo de relación tiene implicaciones diferentes en el diseño físico, el rendimiento de las consultas y la integridad de los datos.</p>
+
+                <h4>Restricciones de Integridad</h4>
+                <p>Las restricciones son reglas de negocio implementadas a nivel de base de datos que garantizan la integridad, validez, consistencia y coherencia de los datos almacenados. Incluyen claves primarias (identificadores únicos obligatorios), claves foráneas (referencias válidas entre tablas relacionadas), restricciones de unicidad (valores únicos en columnas específicas), restricciones de dominio (tipos de datos y rangos permitidos), restricciones NOT NULL (valores obligatorios), y restricciones CHECK (validaciones personalizadas de reglas de negocio).</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-project-diagram"></i> Normalización de Bases de Datos</h3>
+                
+                <h4>Primera Forma Normal (1FN)</h4>
+                <p>Elimina grupos repetitivos y garantiza que cada celda contenga un solo valor atómico. Todos los atributos deben ser indivisibles y cada registro debe ser único mediante una clave primaria.</p>
+
+                <h4>Segunda Forma Normal (2FN)</h4>
+                <p>Además de cumplir 1FN, elimina dependencias parciales. Todos los atributos no clave deben depender completamente de la clave primaria completa, no solo de parte de ella.</p>
+
+                <h4>Tercera Forma Normal (3FN)</h4>
+                <p>Además de cumplir 2FN, elimina dependencias transitivas. Los atributos no clave no deben depender de otros atributos no clave, solo de la clave primaria.</p>
+
+                <h4>Forma Normal de Boyce-Codd (FNBC)</h4>
+                <p>Una versión más estricta de 3FN. Para cada dependencia funcional, el lado izquierdo debe ser una superclave. Resuelve ciertos casos especiales no cubiertos por 3FN.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Proceso de Diseño Completo</h2>
+            <p class="section-subtitle">Metodología paso a paso para crear bases de datos robustas, eficientes y escalables</p>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Análisis de Requisitos</h4>
+                    <p>Identificar exhaustivamente qué información necesita almacenar el sistema, quiénes serán los usuarios finales y sus roles, qué operaciones y consultas realizarán con mayor frecuencia, el volumen esperado de datos y transacciones, y cuáles son los requisitos críticos de rendimiento, seguridad, disponibilidad y cumplimiento normativo.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Diseño Conceptual</h4>
+                    <p>Crear un modelo conceptual de alto nivel usando diagramas Entidad-Relación (ER) o UML que capture las entidades principales del dominio de negocio, sus atributos más relevantes, las relaciones que existen entre ellas con sus cardinalidades, y las reglas de negocio fundamentales, sin considerar aún aspectos técnicos de implementación.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Diseño Lógico</h4>
+                    <p>Transformar el modelo conceptual en un esquema lógico específico para el tipo de base de datos elegido (relacional, NoSQL, etc.), definiendo tablas o colecciones, columnas o campos, tipos de datos precisos, claves primarias y candidatas, claves foráneas para mantener integridad referencial, y otras restricciones de integridad y validación.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Normalización</h4>
+                    <p>Aplicar sistemáticamente las formas normales (1FN, 2FN, 3FN y FNBC) para eliminar redundancias innecesarias, dependencias parciales y transitivas problemáticas. Este proceso mejora significativamente la integridad de los datos, facilita el mantenimiento y las actualizaciones, aunque puede requerir más joins en las consultas complejas.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>Diseño Físico</h4>
+                    <p>Implementar el diseño lógico en un SGBD específico, definiendo índices estratégicos para optimizar consultas frecuentes, particiones de tablas para manejar grandes volúmenes de datos, tipos de datos específicos y optimizados del sistema, configuraciones de almacenamiento (tablespaces, filegroups), y parámetros de rendimiento y memoria.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h4>Pruebas y Optimización</h4>
+                    <p>Probar exhaustivamente el diseño con datos reales o realistas, medir el rendimiento de las consultas más críticas usando herramientas de profiling, identificar cuellos de botella y puntos de contención, y realizar ajustes iterativos como desnormalización selectiva, creación de índices adicionales, vistas materializadas, o refactorización de consultas para optimizar el sistema.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" id="lenguajes">
+            <h2 class="section-title">Comandos Bases de Datos</h2>
+            <p class="section-subtitle">Los comandos especializados para definir, manipular y controlar sistemas de gestión de bases de datos</p>
+
+            <div class="language-cards">
+                <div class="language-card">
+                    <h3><i class="fa fa-code"></i> DDL (Data Definition Language)</h3>
+                    <p>Lenguaje de Definición de Datos. Se utiliza para definir, modificar y eliminar la estructura y esquema de la base de datos, creando, alterando o eliminando objetos como tablas, índices, vistas, esquemas, procedimientos almacenados y triggers.</p>
+                    <p><b>Comandos principales:</b> CREATE (crear objetos), ALTER (modificar estructura), DROP (eliminar objetos), TRUNCATE (vaciar tabla), RENAME (renombrar objetos)</p>
+                </div>
+
+                <div class="language-card">
+                    <h3><i class="fa fa-edit"></i> DML (Data Manipulation Language)</h3>
+                    <p>Lenguaje de Manipulación de Datos. Permite manipular, consultar y transformar los datos almacenados dentro de las tablas: insertar nuevos registros, actualizar registros existentes, eliminar datos obsoletos y realizar consultas complejas con joins, agregaciones y subqueries.</p>
+                    <p><b>Comandos principales:</b> SELECT (consultar datos), INSERT (insertar registros), UPDATE (actualizar registros), DELETE (eliminar registros), MERGE (combinar operaciones)</p>
+                </div>
+
+                <div class="language-card">
+                    <h3><i class="fa fa-lock"></i> DCL (Data Control Language)</h3>
+                    <p>Lenguaje de Control de Datos. Se emplea para controlar el acceso, permisos y privilegios sobre los datos y objetos de la base de datos, definiendo quién puede realizar qué operaciones (SELECT, INSERT, UPDATE, DELETE, EXECUTE) sobre qué objetos específicos (tablas, vistas, procedimientos).</p>
+                    <p><b>Comandos principales:</b> GRANT (otorgar permisos a usuarios/roles), REVOKE (revocar permisos previamente otorgados)</p>
+                </div>
+
+                <div class="language-card">
+                    <h3><i class="fa fa-exchange-alt"></i> TCL (Transaction Control Language)</h3>
+                    <p>Lenguaje de Control de Transacciones. Gestiona las transacciones en la base de datos, asegurando las propiedades ACID: la integridad, atomicidad (todo o nada), consistencia (reglas respetadas), aislamiento (transacciones independientes) y durabilidad (cambios permanentes) mediante confirmaciones o reversiones de cambios.</p>
+                    <p><b>Comandos principales:</b> COMMIT (confirmar transacción), ROLLBACK (revertir cambios), SAVEPOINT (punto de retorno parcial), SET TRANSACTION (configurar aislamiento)</p>
+                </div>
+            </div>
+
+
+
+
+        <section class="section">
+            <h2 class="section-title">Buenas Prácticas y Seguridad</h2>
+            <p class="section-subtitle">Recomendaciones esenciales para mantener bases de datos eficientes, seguras y confiables</p>
+
+            <div class="content-card">
+                <h3><i class="fa fa-check-circle"></i> Diseño y Modelado Óptimo</h3>
+                <h4>Normalización Apropiada</h4>
+                <p>Aplicar formas normales (1FN, 2FN, 3FN) para eliminar redundancia y anomalías, pero considerar desnormalización estratégica selectiva cuando el rendimiento de consultas complejas lo requiera imperiosamente. Documentar todas las decisiones de desnormalización.</p>
+
+                <h4>Nomenclatura Consistente y Clara</h4>
+                <p>Usar nombres descriptivos, consistentes y en un idioma uniforme para tablas, columnas, índices y objetos. Adoptar convenciones estándar (snake_case, camelCase, PascalCase). Evitar absolutamente palabras reservadas del SGBD, caracteres especiales, espacios y abreviaturas crípticas.</p>
+
+                <h4>Documentación Completa y Actualizada</h4>
+                <p>Mantener diagramas ER/UML siempre actualizados reflejando el estado real del sistema. Documentar exhaustivamente el propósito de cada tabla, columna, relación, índice, trigger y procedimiento importante. Incluir ejemplos de uso y restricciones de negocio.</p>
+
+                <h4>Versionado de Esquema</h4>
+                <p>Usar herramientas de migración de esquema (Flyway, Liquibase, Alembic) para versionar cambios en la estructura de BD. Mantener scripts de migración hacia adelante y hacia atrás. Nunca modificar el esquema manualmente en producción.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-bolt"></i> Rendimiento y Optimización</h3>
+                <h4>Indexación Inteligente y Selectiva</h4>
+                <p>Crear índices en columnas frecuentemente usadas en WHERE, JOIN, ORDER BY y GROUP BY. Usar índices compuestos para consultas multi-columna. Evitar sobre-indexar ya que cada índice adicional afecta negativamente las operaciones de escritura (INSERT/UPDATE/DELETE) y consume espacio de almacenamiento.</p>
+
+                <h4>Consultas Eficientes y Optimizadas</h4>
+                <p>Escribir consultas SQL optimizadas evitando SELECT * (especificar solo columnas necesarias), usar WHERE en lugar de HAVING cuando sea posible, limitar resultados con LIMIT/TOP, evitar funciones en WHERE que impidan uso de índices. Usar EXPLAIN/EXPLAIN ANALYZE para analizar planes de ejecución y detectar table scans costosos.</p>
+
+                <h4>Caché y Vistas Materializadas</h4>
+                <p>Implementar caché a nivel de aplicación (Redis, Memcached) para datos frecuentemente accedidos pero raramente modificados. Crear vistas materializadas para consultas agregadas complejas y costosas. Implementar estrategias de invalidación de caché apropiadas.</p>
+
+                <h4>Mantenimiento Regular Programado</h4>
+                <p>Realizar mantenimiento periódico automatizado: actualizar estadísticas de tablas para el optimizador de consultas, reorganizar/reconstruir índices fragmentados, ejecutar VACUUM en PostgreSQL, limpiar datos obsoletos con políticas de retención, monitorear crecimiento de archivos de log y transacciones.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-shield-alt"></i> Seguridad y Protección de Datos</h3>
+                <h4>Control de Acceso Granular</h4>
+                <p>Implementar rigurosamente el principio de menor privilegio: cada usuario/aplicación debe tener únicamente los permisos mínimos necesarios. Usar autenticación robusta multi-factor, rotar credenciales regularmente, nunca compartir cuentas, auditar todos los accesos a datos sensibles, y revocar permisos inmediatamente cuando ya no se necesiten.</p>
+
+                <h4>Cifrado de Datos Sensibles</h4>
+                <p>Cifrar datos sensibles (PII, información financiera, salud) en reposo usando TDE (Transparent Data Encryption) o cifrado a nivel de columna. Cifrar todas las conexiones en tránsito con TLS 1.2+. Gestionar claves de cifrado de forma segura usando HSM o servicios cloud de gestión de claves (KMS). Nunca almacenar contraseñas en texto plano, siempre hashear con algoritmos modernos (bcrypt, Argon2).</p>
+
+                <h4>Respaldos Automatizados y Probados</h4>
+                <p>Configurar backups automáticos regulares con estrategia 3-2-1: 3 copias, 2 tipos de medios diferentes, 1 copia offsite. Implementar backups completos semanales, incrementales diarios y logs de transacciones continuos. CRÍTICO: probar regularmente (mensualmente) la restauración de backups en ambiente de prueba para validar que funcionan correctamente.</p>
+
+                <h4>Protección contra Inyección SQL</h4>
+                <p>NUNCA concatenar directamente entrada de usuario en consultas SQL. SIEMPRE usar consultas parametrizadas (prepared statements) o ORMs que escapan automáticamente. Validar y sanitizar toda entrada de usuario. Implementar principio de defensa en profundidad con WAF, rate limiting y monitoreo de anomalías.</p>
+
+                <h4>Monitoreo y Alertas Proactivas</h4>
+                <p>Implementar monitoreo 24/7 de métricas críticas: CPU, memoria, disco, I/O, conexiones activas, deadlocks, consultas lentas, tasas de error. Configurar alertas automáticas para umbrales críticos. Usar herramientas APM para rastrear rendimiento de aplicaciones. Mantener logs de auditoría para investigación forense.</p>
+            </div>
+        </section>
+
+
+        <section class="section" id="er-diagram">
+            <h2 class="section-title">Modelado con Diagramas Entidad-Relación</h2>
+            <p class="section-subtitle">Herramienta visual fundamental para diseñar y comunicar la estructura de bases de datos</p>
+
+            <div class="content-card">
+                <h3><i class="fa fa-project-diagram"></i> ¿Qué es un Diagrama ER?</h3>
+                <p>Un Diagrama Entidad-Relación (ER) es una representación gráfica que muestra las entidades (objetos o conceptos del mundo real), sus atributos (características) y las relaciones entre ellas. Es una herramienta esencial en la fase de diseño conceptual de bases de datos que permite visualizar cómo se estructurarán y conectarán los datos antes de implementarlos físicamente.</p>
+
+                <p>Los diagramas ER facilitan la comunicación entre diseñadores de bases de datos, desarrolladores, analistas de negocio y stakeholders, proporcionando un lenguaje visual común que trasciende las barreras técnicas.</p>
+            </div>
+
+            <h3 class="section-minititle">Componentes y Símbolos Principales</h3>
+            <div class="er-symbols">
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">▭</div>
+                    <h4>Entidad</h4>
+                    <p>Rectángulo que representa un objeto o concepto del mundo real (Cliente, Producto, Pedido)</p>
+                </div>
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">○</div>
+                    <h4>Atributo</h4>
+                    <p>Óvalo que representa una característica o propiedad de una entidad (nombre, precio, fecha)</p>
+                </div>
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">◆</div>
+                    <h4>Relación</h4>
+                    <p>Rombo que representa una asociación entre dos o más entidades (compra, trabaja_en, pertenece_a)</p>
+                </div>
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">⚪</div>
+                    <h4>Atributo Clave</h4>
+                    <p>Óvalo subrayado que identifica de forma única cada instancia de una entidad (ID, DNI, código)</p>
+                </div>
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">⊚</div>
+                    <h4>Atributo Multivaluado</h4>
+                    <p>Óvalo doble que puede contener múltiples valores (teléfonos, emails, idiomas)</p>
+                </div>
+                <div class="er-symbol">
+                    <div class="er-symbol-icon">⟨⟩</div>
+                    <h4>Atributo Derivado</h4>
+                    <p>Óvalo con línea punteada cuyo valor se calcula de otros atributos (edad desde fecha_nacimiento)</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-link"></i> Tipos de Cardinalidad</h3>
+                
+                <h4>Uno a Uno (1:1)</h4>
+                <p>Una instancia de la entidad A se relaciona con exactamente una instancia de la entidad B, y viceversa.</p>
+                <p><em>Ejemplo:</em> Una persona tiene una sola licencia de conducir, y cada licencia pertenece a una sola persona.</p>
+
+                <h4>Uno a Muchos (1:N)</h4>
+                <p>Una instancia de la entidad A puede relacionarse con múltiples instancias de la entidad B, pero cada instancia de B se relaciona con una sola instancia de A.</p>
+                <p><em>Ejemplo:</em> Un cliente puede realizar muchos pedidos, pero cada pedido pertenece a un solo cliente.</p>
+
+                <h4>Muchos a Muchos (M:N)</h4>
+                <p>Múltiples instancias de la entidad A pueden relacionarse con múltiples instancias de la entidad B, y viceversa.</p>
+                <p><em>Ejemplo:</em> Un estudiante puede inscribirse en muchos cursos, y un curso puede tener muchos estudiantes.</p>
+            </div>
+
+            <div class="er-diagram-container">
+                <h3>Ejemplo Práctico: Sistema de Biblioteca</h3>
+                <div class="er-image-placeholder">
+                    <!-- Aquí puedes agregar tu diagrama ER de biblioteca -->
+                </div>
+                <div class="content-card">
+                    <h4>Descripción del Modelo</h4>
+                    <p><strong>Entidades:</strong></p>
+                    <ul>
+                        <li><strong>LIBRO:</strong> ISBN (clave), título, autor, editorial, año_publicación, género, número_copias</li>
+                        <li><strong>USUARIO:</strong> ID_usuario (clave), nombre, apellido, email, teléfono, dirección, fecha_registro</li>
+                        <li><strong>PRÉSTAMO:</strong> ID_préstamo (clave), fecha_préstamo, fecha_devolución_prevista, fecha_devolución_real, estado</li>
+                        <li><strong>MULTA:</strong> ID_multa (clave), monto, fecha_generación, fecha_pago, motivo</li>
+                    </ul>
+
+                    <p><strong>Relaciones:</strong></p>
+                    <ul>
+                        <li>Un USUARIO puede realizar muchos PRÉSTAMOS (1:N)</li>
+                        <li>Un LIBRO puede ser prestado muchas veces (1:N con PRÉSTAMO)</li>
+                        <li>Un PRÉSTAMO puede generar una o ninguna MULTA (1:1)</li>
+                        <li>Un USUARIO puede tener muchas MULTAS (1:N)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fa fa-tools"></i> Proceso de Creación de un Diagrama ER</h3>
+                
+                <h4>Paso 1: Identificar Entidades</h4>
+                <p>Determina los objetos principales sobre los que necesitas almacenar información. Busca sustantivos en los requisitos del sistema.</p>
+
+                <h4>Paso 2: Definir Atributos</h4>
+                <p>Para cada entidad, identifica sus características relevantes. Determina cuál será la clave primaria.</p>
+
+                <h4>Paso 3: Establecer Relaciones</h4>
+                <p>Identifica cómo se conectan las entidades entre sí. Define la cardinalidad de cada relación.</p>
+
+                <h4>Paso 4: Refinar el Modelo</h4>
+                <p>Elimina redundancias, verifica que capture todos los requisitos, valida con stakeholders y ajusta según feedback.</p>
+
+                <h4>Paso 5: Transformar a Modelo Relacional</h4>
+                <p>Convierte entidades en tablas, atributos en columnas, y relaciones en claves foráneas. Las relaciones M:N requieren tablas intermedias.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Tendencias Futuras en Bases de Datos</h2>
+            <p class="section-subtitle">Hacia dónde se dirige la tecnología de gestión de datos en los próximos años</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Bases de Datos Autónomas</h3>
+                    <p class="feature-description">Sistemas que se auto-configuran, auto-optimizan, auto-reparan y auto-aseguran usando inteligencia artificial y machine learning. Reducen dramáticamente la carga administrativa y errores humanos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Procesamiento en Tiempo Real</h3>
+                    <p class="feature-description">Arquitecturas de streaming (Kafka, Flink) para procesar y analizar datos en tiempo real. Crítico para detección de fraudes, IoT, trading algorítmico y personalización instantánea.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-title">Blockchain y Bases de Datos</h3>
+                    <p class="feature-description">Integración de tecnologías blockchain para trazabilidad inmutable, contratos inteligentes y bases de datos distribuidas descentralizadas. Aplicaciones en supply chain, certificaciones y finanzas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Edge Computing y Datos</h3>
+                    <p class="feature-description">Procesamiento de datos en el borde de la red cerca de los dispositivos IoT. Reduce latencia, ancho de banda y mejora privacidad. Bases de datos ligeras sincronizadas con la nube.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Búsqueda Semántica y Vector</h3>
+                    <p class="feature-description">Bases de datos vectoriales (Pinecone, Weaviate, Milvus) para embeddings de ML. Permiten búsquedas semánticas avanzadas, similitud de imágenes y aplicaciones de IA generativa (RAG).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Zero-Trust y Privacy</h3>
+                    <p class="feature-description">Arquitecturas zero-trust con cifrado end-to-end, privacidad diferencial, computación confidencial y cumplimiento automático de regulaciones (GDPR, CCPA). Privacy by design desde el inicio.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h3>Bases de Datos - Guía Completa 2025</h3>
+            <p>Material educativo integral sobre fundamentos, diseño, arquitectura y gestión de bases de datos modernas</p>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#conceptos">Conceptos</a>
+                <a href="#diseno">Diseño</a>
+                <a href="#tipos">Tipos</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#lenguajes">Lenguajes</a>
+                <a href="#aplicaciones">Aplicaciones</a>
+                <a href="#evolucion">Evolución</a>
+            </div>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1.5rem;">© 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
