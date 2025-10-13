@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasificación del software</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Clasificación del software</h1>
+
+  <p>El software se clasifica según su función y forma de distribución:</p>
+
+  <button class="toggle-info" data-target="info1">Software de sistema</button>
+  <div class="info" id="info1">
+    <p>
+      Controla el hardware y permite ejecutar aplicaciones. Incluye:
+      <ul>
+        <li>Sistemas operativos (Windows, Linux, macOS)</li>
+        <li>Controladores o drivers</li>
+        <li>Utilidades de mantenimiento y seguridad</li>
+      </ul>
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Software de aplicación</button>
+  <div class="info" id="info2">
+    <p>
+      Diseñado para tareas específicas:
+      <ul>
+        <li>Ofimática: Word, Excel, PowerPoint</li>
+        <li>Diseño gráfico: Photoshop, Illustrator</li>
+        <li>Educativo: Duolingo, Khan Academy</li>
+        <li>Entretenimiento: Videojuegos, reproductores multimedia</li>
+        <li>Productividad: Navegadores, gestores de correo, software de contabilidad</li>
+      </ul>
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Software de desarrollo</button>
+  <div class="info" id="info3">
+    <p>
+      Herramientas que permiten crear software:
+      <ul>
+        <li>Lenguajes de programación: Python, Java, C++</li>
+        <li>IDEs y editores: Visual Studio, Eclipse</li>
+        <li>Frameworks y librerías</li>
+        <li>Sistemas de control de versiones: Git, SVN</li>
+      </ul>
+    </p>
+    <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

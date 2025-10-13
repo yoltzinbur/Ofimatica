@@ -1,0 +1,67 @@
+/* historia-style.css — formal y coherente con el sitio */
+:root{
+  --accent: #16594f;
+  --dark: #20343a;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --surface: #f8fafb;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin:0;
+  color:#1f2937;
+  background: linear-gradient(180deg,#f6f8f9 0%, #ffffff 100%);
+  -webkit-font-smoothing:antialiased;
+}
+.site-header{
+  background:var(--dark);
+  color:white;
+  padding:26px 12px;
+  border-bottom:4px solid rgba(0,0,0,0.05);
+}
+.header-inner{ max-width:1100px; margin:0 auto; position:relative; }
+.header-inner h1{ margin:0; font-size:1.5rem; }
+.subtitle{ margin:6px 0 0; opacity:0.9; font-size:0.95rem; }
+.back-link{ position:absolute; right:0; top:18px; color:#cfeee6; text-decoration:none; padding:6px 10px; border-radius:6px }
+.breadcrumb{ max-width:1100px; margin:14px auto; padding:0 12px; color:var(--muted); font-size:0.95rem }
+.breadcrumb a{ color:var(--accent); text-decoration:none }
+
+.page{ display:grid; grid-template-columns: 1fr 320px; gap:28px; max-width:1100px; margin:18px auto; padding:0 12px; }
+.content{ background:transparent }
+
+/* blocks */
+.text-block{ background:var(--card-bg); border-radius:10px; padding:20px; margin-bottom:18px; box-shadow:0 6px 18px rgba(33,49,58,0.04) }
+.text-block h2{ margin-top:0; color:var(--dark) }
+.summary-card{ padding:12px; border-radius:8px; background:linear-gradient(180deg,#fff,#fbfdfd); box-shadow:0 6px 12px rgba(0,0,0,0.03) }
+
+/* sidebar */
+.sidebar{ position:relative; top:0 }
+.widget{ background:var(--card-bg); padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(33,49,58,0.04); margin-bottom:18px }
+.widget h3{ margin-top:0; color:var(--dark) }
+.small-link{ color:var(--accent); text-decoration:none }
+
+/* activities */
+.section-activity{ background:var(--card-bg); padding:16px; border-radius:10px; margin-bottom:18px; box-shadow:0 6px 12px rgba(17,24,39,0.03) }
+.btn{ background:var(--accent); color:white; border:none; padding:10px 12px; border-radius:8px; cursor:pointer }
+.btn.ghost{ background:transparent; color:var(--dark); border:1px solid #e6eef0 }
+.q-text{ font-weight:700; margin-bottom:12px }
+.q-options{ display:flex; flex-direction:column; gap:8px }
+
+/* timeline card */
+.timeline-card{ margin-top:14px; padding:14px; border-radius:8px; background:var(--surface); box-shadow:0 6px 10px rgba(2,6,23,0.04) }
+.timeline-controls{ margin-top:10px; display:flex; gap:10px }
+
+/* order activity */
+.order-pool{ min-height:80px; background:var(--surface); padding:10px; border-radius:8px; display:flex; gap:10px; flex-wrap:wrap }
+.order-item{ background:#fff; padding:10px 12px; border-radius:8px; border:1px solid #e6eef0; cursor:grab }
+.order-target{ margin-top:12px; min-height:80px; padding:10px; border-radius:8px; background:#fff; border:2px dashed #e6eef0; display:flex; gap:8px; flex-wrap:wrap; }
+
+/* feedback */
+.q-feedback{ margin-top:8px; font-weight:700 }
+
+/* responsive */
+@media (max-width:980px){
+  .page{ grid-template-columns:1fr; padding-bottom:30px }
+}

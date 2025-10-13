@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolución del Hardware</title>
+<link rel="stylesheet" href="hardware.css">
+</head>
+<body>
+
+<header>
+  <h1>Evolución del Hardware</h1>
+</header>
+
+<main>
+  <!-- CONTENIDO -->
+  <section class="contenido">
+    <h2>Introducción</h2>
+    <p>La evolución del hardware es la historia del progreso de los componentes físicos que permiten
+    que una computadora funcione...</p>
+
+    <h2>Primera Generación</h2>
+    <p>Los tubos de vacío fueron la base de las primeras computadoras...</p>
+
+    <h2>Segunda Generación</h2>
+    <p>El transistor reemplazó a los tubos de vacío...</p>
+
+    <h2>Tercera Generación</h2>
+    <p>Los circuitos integrados permitieron colocar múltiples transistores en un chip...</p>
+
+    <h2>Cuarta Generación</h2>
+    <p>El microprocesador revolucionó la informática...</p>
+
+    <h2>Quinta Generación y Actualidad</h2>
+    <p>La computación actual integra IA, IoT y computación cuántica...</p>
+  </section>
+
+  <!-- JUEGO: Ordenar Generaciones -->
+  <section class="juego" id="ordenar-juego">
+    <h2>Juego: Ordena las Generaciones</h2>
+    <p>Arrastra las tarjetas para colocarlas en el orden cronológico correcto:</p>
+    <div class="tarjetas" id="tarjetas">
+      <div class="card" draggable="true" data-order="1">Primera Generación</div>
+      <div class="card" draggable="true" data-order="2">Segunda Generación</div>
+      <div class="card" draggable="true" data-order="3">Tercera Generación</div>
+      <div class="card" draggable="true" data-order="4">Cuarta Generación</div>
+      <div class="card" draggable="true" data-order="5">Quinta Generación</div>
+    </div>
+    <button id="verificar">Verificar Orden</button>
+    <p id="resultado"></p>
+  </section>
+
+  <!-- JUEGO: Trivia -->
+  <section class="juego" id="trivia">
+    <h2>Trivia: Pon a prueba tus conocimientos</h2>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div id="feedback"></div>
+    <button id="next-btn" style="display:none;margin-top:10px;">Siguiente Pregunta</button>
+  </section>
+
+  <!-- JUEGO: Memoria -->
+  <section class="juego" id="memoria">
+    <h2>Juego de Memoria</h2>
+    <p>Haz clic para descubrir las cartas y emparejar componentes de hardware clásico y moderno.</p>
+    <div class="memory-grid" id="memory-grid"></div>
+    <div id="memoria-feedback"></div>
+  </section>
+
+  <a class="btn" href="index.html">⬅ Regresar al Índice</a>
+</main>
+
+<script src="hardware.js"></script>
+</body>
+</html>

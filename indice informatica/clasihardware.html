@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clasificación del Hardware — Informática Básica</title>
+  <link rel="stylesheet" href="css/clasihardware.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>Clasificación del Hardware</h1>
+      <p class="subtitle">Tipos, criterios, ejemplos y actividades interactivas para aprender</p>
+      <a class="back-link" href="index.html">← Volver al índice</a>
+    </div>
+  </header>
+
+  <main class="page container">
+    <article class="content">
+      <section class="intro text-block">
+        <h2>Resumen y finalidad</h2>
+        <p>
+          La <strong>clasificación del hardware</strong> organiza los componentes físicos de un sistema informático según criterios prácticos:
+          función, permanencia, ubicación, propósito y arquitectura. Esta página explica esos criterios, muestra ejemplos de cada categoría
+          y ofrece actividades interactivas para practicar la clasificación y afianzar conceptos.
+        </p>
+      </section>
+
+      <section id="por-funcion" class="text-block">
+        <h2>Clasificación por función</h2>
+        <p>
+          El criterio más intuitivo agrupa el hardware según la función que realiza dentro del sistema:
+        </p>
+        <ul>
+          <li><strong>Entrada:</strong> dispositivos que permiten introducir datos (teclado, ratón, escáner, micrófono, sensores).</li>
+          <li><strong>Procesamiento:</strong> componentes que ejecutan instrucciones y calculan (CPU, GPU, DSP, FPGAs).</li>
+          <li><strong>Almacenamiento:</strong> elementos que guardan información de forma temporal o permanente (RAM, SSD, HDD).</li>
+          <li><strong>Salida:</strong> dispositivos que presentan resultados (monitor, impresora, altavoces, actuadores).</li>
+          <li><strong>Comunicación:</strong> elementos que permiten conectar sistemas (tarjeta de red, módem, router, antenas)</li>
+        </ul>
+        <p>
+          Cada categoría puede subdividirse: por ejemplo, almacenamiento en <em>volatile</em> (RAM) y <em>no volatile</em> (SSD/HDD).
+        </p>
+      </section>
+
+      <section id="por-permanencia" class="text-block">
+        <h2>Clasificación por permanencia</h2>
+        <p>
+          Este criterio distingue hardware según la duración de los datos que guarda:
+        </p>
+        <ul>
+          <li><strong>Volátil:</strong> pierde su contenido cuando se corta la energía (RAM).</li>
+          <li><strong>No volátil:</strong> conserva la información sin energía (SSDs, HDDs, EEPROM).</li>
+        </ul>
+        <p>
+          Este aspecto es crítico para diseñar sistemas: memoria volátil favorece velocidad; memoria no volátil favorece persistencia.
+        </p>
+      </section>
+
+      <section id="por-ubicacion" class="text-block">
+        <h2>Clasificación por ubicación / forma</h2>
+        <p>
+          Según su ubicación física y montaje:
+        </p>
+        <ul>
+          <li><strong>Interno:</strong> integrado dentro del chasis: placa base, CPU, RAM, discos internos.</li>
+          <li><strong>Externo:</strong> periféricos conectados por puertos o inalámbricamente: impresoras, teclados, cámaras.</li>
+          <li><strong>Embebido:</strong> hardware integrado en equipos no exclusivamente informáticos (microcontroladores en electrodomésticos, automóviles).</li>
+        </ul>
+      </section>
+
+      <section id="por-proposito" class="text-block">
+        <h2>Clasificación por propósito / alcance</h2>
+        <p>
+          Aquí se distingue según la finalidad:
+        </p>
+        <ul>
+          <li><strong>Propósito general:</strong> PC, servidores, dispositivos móviles — diseñados para múltiples usos.</li>
+          <li><strong>Propósito específico (embebido):</strong> controladores, PLCs, sistemas de tiempo real para funciones concretas.</li>
+          <li><strong>HPC y servidores:</strong> hardware optimizado para alto rendimiento y escalabilidad (clusters, racks, aceleradores).</li>
+        </ul>
+      </section>
+
+      <section id="por-arquitectura" class="text-block">
+        <h2>Clasificación por arquitectura</h2>
+        <p>
+          Este criterio atiende a la organización lógica del hardware:
+        </p>
+        <ul>
+          <li><strong>Von Neumann:</strong> memoria y programa compartido; CPU secuencial (la arquitectura clásica).</li>
+          <li><strong>Harvard:</strong> memoria separada para instrucciones y datos (útil en microcontroladores).</li>
+          <li><strong>Heterogénea:</strong> sistemas con CPU + GPU + NPU/TPU que reparten tareas según paralelismo y tipo de cálculo.</li>
+        </ul>
+      </section>
+
+      <section id="ejemplos" class="text-block">
+        <h2>Ejemplos prácticos y correspondencia entre criterios</h2>
+        <p>
+          Un mismo componente puede pertenecer a múltiples clasificaciones: por ejemplo, una tarjeta SD es <em>almacenamiento</em> (por función),
+          <em>no volátil</em> (por permanencia), y <em>externa</em> (por ubicación). Un microcontrolador es <em>proc.</em> y suele usarse en sistemas
+          embebidos (propósito específico) con arquitectura Harvard.
+        </p>
+      </section>
+
+      <!-- Tarjetas giratorias resumen -->
+      <section class="cards-grid text-block">
+        <h2>Resumen rápido — Tarjetas</h2>
+        <div class="card-grid">
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front"><strong>Entrada</strong></div>
+              <div class="flip-back">Dispositivos para introducir datos: teclado, ratón, sensores, micrófono.</div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front"><strong>Procesamiento</strong></div>
+              <div class="flip-back">CPU, GPU, aceleradores: ejecutan instrucciones y cálculos.</div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front"><strong>Almacenamiento</strong></div>
+              <div class="flip-back">HDD, SSD, NVMe, tarjetas flash (volatile/no-volatile).</div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front"><strong>Salida</strong></div>
+              <div class="flip-back">Monitores, impresoras, altavoces y actuadores.</div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front"><strong>Comunicación</strong></div>
+              <div class="flip-back">Routers, NICs, módems, antenas inalámbricas.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trivia -->
+      <section id="trivia" class="activity text-block">
+        <h2>Trivia: Clasificación</h2>
+        <div id="quiz">
+          <div id="q-text" class="q-text"></div>
+          <div id="q-options" class="q-options"></div>
+          <div id="q-feedback" class="q-feedback" aria-live="polite"></div>
+          <div class="q-controls">
+            <button id="q-next" class="btn" disabled>Siguiente</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Drag & Drop -->
+      <section id="dragdrop" class="activity text-block">
+        <h2>Actividad: Clasifica los dispositivos</h2>
+        <p>Arrastra cada dispositivo y suéltalo en la categoría correcta.</p>
+        <div class="drag-wrap">
+          <div id="drag-items" class="drag-items"></div>
+          <div id="drop-zones" class="drop-zones">
+            <div class="drop-slot" data-category="Entrada">Entrada</div>
+            <div class="drop-slot" data-category="Procesamiento">Procesamiento</div>
+            <div class="drop-slot" data-category="Almacenamiento">Almacenamiento</div>
+            <div class="drop-slot" data-category="Salida">Salida</div>
+            <div class="drop-slot" data-category="Comunicación">Comunicación</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <button id="drag-check" class="btn">Comprobar</button>
+          <button id="drag-reset" class="btn ghost">Reiniciar</button>
+          <div id="drag-result" class="q-feedback"></div>
+        </div>
+      </section>
+
+    </article>
+
+    <aside class="sidebar">
+      <div class="widget">
+        <h3>Índice rápido</h3>
+        <ol>
+          <li><a href="#por-funcion">Por función</a></li>
+          <li><a href="#por-permanencia">Por permanencia</a></li>
+          <li><a href="#por-ubicacion">Por ubicación</a></li>
+          <li><a href="#por-proposito">Por propósito</a></li>
+          <li><a href="#por-arquitectura">Por arquitectura</a></li>
+        </ol>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Informática Básica — Clasificación del Hardware</p>
+    </div>
+  </footer>
+
+  <script src="js/juego4.js"></script>
+</body>
+</html>

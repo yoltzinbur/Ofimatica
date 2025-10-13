@@ -1,0 +1,226 @@
+/* ============================
+   RESET / ESTILOS GENERALES
+=============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background: #2c3e50;
+}
+
+/* ============================
+   HERO / PÁGINA INICIO
+=============================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  overflow: hidden;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.hero .content {
+  position: relative;
+  z-index: 30; /* texto por encima de partículas y lluvia */
+  max-width: 800px;
+  padding: 0 1rem;
+  color: #f0f4f8;
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #f0f4f8;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.btn-enter {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(90deg,#06b6d4,#4f46e5);
+  border-radius: 40px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.btn-enter:hover {
+  transform: scale(1.05);
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* ============================
+   PARTICULAS FLOTANTES
+=============================== */
+.floating-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  filter: blur(1px);
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-110vh); }
+}
+
+/* ============================
+   LLUVIA Y GOTAS REALISTAS
+=============================== */
+#rain-container,
+#droplets-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 8; /* debajo del contenido */
+}
+
+/* Líneas de lluvia suaves */
+.rain-drop {
+  position: absolute;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+  filter: blur(1px);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-15vh); }
+  to   { transform: translateY(110vh); }
+}
+
+/* Gotas realistas tipo vidrio */
+.glass-drop {
+  position: absolute;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  filter: blur(0.6px);
+  animation: drip linear forwards;
+  box-shadow: inset -1px -1px 2px rgba(255,255,255,0.3);
+}
+
+@keyframes drip {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  50%  { transform: translateY(50vh) rotate(2deg) scale(0.9); opacity: 0.5; }
+  100% { transform: translateY(100vh) rotate(3deg) scale(0.8); opacity: 0; }
+}
+
+/* ============================
+   RELÁMPAGOS SUTILES
+=============================== */
+#lightning-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5; /* detrás del hero */
+}
+
+@keyframes flash {
+  0%   { opacity: 0; }
+  15%  { opacity: 0.2; }
+  30%  { opacity: 0.1; }
+  50%  { opacity: 0.25; }
+  100% { opacity: 0; }
+}
+
+/* ============================
+   ESTILOS PARA PÁGINAS INTERNAS
+=============================== */
+body.pagina {
+  background: #f0f4f8;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+header {
+  background: #4f46e5;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Secciones desplegables */
+.section {
+  max-width: 900px;
+  margin: 0 auto 1rem auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.section button {
+  width: 100%;
+  padding: 1rem;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.section button:hover {
+  background: #4338ca;
+}
+
+.section .content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  background: #fafafa;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.section .content.open {
+  max-height: 600px;
+  padding: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+color:#555;
+}

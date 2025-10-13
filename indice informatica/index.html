@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informática Básica</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Informática Básica</h1>
+    <p>Tarjetas giratorias con resúmenes y trivia interactiva</p>
+  </header>
+
+  <nav>
+    <a href="#indice">Inicio</a>
+    <a href="#trivia">Trivia</a>
+  </nav>
+
+  <!-- 📑 Índice con tarjetas que giran -->
+  <div class="container" id="indice">
+    <h2>Índice de Temas</h2>
+    <div class="card-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>1. ¿Qué es una computadora?</h3></div>
+        <div class="flip-back">
+          <p>Dispositivo electrónico que procesa datos para convertirlos en información útil.</p>
+          <a class="read-more" href="computadora.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>2. Historia</h3></div>
+        <div class="flip-back">
+          <p>Desde las primeras máquinas de cálculo hasta los modernos dispositivos.</p>
+          <a class="read-more" href="historia.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>3. Evolución del hardware</h3></div>
+        <div class="flip-back">
+          <p>Transformación de los componentes físicos a través de las generaciones.</p>
+          <a class="read-more" href="evolhardware.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>4. Clasificación del hardware</h3></div>
+        <div class="flip-back">
+          <p>Entrada, salida, almacenamiento y procesamiento.</p>
+          <a class="read-more" href="clasihardware.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>5. Evolución del software</h3></div>
+        <div class="flip-back">
+          <p>Programas desde sistemas básicos hasta aplicaciones avanzadas.</p>
+          <a class="read-more" href="evolsoftware.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>6. Clasificación del software</h3></div>
+        <div class="flip-back">
+          <p>Sistema, aplicación y desarrollo.</p>
+          <a class="read-more" href="clasisoftware.html">Leer más</a>
+        </div>
+      </div></div>
+
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-front"><h3>7. Licencias</h3></div>
+        <div class="flip-back">
+          <p>Propietario, libre y de código abierto.</p>
+          <a class="read-more" href="licencias.html">Leer más</a>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- 🎮 Trivia interactiva -->
+  <div class="container trivia" id="trivia">
+    <h2>Juego de Trivia</h2>
+    <div id="trivia-box">
+      <!-- Aquí aparecen las preguntas dinámicas -->
+    </div>
+    <div id="feedback"></div>
+    <button id="next-btn" disabled>Siguiente</button>
+  </div>
+
+  <script src="js/juego.js"></script>
+</body>
+</html>

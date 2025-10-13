@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evolución del Software</title>
+  <link rel="stylesheet" href="css/evolsoftware.css">
+</head>
+<body>
+  <header>
+    <h1>Evolución del Software</h1>
+    <p>Desde los primeros sistemas hasta las modernas aplicaciones</p>
+    <!-- Botón volver al inicio -->
+    <div class="volver-inicio">
+      <a href="index.html">⬅ Volver al Inicio</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="contenido">
+      <h2>Explicación Detallada</h2>
+      <p>
+        La evolución del software es una historia que abarca varias décadas de
+        desarrollo tecnológico. Comienza en los años 40 con los primeros
+        programas escritos en lenguaje máquina para computadoras como ENIAC,
+        pasando por la creación de lenguajes de alto nivel como FORTRAN y COBOL
+        en los años 50, la llegada de los sistemas operativos en los 60, el auge
+        del software comercial en los 70 y 80, hasta la explosión de aplicaciones
+        de Internet y móviles en las décadas más recientes. A lo largo de este
+        tiempo se han establecido metodologías de desarrollo, control de versiones,
+        modelos de licenciamiento y una cultura de colaboración que continúa
+        transformando la industria.
+      </p>
+      <p>
+        (Aquí puedes pegar un texto mucho más extenso, de varias miles de palabras,
+        si lo necesitas para tu proyecto. Se puede agregar historia de UNIX,
+        nacimiento del software libre, evolución de Windows, macOS, Linux,
+        la era de las aplicaciones web, cloud computing, inteligencia artificial,
+        etc.)
+      </p>
+    </section>
+
+    <!-- Juego de Trivia -->
+    <section class="juego">
+      <h2>Trivia: Evolución del Software</h2>
+      <div id="quiz">
+        <p id="quiz-question"></p>
+        <div id="quiz-options"></div>
+        <p id="quiz-feedback"></p>
+        <button id="quiz-next" disabled>Siguiente</button>
+      </div>
+    </section>
+
+    <!-- Juego Drag & Drop -->
+    <section class="juego">
+      <h2>Arrastra cada elemento a su categoría</h2>
+      <div class="drag-container">
+        <div id="drag-items" class="items"></div>
+        <div class="drop-area">
+          <div class="drop-slot" data-category="Lenguaje">
+            Lenguajes de Programación
+          </div>
+          <div class="drop-slot" data-category="Sistema">
+            Sistemas Operativos
+          </div>
+          <div class="drop-slot" data-category="Aplicación">
+            Aplicaciones
+          </div>
+        </div>
+      </div>
+      <button id="check-drag">Comprobar</button>
+      <button id="reset-drag">Reiniciar</button>
+      <p id="drag-feedback"></p>
+    </section>
+
+  </main>
+
+  <script src="js/juego5.js"></script>
+</body>
+</html>

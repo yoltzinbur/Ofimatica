@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia de la computación</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Historia de la computación</h1>
+
+  <p>
+    La historia de la computación es larga y fascinante, desde dispositivos mecánicos simples hasta las computadoras modernas. 
+    Cada etapa ha marcado avances fundamentales en la forma en que procesamos información.
+  </p>
+
+  <button class="toggle-info" data-target="info1">Primeros dispositivos</button>
+  <div class="info" id="info1">
+    <ul>
+      <li>Ábaco: Inventado hace más de 5000 años, usado para cálculos básicos.</li>
+      <li>Regla de cálculo: Herramienta mecánica de cálculo utilizada hasta el siglo XX.</li>
+      <li>Máquinas de Pascal y Leibniz: Calculadoras mecánicas del siglo XVII para operaciones aritméticas.</li>
+    </ul>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Máquinas analíticas y teóricos</button>
+  <div class="info" id="info2">
+    <ul>
+      <li>Charles Babbage (1837): Diseñó la máquina analítica, precursora de la computadora moderna.</li>
+      <li>Ada Lovelace: Primera programadora, escribió algoritmos para la máquina de Babbage.</li>
+      <li>Tarjetas perforadas: Inspiradas en el telar de Jacquard para controlar máquinas.</li>
+    </ul>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Era electrónica</button>
+  <div class="info" id="info3">
+    <ul>
+      <li>1940-1950: Computadoras con tubos de vacío como ENIAC y Colossus.</li>
+      <li>1956: Aparición de los transistores, más pequeños y eficientes que los tubos de vacío.</li>
+      <li>1960-1970: Circuitos integrados y primeros mainframes comerciales.</li>
+    </ul>
+  </div>
+
+  <button class="toggle-info" data-target="info4">Computadoras modernas</button>
+  <div class="info" id="info4">
+    <p>
+      La quinta generación incluye microprocesadores, computadoras personales, portátiles y dispositivos móviles. La informática se integra en la nube, inteligencia artificial, Big Data y supercomputadoras.
+    </p>
+    <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

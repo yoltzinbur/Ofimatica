@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es una computadora?</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>¿Qué es una computadora?</h1>
+
+  <p>
+    Una computadora es un dispositivo electrónico que recibe, procesa, almacena y transmite información. 
+    Permite ejecutar programas diseñados para realizar tareas específicas de manera rápida y precisa. 
+    Las computadoras son fundamentales en la vida moderna, utilizadas en educación, ciencia, industria, comercio, entretenimiento y comunicación.
+  </p>
+
+  <button class="toggle-info" data-target="info1">Componentes principales</button>
+  <div class="info" id="info1">
+    <ul>
+      <li><strong>CPU (Unidad Central de Procesamiento):</strong> Ejecuta instrucciones y coordina el funcionamiento de los demás componentes.</li>
+      <li><strong>Memoria RAM:</strong> Memoria temporal donde se cargan los programas mientras se ejecutan, afectando la velocidad de la computadora.</li>
+      <li><strong>Disco duro / SSD:</strong> Almacena permanentemente el sistema operativo, aplicaciones y archivos del usuario. Los SSD son más rápidos y resistentes a golpes que los discos tradicionales.</li>
+      <li><strong>Placa base:</strong> Conecta todos los componentes y permite la comunicación entre ellos mediante buses y circuitos integrados.</li>
+      <li><strong>Periféricos de entrada:</strong> Teclado, ratón, escáner, micrófono y cámaras. Permiten al usuario interactuar con la computadora y proporcionar información.</li>
+      <li><strong>Periféricos de salida:</strong> Monitor, impresora, altavoces, proyectores. Presentan los resultados del procesamiento al usuario.</li>
+      <li><strong>Tarjetas adicionales:</strong> GPU para procesamiento gráfico, tarjetas de sonido, red, expansión de almacenamiento y controladores especializados.</li>
+    </ul>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Funcionamiento básico</button>
+  <div class="info" id="info2">
+    <p>
+      El ciclo de funcionamiento de una computadora se denomina <strong>Entrada → Procesamiento → Salida → Almacenamiento</strong>:
+      <ul>
+        <li><strong>Entrada:</strong> Dispositivos capturan datos del usuario o del entorno (teclado, ratón, sensores).</li>
+        <li><strong>Procesamiento:</strong> La CPU interpreta instrucciones y realiza cálculos o decisiones lógicas.</li>
+        <li><strong>Salida:</strong> Los resultados se muestran mediante periféricos de salida como monitores, impresoras o altavoces.</li>
+        <li><strong>Almacenamiento:</strong> Información guardada temporalmente en RAM o permanentemente en disco/SSD.</li>
+      </ul>
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Tipos de computadoras</button>
+  <div class="info" id="info3">
+    <ul>
+      <li><strong>Supercomputadoras:</strong> Para cálculos científicos complejos, modelado climático, simulaciones nucleares y estudios de inteligencia artificial.</li>
+      <li><strong>Computadoras de escritorio:</strong> Uso personal y profesional, ofrecen buen rendimiento para tareas cotidianas y ofimática.</li>
+      <li><strong>Laptops:</strong> Portátiles, combinan movilidad y funcionalidad, usadas en educación, trabajo remoto y entretenimiento.</li>
+      <li><strong>Servidores:</strong> Gestionan recursos de red, bases de datos, aplicaciones web y servicios en línea.</li>
+      <li><strong>Dispositivos embebidos:</strong> Computadoras integradas en electrodomésticos, automóviles, cámaras, teléfonos inteligentes, robots y maquinaria industrial.</li>
+      <li><strong>Tabletas y smartphones:</strong> Computadoras portátiles de alto rendimiento con pantallas táctiles y conexión constante a Internet.</li>
+    </ul>
+    <p>Actualmente, las computadoras están presentes en casi todos los dispositivos electrónicos y sistemas inteligentes, desde automóviles autónomos hasta electrodomésticos conectados.</p>
+  </div>
+
+  <button class="toggle-info" data-target="info4">Importancia y usos</button>
+  <div class="info" id="info4">
+    <p>
+      Las computadoras permiten automatizar procesos, mejorar la productividad, facilitar la comunicación, procesar grandes cantidades de datos y crear simulaciones. Se usan en:
+      <ul>
+        <li>Educación: Plataformas de aprendizaje, investigación y creación de contenidos.</li>
+        <li>Ciencia: Modelado de datos, simulaciones, investigación en biología, física, química.</li>
+        <li>Industria y comercio: Control de producción, inventarios, análisis de mercados, comercio electrónico.</li>
+        <li>Entretenimiento: Videojuegos, edición de video, música, realidad virtual.</li>
+        <li>Comunicación: Redes sociales, correo electrónico, videoconferencias.</li>
+      </ul>
+      <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+    </p>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

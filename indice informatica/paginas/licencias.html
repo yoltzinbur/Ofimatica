@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licencias de software</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Licencias de software</h1>
+
+  <p>Las licencias determinan cómo se puede usar, modificar y distribuir un software.</p>
+
+  <button class="toggle-info" data-target="info1">Software propietario</button>
+  <div class="info" id="info1">
+    <p>
+      Código cerrado, pago obligatorio o licencia limitada. El usuario no puede modificar ni redistribuir. Ejemplos: Windows, Adobe Photoshop, Microsoft Office.
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Software libre</button>
+  <div class="info" id="info2">
+    <p>
+      Código abierto, gratuito, permite modificar, estudiar y redistribuir. Ejemplos: Linux, LibreOffice, GIMP. Fomenta colaboración y educación tecnológica.
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Licencias híbridas</button>
+  <div class="info" id="info3">
+    <p>
+      Mezcla software libre y propietario: algunas partes son abiertas y otras requieren pago o restricciones. Ejemplos: versiones freemium de aplicaciones, software de código abierto con módulos comerciales.
+    </p>
+  </div>
+
+  <button class="toggle-info" data-target="info4">Importancia de las licencias</button>
+  <div class="info" id="info4">
+    <p>
+      Protegen derechos de autor, aseguran cumplimiento legal, fomentan la innovación y permiten a empresas y usuarios saber cómo pueden usar el software.
+    </p>
+    <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>

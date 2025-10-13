@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasificación del hardware</title>
+<link rel="stylesheet" href="../estilos/indice.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<canvas id="rainCanvas"></canvas>
+
+<div class="content">
+  <h1>Clasificación del hardware</h1>
+
+  <p>El hardware se organiza según su función dentro del sistema informático:</p>
+
+  <button class="toggle-info" data-target="info1">Hardware de entrada</button>
+  <div class="info" id="info1">
+    <p>Dispositivos que permiten ingresar datos: teclado, ratón, escáner, micrófono, cámaras, sensores y pantallas táctiles.</p>
+  </div>
+
+  <button class="toggle-info" data-target="info2">Hardware de salida</button>
+  <div class="info" id="info2">
+    <p>Dispositivos que muestran resultados: monitores, impresoras, altavoces, proyectores, pantallas LED.</p>
+  </div>
+
+  <button class="toggle-info" data-target="info3">Hardware de almacenamiento</button>
+  <div class="info" id="info3">
+    <p>Discos duros, SSD, memorias USB, tarjetas SD y almacenamiento en red. Guardan información temporal o permanentemente.</p>
+  </div>
+
+  <button class="toggle-info" data-target="info4">Hardware de procesamiento</button>
+  <div class="info" id="info4">
+    <p>CPU, GPU, memoria RAM y placa base. Ejecutan cálculos y coordinan todos los componentes.</p>
+  </div>
+
+  <button class="toggle-info" data-target="info5">Hardware de comunicación</button>
+  <div class="info" id="info5">
+    <p>Tarjetas de red, módems, routers y dispositivos inalámbricos que permiten la conexión y transferencia de datos.</p>
+    <a href="../paginas/indice.html" class="btn-back">Volver al inicio</a>
+  </div>
+</div>
+
+<script src="../js/retro.js"></script>
+<script src="../js/lluvia.js"></script>
+<script>
+document.querySelectorAll('.toggle-info').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.target).classList.toggle('show-info');
+  });
+});
+</script>
+
+</body>
+</html>
