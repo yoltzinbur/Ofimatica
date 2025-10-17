@@ -18,7 +18,7 @@ export default function IndexSection() {
             </p>
             <Link to="/nav/NavSection"
             className="inline-block mt-8 px-10 py-4 bg-gradient-to-r from-btn-start to-btn-end rounded-[40px]
-            ">
+            text-white font-bold text-xl shadow-lg hover:shadow-2xls hover:scale-105 transition-all duration-300">
                 Comenzar
             </Link>
         </div>
