@@ -12,22 +12,29 @@ export default function StormBackground() {
         if (!lightningRef.current) return;
 
         const flash = document.createElement('div');
-        flash.className = 'absolute top-0 left-0 size-full, bg-white, opacity-0 transition-opacity duration-300';
-        flash.style.background = 'rgba(255,255,255,0.25)';
-        flash.style.animation = 'lightning-flash 0.3s ease-out';
+        flash.className = 'absolute top-0 left-0 size-full bg-white opacity-0 transition-opacity duration-300';
+        flash.style.background = 'rgba(255,255,255,0.75)';
+        flash.style.animationName = 'flash';
+        flash.style.animationDuration = '0.3s';
+        flash.style.animationTimingFunction = 'ease-out';
 
         lightningRef.current.appendChild(flash);
 
-        flash.addEventListener('animationend', () => flash.remove());
+        const timeout = setTimeout(() => {
+            flash.remove();
+        }, 300);
+
+        timeouts.current.push(timeout as unknown as number);
     }, []);
 
     const lightningLoop = useCallback(() => {
-        const delay = 2500 + Math.random() * 3500;
+        const delay = 1000 + Math.random() * 2500;
         const timeout = setTimeout(() => {
             if (Math.random() < 0.5) createLightning();
             lightningLoop();
         }, delay);
-        timeouts.current.push(timeout);
+        // timeouts.current.push(timeout);
+        timeouts.current.push(timeout as unknown as number);
     }, [createLightning]);
 
     const createRainDrop = useCallback(() => {
@@ -68,7 +75,8 @@ export default function StormBackground() {
     useEffect(() => {
         lightningLoop();
         intervals.current.push(setInterval(createRainDrop, 50));
-        intervals.current.push(setInterval(createRainDrop, 400));
+        intervals.current.push(setInterval(createRainDrop, 700));
+        intervals.current.push(setInterval(createGlassDrop, 300));
 
         return () => {
             intervals.current.forEach(clearInterval);
@@ -81,9 +89,9 @@ export default function StormBackground() {
 
     return (
         <>
-            <div id="lightning-conteiner" ref={lightningRef} className='fixed inset-0 pointer-events-none z-storm-behind' />
-            <div id='rain-conteiner' ref={rainRef} className='fixed inset-0 pointer-events-none z-storm-front' />
-            <div id='glass-conteiner' ref={glassRef} className='fixed inset-0 pointer-events-none z-storm-front' />
+            <div id="lightning-conteiner" ref={lightningRef} className='fixed inset-0 pointer-events-none z-[5]' />
+            <div id='rain-conteiner' ref={rainRef} className='fixed inset-0 pointer-events-none z-[8]' />
+            <div id='glass-conteiner' ref={glassRef} className='fixed inset-0 pointer-events-none z-[8]' />
         </>
     )
 }

@@ -6,8 +6,8 @@ export default function IndexSection() {
     <section className='relative h-screen flex justify-center items-center text-center overflow-hidden
     bg-gradient-to-br from-hero-start to-hero-end'>
         <StormBackground />
-        <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-hero-overlay"></div>
-        <div className="relative z-hero-content max-w-xl md:max-w-3xl lg:max-w-4xl px-4 text-index-text
+        <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-[1]"></div>
+        <div className="relative z-[30] max-w-xl md:max-w-3xl lg:max-w-4xl px-4 text-index-text
         shadow-none text-shadow-[0_0_6px_rgba(0,0,0,0.6)]">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 lg:mb-6">
                 Guía de Informática Básica
