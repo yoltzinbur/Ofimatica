@@ -1,0 +1,74 @@
+:root{
+  --bg:#f7fafc;--card:#fff;--text:#253048;--muted:#5e6a85;
+  --brand:#5aa9e6;--brand-2:#79d2a6;--shadow:0 10px 25px rgba(37,48,72,.07);
+  --radius-lg:16px;--radius-md:12px;--focus:0 0 0 4px rgba(90,169,230,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto;
+  color:var(--text);background:linear-gradient(180deg,#f7fafc 0%,#f9fbff 100%);
+  line-height:1.7;
+}
+a{text-decoration:none;color:var(--brand)}
+a:hover{text-decoration:underline}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.75);
+backdrop-filter:blur(10px);border-bottom:1px solid #edf2f7;}
+.nav-inner{max-width:1200px;margin:auto;padding:10px 16px;
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:var(--shadow)}
+.menu{display:flex;flex-wrap:wrap;gap:8px}
+.menu a{padding:8px 12px;border-radius:999px;border:1px solid #e9eef7;background:#fff;color:var(--muted);font-weight:600;transition:.15s ease}
+.menu a:hover{color:var(--text);transform:translateY(-1px)}
+.menu a.active{background:#eef7ff;border-color:#d7ebff;color:var(--text)}
+
+.main{max-width:1200px;margin:40px auto;padding:20px}
+h1,h2{color:var(--text)}
+h1{font-size:clamp(26px,4vw,40px);margin-bottom:10px}
+h2{font-size:clamp(20px,3vw,28px);margin:24px 0 12px}
+p{margin-bottom:12px;color:var(--muted)}
+
+.card{background:var(--card);border:1px solid #e7eef8;border-radius:var(--radius-lg);
+box-shadow:var(--shadow);padding:16px;margin-bottom:20px;transition:transform .12s ease, box-shadow .12s ease, border-color .15s ease}
+.card:hover{transform:translateY(-2px);border-color:#d9e8fb;box-shadow:0 14px 30px rgba(37,48,72,.10)}
+.icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+background:#f3faff;border:1px solid #e3f0ff;margin-bottom:8px}
+footer{text-align:center;padding:24px;color:var(--muted)}
+
+/* Layouts educativos */
+.grid{display:grid;gap:14px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+.panel{
+  background: radial-gradient(800px 300px at 10% -10%, #eaf6ff, transparent),
+              radial-gradient(800px 300px at 110% 0%, #ebfff3, transparent),
+              #fff;
+  border:1px solid #e7eef8;border-radius:16px;padding:18px;box-shadow:var(--shadow);
+}
+.badge{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:600;
+  color:#3f4b66;background:#f5fbff;border:1px solid #dfecff;border-radius:999px;padding:4px 8px}
+.tip{border-left:4px solid var(--brand);background:#f7fbff;border:1px solid #e5f2ff;padding:12px;border-radius:12px;margin:8px 0}
+.warn{border-left:4px solid #ffd27f;background:#fffaf0;border:1px solid #ffe5a8}
+.ok{border-left:4px solid #79d2a6;background:#f4fff9;border:1px solid #d9f5e6}
+.kb{display:inline-block;padding:3px 8px;border:1px solid #e1e8f5;border-radius:8px;background:#fff;font-weight:600}
+
+/* Botón primario */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid #dfe9f7;background:#fff;
+  padding:10px 12px;border-radius:999px;box-shadow:var(--shadow);font-weight:600}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none}
+
+/* Imágenes ilustrativas */
+.illus{width:100%;max-height:220px;object-fit:contain;border-radius:12px;border:1px solid #e7eef8;background:#fff}
+
+/* Animaciones suaves */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
+.reveal.show{opacity:1;transform:none}
+.fade-in{animation:fade .6s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}

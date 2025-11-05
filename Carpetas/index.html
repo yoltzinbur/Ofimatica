@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manual Interactivo: Manejo de Archivos y Carpetas</title>
+<meta name="description" content="Manual interactivo y visual sobre manejo de archivos y carpetas: conceptos, tipos, operaciones, organización, atajos y recursos." />
+<style>
+  :root{
+    /* Paleta clara, amable y no chillona */
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #253048;
+    --muted: #5e6a85;
+    --brand: #5aa9e6;        /* azul suave */
+    --brand-2: #79d2a6;      /* verde menta suave */
+    --brand-3: #ffd27f;      /* amarillo suave */
+    --ring: rgba(90,169,230,0.35);
+    --shadow: 0 10px 25px rgba(37,48,72,0.07);
+    --radius-xl: 20px;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 10px;
+    --focus: 0 0 0 4px var(--ring);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    color: var(--text);
+    background: linear-gradient(180deg, #f7fafc 0%, #f9fbff 100%);
+    scroll-behavior: smooth;
+  }
+
+  a{ color: var(--brand); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+
+  /* NAV */
+  .nav{
+    position: sticky; top:0; z-index: 999;
+    backdrop-filter: saturate(180%) blur(8px);
+    background: rgba(255,255,255,0.72);
+    border-bottom: 1px solid #edf2f7;
+  }
+  .nav-inner{
+    max-width: 1200px; margin: 0 auto; padding: 10px 16px;
+    display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px;
+  }
+  .brand .logo{
+    width:34px; height:34px; border-radius:10px;
+    display:grid; place-items:center; box-shadow: var(--shadow);
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+    color:white; font-size:18px;
+  }
+  .menu{
+    display:flex; gap: 8px; flex-wrap: wrap;
+  }
+  .menu a{
+    padding:8px 12px; border-radius: 999px; font-weight: 600; color: var(--muted);
+    border: 1px solid #e9eef7; background: #fff;
+    transition: transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .menu a:hover{ transform: translateY(-1px); color: var(--text); }
+  .menu a.active{ background: #eef7ff; color: var(--text); border-color:#d7ebff; }
+
+  /* HERO */
+  .hero{
+    max-width: 1200px; margin: 26px auto 0; padding: 24px 16px 8px;
+  }
+  .hero-card{
+    background: radial-gradient(1100px 600px at 10% -20%, #eaf6ff, transparent),
+                radial-gradient(1000px 600px at 110% 10%, #ebfff3, transparent),
+                var(--card);
+    border: 1px solid #e7eef8; border-radius: var(--radius-xl); box-shadow: var(--shadow);
+    padding: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px;
+  }
+  @media (max-width: 900px){ .hero-card{ grid-template-columns: 1fr; } }
+  .hero h1{ margin:0 0 10px 0; font-size: clamp(24px, 4.5vw, 40px); line-height: 1.12; }
+  .hero p{ margin: 0 0 18px 0; color: var(--muted); max-width: 62ch; }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 6px; }
+  .tag{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px dashed #dbe6f3; background:#fff; color:#42506b;
+    padding:6px 10px; border-radius: 999px; font-size: 12.5px; font-weight:600;
+  }
+
+  /* BUSCADOR */
+  .searchbar{
+    display:flex; gap:8px; align-items:center; background:#fff; padding:10px 12px;
+    border:1.5px solid #e6eef9; border-radius: 14px; box-shadow: var(--shadow);
+  }
+  .searchbar:focus-within{ box-shadow: var(--focus); border-color:#d3e8ff; }
+  .searchbar input{
+    outline:none; border:none; flex:1; font-size:15px; background:transparent; color:var(--text);
+  }
+  .chip{
+    font-size: 12px; padding:6px 10px; background:#f2f7ff; border:1px solid #e0ecff; border-radius:999px;
+  }
+
+  /* SECCIONES */
+  .section{
+    max-width: 1200px; margin: 22px auto; padding: 10px 16px 4px;
+  }
+  .section h2{
+    font-size: clamp(18px, 3.6vw, 28px); margin: 10px 0 14px 0;
+    display:flex; align-items:center; gap:10px;
+  }
+  .pill{
+    display:inline-grid; place-items:center; width:30px; height:30px; border-radius:10px; color:#fff;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+    box-shadow: var(--shadow); font-weight:700;
+  }
+
+  .grid{
+    display:grid; gap: 14px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .col-4{ grid-column: span 4; }
+  .col-6{ grid-column: span 6; }
+  .col-12{ grid-column: span 12; }
+  @media (max-width: 1000px){ .col-4{ grid-column: span 6; } }
+  @media (max-width: 640px){ .col-4, .col-6{ grid-column: span 12; } }
+
+  .card{
+    background:#fff; border:1px solid #e7eef8; border-radius: var(--radius-lg);
+    box-shadow: var(--shadow); padding:16px; position:relative; overflow:hidden;
+    transition: transform .12s ease, box-shadow .12s ease, border-color .15s ease;
+  }
+  .card:hover{ transform: translateY(-2px); border-color:#d9e8fb; box-shadow: 0 14px 30px rgba(37,48,72,0.10); }
+  .card h3{ margin:0 0 8px 0; font-size: 18px; }
+  .card p{ margin:0; color: var(--muted); }
+  .icon{
+    width:36px; height:36px; border-radius: 12px; display:grid; place-items:center; margin-bottom:8px;
+    background: #f3faff; border:1px solid #e3f0ff;
+  }
+
+  /* Etiquetas y resaltado */
+  .badge{
+    display:inline-flex; align-items:center; gap:6px; padding: 4px 8px; border-radius: 999px;
+    font-size: 12px; font-weight:600; color:#3f4b66; background:#f5fbff; border:1px solid #dfecff;
+  }
+  mark{ background: #fff2b6; padding: 0 2px; border-radius: 4px; }
+
+  /* Footer */
+  footer{
+    padding: 28px 16px 40px; color: var(--muted); text-align:center;
+  }
+
+  /* Botón volver arriba */
+  .to-top{
+    position: fixed; right: 16px; bottom: 16px; z-index: 50;
+    border: 1px solid #dfe9f7; background:#fff; border-radius:999px; padding:10px 12px;
+    box-shadow: var(--shadow); display:none;
+  }
+  .to-top.show{ display:inline-flex; }
+
+  /* Tabla simple */
+  .table{
+    width:100%; border-collapse: collapse; overflow:hidden; border-radius: var(--radius-md);
+    border:1px solid #e7eef8; background:#fff;
+  }
+  .table th, .table td{ padding:10px 12px; border-bottom:1px solid #eef3fb; text-align:left; }
+  .table th{ background:#f6faff; color:#42506b; font-size: 13px; letter-spacing:.2px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">📁</div>
+      <span>Manual de Archivos &amp; Carpetas</span>
+    </div>
+    <div class="menu">
+  <a href="index.html">Inicio</a>
+  <a href="conceptos.html">Conceptos</a>
+  <a href="tipos.html">Tipos</a>
+  <a href="operaciones.html">Operaciones</a>
+  <a href="organizacion.html">Organización</a>
+  <a href="atajos.html">Atajos</a>
+  <a href="errores.html">Errores</a>
+  <a href="glosario.html">Glosario</a>
+  <a href="recursos.html">Recursos</a>
+  <a href="quiz.html">Quiz</a>
+</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="inicio" class="hero" role="banner">
+  <div class="hero-card">
+    <div>
+      <h1>Tu guía interactiva para dominar <span style="white-space:nowrap">archivos y carpetas</span> ✨</h1>
+      <p>
+        Aprende de forma clara, visual y práctica. Explora conceptos esenciales, tipos de archivos, operaciones
+        comunes, organización eficiente, atajos útiles y errores frecuentes… ¡todo con un buscador integrado!
+      </p>
+
+      <!-- BUSCADOR -->
+<div class="searchbar" role="search" aria-label="Buscar en el manual">
+  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+    <path fill="#5e6a85" d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 0 0 1.57-4.23A6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/>
+  </svg>
+  <input id="search" type="search" placeholder="Busca cualquier tema libremente..." aria-label="Buscar términos" />
+  <span class="chip" id="hits">0 resultados</span>
+</div>
+
+
+      <div class="tag-row" aria-label="Temas destacados">
+        <span class="tag">📦 Compresión</span>
+        <span class="tag">🗂️ Estructuras</span>
+        <span class="tag">🔎 Búsqueda</span>
+        <span class="tag">⌨️ Atajos</span>
+        <span class="tag">☁️ Nube</span>
+      </div>
+    </div>
+    <!-- Lado derecho con ilustración SVG suave -->
+    <div aria-hidden="true" style="display:grid; place-items:center;">
+      <svg width="100%" height="220" viewBox="0 0 560 260">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#5aa9e6"/>
+            <stop offset="100%" stop-color="#79d2a6"/>
+          </linearGradient>
+        </defs>
+        <rect x="30" y="24" rx="16" ry="16" width="500" height="150" fill="url(#g1)" opacity="0.15"/>
+        <rect x="60" y="54" rx="10" ry="10" width="180" height="100" fill="#fff" stroke="#dfe9f7"/>
+        <rect x="260" y="54" rx="10" ry="10" width="210" height="56" fill="#fff" stroke="#dfe9f7"/>
+        <rect x="260" y="116" rx="10" ry="10" width="120" height="38" fill="#fff" stroke="#dfe9f7"/>
+        <circle cx="460" cy="156" r="10" fill="#ffd27f" />
+        <circle cx="485" cy="156" r="10" fill="#79d2a6" />
+        <circle cx="510" cy="156" r="10" fill="#5aa9e6" />
+        <text x="75" y="85" fill="#5e6a85" font-size="13">Carpeta “Proyectos”</text>
+        <text x="275" y="85" fill="#5e6a85" font-size="13">Archivo: informe.pdf</text>
+        <text x="275" y="142" fill="#5e6a85" font-size="13">foto.jpg</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- CONCEPTOS -->
+<section id="conceptos" class="section">
+  <h2><span class="pill">A</span> Conceptos clave</h2>
+  <div class="grid">
+    <article class="card col-4 searchable" data-keywords="archivo extension contenido datos documento">
+      <div class="icon">📄</div>
+      <h3>Archivo</h3>
+      <p>Unidad de información con nombre y extensión. Puede contener texto, imagen, audio, video o datos estructurados.</p>
+      <div class="badge" style="margin-top:8px;">Ej.: <strong>informe.pdf</strong>, <strong>foto.jpg</strong></div>
+    </article>
+    <article class="card col-4 searchable" data-keywords="carpeta directorio contenedor organizar">
+      <div class="icon">🗂️</div>
+      <h3>Carpeta (directorio)</h3>
+      <p>Contenedor para agrupar archivos y otras carpetas (subcarpetas). Facilita ordenar por proyectos o categorías.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="ruta path ubicacion absoluta relativa">
+      <div class="icon">🧭</div>
+      <h3>Ruta</h3>
+      <p>Dirección de ubicación: <em>absoluta</em> (desde la raíz) o <em>relativa</em> (desde la carpeta actual).</p>
+      <div class="badge" style="margin-top:8px;">Win: <code>C:\Usuarios\TuNombre\</code></div>
+    </article>
+  </div>
+</section>
+
+<!-- TIPOS -->
+<section id="tipos" class="section">
+  <h2><span class="pill">B</span> Tipos de archivos (por extensión)</h2>
+  <div class="grid">
+    <article class="card col-4 searchable" data-keywords="documento texto pdf docx odt">
+      <div class="icon">📝</div>
+      <h3>Documentos</h3>
+      <p>Texto y maquetación. Ej.: <strong>.pdf</strong>, <strong>.docx</strong>, <strong>.odt</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="imagen foto png jpg svg bmp">
+      <div class="icon">🖼️</div>
+      <h3>Imágenes</h3>
+      <p>Mapas de bits y vectoriales. Ej.: <strong>.png</strong>, <strong>.jpg</strong>, <strong>.svg</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="audio musica mp3 wav flac">
+      <div class="icon">🎵</div>
+      <h3>Audio</h3>
+      <p>Sonido y música. Ej.: <strong>.mp3</strong>, <strong>.wav</strong>, <strong>.flac</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="video mp4 mkv mov">
+      <div class="icon">🎬</div>
+      <h3>Video</h3>
+      <p>Contenedores y códecs. Ej.: <strong>.mp4</strong>, <strong>.mkv</strong>, <strong>.mov</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="comprimido zip rar 7z tar gz">
+      <div class="icon">📦</div>
+      <h3>Comprimidos</h3>
+      <p>Agrupan y reducen tamaño. Ej.: <strong>.zip</strong>, <strong>.rar</strong>, <strong>.7z</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="ejecutable exe app sh bat">
+      <div class="icon">⚙️</div>
+      <h3>Ejecutables</h3>
+      <p>Programas o scripts. Ej.: <strong>.exe</strong>, <strong>.app</strong>, <strong>.sh</strong>, <strong>.bat</strong>.</p>
+    </article>
+  </div>
+</section>
+
+<!-- OPERACIONES -->
+<section id="operaciones" class="section">
+  <h2><span class="pill">C</span> Operaciones comunes</h2>
+  <div class="grid">
+    <article class="card col-4 searchable" data-keywords="crear nuevo archivo carpeta">
+      <div class="icon">✨</div>
+      <h3>Crear</h3>
+      <p>Botón derecho &rarr; <em>Nuevo</em> &rarr; <em>Carpeta</em> o <em>Documento</em>. Nombra de forma descriptiva.</p>
+      <div class="badge" style="margin-top:8px;">Ej.: <strong>2025-Proyecto-Informe</strong></div>
+    </article>
+    <article class="card col-4 searchable" data-keywords="copiar duplicar portapapeles ctrl c ctrl v">
+      <div class="icon">📄</div>
+      <h3>Copiar</h3>
+      <p>Duplica sin mover el original. Atajo clásico: <strong>Ctrl+C</strong> y <strong>Ctrl+V</strong>.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="mover cortar ctrl x pegar organizar">
+      <div class="icon">📤</div>
+      <h3>Mover</h3>
+      <p>Cambia de ubicación sin duplicar: <strong>Ctrl+X</strong> y <strong>Ctrl+V</strong>, o arrastrar/soltar.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="renombrar nombre cambiar F2">
+      <div class="icon">✏️</div>
+      <h3>Renombrar</h3>
+      <p>Selecciona y presiona <strong>F2</strong> (Windows) o <strong>Enter</strong> (macOS) para editar el nombre.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="eliminar borrar papelera reciclar suprimir">
+      <div class="icon">🗑️</div>
+      <h3>Eliminar</h3>
+      <p>Envía a Papelera y vacía periódicamente. Evita borrar sin copia de seguridad.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="comprimir zip enviar reducir tamaño compartir">
+      <div class="icon">📦</div>
+      <h3>Comprimir</h3>
+      <p>Reduce tamaño y agrupa: botón derecho &rarr; <em>Enviar a &gt; Carpeta comprimida (.zip)</em>.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ORGANIZACIÓN -->
+<section id="organizacion" class="section">
+  <h2><span class="pill">D</span> Organización y buenas prácticas</h2>
+  <div class="grid">
+    <article class="card col-6 searchable" data-keywords="estructura carpetas proyecto fecha versionado">
+      <div class="icon">🗂️</div>
+      <h3>Estructura por proyecto</h3>
+      <p>Usa una carpeta por proyecto y subcarpetas por tipo (<em>docs</em>, <em>imágenes</em>, <em>export</em>).
+         Nombra con fecha ISO: <code>2025-10-23_informe-v1</code>.</p>
+    </article>
+    <article class="card col-6 searchable" data-keywords="nombres consistentes guiones espacios">
+      <div class="icon">🏷️</div>
+      <h3>Nombres consistentes</h3>
+      <p>Evita espacios dobles y caracteres raros. Prefiere guiones medios o bajos y nombres descriptivos.</p>
+    </article>
+    <article class="card col-6 searchable" data-keywords="etiquetas tags favoritos colores">
+      <div class="icon">🎯</div>
+      <h3>Etiquetas y favoritos</h3>
+      <p>Usa etiquetas/colores del sistema para ubicar rápido. Ancla carpetas frecuentes a “Accesos rápidos”.</p>
+    </article>
+    <article class="card col-6 searchable" data-keywords="respaldo backup nube google drive onedrive">
+      <div class="icon">☁️</div>
+      <h3>Respaldo y sincronización</h3>
+      <p>Mantén copia en la nube o disco externo. Programa respaldos automáticos semanales.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ATAJOS -->
+<section id="atajos" class="section">
+  <h2><span class="pill">E</span> Atajos útiles (Windows/macOS)</h2>
+  <div class="card col-12">
+    <div style="overflow:auto;">
+      <table class="table">
+        <thead>
+          <tr><th>Acción</th><th>Windows</th><th>macOS</th><th class="hide-mobile">Notas</th></tr>
+        </thead>
+        <tbody class="searchable" data-keywords="atajos teclado copiar cortar pegar renombrar buscar seleccionar todo">
+          <tr><td>Copiar</td><td>Ctrl + C</td><td>⌘ + C</td><td>Duplica en portapapeles</td></tr>
+          <tr><td>Cortar</td><td>Ctrl + X</td><td>⌘ + X</td><td>Mueve al pegar</td></tr>
+          <tr><td>Pegar</td><td>Ctrl + V</td><td>⌘ + V</td><td>Inserta copia o movimiento</td></tr>
+          <tr><td>Renombrar</td><td>F2</td><td>Enter</td><td>Sobre el ítem seleccionado</td></tr>
+          <tr><td>Buscar</td><td>Ctrl + F</td><td>⌘ + F</td><td>Dentro de ventanas/visores</td></tr>
+          <tr><td>Seleccionar todo</td><td>Ctrl + A</td><td>⌘ + A</td><td>Útil para mover/copiar en lote</td></tr>
+          <tr><td>Nueva carpeta</td><td>Ctrl + Shift + N</td><td>⌘ + Shift + N</td><td>En la ubicación actual</td></tr>
+          <tr><td>Eliminar</td><td>Supr</td><td>⌘ + Supr</td><td>Va a Papelera</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ERRORES -->
+<section id="errores" class="section">
+  <h2><span class="pill">F</span> Errores comunes y cómo evitarlos</h2>
+  <div class="grid">
+    <article class="card col-4 searchable" data-keywords="duplicados copia copia final final v1 v2">
+      <div class="icon">🌀</div>
+      <h3>Archivos duplicados</h3>
+      <p>Evita “copia_final_v2_definitiva”. Usa versiones claras: <code>proyecto_v01</code>, <code>v02</code>…</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="sin respaldo perdida datos">
+      <div class="icon">🧯</div>
+      <h3>Sin respaldo</h3>
+      <p>No esperes a perder datos. Configura copias automáticas y prueba la restauración.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="nombres vagos desorden ubicacion">
+      <div class="icon">🧩</div>
+      <h3>Nombres vagos</h3>
+      <p>Evita <em>“cosas”, “varios”, “nuevo”</em>. Nombra por contenido y fecha.</p>
+    </article>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario" class="section">
+  <h2><span class="pill">G</span> Glosario rápido</h2>
+  <div class="grid">
+    <article class="card col-4 searchable" data-keywords="extensión tipo archivo sufijo">
+      <div class="icon">🏷️</div>
+      <h3>Extensión</h3>
+      <p>Texto al final del nombre (ej.: <strong>.pdf</strong>) que indica el tipo de archivo.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="metadatos informacion adicional propiedades tamaño fecha">
+      <div class="icon">📚</div>
+      <h3>Metadatos</h3>
+      <p>Propiedades como autor, tamaño, fechas, etiquetas y permisos.</p>
+    </article>
+    <article class="card col-4 searchable" data-keywords="permisos lectura escritura ejecutar">
+      <div class="icon">🔐</div>
+      <h3>Permisos</h3>
+      <p>Autorizaciones de lectura, escritura o ejecución para un usuario o grupo.</p>
+    </article>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos" class="section">
+  <h2><span class="pill">H</span> Recursos sugeridos</h2>
+  <div class="grid">
+    <article class="card col-6 searchable" data-keywords="organizacion plantilla estructura">
+      <div class="icon">📁</div>
+      <h3>Plantilla de estructura</h3>
+      <p>Usa una carpeta base con subcarpetas: <em>docs, assets, export, backup</em>. Adáptala a cada proyecto.</p>
+    </article>
+    <article class="card col-6 searchable" data-keywords="copias seguridad nube versionado">
+      <div class="icon">☁️</div>
+      <h3>Guía de copias de seguridad</h3>
+      <p>Regla 3-2-1: 3 copias, 2 medios diferentes, 1 fuera de tu equipo (nube).</p>
+    </article>
+  </div>
+</section>
+
+<footer>
+  Hecho con 💙 para aprender más fácil. | <a href="#inicio">Volver al inicio</a>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba">⬆️</button>
+
+<script>
+/* ------------ Navegación activa por sección (IntersectionObserver) ------------ */
+const menuLinks = [...document.querySelectorAll('.menu a')];
+const sections = menuLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const activate = id => {
+  menuLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+};
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      activate(entry.target.id);
+    }
+  });
+},{ rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+sections.forEach(s => io.observe(s));
+
+/* ------------------------------ Botón “arriba” ------------------------------ */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 500) toTop.classList.add('show'); else toTop.classList.remove('show');
+});
+toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ------------------------------ Buscador global ----------------------------- */
+/*
+  - Filtra todos los elementos con clase .searchable (tarjetas y filas).
+  - Coincide contra texto visible y atributo data-keywords.
+  - Resalta coincidencias con <mark>.
+*/
+const searchInput = document.getElementById('search');
+const hitCounter = document.getElementById('hits');
+const searchable = () => [...document.querySelectorAll('.searchable')];
+
+function normalize(str){ return (str||'').toString().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,''); }
+
+function clearMarks(node){
+  node.querySelectorAll('mark').forEach(m=>{
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+function highlight(node, term){
+  if(!term) return;
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+  const texts = [];
+  while(walker.nextNode()) texts.push(walker.currentNode);
+  const re = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  texts.forEach(t => {
+    if(!t.nodeValue.trim()) return;
+    const frag = document.createDocumentFragment();
+    const parts = t.nodeValue.split(re);
+    if(parts.length === 1) return;
+    parts.forEach((p,i)=>{
+      if(i%2===1){
+        const mark = document.createElement('mark');
+        mark.textContent = p;
+        frag.appendChild(mark);
+      }else{
+        frag.appendChild(document.createTextNode(p));
+      }
+    });
+    t.parentNode.replaceChild(frag, t);
+  });
+}
+
+function filterContent(q){
+  const term = normalize(q).trim();
+  let hits = 0;
+  searchable().forEach(el=>{
+    // limpiar resaltados previos
+    clearMarks(el);
+    const visibleText = normalize(el.innerText);
+    const keywords = normalize(el.getAttribute('data-keywords')||'');
+    const match = term.length===0 || visibleText.includes(term) || keywords.includes(term);
+    el.style.display = match ? '' : 'none';
+    if(match && term.length>0){ highlight(el, q); }
+    if(match) hits++;
+  });
+  hitCounter.textContent = `${hits} ${hits===1?'resultado':'resultados'}`;
+}
+
+searchInput.addEventListener('input', (e)=> filterContent(e.target.value));
+filterContent(''); // inicia contador
+
+/* --------------------- Accesibilidad: enfoque visible ---------------------- */
+document.querySelectorAll('a, button, input').forEach(el=>{
+  el.addEventListener('focus', ()=> el.style.boxShadow = 'var(--focus)');
+  el.addEventListener('blur', ()=> el.style.boxShadow = 'none');
+});
+</script>
+<script>
+// Palabras clave y destino asociado
+const temas = {
+  "conceptos": "conceptos.html",
+  "archivo": "conceptos.html",
+  "carpeta": "conceptos.html",
+  "extensión": "conceptos.html",
+  "tipos": "tipos.html",
+  "documentos": "tipos.html",
+  "imágenes": "tipos.html",
+  "videos": "tipos.html",
+  "audio": "tipos.html",
+  "operaciones": "operaciones.html",
+  "copiar": "operaciones.html",
+  "mover": "operaciones.html",
+  "eliminar": "operaciones.html",
+  "organización": "organizacion.html",
+  "estructuras": "organizacion.html",
+  "respaldo": "organizacion.html",
+  "atajos": "atajos.html",
+  "teclado": "atajos.html",
+  "errores": "errores.html",
+  "duplicados": "errores.html",
+  "glosario": "glosario.html",
+  "recursos": "recursos.html",
+  "nube": "recursos.html",
+  "quiz": "quiz.html",
+  "evaluación": "quiz.html",
+  "examen": "quiz.html"
+};
+
+const input = document.getElementById("search");
+const hits = document.getElementById("hits");
+
+input.addEventListener("input", e => {
+  const query = e.target.value.trim().toLowerCase();
+  if (!query) {
+    hits.textContent = "0 resultados";
+    hits.style.color = "#5e6a85";
+    return;
+  }
+
+  // Buscar coincidencias
+  const results = Object.keys(temas).filter(k => k.includes(query));
+  const count = results.length;
+  hits.textContent = `${count} resultado${count !== 1 ? "s" : ""}`;
+
+  // Si hay coincidencia exacta, redirige al archivo
+  if (temas[query]) {
+    hits.textContent = `→ Abriendo ${temas[query]}...`;
+    hits.style.color = "#2e7d32";
+    setTimeout(() => window.location.href = temas[query], 900);
+  } else {
+    hits.style.color = count > 0 ? "#2e7d32" : "#a11515";
+  }
+});
+</script>
+
+</body>
+</html>

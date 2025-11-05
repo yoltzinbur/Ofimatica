@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organización | Manual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html" class="active">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Organización y buenas prácticas 🗂️</h1>
+
+  <div class="panel reveal">
+    <h2>Estructura por proyecto</h2>
+    <img class="illus" src="https://dummyimage.com/800x220/ebfff3/5e6a85&text=docs%2F+assets%2F+export%2F+backup%2F" alt="Estructura de carpetas">
+    <p>Crea una carpeta por proyecto y subcarpetas por tipo (<em>docs</em>, <em>assets</em>, <em>export</em>, <em>backup</em>).</p>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card reveal">
+      <div class="icon">🏷️</div>
+      <h2>Nombres consistentes</h2>
+      <p>Usa fecha ISO y versión: <code>2025-10-23_informe_v01</code></p>
+      <p class="ok tip">Más fácil de buscar y ordenar.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🎯</div>
+      <h2>Etiquetas y favoritos</h2>
+      <p>Colores y marcadores para acceso rápido a carpetas frecuentes.</p>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h2>Regla 3-2-1 de respaldo</h2>
+    <p><strong>3</strong> copias • <strong>2</strong> medios distintos • <strong>1</strong> fuera del equipo (nube).</p>
+    <p class="warn tip">Pruébalo: restaura un archivo de prueba para verificar tu copia.</p>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

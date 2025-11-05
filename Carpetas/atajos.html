@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atajos | Manual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html" class="active">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Atajos de teclado ⌨️</h1>
+
+  <div class="grid grid-3">
+    <div class="card reveal"><h2>Copiar</h2><p><span class="kb">Ctrl+C</span> / <span class="kb">⌘C</span></p></div>
+    <div class="card reveal"><h2>Cortar</h2><p><span class="kb">Ctrl+X</span> / <span class="kb">⌘X</span></p></div>
+    <div class="card reveal"><h2>Pegar</h2><p><span class="kb">Ctrl+V</span> / <span class="kb">⌘V</span></p></div>
+    <div class="card reveal"><h2>Renombrar</h2><p><span class="kb">F2</span> / <span class="kb">Enter</span></p></div>
+    <div class="card reveal"><h2>Buscar</h2><p><span class="kb">Ctrl+F</span> / <span class="kb">⌘F</span></p></div>
+    <div class="card reveal"><h2>Nueva carpeta</h2><p><span class="kb">Ctrl+Shift+N</span> / <span class="kb">⌘Shift+N</span></p></div>
+  </div>
+
+  <div class="panel reveal">
+    <h2>Sugerencia</h2>
+    <p>Crea una “chuleta” con tus atajos favoritos y practícalos 5 minutos al día.</p>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

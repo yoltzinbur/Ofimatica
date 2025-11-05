@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correo Electrónico - Ofimática</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #4a90e2;
+            --light-color: #e8f4f8;
+            --dark-color: #1a2947;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            background-color: var(--dark-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav ul li {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        nav ul li a.active {
+            background-color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            background: var(--white);
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .content-section:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .content-section h3 {
+            color: var(--secondary-color);
+            font-size: 1.7rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h3::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .content-section ul {
+            margin-left: 2.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1.08rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .content-section ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .image-container {
+            margin: 2.5rem 0;
+            text-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .image-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            padding: 0 1rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-box {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .info-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            background-color: var(--light-color);
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: var(--white);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f5f9ff;
+        }
+
+        .quiz-container {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .quiz-option input {
+            margin: 0;
+        }
+
+        .quiz-submit {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .quiz-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .tab-container {
+            margin: 2rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1.5rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+
+        .comparison-table th {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .protocol-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .protocol-keyword {
+            color: #f92672;
+        }
+
+        .protocol-comment {
+            color: #75715e;
+        }
+
+        .protocol-response {
+            color: #a6e22e;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .email-template {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .template-header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .template-field {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .field-value {
+            color: var(--text-color);
+        }
+
+        .security-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-high {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .badge-medium {
+            background-color: var(--warning-color);
+            color: black;
+        }
+
+        .badge-low {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                min-width: 100%;
+            }
+
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .tab.active {
+                border-bottom: 3px solid var(--accent-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header>
+        <div class="header-content">
+            <h1>Correo Electrónico - Ofimática</h1>
+            <p>Gestión profesional, seguridad y productividad en comunicaciones digitales</p>
+        </div>
+    </header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="archivos-carpetas.html">Manejo de Archivos</a></li>
+        <li><a href="bloc-editores.html">Bloc de Notas y Editores</a></li>
+        <li><a href="sistema-windows.html">Sistema Operativo Windows</a></li>
+        <li><a href="bases-datos.html">Bases de Datos</a></li>
+        <li><a href="correo-electronico.html" class="active">Correo Electrónico</a></li>
+    </ul>
+</nav>
+
+    <main>
+        <div class="content-section">
+            <h2>Introducción al Correo Electrónico</h2>
+            <p>El correo electrónico es uno de los servicios más importantes de Internet, permitiendo el intercambio de mensajes y archivos entre usuarios de manera rápida y eficiente. En el ámbito profesional, el uso adecuado del correo electrónico es una habilidad esencial que puede marcar la diferencia en la productividad y comunicación empresarial.</p>
+            
+            <div class="info-box">
+                <h4>Evolución del Correo Electrónico</h4>
+                <p>Desde su creación en 1971 por Ray Tomlinson, el correo electrónico ha evolucionado desde simples mensajes de texto hasta sistemas complejos que integran calendarios, contactos, tareas y videoconferencias. Hoy en día, más de 300 mil millones de correos se envían diariamente en todo el mundo.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="card">
+                    <h4><i class="fas fa-bolt"></i> Ventajas Principales</h4>
+                    <ul>
+                        <li>Velocidad de entrega casi instantánea</li>
+                        <li>Bajo costo comparado con correo tradicional</li>
+                        <li>Capacidad de enviar archivos adjuntos</li>
+                        <li>Acceso desde cualquier dispositivo con internet</li>
+                        <li>Registro permanente de las comunicaciones</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-chart-bar"></i> Estadísticas Importantes</h4>
+                    <ul>
+                        <li>4.300 millones de usuarios activos en 2024</li>
+                        <li>75% del tráfico empresarial es por email</li>
+                        <li>El 55% de los usuarios revisa email en móvil</li>
+                        <li>ROI promedio: $42 por cada $1 invertido</li>
+                        <li>90% de emails llegan a la bandeja en 5 segundos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Protocolos de Correo Electrónico</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="tab1">SMTP</div>
+                    <div class="tab" data-tab="tab2">POP3</div>
+                    <div class="tab" data-tab="tab3">IMAP</div>
+                    <div class="tab" data-tab="tab4">Exchange</div>
+                </div>
+                <div class="tab-content active" id="tab1">
+                    <h4>SMTP (Simple Mail Transfer Protocol)</h4>
+                    <p>Protocolo estándar para enviar correos electrónicos a través de Internet. Opera en el puerto 25 (sin encriptación) o 587 (con TLS).</p>
+                    
+                    <div class="protocol-example">
+                        <span class="protocol-comment"># Conexión SMTP básica</span><br>
+                        <span class="protocol-keyword">HELO</span> dominio.com<br>
+                        <span class="protocol-keyword">MAIL FROM:</span> &lt;remitente@dominio.com&gt;<br>
+                        <span class="protocol-keyword">RCPT TO:</span> &lt;destinatario@otrodominio.com&gt;<br>
+                        <span class="protocol-keyword">DATA</span><br>
+                        Subject: Asunto del mensaje<br>
+                        <br>
+                        Cuerpo del mensaje...<br>
+                        .<br>
+                        <span class="protocol-keyword">QUIT</span>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Función:</strong> Exclusivamente para envío de mensajes</li>
+                        <li><strong>Puertos comunes:</strong> 25, 587, 465 (SSL)</li>
+                        <li><strong>Ventajas:</strong> Estándar universal, confiable</li>
+                        <li><strong>Limitaciones:</strong> No gestiona recepción</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <h4>POP3 (Post Office Protocol v3)</h4>
+                    <p>Protocolo para recibir correos, descargándolos del servidor al dispositivo local. Opera en el puerto 110 (sin encriptación) o 995 (con SSL).</p>
+                    
+                    <div class="protocol-example">
+                        <span class="protocol-comment"># Sesión POP3 típica</span><br>
+                        <span class="protocol-keyword">USER</span> nombre_usuario<br>
+                        <span class="protocol-keyword">PASS</span> contraseña<br>
+                        <span class="protocol-keyword">STAT</span><br>
+                        <span class="protocol-response">+OK 5 12000</span><br>
+                        <span class="protocol-keyword">RETR 1</span><br>
+                        <span class="protocol-keyword">DELE 1</span><br>
+                        <span class="protocol-keyword">QUIT</span>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Función:</strong> Descarga de mensajes del servidor</li>
+                        <li><strong>Puertos comunes:</strong> 110, 995 (SSL)</li>
+                        <li><strong>Ventajas:</strong> Mensajes disponibles sin conexión</li>
+                        <li><strong>Limitaciones:</strong> Sincronización limitada entre dispositivos</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab3">
+                    <h4>IMAP (Internet Message Access Protocol)</h4>
+                    <p>Protocolo avanzado que permite gestionar correos directamente en el servidor, manteniendo la sincronización entre múltiples dispositivos.</p>
+                    
+                    <div class="protocol-example">
+                        <span class="protocol-comment"># Comandos IMAP básicos</span><br>
+                        <span class="protocol-keyword">A01 LOGIN</span> usuario contraseña<br>
+                        <span class="protocol-keyword">A02 SELECT</span> INBOX<br>
+                        <span class="protocol-keyword">A03 FETCH</span> 1 BODY[HEADER]<br>
+                        <span class="protocol-keyword">A04 STORE</span> 1 +FLAGS (\Seen)<br>
+                        <span class="protocol-keyword">A05 LOGOUT</span>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Función:</strong> Gestión de correo en el servidor</li>
+                        <li><strong>Puertos comunes:</strong> 143, 993 (SSL)</li>
+                        <li><strong>Ventajas:</strong> Sincronización completa entre dispositivos</li>
+                        <li><strong>Limitaciones:</strong> Requiere conexión constante</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab4">
+                    <h4>Microsoft Exchange/ActiveSync</h4>
+                    <p>Protocolo propietario de Microsoft que ofrece sincronización en tiempo real de correo, calendario, contactos y tareas.</p>
+                    
+                    <ul>
+                        <li><strong>Función:</strong> Sincronización completa de información</li>
+                        <li><strong>Puertos comunes:</strong> 443 (HTTPS)</li>
+                        <li><strong>Ventajas:</strong> Sincronización en tiempo real, funciones colaborativas</li>
+                        <li><strong>Limitaciones:</strong> Mayor consumo de batería y datos</li>
+                        <li><strong>Uso típico:</strong> Entornos empresariales con Exchange Server</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=1000&h=500&fit=crop" alt="Protocolos de correo">
+                <p class="image-caption">Flujo de comunicación entre protocolos de correo electrónico</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Gestores de Correo Electrónico Comparativos</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Microsoft Outlook</th>
+                            <th>Gmail</th>
+                            <th>Mozilla Thunderbird</th>
+                            <th>Apple Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Costo</strong></td>
+                            <td>Parte de Microsoft 365 ($6.99+/mes)</td>
+                            <td>Gratuito (15GB) / Google Workspace ($6+/mes)</td>
+                            <td>Completamente gratuito</td>
+                            <td>Gratuito en dispositivos Apple</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plataformas</strong></td>
+                            <td>Windows, Mac, Web, Móvil</td>
+                            <td>Web, Móvil, Desktop (limitado)</td>
+                            <td>Windows, Mac, Linux</td>
+                            <td>Mac, iOS, iPadOS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Almacenamiento</strong></td>
+                            <td>50GB-100GB por usuario</td>
+                            <td>15GB gratis / 30GB-5TB pagado</td>
+                            <td>Limitado por disco duro</td>
+                            <td>Limitado por iCloud/disk</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integraciones</strong></td>
+                            <td>Excelente con Office</td>
+                            <td>Excelente con Google Workspace</td>
+                            <td>Complementos extensibles</td>
+                            <td>Excelente con ecosistema Apple</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad</strong></td>
+                            <td>Avanzada (empresarial)</td>
+                            <td>Muy buena (AI anti-spam)</td>
+                            <td>Buena (depende de configuración)</td>
+                            <td>Buena (integración nativa)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mejor para</strong></td>
+                            <td>Empresas, profesionales</td>
+                            <td>Usuarios generales, startups</td>
+                            <td>Técnicos, privacidad, multiplataforma</td>
+                            <td>Usuarios Apple, integración</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Configuración Avanzada - Ejemplo Outlook</h3>
+            
+            <div class="two-column">
+                <div>
+                    <h4>Configuración Servidor Entrante (IMAP)</h4>
+                    <div class="email-template">
+                        <div class="template-field">
+                            <span class="field-label">Servidor:</span>
+                            <span class="field-value">outlook.office365.com</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Puerto:</span>
+                            <span class="field-value">993</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Método de cifrado:</span>
+                            <span class="field-value">SSL/TLS</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Autenticación:</span>
+                            <span class="field-value">Contraseña normal</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4>Configuración Servidor Saliente (SMTP)</h4>
+                    <div class="email-template">
+                        <div class="template-field">
+                            <span class="field-label">Servidor:</span>
+                            <span class="field-value">smtp.office365.com</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Puerto:</span>
+                            <span class="field-value">587</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Método de cifrado:</span>
+                            <span class="field-value">STARTTLS</span>
+                        </div>
+                        <div class="template-field">
+                            <span class="field-label">Autenticación:</span>
+                            <span class="field-value">Contraseña normal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Seguridad en el Correo Electrónico</h2>
+            
+            <div class="info-box">
+                <h4>Estadísticas de Ciberseguridad 2024</h4>
+                <p>El 94% del malware se distribuye por correo electrónico • El phishing representa el 80% de los incidentes de seguridad • Las empresas pierden promedio $4.35 millones por violación de datos • El 74% de las organizaciones sufrió un ataque de ransomware exitoso a través de email</p>
+            </div>
+
+            <h3>Amenazas Principales</h3>
+            
+            <div class="three-column">
+                <div class="card">
+                    <h4><i class="fas fa-fish"></i> Phishing</h4>
+                    <p>Suplantación de identidad para obtener información confidencial.</p>
+                    <span class="security-badge badge-high">Alto Riesgo</span>
+                    <ul>
+                        <li>Emails que parecen legítimos</li>
+                        <li>Urgencia artificial</li>
+                        <li>Enlaces a sitios falsos</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-bug"></i> Malware</h4>
+                    <p>Software malicioso distribuido por archivos adjuntos.</p>
+                    <span class="security-badge badge-high">Alto Riesgo</span>
+                    <ul>
+                        <li>Archivos .exe, .zip</li>
+                        <li>Macros en documentos</li>
+                        <li>Scripts embebidos</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-mask"></i> Spoofing</h4>
+                    <p>Falsificación de la dirección del remitente.</p>
+                    <span class="security-badge badge-medium">Riesgo Medio</span>
+                    <ul>
+                        <li>Dominios similares</li>
+                        <li>Nombre display manipulado</li>
+                        <li>Falta de autenticación</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Medidas de Protección</h3>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">2FA</div>
+                    <div>
+                        <h4>Autenticación de Dos Factores</h4>
+                        <p>Protege tu cuenta incluso si tu contraseña es comprometida. Usa aplicaciones como Google Authenticator o Microsoft Authenticator.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">SSL</div>
+                    <div>
+                        <h4>Cifrado de Comunicaciones</h4>
+                        <p>Asegúrate de usar siempre conexiones SSL/TLS para IMAP, POP3 y SMTP. Verifica el candado en tu cliente de correo.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">SPF</div>
+                    <div>
+                        <h4>Protocolos Anti-Spoofing</h4>
+                        <p>Implementa SPF, DKIM y DMARC en tu dominio para prevenir la suplantación de identidad.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">Edu</div>
+                    <div>
+                        <h4>Educación del Usuario</h4>
+                        <p>Capacita a los usuarios para identificar correos sospechosos y seguir protocolos de seguridad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Configuración SPF, DKIM y DMARC</h3>
+            
+            <div class="protocol-example">
+                <span class="protocol-comment"># Registro SPF (DNS TXT)</span><br>
+                "v=spf1 mx a include:_spf.google.com ~all"<br><br>
+                
+                <span class="protocol-comment"># Registro DKIM (DNS TXT)</span><br>
+                "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC..."<br><br>
+                
+                <span class="protocol-comment"># Registro DMARC (DNS TXT)</span><br>
+                "v=DMARC1; p=quarantine; rua=mailto:dmarc@dominio.com"
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Productividad y Automatización</h2>
+            
+            <h3>Plantillas de Correo Efectivas</h3>
+            
+            <div class="email-template">
+                <div class="template-header">
+                    <h4>Plantilla: Seguimiento de Reunión</h4>
+                </div>
+                <div class="template-field">
+                    <span class="field-label">Asunto:</span>
+                    <span class="field-value">Seguimiento: Reunión [Fecha] - [Tema]</span>
+                </div>
+                <div class="template-field">
+                    <span class="field-label">Saludo:</span>
+                    <span class="field-value">Hola [Nombre],</span>
+                </div>
+                <div class="template-field">
+                    <span class="field-label">Cuerpo:</span>
+                    <span class="field-value">Gracias por tu tiempo en nuestra reunión del [fecha]. Como acordamos, aquí está el resumen de los puntos tratados y los próximos pasos:</span>
+                </div>
+                <div class="template-field">
+                    <span class="field-label">Puntos clave:</span>
+                    <span class="field-value">• [Punto 1] - Responsable: [Nombre] - Fecha: [Fecha]<br>• [Punto 2] - Responsable: [Nombre] - Fecha: [Fecha]</span>
+                </div>
+                <div class="template-field">
+                    <span class="field-label">Cierre:</span>
+                    <span class="field-value">Quedo atento a tus comentarios. Saludos cordiales,<br>[Tu Nombre]<br>[Tu Cargo]</span>
+                </div>
+            </div>
+
+            <h3>Reglas y Filtros Automáticos</h3>
+            
+            <div class="two-column">
+                <div>
+                    <h4>Ejemplo: Organización por Proyectos</h4>
+                    <div class="protocol-example">
+                        <span class="protocol-comment"># Regla: Mover emails de proyecto X</span><br>
+                        SI (Asunto contiene "Proyecto X")<br>
+                        ENTONCES:<br>
+                        - Mover a carpeta "Proyecto X"<br>
+                        - Marcar como importante<br>
+                        - Aplicar categoría "Trabajo"
+                    </div>
+                </div>
+                <div>
+                    <h4>Ejemplo: Gestión de Newsletters</h4>
+                    <div class="protocol-example">
+                        <span class="protocol-comment"># Regla: Organizar newsletters</span><br>
+                        SI (Remitente contiene "newsletter")<br>
+                        ENTONCES:<br>
+                        - Mover a carpeta "Newsletters"<br>
+                        - Marcar como leído<br>
+                        - No notificar
+                    </div>
+                </div>
+            </div>
+
+            <h3>Atajos de Teclado Esenciales</h3>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">⌘N</div>
+                    <div>
+                        <h4>Nuevo Mensaje</h4>
+                        <p>Ctrl+N (Windows) / Cmd+N (Mac)</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⌘R</div>
+                    <div>
+                        <h4>Responder</h4>
+                        <p>Ctrl+R (Windows) / Cmd+R (Mac)</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⌘F</div>
+                    <div>
+                        <h4>Buscar</h4>
+                        <p>Ctrl+F (Windows) / Cmd+F (Mac)</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⌘Enter</div>
+                    <div>
+                        <h4>Enviar</h4>
+                        <p>Ctrl+Enter (Windows) / Cmd+Enter (Mac)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Evaluación de Conocimientos</h2>
+            
+            <div class="quiz-container">
+                <h3>Cuestionario sobre Correo Electrónico</h3>
+                
+                <div class="quiz-question">
+                    <p>1. ¿Qué protocolo se utiliza principalmente para enviar correos electrónicos?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q1a" name="q1" value="a">
+                            <label for="q1a">POP3</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1b" name="q1" value="b">
+                            <label for="q1b">SMTP</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1c" name="q1" value="c">
+                            <label for="q1c">IMAP</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. ¿Cuál de estas NO es una ventaja del protocolo IMAP sobre POP3?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q2a" name="q2" value="a">
+                            <label for="q2a">Sincronización entre múltiples dispositivos</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2b" name="q2" value="b">
+                            <label for="q2b">Los mensajes se almacenan en el servidor</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2c" name="q2" value="c">
+                            <label for="q2c">Menor uso de almacenamiento local</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. ¿Qué significa SPF en el contexto de seguridad de correo?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q3a" name="q3" value="a">
+                            <label for="q3a">Sender Policy Framework</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3b" name="q3" value="b">
+                            <label for="q3b">Secure Password Format</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3c" name="q3" value="c">
+                            <label for="q3c">Simple Protection Filter</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>4. ¿Cuál es el puerto seguro recomendado para IMAP?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q4a" name="q4" value="a">
+                            <label for="q4a">143</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4b" name="q4" value="b">
+                            <label for="q4b">993</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4c" name="q4" value="c">
+                            <label for="q4c">995</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>5. ¿Qué técnica de ataque utiliza correos falsos que parecen legítimos para robar información?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q5a" name="q5" value="a">
+                            <label for="q5a">Phishing</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q5b" name="q5" value="b">
+                            <label for="q5b">Spoofing</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q5c" name="q5" value="c">
+                            <label for="q5c">Malware</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="quiz-submit" onclick="checkQuiz()">Verificar Respuestas</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Recursos Adicionales</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Guía Oficial de Gmail</h4>
+                    <p>Documentación completa de todas las funciones de Gmail y Google Workspace.</p>
+                    <a href="https://support.google.com/mail" target="_blank">Visitar sitio</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Microsoft Outlook Help</h4>
+                    <p>Soporte oficial de Microsoft con tutoriales y solución de problemas.</p>
+                    <a href="https://support.microsoft.com/outlook" target="_blank">Visitar sitio</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Mozilla Thunderbird</h4>
+                    <p>Documentación y foros de la comunidad de Thunderbird.</p>
+                    <a href="https://support.mozilla.org/thunderbird" target="_blank">Visitar sitio</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Email Security Best Practices</h4>
+                    <p>Guía de CISA sobre seguridad en correo electrónico.</p>
+                    <a href="https://www.cisa.gov/secure-our-world" target="_blank">Visitar sitio</a>
+                </div>
+                <div class="resource-card">
+                    <h4>RFCs de Protocolos</h4>
+                    <p>Documentación técnica oficial de SMTP, IMAP, POP3.</p>
+                    <a href="https://www.rfc-editor.org/" target="_blank">Visitar sitio</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Email Template Builder</h4>
+                    <p>Herramienta para crear plantillas de correo profesionales.</p>
+                    <a href="https://www.hubspot.com/email-signature-generator" target="_blank">Visitar sitio</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>Material Educativo de Ofimática</strong></p>
+            <p>Elaborado por estudiantes de 5° semestre para apoyo de 1° semestre</p>
+            <p>Tema: Correo Electrónico</p>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="#">Recursos</a>
+                <a href="#">Contacto</a>
+                <a href="#">Acerca de</a>
+            </div>
+            <p>&copy; 2025 - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Barra de progreso
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+            
+            // Botón "Volver arriba"
+            const backToTop = document.getElementById('backToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        // Sistema de pestañas
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover clase activa de todas las pestañas y contenidos
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Activar pestaña clickeada
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Verificación del cuestionario
+        function checkQuiz() {
+            const answers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'a',
+                q4: 'b',
+                q5: 'a'
+            };
+            
+            let score = 0;
+            
+            for (const question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                    selected.parentElement.style.color = 'green';
+                } else if (selected) {
+                    selected.parentElement.style.color = 'red';
+                }
+            }
+            
+            alert(`Obtuviste ${score} de 5 respuestas correctas.`);
+        }
+
+
+
+        // Botón "Volver arriba"
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

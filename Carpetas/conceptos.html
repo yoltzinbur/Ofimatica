@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conceptos | Manual de Archivos y Carpetas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html" class="active">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Conceptos básicos 📘</h1>
+
+  <div class="panel reveal">
+    <h2>¿Qué es un archivo?</h2>
+    <p>Unidad de información con <strong>nombre</strong> y <strong>extensión</strong> que indica su tipo (ej.: <code>.pdf</code>, <code>.jpg</code>).</p>
+    <p class="tip ok"><span class="badge">Ejemplo</span> <code>Informe_2025.pdf</code> → documento PDF con texto e imágenes.</p>
+    <img class="illus" alt="Ilustración archivo" src="https://dummyimage.com/800x220/eaf6ff/5e6a85&text=Archivo+%F0%9F%93%84">
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card reveal">
+      <div class="icon">🗂️</div>
+      <h2>Carpeta (directorio)</h2>
+      <p>Contenedor que guarda archivos y otras carpetas (subcarpetas) para mantener el orden por proyectos o categorías.</p>
+      <p class="tip">Usa nombres <strong>claros y consistentes</strong> para encontrarlas rápido.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🧭</div>
+      <h2>Ruta</h2>
+      <p><strong>Absoluta:</strong> desde la raíz del sistema. <strong>Relativa:</strong> desde la carpeta actual.</p>
+      <p class="tip"><span class="kb">Windows</span> <code>C:\Usuarios\Melani\Documentos</code></p>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h2>Metadatos y permisos</h2>
+    <p>Los <strong>metadatos</strong> describen un archivo (autor, fechas, tamaño). Los <strong>permisos</strong> controlan quién puede leer, modificar o ejecutar.</p>
+    <p class="warn tip"><strong>Atención:</strong> en equipos compartidos, evita dar permisos de escritura a todos.</p>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

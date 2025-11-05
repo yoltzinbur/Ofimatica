@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos | Manual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html" class="active">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Recursos y enlaces útiles 🌐</h1>
+
+  <div class="panel reveal">
+    <h2>Plantilla de estructura</h2>
+    <p>Crea una base con <em>docs</em>, <em>assets</em>, <em>export</em>, <em>backup</em> y duplícala para cada proyecto.</p>
+    <img class="illus" src="https://dummyimage.com/800x220/eaf6ff/5e6a85&text=Plantilla+de+carpetas" alt="Plantilla de carpetas">
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card reveal">
+      <div class="icon">☁️</div>
+      <h2>Copias en la nube</h2>
+      <p>Google Drive, OneDrive, Dropbox. Activa sincronización y revisa el historial de versiones.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">💡</div>
+      <h2>Buenas prácticas</h2>
+      <p>Agenda un “día de orden” mensual para limpiar descargas y duplicados.</p>
+    </div>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

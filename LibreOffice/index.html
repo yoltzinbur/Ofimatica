@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía Completa de LibreOffice - Manual Completo</title>
+  <link rel="stylesheet" href="libreoffice.css">
+  <link rel="icon" type="image/jpeg" href="IMG/libreofice.jpg">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+ 
+  <header class="header">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="#inicio" class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+          <path d="M14 2v6h6"/>
+        </svg>
+      </div>
+      <span class="logo-text">LibreOffice</span>
+      <span class="logo-badge">Guía</span>
+    </a>
+
+    <!-- Navegación Principal (Desktop) -->
+    <nav class="nav" id="mainNav">
+      <a href="#inicio" class="nav-item active">Inicio</a>
+      <a href="#introduccion" class="nav-item">Introducción</a>
+      <a href="#conociendo" class="nav-item">Conociendo</a>
+      <a href="#componentes" class="nav-item">Componentes</a>
+      <a href="#interfaz" class="nav-item">Interfaz</a>
+      <a href="#uso-basico" class="nav-item">Uso Básico</a>
+      <a href="#funciones-avanzadas" class="nav-item">Avanzadas</a>
+      <a href="#tutoriales" class="nav-item">Tutoriales</a>
+      <a href="#atajos" class="nav-item">Atajos</a>
+    </nav>
+
+    <!-- Botones de Acción -->
+    <div class="header-actions">
+      <!-- Botón Buscar -->
+      <button class="action-btn search-btn" type="button" title="Buscar (/)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <span class="btn-text">Buscar</span>
+      </button>
+
+      <!-- Botón TOC -->
+      <button class="action-btn toc-btn" type="button" title="Contenido (T)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <span class="btn-text">Contenido</span>
+      </button>
+
+      <!-- Aplicaciones Suite -->
+      <div class="suite-dropdown">
+        <button class="action-btn suite-toggle" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span class="btn-text">Apps</span>
+        </button>
+        
+        <div class="suite-menu">
+          <a href="Writer/writer.php" class="suite-link">
+            <div class="suite-icon writer">W</div>
+            <div class="suite-info">
+              <span class="suite-name">Writer</span>
+              <span class="suite-desc">Procesador de texto</span>
+            </div>
+          </a>
+          <a href="Cal/Calc.php" class="suite-link">
+            <div class="suite-icon calc">C</div>
+            <div class="suite-info">
+              <span class="suite-name">Calc</span>
+              <span class="suite-desc">Hojas de cálculo</span>
+            </div>
+          </a>
+          <a href="impress.php" class="suite-link">
+            <div class="suite-icon impress">I</div>
+            <div class="suite-info">
+              <span class="suite-name">Impress</span>
+              <span class="suite-desc">Presentaciones</span>
+            </div>
+          </a>
+          <a href="draw.php" class="suite-link">
+            <div class="suite-icon draw">D</div>
+            <div class="suite-info">
+              <span class="suite-name">Draw</span>
+              <span class="suite-desc">Dibujos y diagramas</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Menú Móvil -->
+      <button class="mobile-menu-btn" type="button" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Navegación Móvil -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-content">
+      <a href="#inicio" class="mobile-nav-item active">Inicio</a>
+      <a href="#introduccion" class="mobile-nav-item">Introducción</a>
+      <a href="#conociendo" class="mobile-nav-item">Conociendo</a>
+      <a href="#componentes" class="mobile-nav-item">Componentes</a>
+      <a href="#interfaz" class="mobile-nav-item">Interfaz</a>
+      <a href="#uso-basico" class="mobile-nav-item">Uso Básico</a>
+      <a href="#funciones-avanzadas" class="mobile-nav-item">Avanzadas</a>
+      <a href="#tutoriales" class="mobile-nav-item">Tutoriales</a>
+      <a href="#atajos" class="mobile-nav-item">Atajos</a>
+      <a href="#recomendaciones" class="mobile-nav-item">Recomendaciones</a>
+      <a href="#glosario" class="mobile-nav-item">Glosario</a>
+    </div>
+  </div>
+</header>
+<!-- Overlay del Buscador -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <!-- Header del Buscador -->
+    <div class="search-header">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input 
+          type="search" 
+          id="siteSearch" 
+          class="search-input"
+          placeholder="Buscar en la guía..." 
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="search-shortcut">
+          <kbd>/</kbd>
+        </div>
+      </div>
+      <button class="search-close" aria-label="Cerrar (Esc)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Estadísticas de búsqueda -->
+    <div class="search-stats" id="searchStats"></div>
+
+    <!-- Resultados -->
+    <div class="search-results-wrapper">
+      <div class="search-results" id="searchResults" role="listbox">
+        <!-- Los resultados se insertan dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Footer del buscador -->
+    <div class="search-footer">
+      <div class="search-shortcuts-hint">
+        <kbd>↑</kbd><kbd>↓</kbd> navegar
+        <kbd>↵</kbd> seleccionar
+        <kbd>esc</kbd> cerrar
+      </div>
+    </div>
+  </div>
+</div>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Guía Completa de LibreOffice</h1>
+      <p>Manual completo para aprender a utilizar la suite ofimática gratuita y de código abierto</p>
+      <div class="hero-image-placeholder">
+        <img src="IMG/libreoffice-hero.jpg" alt="LibreOffice Suite" class="hero-image">
+      </div>
+      <a href="#introduccion" class="cta-button">
+        <span>Comenzar Aprendizaje</span>
+        <i class="icon-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INTRODUCCIÓN EXPANDIDA -->
+  <section class="section intro-section" id="introduccion">
+    <div class="container">
+      <div class="section-title">
+        <h2>Introducción a LibreOffice</h2>
+        <p>Descubre la suite ofimática gratuita más poderosa del mercado</p>
+      </div>
+
+      <div class="intro-content">
+        <div class="intro-image-section">
+          <img src="IMG/libreofice.jpg" alt="Características LibreOffice" class="intro-image">
+        </div>
+
+        <div class="intro-text">
+          <h3>¿Qué es LibreOffice?</h3>
+          <p><strong>LibreOffice</strong> es una suite ofimática de código abierto desarrollada por <strong>The Document Foundation</strong>. Surgió como una bifurcación de OpenOffice.org en 2010 y desde entonces ha crecido gracias a una comunidad global de desarrolladores.</p>
+
+          <h4>Objetivo de este manual</h4>
+          <p>"Aprender a utilizar las herramientas básicas y avanzadas de LibreOffice para crear documentos profesionales, hojas de cálculo, presentaciones y más, de manera eficiente y gratuita."</p>
+
+          <h4>¿A quién va dirigido?</h4>
+          <ul class="feature-list">
+            <li><strong>Estudiantes:</strong> Para trabajos, tesis y proyectos académicos</li>
+            <li><strong>Docentes:</strong> Para preparar material educativo y evaluaciones</li>
+            <li><strong>Usuarios domésticos:</strong> Para uso personal y familiar</li>
+            <li><strong>Profesionales:</strong> Para documentos empresariales e informes</li>
+            <li><strong>Organizaciones:</strong> Para reducir costos en licencias de software</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: CONOCIENDO LIBREOFFICE -->
+  <section class="section" id="conociendo">
+    <div class="container">
+      <div class="section-title">
+        <h2>Conociendo LibreOffice</h2>
+        <p>Todo lo que necesitas saber sobre esta suite ofimática</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-info"></i></div>
+          <h3>¿Qué es LibreOffice?</h3>
+          <p>Suite ofimática gratuita y de código abierto que incluye procesador de textos, hojas de cálculo, presentaciones, bases de datos y más. Es la alternativa perfecta a Microsoft Office.</p>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-features"></i></div>
+          <h3>Características Principales</h3>
+          <ul class="feature-list">
+            <li>Completamente gratuita</li>
+            <li>Código abierto y transparente</li>
+            <li>Compatible con formatos Microsoft Office</li>
+            <li>Multiplataforma (Windows, Linux, macOS)</li>
+            <li>Comunidad activa de desarrollo</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-comparison"></i></div>
+          <h3>Diferencias con Microsoft Office</h3>
+          <ul class="feature-list">
+            <li><strong>Precio:</strong> LibreOffice es completamente gratis</li>
+            <li><strong>Licencia:</strong> Software libre vs. software propietario</li>
+            <li><strong>Formatos:</strong> ODF (estándar abierto) vs. formatos propietarios</li>
+            <li><strong>Personalización:</strong> Mayor flexibilidad en LibreOffice</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-compatibility"></i></div>
+          <h3>Versiones y Compatibilidad</h3>
+          <p><strong>Windows:</strong> 7, 8, 10, 11 (32 y 64 bits)<br>
+          <strong>macOS:</strong> 10.10 o superior<br>
+          <strong>Linux:</strong> Todas las distribuciones principales<br>
+          <strong>Formatos soportados:</strong> ODT, DOC, DOCX, XLS, XLSX, PPT, PPTX, PDF y más</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: COMPONENTES -->
+  <section class="section" id="componentes">
+    <div class="container">
+      <div class="section-title">
+        <h2>Componentes de LibreOffice</h2>
+        <p>Conoce todas las herramientas que incluye la suite</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-writer"></i></div>
+          <h3>Writer - Procesador de Texto</h3>
+          <p>Herramienta completa para crear documentos, cartas, informes y libros. Incluye corrector ortográfico, auto-corrección, estilos y plantillas profesionales.</p>
+          <ul class="feature-list">
+            <li>Documentos maestros para proyectos largos</li>
+            <li>Tablas de contenido automáticas</li>
+            <li>Combinación de correspondencia</li>
+            <li>Exportación a PDF con marcadores</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-calc"></i></div>
+          <h3>Calc - Hojas de Cálculo</h3>
+          <p>Potente aplicación para análisis de datos, cálculos financieros y gestión de información. Compatible con fórmulas de Excel y funciones avanzadas.</p>
+          <ul class="feature-list">
+            <li>Más de 500 funciones disponibles</li>
+            <li>Tablas dinámicas para análisis de datos</li>
+            <li>Gráficos profesionales</li>
+            <li>Escenarios y solver para optimización</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-impress"></i></div>
+          <h3>Impress - Presentaciones</h3>
+          <p>Crea presentaciones impactantes con animaciones, transiciones y efectos multimedia. Ideal para clases, conferencias y reuniones empresariales.</p>
+          <ul class="feature-list">
+            <li>Plantillas profesionales</li>
+            <li>Animaciones y transiciones 3D</li>
+            <li>Modo presentador con notas</li>
+            <li>Exportación a PDF y video</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-draw"></i></div>
+          <h3>Draw - Dibujos y Diagramas</h3>
+          <p>Editor de gráficos vectoriales para crear diagramas, organigramas, planos y ilustraciones. Soporte para capas, estilos y conectores inteligentes.</p>
+          <ul class="feature-list">
+            <li>Herramientas de dibujo vectorial</li>
+            <li>Conectores para diagramas de flujo</li>
+            <li>Gestión de capas y estilos</li>
+            <li>Conversión 3D básica</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-base"></i></div>
+          <h3>Base - Bases de Datos</h3>
+          <p>Sistema de gestión de bases de datos con interfaz gráfica. Compatible con múltiples motores como MySQL, PostgreSQL, Access y más.</p>
+          <ul class="feature-list">
+            <li>Interfaz gráfica intuitiva</li>
+            <li>Asistentes para formularios e informes</li>
+            <li>Lenguaje SQL nativo</li>
+            <li>Integración con otros componentes</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-math"></i></div>
+          <h3>Math - Editor de Fórmulas</h3>
+          <p>Editor especializado para crear y editar fórmulas matemáticas y científicas. Integrable con Writer e Impress para documentos académicos.</p>
+          <ul class="feature-list">
+            <li>Editor visual de fórmulas</li>
+            <li>Soporte para notación científica</li>
+            <li>Biblioteca de símbolos matemáticos</li>
+            <li>Formatos de exportación variados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INTERFAZ EXPANDIDA -->
+  <section class="section" id="interfaz">
+    <div class="container">
+      <div class="section-title">
+        <h2>Interfaz de LibreOffice Writer</h2>
+        <p>Familiarízate con el entorno de trabajo principal</p>
+      </div>
+
+      <div class="interface-content">
+        <div class="interface-image-section">
+          <img src="IMG/interface.jpg" alt="Interfaz LibreOffice Writer" class="interface-image">
+        </div>
+
+        <div class="interface-elements">
+          <div class="interface-card">
+            <i class="icon-menubar"></i>
+            <h4>Barra de Menús</h4>
+            <p>Acceso a todas las funciones organizadas en menús desplegables: Archivo, Editar, Ver, Insertar, Formato, etc.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-toolbar"></i>
+            <h4>Barras de Herramientas</h4>
+            <p>Accesos directos a funciones comunes. Puedes personalizarlas añadiendo o quitando botones según tus necesidades.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-ruler"></i>
+            <h4>Reglas</h4>
+            <p>Muestran las dimensiones del documento y permiten ajustar márgenes, sangrías y tabuladores visualmente.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-workspace"></i>
+            <h4>Área de Trabajo</h4>
+            <p>Zona principal donde escribes y editas tu documento. Muestra el contenido tal como se imprimirá.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-status"></i>
+            <h4>Barra de Estado</h4>
+            <p>Muestra información útil como número de página, idioma, modo de visualización y porcentaje de zoom.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid" style="margin-top: 40px;">
+        <div class="card fade-in">
+          <h3>Crear, Guardar y Abrir Documentos</h3>
+          <ul class="feature-list">
+            <li><strong>Nuevo documento:</strong> Archivo → Nuevo o Ctrl+N</li>
+            <li><strong>Abrir documento:</strong> Archivo → Abrir o Ctrl+O</li>
+            <li><strong>Guardar:</strong> Archivo → Guardar o Ctrl+S</li>
+            <li><strong>Guardar como:</strong> Archivo → Guardar como o Ctrl+Mayús+S</li>
+            <li><strong>Cerrar documento:</strong> Archivo → Cerrar o Ctrl+W</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Personalizar la Interfaz</h3>
+          <ul class="feature-list">
+            <li><strong>Ver → Barras de herramientas:</strong> Activar/desactivar barras</li>
+            <li><strong>Herramientas → Personalizar:</strong> Modificar botones y menús</li>
+            <li><strong>Herramientas → Opciones:</strong> Configurar preferencias globales</li>
+            <li><strong>Ver → Diseño de pantalla:</strong> Cambiar aspecto visual</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: USO BÁSICO -->
+  <section class="section" id="uso-basico">
+    <div class="container">
+      <div class="section-title">
+        <h2>Uso Básico de LibreOffice</h2>
+        <p>Aprende las funciones esenciales de cada componente</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Writer - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Escribir y editar texto:</strong> Click y escribe, selecciona texto arrastrando</li>
+            <li><strong>Fuente y tamaño:</strong> Barra de formato o Formato → Carácter</li>
+            <li><strong>Alineación de párrafos:</strong> Izquierda, centrado, derecha, justificado</li>
+            <li><strong>Sangrías:</strong> Usa las reglas o Formato → Párrafo</li>
+            <li><strong>Insertar imágenes:</strong> Insertar → Imagen → Desde archivo</li>
+            <li><strong>Insertar tablas:</strong> Insertar → Tabla o Ctrl+F12</li>
+            <li><strong>Insertar símbolos:</strong> Insertar → Símbolos especiales</li>
+            <li><strong>Exportar a PDF:</strong> Archivo → Exportar a PDF</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Calc - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Ingresar datos:</strong> Click en celda y escribir</li>
+            <li><strong>Fórmulas básicas:</strong> =SUMA(A1:A10), =PROMEDIO(B1:B5)</li>
+            <li><strong>Insertar gráficos:</strong> Insertar → Gráfico</li>
+            <li><strong>Formato de celdas:</strong> Formato → Celdas o Ctrl+1</li>
+            <li><strong>Auto-relleno:</strong> Arrastrar esquina inferior derecha de celda</li>
+            <li><strong>Congelar paneles:</strong> Ver → Inmovilizar celdas</li>
+            <li><strong>Filtros:</strong> Datos → Filtro → Filtro automático</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Impress - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Nueva presentación:</strong> Archivo → Nuevo → Presentación</li>
+            <li><strong>Insertar diapositivas:</strong> Insertar → Diapositiva o Ctrl+M</li>
+            <li><strong>Diseños:</strong> Formato → Diseño de diapositiva</li>
+            <li><strong>Animaciones:</strong> Diapositiva → Animación personalizada</li>
+            <li><strong>Transiciones:</strong> Diapositiva → Transición de diapositiva</li>
+            <li><strong>Modo presentador:</strong> Presentación → Presentación de diapositivas</li>
+            <li><strong>Notas del orador:</strong> Área de notas en la parte inferior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: FUNCIONES AVANZADAS -->
+  <section class="section" id="funciones-avanzadas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Funciones Avanzadas</h2>
+        <p>Técnicas y herramientas para usuarios experimentados</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Estilos y Plantillas</h3>
+          <p><strong>Estilos de párrafo:</strong> Aplicar formatos consistentes (F11)</p>
+          <p><strong>Estilos de carácter:</strong> Formato para texto específico</p>
+          <p><strong>Plantillas de documento:</strong> Archivo → Plantillas → Guardar</p>
+          <p><strong>Organizador de plantillas:</strong> Gestión centralizada de plantillas</p>
+          <ul class="feature-list">
+            <li>Crea estilos para títulos, subtítulos y cuerpo</li>
+            <li>Modifica estilos existentes para personalizar</li>
+            <li>Usa plantillas para documentos recurrentes</li>
+            <li>Comparte plantillas con otros usuarios</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Tablas de Contenido e Índices</h3>
+          <p><strong>Tabla de contenido automática:</strong> Insertar → Índices y tablas → Índice y tablas</p>
+          <p><strong>Índice alfabético:</strong> Insertar → Índices y tablas → Índice alfabético</p>
+          <p><strong>Índice de ilustraciones:</strong> Insertar → Índices y tablas → Índice de ilustraciones</p>
+          <p><strong>Actualizar índices:</strong> Click derecho → Actualizar índice</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Macros y Automatización</h3>
+          <p><strong>Grabar macros:</strong> Herramientas → Macros → Grabar macro</p>
+          <p><strong>Ejecutar macros:</strong> Herramientas → Macros → Ejecutar macro</p>
+          <p><strong>Editor de macros:</strong> Herramientas → Macros → Organizar macros</p>
+          <p><strong>Lenguaje:</strong> LibreOffice Basic (similar a VBA)</p>
+          <ul class="feature-list">
+            <li>Automatiza tareas repetitivas</li>
+            <li>Personaliza funciones específicas</li>
+            <li>Crea interfaces personalizadas</li>
+            <li>Importa macros de otros usuarios</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Configuración de Impresión</h3>
+          <p><strong>Vista preliminar:</strong> Archivo → Vista preliminar</p>
+          <p><strong>Configurar página:</strong> Formato → Página</p>
+          <p><strong>Opciones de impresión:</strong> Archivo → Imprimir o Ctrl+P</p>
+          <p><strong>Imprimir rangos específicos:</strong> Selecciona antes de imprimir</p>
+          <ul class="feature-list">
+            <li>Ajusta márgenes y orientación</li>
+            <li>Configura encabezados y pies de página</li>
+            <li>Selecciona impresora y propiedades</li>
+            <li>Imprime a archivo PDF</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN TUTORIALES (EXISTENTE) -->
+  <section class="section" id="tutoriales">
+    <div class="container">
+      <div class="section-title">
+        <h2>Tutoriales Paso a Paso</h2>
+        <p>Desde lo básico hasta técnicas avanzadas</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="tutorial-card fade-in">
+          <div class="tutorial-image">
+            <img src="IMG/ofiss.jpg" alt="Formato básico" class="tutorial-img">
+            <div class="tutorial-overlay"><i class="icon-play"></i></div>
+          </div>
+          <div class="tutorial-content">
+            <div class="tutorial-meta">
+              <span><i class="icon-clock"></i> 20 minutos</span>
+              <span class="difficulty-badge difficulty-beginner">Principiante</span>
+            </div>
+            <h3>Formato y estilos en Writer</h3>
+            <p>Aprende a usar estilos, plantillas y a crear un documento profesional desde cero.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-card fade-in">
+          <div class="tutorial-image">
+            <img src="IMG/libof.jpg" alt="Calc formulas" class="tutorial-img">
+            <div class="tutorial-overlay"><i class="icon-play"></i></div>
+          </div>
+          <div class="tutorial-content">
+            <div class="tutorial-meta">
+              <span><i class="icon-clock"></i> 35 minutos</span>
+              <span class="difficulty-badge difficulty-intermediate">Intermedio</span>
+            </div>
+            <h3>Funciones y gráficos en Calc</h3>
+            <p>Desde fórmulas básicas hasta gráficos y análisis de datos.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-card fade-in">
+          <div class="tutorial-image">
+            <img src="IMG/impress.jpg" alt="Impress design" class="tutorial-img">
+            <div class="tutorial-overlay"><i class="icon-play"></i></div>
+          </div>
+          <div class="tutorial-content">
+            <div class="tutorial-meta">
+              <span><i class="icon-clock"></i> 30 minutos</span>
+              <span class="difficulty-badge difficulty-beginner">Principiante</span>
+            </div>
+            <h3>Creación de presentaciones en Impress</h3>
+            <p>Diseño de diapositivas, plantillas y exportación a PPTX/PDF.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-card fade-in">
+          <div class="tutorial-image">
+            <img src="IMG/macros.jpg" alt="Automatización" class="tutorial-img">
+            <div class="tutorial-overlay"><i class="icon-play"></i></div>
+          </div>
+          <div class="tutorial-content">
+            <div class="tutorial-meta">
+              <span><i class="icon-clock"></i> 40 minutos</span>
+              <span class="difficulty-badge difficulty-advanced">Avanzado</span>
+            </div>
+            <h3>Macros y automatización</h3>
+            <p>Introducción a las macros en LibreOffice (Basic) y automatizaciones comunes.</p>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN ATAJOS EXPANDIDA -->
+  <section class="section shortcuts-section" id="atajos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Atajos de Teclado Completos</h2>
+        <p>Acelera tu trabajo con estos comandos esenciales</p>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Atajos universales</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-file"></i><h4>Gestión de archivos</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Nuevo documento</span><span class="shortcut-keys">Ctrl + N</span></div>
+              <div class="shortcut-item"><span>Abrir documento</span><span class="shortcut-keys">Ctrl + O</span></div>
+              <div class="shortcut-item"><span>Guardar</span><span class="shortcut-keys">Ctrl + S</span></div>
+              <div class="shortcut-item"><span>Guardar como</span><span class="shortcut-keys">Ctrl + Shift + S</span></div>
+              <div class="shortcut-item"><span>Imprimir</span><span class="shortcut-keys">Ctrl + P</span></div>
+              <div class="shortcut-item"><span>Cerrar documento</span><span class="shortcut-keys">Ctrl + W</span></div>
+              <div class="shortcut-item"><span>Salir de la aplicación</span><span class="shortcut-keys">Ctrl + Q</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-edit"></i><h4>Edición básica</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Deshacer</span><span class="shortcut-keys">Ctrl + Z</span></div>
+              <div class="shortcut-item"><span>Rehacer</span><span class="shortcut-keys">Ctrl + Y</span></div>
+              <div class="shortcut-item"><span>Copiar</span><span class="shortcut-keys">Ctrl + C</span></div>
+              <div class="shortcut-item"><span>Cortar</span><span class="shortcut-keys">Ctrl + X</span></div>
+              <div class="shortcut-item"><span>Pegar</span><span class="shortcut-keys">Ctrl + V</span></div>
+              <div class="shortcut-item"><span>Pegado especial</span><span class="shortcut-keys">Ctrl + Shift + V</span></div>
+              <div class="shortcut-item"><span>Seleccionar todo</span><span class="shortcut-keys">Ctrl + A</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Navegación y formato</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-format"></i><h4>Formato de texto</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Negrita</span><span class="shortcut-keys">Ctrl + B</span></div>
+              <div class="shortcut-item"><span>Cursiva</span><span class="shortcut-keys">Ctrl + I</span></div>
+              <div class="shortcut-item"><span>Subrayado</span><span class="shortcut-keys">Ctrl + U</span></div>
+              <div class="shortcut-item"><span>Aumentar tamaño fuente</span><span class="shortcut-keys">Ctrl + ]</span></div>
+              <div class="shortcut-item"><span>Disminuir tamaño fuente</span><span class="shortcut-keys">Ctrl + [</span></div>
+              <div class="shortcut-item"><span>Alinear izquierda</span><span class="shortcut-keys">Ctrl + L</span></div>
+              <div class="shortcut-item"><span>Alinear centro</span><span class="shortcut-keys">Ctrl + E</span></div>
+              <div class="shortcut-item"><span>Alinear derecha</span><span class="shortcut-keys">Ctrl + R</span></div>
+              <div class="shortcut-item"><span>Justificar</span><span class="shortcut-keys">Ctrl + J</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-navigation"></i><h4>Navegación</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Buscar</span><span class="shortcut-keys">Ctrl + F</span></div>
+              <div class="shortcut-item"><span>Buscar y reemplazar</span><span class="shortcut-keys">Ctrl + H</span></div>
+              <div class="shortcut-item"><span>Ir a</span><span class="shortcut-keys">Ctrl + G</span></div>
+              <div class="shortcut-item"><span>Panel Navigator</span><span class="shortcut-keys">F5</span></div>
+              <div class="shortcut-item"><span>Insertar salto de página</span><span class="shortcut-keys">Ctrl + Enter</span></div>
+              <div class="shortcut-item"><span>Insertar salto de línea</span><span class="shortcut-keys">Shift + Enter</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Funciones avanzadas</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-styles"></i><h4>Estilos y plantillas</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Estilos y formato</span><span class="shortcut-keys">F11</span></div>
+              <div class="shortcut-item"><span>Actualizar estilo</span><span class="shortcut-keys">F11 + Actualizar</span></div>
+              <div class="shortcut-item"><span>Nuevo estilo</span><span class="shortcut-keys">F11 + Nuevo</span></div>
+              <div class="shortcut-item"><span>Plantillas de documento</span><span class="shortcut-keys">Ctrl + Shift + N</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-tools"></i><h4>Herramientas</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Corrector ortográfico</span><span class="shortcut-keys">F7</span></div>
+              <div class="shortcut-item"><span>Insertar hipervínculo</span><span class="shortcut-keys">Ctrl + K</span></div>
+              <div class="shortcut-item"><span>Insertar tabla</span><span class="shortcut-keys">Ctrl + F12</span></div>
+              <div class="shortcut-item"><span>Insertar comentario</span><span class="shortcut-keys">Ctrl + Alt + C</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: RECOMENDACIONES -->
+  <section class="section" id="recomendaciones">
+    <div class="container">
+      <div class="section-title">
+        <h2>Recomendaciones y Buenas Prácticas</h2>
+        <p>Consejos para un uso eficiente y seguro de LibreOffice</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-save"></i></div>
+          <h3>Guardar Frecuentemente</h3>
+          <ul class="feature-list">
+            <li>Usa Ctrl+S regularmente durante tu trabajo</li>
+            <li>Activa el guardado automático en Herramientas → Opciones → Cargar/Guardar → General</li>
+            <li>Guarda versiones intermedias en proyectos largos</li>
+            <li>Usa "Guardar como" para crear copias de respaldo</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-naming"></i></div>
+          <h3>Nomenclatura de Archivos</h3>
+          <ul class="feature-list">
+            <li>Usa nombres descriptivos y claros</li>
+            <li>Incluye fechas en formato YYYY-MM-DD</li>
+            <li>Usa guiones bajos en lugar de espacios</li>
+            <li>Incluye versiones en nombres de archivos importantes</li>
+            <li>Ejemplo: "Informe_Mensual_2024-03_v2.odt"</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-backup"></i></div>
+          <h3>Copias de Seguridad</h3>
+          <ul class="feature-list">
+            <li>Guarda copias en diferentes ubicaciones</li>
+            <li>Usa servicios en la nube (Nextcloud, Dropbox)</li>
+            <li>Realiza copias de seguridad periódicas</li>
+            <li>Configura la recuperación de versiones anteriores</li>
+            <li>Mantén copias fuera del sitio (backup remoto)</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-update"></i></div>
+          <h3>Mantenimiento y Actualizaciones</h3>
+          <ul class="feature-list">
+            <li>Mantén LibreOffice actualizado</li>
+            <li>Habilita actualizaciones automáticas</li>
+            <li>Actualiza extensiones regularmente</li>
+            <li>Revisa los logs de actualización</li>
+            <li>Consulta la documentación oficial</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: GLOSARIO -->
+  <section class="section" id="glosario">
+    <div class="container">
+      <div class="section-title">
+        <h2>Glosario de Términos</h2>
+        <p>Diccionario con los conceptos básicos de LibreOffice</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>A - C</h3>
+          <dl class="glossary-list">
+            <dt>Barra de herramientas</dt>
+            <dd>Conjunto de botones que proporcionan acceso rápido a funciones comunes.</dd>
+            
+            <dt>Calc</dt>
+            <dd>Componente de LibreOffice para hojas de cálculo, similar a Excel.</dd>
+            
+            <dt>Celda</dt>
+            <dd>Intersección de una fila y una columna en una hoja de cálculo.</dd>
+            
+            <dt>Compatibilidad</dt>
+            <dd>Capacidad de LibreOffice para trabajar con formatos de otros programas.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>D - F</h3>
+          <dl class="glossary-list">
+            <dt>Documento maestro</dt>
+            <dd>Documento que contiene y controla un conjunto de subdocumentos.</dd>
+            
+            <dt>Estilo</dt>
+            <dd>Conjunto de formatos que se pueden aplicar a texto, párrafos o páginas.</dd>
+            
+            <dt>Exportar</dt>
+            <dd>Guardar un documento en un formato diferente al nativo.</dd>
+            
+            <dt>Formato</dt>
+            <dd>Apariencia y disposición del contenido en un documento.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>G - M</h3>
+          <dl class="glossary-list">
+            <dt>Hoja de cálculo</dt>
+            <dd>Documento de Calc organizado en filas y columnas para cálculos.</dd>
+            
+            <dt>Impress</dt>
+            <dd>Componente de LibreOffice para crear presentaciones.</dd>
+            
+            <dt>Macro</dt>
+            <dd>Secuencia de comandos que automatiza tareas repetitivas.</dd>
+            
+            <dt>Math</dt>
+            <dd>Editor de ecuaciones y fórmulas matemáticas de LibreOffice.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>N - Z</h3>
+          <dl class="glossary-list">
+            <dt>ODF (Open Document Format)</dt>
+            <dd>Formato estándar abierto utilizado por defecto en LibreOffice.</dd>
+            
+            <dt>Plantilla</dt>
+            <dd>Documento base que define estilos y formato para nuevos documentos.</dd>
+            
+            <dt>Writer</dt>
+            <dd>Procesador de textos de LibreOffice, similar a Word.</dd>
+            
+            <dt>Zoom</dt>
+            <dd>Control del nivel de ampliación o reducción de la vista del documento.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>LibreOffice</h4>
+          <ul>
+            <li>Suite ofimática gratuita</li>
+            <li>Writer, Calc, Impress, Draw, Base, Math</li>
+            <li>Compatible con ODF y formatos MS Office</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#">Descargas</a></li>
+            <li><a href="#">Extensiones</a></li>
+            <li><a href="#">Documentación</a></li>
+            <li><a href="#">Foros de ayuda</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">Foros</a></li>
+            <li><a href="#">Contribuir</a></li>
+            <li><a href="#">Reportar errores</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Manual</h4>
+          <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#componentes">Componentes</a></li>
+            <li><a href="#uso-basico">Uso básico</a></li>
+            <li><a href="#atajos">Atajos de teclado</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© LibreOffice • Manual Completo 2024 • The Document Foundation</div>
+        <div class="footer-badges">
+          <span class="badge">Open Source</span>
+          <span class="badge">100% Gratuito</span>
+          <span class="badge">Multiplataforma</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="libreoffice.js "></script>
+</body>
+</html>

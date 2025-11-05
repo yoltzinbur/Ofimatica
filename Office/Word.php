@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Completa de Microsoft Word 2025 | Aprende desde Cero hasta Avanzado</title>
+  <style>
+    :root {
+      --word-blue: #185ABD;
+      --accent: #0078D4;
+      --bg: #F7F9FC;
+      --bg-2: #EEF2F8;
+      --card: #FFFFFF;
+      --border: #E5EAF2;
+      --txt: #1F2937;
+      --txt-2: #4B5563;
+      --txt-3: #6B7280;
+      --ok: #107C10;
+      --warn: #FF8C00;
+      --danger: #D13438;
+      --info: #0078D4;
+      --ff: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --fs-hero: clamp(2rem, 1.2rem + 2.5vw, 3rem);
+      --fs-xl: clamp(1.5rem, 1rem + 1.6vw, 2.2rem);
+      --fs-lg: clamp(1.1rem, .95rem + .6vw, 1.35rem);
+      --fs: 1rem;
+      --fs-sm: .94rem;
+      --fs-xs: .84rem;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --speed: 180ms;
+      --container: 1180px;
+      --sd4: 0 2px 6px rgba(0,0,0,.06);
+      --sd8: 0 6px 15px rgba(0,0,0,.08);
+      --sd16: 0 14px 34px rgba(0,0,0,.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      font-size: var(--fs);
+      line-height: 1.65;
+      color: var(--txt);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 22px; }
+    .progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1000; }
+    .progress .bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--word-blue), var(--accent)); transition: width 0.3s ease; }
+    header { position: sticky; top: 0; z-index: 900; background: color-mix(in srgb, var(--card) 85%, transparent); backdrop-filter: saturate(160%) blur(16px); border-bottom: 1px solid var(--border); box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+    .nav { display: flex; align-items: center; justify-content: space-between; max-width: var(--container); margin: 0 auto; padding: 12px 22px; gap: 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--word-blue); font-weight: 700; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--word-blue), var(--accent)); box-shadow: var(--sd8); padding: 6px; }
+    .brand h1 { font-size: 1.1rem; white-space: nowrap; }
+    .search { position: relative; flex: 1; max-width: 500px; margin: 0 20px; }
+    .searchbox { position: relative; display: flex; align-items: center; background: var(--bg-2); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; transition: all var(--speed); box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+    .searchbox:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--accent); }
+    .search .icon { width: 18px; height: 18px; color: var(--txt-3); }
+    #siteSearch { border: 0; background: transparent; width: 100%; padding: 0 8px; outline: none; color: var(--txt); }
+    #siteSearch::placeholder { color: var(--txt-3); }
+    .clear-btn { background: none; border: 0; color: var(--txt-3); cursor: pointer; padding: 2px; border-radius: 4px; font-size: 1.2rem; line-height: 1; }
+    .clear-btn:hover { color: var(--txt-2); }
+    .results { position: absolute; top: 100%; left: 0; right: 0; background: var(--card); border: 1px solid var(--border); border-radius: 14px; margin-top: 8px; box-shadow: var(--sd16); max-height: 300px; overflow: auto; display: none; }
+    .results.show { display: block; }
+    .search-result { display: block; padding: 10px 14px; color: var(--txt); text-decoration: none; border-bottom: 1px solid var(--border); transition: background var(--speed); }
+    .search-result:hover { background: var(--bg-2); }
+    .no-results { padding: 10px 14px; color: var(--txt-3); font-style: italic; }
+    .actions { display: flex; align-items: center; gap: 12px; }
+    .theme-switch { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: .9rem; transition: all var(--speed); }
+    .theme-switch:hover { border-color: var(--accent); }
+    .theme-switch .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); position: relative; overflow: hidden; }
+    .hamb { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); }
+    .hamb span { width: 20px; height: 2px; background: var(--txt); border-radius: 1px; transition: all var(--speed); }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(2) { opacity: 0; }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .navlinks { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; margin-top: 12px; display: none; }
+    #menuToggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 8px 14px; border-radius: 999px; color: var(--txt); border: 1px solid transparent; transition: all var(--speed); }
+    .navlinks a:hover { background: var(--card); border-color: var(--border); text-decoration: none; }
+    .toc-toggle { display: none; margin-bottom: 16px; padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font-size: .9rem; transition: all var(--speed); align-self: flex-start; }
+    .toc-toggle:hover { background: var(--bg-2); border-color: var(--accent); }
+    .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 32px; max-width: var(--container); margin: 32px auto; padding: 0 22px; }
+    @media (max-width: 1024px) { .wrap { grid-template-columns: 1fr; } }
+    .toc { position: sticky; top: 100px; align-self: start; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--sd4); height: 80vh; overflow-y: auto; }
+    .toc h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--word-blue); }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc li { margin: .5rem 0; }
+    .toc a { color: var(--txt-2); font-size: .9rem; display: block; padding: 4px 0; border-left: 2px solid transparent; padding-left: 8px; transition: all var(--speed); }
+    .toc a:hover { color: var(--txt); border-left-color: var(--accent); text-decoration: none; }
+    @media (max-width: 1024px) {
+      .toc-toggle { display: block; }
+      .toc { display: none; position: relative; top: 0; margin-bottom: 24px; }
+      .toc.show { display: block; }
+    }
+    main { min-height: 80vh; }
+    .hero { background: linear-gradient(135deg, var(--word-blue), var(--accent)); color: #fff; padding: 64px 32px; border-radius: 14px; margin-bottom: 32px; text-align: center; }
+    .hero h2 { font-size: var(--fs-hero); font-weight: 300; margin-bottom: 16px; }
+    .hero p { font-size: var(--fs-lg); opacity: .95; max-width: 800px; margin: 0 auto 24px; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 600; background: var(--accent); color: #fff; border: 1px solid transparent; transition: all var(--speed); text-decoration: none; }
+    .btn:hover { background: color-mix(in srgb, var(--accent), black 10%); transform: translateY(-2px); box-shadow: var(--sd8); text-decoration: none; }
+    .btn-outline { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
+    .block { margin-bottom: 64px; }
+    .block h3 { font-size: var(--fs-xl); font-weight: 300; color: var(--word-blue); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .lead { font-size: var(--fs-lg); color: var(--txt-2); margin-bottom: 32px; max-width: 900px; }
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; box-shadow: var(--sd4); transition: all var(--speed); }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--sd8); border-color: var(--accent); }
+    .card h4 { font-size: 1.25rem; margin-bottom: 12px; color: var(--word-blue); }
+    .muted { color: var(--txt-3); font-size: .9rem; }
+    .steps { list-style: none; padding-left: 0; }
+    .steps li { position: relative; padding-left: 28px; margin-bottom: 12px; }
+    .steps li:before { content: ""; position: absolute; left: 0; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+    .steps ol { list-style: decimal; padding-left: 20px; margin-top: 8px; }
+    .steps ol li { margin-bottom: 8px; padding-left: 4px; }
+    .steps ol li:before { display: none; }
+    .callout { padding: 16px; border-radius: 10px; margin: 20px 0; border-left: 4px solid var(--info); background: rgba(0,120,212,.05); }
+    .callout.ok { border-left-color: var(--ok); background: rgba(16,124,16,.05); }
+    .callout.warn { border-left-color: var(--warn); background: rgba(255,140,0,.05); }
+    .callout.danger { border-left-color: var(--danger); background: rgba(209,52,56,.05); }
+    .callout.info { border-left-color: var(--info); background: rgba(0,120,212,.05); }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background: var(--bg-2); font-weight: 600; }
+    tr:nth-child(even) { background: var(--bg-2); }
+    .code { background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; font-size: .9rem; overflow-x: auto; margin: 20px 0; }
+    code { background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: .85rem; }
+    footer { background: var(--bg-2); border-top: 1px solid var(--border); margin-top: 80px; padding: 40px 0; }
+    .footer-inner { max-width: var(--container); margin: 0 auto; padding: 0 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    .footer-brand { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .footer-brand img { width: 24px; height: 24px; }
+    .footer-note { color: var(--txt-2); font-size: .9rem; margin-bottom: 16px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); text-decoration: none; transition: all var(--speed); }
+    .footer-social a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+    .footer-title { font-weight: 600; margin-bottom: 12px; color: var(--word-blue); }
+    .footer-list { list-style: none; padding-left: 0; }
+    .footer-list li { margin-bottom: 8px; }
+    .footer-list a { color: var(--txt-2); transition: color var(--speed); }
+    .footer-list a:hover { color: var(--txt); }
+    .backtop { position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--sd8); transition: all var(--speed); z-index: 100; }
+    .backtop:hover { transform: translateY(-2px); box-shadow: var(--sd16); text-decoration: none; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .skip { position: absolute; top: -40px; left: 6px; background: var(--accent); color: #fff; padding: 8px; border-radius: 4px; z-index: 1000; transition: top 0.3s; }
+    .skip:focus { top: 6px; }
+    .noscript { background: var(--warn); color: #fff; padding: 12px; text-align: center; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #151A24; --bg-2: #1B2230; --card: #1F2633; --border: #2B3240; --txt: #E6E8EE; --txt-2: #CDD3E1; --txt-3: #AAB3C7; }
+    }
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: stretch; }
+      .search { margin: 12px 0; max-width: 100%; }
+      .actions { justify-content: space-between; }
+      .wrap { padding: 0 16px; }
+      .hero { padding: 32px 20px; }
+      .footer-inner { gap: 24px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    .img-frame {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--sd4);
+      margin: 20px 0;
+      overflow: hidden;
+      text-align: center;
+      transition: transform var(--speed);
+    }
+    .img-frame:hover {
+      transform: scale(1.02);
+      box-shadow: var(--sd8);
+    }
+    .img-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .img-frame figcaption {
+      font-size: var(--fs-sm);
+      color: var(--txt-3);
+      padding: 8px 12px;
+      background: var(--bg-2);
+    }
+    .keyboard-shortcut {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-family: monospace;
+      font-size: .85rem;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .feature-item {
+      background: var(--bg-2);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+    .feature-item h5 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--word-blue);
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#inicio">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+  <header>
+    <nav class="nav" aria-label="Principal">
+      <input type="checkbox" id="menuToggle" class="visually-hidden" aria-hidden="true">
+      <input type="checkbox" id="themeToggle" class="visually-hidden" aria-hidden="true">
+      <div class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Logotipo de Ofimática" width="38" height="38">
+        <h1>Guía Completa de Microsoft Word 2025</h1>
+      </div>
+      <div class="search" role="search">
+        <form class="searchbox" autocomplete="off" onsubmit="return false;">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input id="siteSearch" type="search" placeholder="Buscar en la guía..."
+                 aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
+          <button type="button" id="clearSearch" class="clear-btn" aria-label="Limpiar búsqueda">&times;</button>
+        </form>
+        <div id="searchResults" class="results" role="listbox" aria-hidden="true"></div>
+      </div>
+      <div class="actions">
+        <label class="theme-switch" for="themeToggle" title="Tema claro/oscuro">
+          <span class="dot" aria-hidden="true"></span><span> Tema</span>
+        </label>
+        <label class="hamb" for="menuToggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+      <div id="primaryNav" class="navlinks" role="navigation" aria-label="Secciones">
+        <a href="index.php">Inicio</a>
+        <a href="Word.php">Word</a>
+        <a href="Excel.php">Excel</a>
+        <a href="PowerPoint.php">Power Point</a>
+        <a href="OneDrive.php">One Drive</a>
+        <a href="Outlook.php">Outlook</a>
+      </div>
+    </nav>
+  </header>
+  <div class="wrap">
+    <button class="toc-toggle" id="tocToggle">📋 Mostrar tabla de contenidos</button>
+    <aside class="toc" aria-label="Tabla de contenidos" id="toc">
+      <h2>Contenido</h2>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#modulo1">Módulo 1: Introducción a Microsoft Word</a></li>
+        <li><a href="#modulo2">Módulo 2: Trabajo con Texto</a></li>
+        <li><a href="#modulo3">Módulo 3: Formato de Texto y Párrafos</a></li>
+        <li><a href="#modulo4">Módulo 4: Diseño de Página y Maquetación</a></li>
+        <li><a href="#modulo5">Módulo 5: Inserción de Elementos</a></li>
+        <li><a href="#modulo6">Módulo 6: Herramientas de Revisión</a></li>
+        <li><a href="#modulo7">Módulo 7: Tablas y Formularios</a></li>
+        <li><a href="#modulo8">Módulo 8: Diseño Profesional de Documentos</a></li>
+        <li><a href="#modulo9">Módulo 9: Combinar Correspondencia</a></li>
+        <li><a href="#modulo10">Módulo 10: Funciones Avanzadas</a></li>
+        <li><a href="#modulo11">Módulo 11: Trabajo Colaborativo y Nube</a></li>
+        <li><a href="#modulo12">Módulo 12: Impresión y Exportación</a></li>
+        <li><a href="#modulo13">Módulo 13: Trucos y Atajos Útiles</a></li>
+        <li><a href="#modulo14">Módulo 14: Prácticas y Proyectos</a></li>
+      </ul>
+    </aside>
+    <main>
+      <!-- Sección de Inicio -->
+      <section class="hero" id="inicio">
+        <h2>Guía Completa de Microsoft Word 2025</h2>
+        <p>Domina <strong>Microsoft Word 2025</strong> con esta guía detallada: desde lo básico hasta funciones avanzadas, diseño profesional, colaboración en la nube, automatización y más. Incluye ejemplos prácticos, imágenes, consejos y tutoriales paso a paso.</p>
+        <div class="actions">
+          <a class="btn" href="#modulo1">Comenzar Aprendizaje</a>
+          <a class="btn btn-outline" href="#modulo13">Ver Atajos Rápidos</a>
+        </div>
+        <figure class="img-frame">
+          <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Microsoft+Word+2025" alt="Interfaz de Microsoft Word 2025 mostrando la cinta de opciones y un documento de ejemplo">
+          <figcaption>Microsoft Word 2025: el procesador de texto más potente, con nuevas funciones de IA, diseño mejorado y herramientas de colaboración.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Módulo 1: Introducción a Microsoft Word -->
+      <section id="modulo1" class="block">
+        <h3>Módulo 1. Introducción a Microsoft Word</h3>
+        <p class="lead">Microsoft Word es el procesador de texto más utilizado en el mundo, ideal para crear documentos profesionales, académicos y personales. En este módulo, explorarás su interfaz, historia, versiones y cómo comenzar a trabajar con documentos.</p>
+
+        <!-- ¿Qué es Microsoft Word? -->
+        <div class="card">
+          <h4>¿Qué es Microsoft Word y para qué sirve?</h4>
+          <p>Microsoft Word es una aplicación de procesamiento de texto que permite:</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h5>Creación de documentos</h5>
+              <p>Desde cartas y currículums hasta informes técnicos y tesis académicas, con herramientas de formato avanzado.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Edición colaborativa</h5>
+              <p>Trabaja en tiempo real con otros usuarios, con seguimiento de cambios y comentarios integrados.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Diseño profesional</h5>
+              <p>Plantillas prediseñadas, estilos, temas y herramientas de diseño para documentos visualmente atractivos.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Automatización</h5>
+              <p>Macros, campos dinámicos y combinación de correspondencia para ahorrar tiempo en tareas repetitivas.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Integración con la nube</h5>
+              <p>Guarda y comparte documentos en OneDrive o SharePoint, con acceso desde cualquier dispositivo.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Herramientas de revisión</h5>
+              <p>Corrector ortográfico, gramatical, diccionario de sinónimos y traductor integrado para documentos impecables.</p>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Ejemplo+de+Documento+en+Word" alt="Ejemplo de documento en Word con texto, imágenes y tablas">
+            <figcaption>Ejemplo de un documento profesional creado en Word, con texto formateado, imágenes, tablas y encabezados.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Historia y versiones de Word -->
+        <div class="card">
+          <h4>Historia y evolución de Microsoft Word</h4>
+          <p>Desde su lanzamiento en 1983, Word ha evolucionado para adaptarse a las necesidades de los usuarios, incorporando nuevas funciones y tecnologías:</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">1983</div>
+              <p><strong>Word 1.0 para MS-DOS:</strong> Primera versión con interfaz de línea de comandos, limitada a texto plano y formato básico.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1989</div>
+              <p><strong>Word para Windows:</strong> Interfaz gráfica con menús desplegables, barras de herramientas y soporte para fuentes TrueType.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/400x250/185ABD/FFFFFF?text=Word+para+Windows+1989" alt="Interfaz de Word para Windows en 1989">
+                <figcaption>Interfaz de Word para Windows en 1989, con menús y barras de herramientas básicas.</figcaption>
+              </figure>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1997</div>
+              <p><strong>Word 97:</strong> Introducción del Asistente de Office (Clippy) y mejoras en la edición de tablas y gráficos.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2007</div>
+              <p><strong>Word 2007:</strong> Revolucionaria interfaz con la <strong>cinta de opciones (Ribbon)</strong>, reemplazando los menús tradicionales.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/400x250/185ABD/FFFFFF?text=Word+2007+con+Ribbon" alt="Interfaz de Word 2007 con la cinta de opciones">
+                <figcaption>Word 2007 introdujo la cinta de opciones (Ribbon), que agrupa herramientas por pestañas temáticas.</figcaption>
+              </figure>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2016</div>
+              <p><strong>Word 2016:</strong> Integración con OneDrive para colaboración en tiempo real y nuevas herramientas de diseño.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2025</div>
+              <p><strong>Word 2025:</strong> Inteligencia artificial integrada (Copilot), diseño mejorado, automatización avanzada y mayor enfoque en la colaboración en la nube.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/400x250/185ABD/FFFFFF?text=Word+2025+con+IA" alt="Interfaz de Word 2025 con herramientas de IA">
+                <figcaption>Word 2025 incluye Copilot, un asistente de IA para generar, editar y optimizar contenido automáticamente.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Dato curioso:</strong> El nombre "Word" fue elegido porque el equipo de desarrollo quería transmitir la idea de "procesamiento de palabras" de manera simple y directa.
+          </div>
+        </div>
+
+        <!-- Interfaz y entorno de trabajo -->
+        <div class="card">
+          <h4>Interfaz y entorno de trabajo en Word 2025</h4>
+          <p>La interfaz de Word 2025 está diseñada para ser intuitiva y eficiente, con las siguientes áreas principales:</p>
+          <div class="grid grid-2">
+            <div>
+              <ul class="steps">
+                <li><strong>Barra de título:</strong> Muestra el nombre del documento y los botones para minimizar, maximizar y cerrar.</li>
+                <li><strong>Cinta de opciones (Ribbon):</strong> Organizada en pestañas como <strong>Inicio</strong>, <strong>Insertar</strong>, <strong>Diseño</strong>, <strong>Referencias</strong>, etc.</li>
+                <li><strong>Barra de herramientas de acceso rápido:</strong> Atajos a funciones como Guardar, Deshacer y Rehacer. Personalizable.</li>
+                <li><strong>Regla:</strong> Guía visual para ajustar márgenes, sangrías y tabulaciones.</li>
+                <li><strong>Área de trabajo:</strong> Espacio principal para editar el documento.</li>
+                <li><strong>Barra de estado:</strong> Información como número de páginas, palabras, idioma y estado de guardado.</li>
+              </ul>
+            </div>
+            <div>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x400/185ABD/FFFFFF?text=Interfaz+de+Word+2025" alt="Interfaz de Word 2025 con etiquetas">
+                <figcaption>Interfaz de Word 2025 con las principales áreas etiquetadas: cinta de opciones, barra de herramientas, área de trabajo y barra de estado.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Personaliza la <strong>barra de herramientas de acceso rápido</strong> añadiendo comandos que uses frecuentemente, como "Guardar como PDF" o "Imprimir".
+          </div>
+        </div>
+
+        <!-- Crear, abrir, guardar y cerrar documentos -->
+        <div class="card">
+          <h4>Cómo crear, abrir, guardar y cerrar documentos</h4>
+          <p>Operaciones básicas con documentos en Word 2025:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear un nuevo documento</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + N</span>.</li>
+                <li>O haz clic en <strong>Archivo → Nuevo</strong> y elige una plantilla.</li>
+                <li>Word ofrece plantillas para cartas, informes, currículums, folletos y más.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Plantillas+de+Word" alt="Galeria de plantillas en Word 2025">
+                <figcaption>Galeria de plantillas integradas en Word 2025 para diferentes tipos de documentos.</figcaption>
+              </figure>
+            </div>
+            <div>
+              <h5>Abrir un documento existente</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + O</span>.</li>
+                <li>O haz clic en <strong>Archivo → Abrir</strong> y selecciona el archivo desde OneDrive o tu equipo.</li>
+                <li>Word muestra los documentos recientes para acceso rápido.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Guardar un documento</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + S</span> para guardar cambios.</li>
+                <li>Para guardar como un nuevo archivo, usa <span class="keyboard-shortcut">F12</span> o <strong>Archivo → Guardar como</strong>.</li>
+                <li>Elige entre formatos como <strong>.docx</strong> (predeterminado), <strong>.pdf</strong>, <strong>.txt</strong> o <strong>.odt</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Cerrar un documento</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + W</span>.</li>
+                <li>O haz clic en la <strong>X</strong> de la pestaña del documento.</li>
+                <li>Word pregunta si deseas guardar cambios antes de cerrar.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> Configura el <strong>AutoGuardado</strong> en OneDrive para evitar perder cambios por errores o cierres inesperados. Ve a <strong>Archivo → Opciones → Guardar</strong> y activa la opción.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 2: Trabajo con Texto -->
+      <section id="modulo2" class="block">
+        <h3>Módulo 2. Trabajo con Texto</h3>
+        <p class="lead">Aprende a manejar texto de manera eficiente: escribir, editar, seleccionar, copiar, pegar, buscar, reemplazar e insertar caracteres especiales. Este módulo cubre todo lo que necesitas para trabajar con texto en Word 2025.</p>
+
+        <!-- Escribir, editar y eliminar texto -->
+        <div class="card">
+          <h4>Escribir, editar y eliminar texto</h4>
+          <p>Las operaciones básicas con texto son fundamentales para cualquier documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Escribir texto</h5>
+              <ul class="steps">
+                <li>Simplementa haz clic en el documento y comienza a teclear.</li>
+                <li>Word ajusta automáticamente el flujo del texto a medida que escribes.</li>
+                <li>Usa <span class="keyboard-shortcut">Enter</span> para nuevos párrafos y <span class="keyboard-shortcut">Shift + Enter</span> para saltos de línea.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Editar texto</h5>
+              <ul class="steps">
+                <li>Haz clic en el texto que deseas modificar y realiza los cambios.</li>
+                <li>Usa las teclas de flecha para mover el cursor.</li>
+                <li>Para seleccionar texto, mantén presionado <span class="keyboard-shortcut">Shift</span> mientras mueves el cursor.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Eliminar texto</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y presiona <span class="keyboard-shortcut">Supr</span> o <span class="keyboard-shortcut">Retroceso</span>.</li>
+                <li>Para eliminar una palabra completa, usa <span class="keyboard-shortcut">Ctrl + Retroceso</span> (antes del cursor) o <span class="keyboard-shortcut">Ctrl + Supr</span> (después del cursor).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Seleccionar todo el texto</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + E</span> para seleccionar todo el texto del documento.</li>
+                <li>O presiona <span class="keyboard-shortcut">Ctrl + A</span> para seleccionar todo, incluyendo imágenes y otros elementos.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Edición+de+Texto+en+Word" alt="Ejemplo de edición de texto en Word">
+            <figcaption>Ejemplo de edición de texto en Word, mostrando el cursor, texto seleccionado y opciones de formato en la cinta de opciones.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Seleccionar, copiar, cortar y pegar texto -->
+        <div class="card">
+          <h4>Seleccionar, copiar, cortar y pegar texto</h4>
+          <p>Estas operaciones son esenciales para mover y duplicar texto dentro de un documento o entre documentos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Seleccionar texto</h5>
+              <ul class="steps">
+                <li>Arrastra el cursor sobre el texto para seleccionarlo.</li>
+                <li>Usa <span class="keyboard-shortcut">Shift + Flechas</span> para seleccionar carácter por carácter.</li>
+                <li>Para seleccionar una palabra, haz doble clic sobre ella.</li>
+                <li>Para seleccionar un párrafo, haz triple clic.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Copiar y pegar texto</h5>
+              <ul class="steps">
+                <li><strong>Copiar:</strong> Selecciona el texto y presiona <span class="keyboard-shortcut">Ctrl + C</span>.</li>
+                <li><strong>Pegar:</strong> Coloca el cursor en la nueva ubicación y presiona <span class="keyboard-shortcut">Ctrl + V</span>.</li>
+                <li>Usa <span class="keyboard-shortcut">Ctrl + Shift + V</span> para pegar sin formato.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Cortar y pegar texto</h5>
+              <ul class="steps">
+                <li><strong>Cortar:</strong> Selecciona el texto y presiona <span class="keyboard-shortcut">Ctrl + X</span>.</li>
+                <li><strong>Pegar:</strong> Coloca el cursor en la nueva ubicación y presiona <span class="keyboard-shortcut">Ctrl + V</span>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Portapapeles de Office</h5>
+              <ul class="steps">
+                <li>Word guarda hasta <strong>24 elementos</strong> en el portapapeles.</li>
+                <li>Accede al historial del portapapeles haciendo clic en el icono del portapapeles en la pestaña <strong>Inicio</strong>.</li>
+                <li>Pega cualquier elemento del historial haciendo clic en él.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Portapapeles+de+Office" alt="Portapapeles de Office mostrando elementos copiados">
+                <figcaption>Portapapeles de Office en Word, mostrando el historial de elementos copiados para pegar selectivamente.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buscar y reemplazar palabras o frases -->
+        <div class="card">
+          <h4>Buscar y reemplazar palabras o frases</h4>
+          <p>Estas herramientas son útiles para localizar y modificar texto en documentos largos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Buscar texto</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + F</span> o ve a <strong>Inicio → Buscar</strong>.</li>
+                <li>Escribe la palabra o frase en el campo de búsqueda.</li>
+                <li>Word resaltará todas las coincidencias en el documento.</li>
+                <li>Usa las flechas para navegar entre los resultados.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Reemplazar texto</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + H</span> o ve a <strong>Inicio → Reemplazar</strong>.</li>
+                <li>Escribe el texto a buscar y el texto de reemplazo.</li>
+                <li>Usa <strong>Reemplazar</strong> para cambios individuales o <strong>Reemplazar todo</strong> para todos los casos.</li>
+                <li>Opciones avanzadas: distinguir mayúsculas, buscar palabras completas.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Buscar+y+Reemplazar+en+Word" alt="Herramienta de Buscar y Reemplazar en Word">
+            <figcaption>Herramienta de Buscar y Reemplazar en Word, mostrando opciones avanzadas como distinguir mayúsculas y buscar palabras completas.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Insertar caracteres especiales y símbolos -->
+        <div class="card">
+          <h4>Insertar caracteres especiales y símbolos</h4>
+          <p>Word permite insertar símbolos matemáticos, monetarios, flechas y más:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar símbolos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Símbolo</strong>.</li>
+                <li>Selecciona el símbolo deseado de la lista (ej: ©, ®, €, →).</li>
+                <li>Para símbolos frecuentes, asigna un atajo de teclado en <strong>Más símbolos → Atajo de teclado</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Insertar ecuaciones</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Ecuación</strong>.</li>
+                <li>Selecciona una ecuación predefinida o escribe la tuya usando la barra de herramientas de ecuaciones.</li>
+                <li>Incluye fracciones, integrales, matrices, símbolos griegos y más.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Ecuaciones+en+Word" alt="Editor de ecuaciones en Word">
+                <figcaption>Editor de ecuaciones en Word, mostrando herramientas para insertar fracciones, integrales, símbolos griegos y más.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Atajos para símbolos comunes:</strong>
+            <ul class="steps">
+              <li><span class="keyboard-shortcut">Alt + 0169</span>: © (copyright).</li>
+              <li><span class="keyboard-shortcut">Alt + 0174</span>: ® (registro).</li>
+              <li><span class="keyboard-shortcut">Alt + 0128</span>: € (euro).</li>
+              <li><span class="keyboard-shortcut">Alt + 26</span>: → (flecha derecha).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Insertar saltos de línea y párrafo -->
+        <div class="card">
+          <h4>Insertar saltos de línea y párrafo</h4>
+          <p>Controla el flujo del texto con diferentes tipos de saltos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Salto de línea</h5>
+              <ul class="steps">
+                <li>Usa <span class="keyboard-shortcut">Shift + Enter</span> para un salto de línea sin crear un nuevo párrafo.</li>
+                <li>Útil para direcciones, listas o cuando necesitas mantener el texto en el mismo párrafo pero en una nueva línea.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Nuevo párrafo</h5>
+              <ul class="steps">
+                <li>Presiona <span class="keyboard-shortcut">Enter</span> para crear un nuevo párrafo.</li>
+                <li>Word aplica automáticamente el espaciado entre párrafos según el estilo seleccionado.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Salto de página</h5>
+              <ul class="steps">
+                <li>Usa <span class="keyboard-shortcut">Ctrl + Enter</span> para insertar un salto de página manual.</li>
+                <li>O ve a <strong>Insertar → Salto de página</strong>.</li>
+                <li>Útil para controlar dónde comienza una nueva página en informes o documentos largos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Salto de sección</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Saltos → Salto de sección</strong>.</li>
+                <li>Permite cambiar el diseño (márgenes, orientación, encabezados) en diferentes partes del documento.</li>
+                <li>Tipos: <strong>Página siguiente</strong>, <strong>Continuo</strong>, <strong>Página par/impar</strong>.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Saltos+de+Página+y+Sección" alt="Ejemplo de saltos de página y sección en Word">
+            <figcaption>Ejemplo visual de saltos de página y sección en Word, mostrando cómo dividen el documento y permiten cambios de formato.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Módulo 3: Formato de Texto y Párrafos -->
+      <section id="modulo3" class="block">
+        <h3>Módulo 3. Formato de Texto y Párrafos</h3>
+        <p class="lead">El formato adecuado mejora la legibilidad y el aspecto profesional de tus documentos. Aprende a aplicar fuentes, colores, alineación, sangrías, viñetas, estilos y más.</p>
+
+        <!-- Tipos de letra, tamaño, color y efectos -->
+        <div class="card">
+          <h4>Tipos de letra, tamaño, color y efectos</h4>
+          <p>Personaliza el aspecto del texto con estas opciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Fuentes y tamaño</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y elige una fuente en la pestaña <strong>Inicio</strong> (ej: Arial, Calibri, Times New Roman).</li>
+                <li>Ajusta el tamaño de fuente (ej: 12pt para cuerpo, 16pt para títulos).</li>
+                <li>Usa <span class="keyboard-shortcut">Ctrl + Shift + P</span> para abrir el selector de fuentes.</li>
+                <li>Para cambiar el tamaño rápidamente, usa <span class="keyboard-shortcut">Ctrl + [</span> (disminuir) o <span class="keyboard-shortcut">Ctrl + ]</span> (aumentar).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Color y efectos</h5>
+              <ul class="steps">
+                <li>Cambia el color del texto o del fondo con el selector de colores en <strong>Inicio</strong>.</li>
+                <li>Aplica efectos como <strong>negrita</strong> (<span class="keyboard-shortcut">Ctrl + N</span>), <strong>cursiva</strong> (<span class="keyboard-shortcut">Ctrl + K</span>), <strong>subrayado</strong> (<span class="keyboard-shortcut">Ctrl + S</span>).</li>
+                <li>Usa <strong>tachado</strong>, <strong>subíndice</strong> (X<sub>2</sub>) o <strong>superíndice</strong> (X<sup>2</sup>) para fórmulas o notas.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Formato+de+Texto+en+Word" alt="Opciones de formato de texto en Word">
+            <figcaption>Barra de herramientas de formato de texto en Word, mostrando opciones para fuentes, tamaño, color, negrita, cursiva y más.</figcaption>
+          </figure>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa fuentes <strong>sans-serif</strong> (como Arial o Calibri) para documentos digitales y <strong>serif</strong> (como Times New Roman) para documentos impresos, ya que son más legibles en cada medio.
+          </div>
+        </div>
+
+        <!-- Alineación y espaciado -->
+        <div class="card">
+          <h4>Alineación y espaciado del texto</h4>
+          <p>Controla la distribución del texto en la página:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Alineación del texto</h5>
+              <ul class="steps">
+                <li><strong>Izquierda</strong> (<span class="keyboard-shortcut">Ctrl + L</span>): Alinea el texto al margen izquierdo.</li>
+                <li><strong>Centro</strong> (<span class="keyboard-shortcut">Ctrl + E</span>): Centra el texto entre los márgenes.</li>
+                <li><strong>Derecha</strong> (<span class="keyboard-shortcut">Ctrl + R</span>): Alinea el texto al margen derecho.</li>
+                <li><strong>Justificar</strong> (<span class="keyboard-shortcut">Ctrl + J</span>): Alinea el texto a ambos márgenes.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Espaciado entre líneas y párrafos</h5>
+              <ul class="steps">
+                <li>Ajusta el interlineado en <strong>Inicio → Espaciado entre líneas</strong> (1.0, 1.5, 2.0, etc.).</li>
+                <li>Configura el espaciado antes y después de los párrafos en <strong>Inicio → Espaciado de párrafo</strong>.</li>
+                <li>Usa <strong>Eliminar espacio después del párrafo</strong> para documentos compactos.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Alineación+y+Espaciado" alt="Opciones de alineación y espaciado en Word">
+            <figcaption>Opciones de alineación (izquierda, centro, derecha, justificar) y espaciado (interlineado, antes/después) en Word.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Sangrías, tabulaciones y márgenes -->
+        <div class="card">
+          <h4>Sangrías, tabulaciones y márgenes</h4>
+          <p>Organiza el texto con sangrías, tabulaciones y ajusta los márgenes del documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Sangrías</h5>
+              <ul class="steps">
+                <li>Aumenta la sangría con <span class="keyboard-shortcut">Tab</span> o <span class="keyboard-shortcut">Ctrl + M</span>.</li>
+                <li>Disminuye la sangría con <span class="keyboard-shortcut">Shift + Tab</span> o <span class="keyboard-shortcut">Ctrl + Shift + M</span>.</li>
+                <li>Usa la regla superior para ajustar sangrías de primera línea o sangrías francesas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Tabulaciones</h5>
+              <ul class="steps">
+                <li>Establece tabulaciones en la regla superior haciendo clic donde desees colocarlas.</li>
+                <li>Cambia el tipo de tabulación (izquierda, centro, derecha, decimal) en el selector de la regla.</li>
+                <li>Usa <span class="keyboard-shortcut">Tab</span> para mover el cursor a la siguiente tabulación.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Márgenes del documento</h5>
+              <ul class="steps">
+                <li>Ajusta los márgenes en <strong>Diseño → Márgenes</strong> (Normal, Estrecho, Moderado, Ancho).</li>
+                <li>Para márgenes personalizados, selecciona <strong>Márgenes personalizados</strong>.</li>
+                <li>Define márgenes superior, inferior, izquierdo y derecho en centímetros o pulgadas.</li>
+              </ul>
+            </div>
+            <div>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Regla+y+Márgenes" alt="Regla y márgenes en Word">
+                <figcaption>Regla superior en Word, mostrando cómo ajustar sangrías, tabulaciones y márgenes del documento.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Viñetas y numeración -->
+        <div class="card">
+          <h4>Viñetas y numeración</h4>
+          <p>Organiza información en listas con viñetas o numeración:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Listas con viñetas</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y haz clic en el botón <strong>Viñetas</strong> en la pestaña <strong>Inicio</strong>.</li>
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + Shift + L</span>.</li>
+                <li>Personaliza el estilo de viñetas (círculos, cuadrados, flechas) en <strong>Inicio → Viñetas → Definir nueva viñeta</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Listas numeradas</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y haz clic en el botón <strong>Numeración</strong> en la pestaña <strong>Inicio</strong>.</li>
+                <li>Personaliza el formato de numeración (1, 2, 3 o a, b, c) en <strong>Inicio → Numeración → Definir nuevo formato de número</strong>.</li>
+                <li>Para listas multinivel, usa el botón <strong>Lista multinivel</strong>.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Viñetas+y+Numeración" alt="Listas con viñetas y numeración en Word">
+            <figcaption>Ejemplo de listas con viñetas y numeración en Word, mostrando opciones de personalización y listas multinivel.</figcaption>
+          </figure>
+          <div class="callout info">
+            <strong>Consejo:</strong> Para convertir texto existente en una lista, selecciona el texto y aplica viñetas o numeración. Word detectará automáticamente los elementos de la lista basándose en los saltos de línea.
+          </div>
+        </div>
+
+        <!-- Aplicar estilos rápidos y temas -->
+        <div class="card">
+          <h4>Aplicar estilos rápidos y temas</h4>
+          <p>Los estilos y temas ayudan a mantener la coherencia visual en todo el documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Estilos de texto</h5>
+              <ul class="steps">
+                <li>Aplica estilos predefinidos como <strong>Título 1</strong> (<span class="keyboard-shortcut">Ctrl + Alt + 1</span>), <strong>Título 2</strong> (<span class="keyboard-shortcut">Ctrl + Alt + 2</span>), o <strong>Normal</strong>.</li>
+                <li>Personaliza estilos en <strong>Inicio → Estilos → Modificar estilo</strong>.</li>
+                <li>Crea nuevos estilos para elementos recurrentes (ej: "Cita", "Nota al pie").</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Temas del documento</h5>
+              <ul class="steps">
+                <li>Cambia el tema en <strong>Diseño → Temas</strong> para aplicar colores, fuentes y efectos coherentes.</li>
+                <li>Personaliza temas con tus colores y fuentes preferidas.</li>
+                <li>Guarda temas personalizados para reutilizarlos en otros documentos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Estilos+y+Temas" alt="Estilos y temas en Word">
+                <figcaption>Panel de estilos y temas en Word, mostrando cómo aplicar y personalizar estilos de texto y temas de diseño.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Buena práctica:</strong> Usa estilos para estructurar tu documento (títulos, subtítulos, cuerpo). Esto facilita la creación de <strong>tablas de contenido automáticas</strong> y la navegación.
+          </div>
+        </div>
+
+        <!-- Formato condicional con estilos personalizados -->
+        <div class="card">
+          <h4>Formato condicional con estilos personalizados</h4>
+          <p>Automatiza el formato basado en reglas o condiciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear estilos personalizados</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Inicio → Estilos → Crear un estilo</strong>.</li>
+                <li>Define el formato (fuente, tamaño, color, alineación, etc.).</li>
+                <li>Asigna un atajo de teclado para aplicar el estilo rápidamente.</li>
+                <li>Ejemplo: Crea un estilo "Destacado" con fondo amarillo y negrita para resaltar texto importante.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Formato condicional</h5>
+              <ul class="steps">
+                <li>Usa <strong>Inicio → Estilos → Administrar estilos</strong> para aplicar formato basado en condiciones.</li>
+                <li>Ejemplo: Aplica un estilo "Urgente" a todo el texto que contenga la palabra "importante".</li>
+                <li>Combina con macros para automatizar el formato en documentos largos.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Estilos+Personalizados" alt="Estilos personalizados en Word">
+            <figcaption>Creación de estilos personalizados en Word, mostrando opciones para definir formato y asignar atajos de teclado.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Módulo 4: Diseño de Página y Maquetación -->
+      <section id="modulo4" class="block">
+        <h3>Módulo 4. Diseño de Página y Maquetación</h3>
+        <p class="lead">Configura el diseño de tus documentos para que se vean profesionales e impresos correctamente. Aprende a ajustar márgenes, orientación, saltos, encabezados, pies de página y más.</p>
+
+        <!-- Configuración de página -->
+        <div class="card">
+          <h4>Configuración de página: márgenes, orientación y tamaño</h4>
+          <p>Ajusta el diseño básico de la página para adaptarlo a tus necesidades:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Márgenes de la página</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Márgenes</strong> y elige entre opciones predefinidas (Normal, Estrecho, Moderado, Ancho).</li>
+                <li>Para márgenes personalizados, selecciona <strong>Márgenes personalizados</strong>.</li>
+                <li>Define márgenes superior, inferior, izquierdo y derecho en centímetros o pulgadas.</li>
+                <li>Usa el botón <strong>Vista previa</strong> para ver cómo afectan los cambios al documento.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Orientación y tamaño del papel</h5>
+              <ul class="steps">
+                <li>Cambia entre orientación <strong>Vertical</strong> o <strong>Horizontal</strong> en <strong>Diseño → Orientación</strong>.</li>
+                <li>Selecciona el tamaño del papel (Carta, A4, Legal, etc.) en <strong>Diseño → Tamaño</strong>.</li>
+                <li>Para tamaños personalizados, elige <strong>Más tamaños de papel</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Configuración+de+Página" alt="Configuración de página en Word">
+                <figcaption>Opciones de configuración de página en Word, mostrando ajustes para márgenes, orientación y tamaño del papel.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Para documentos que se imprimirán a doble cara, usa márgenes <strong>simétricos</strong> y considera añadir un <strong>margen interior</strong> adicional para encuadernación.
+          </div>
+        </div>
+
+        <!-- Saltos de página y secciones -->
+        <div class="card">
+          <h4>Saltos de página y secciones</h4>
+          <p>Controla dónde comienza una nueva página o cambia el diseño en partes específicas del documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Saltos de página</h5>
+              <ul class="steps">
+                <li>Inserta un salto de página manual con <span class="keyboard-shortcut">Ctrl + Enter</span>.</li>
+                <li>O ve a <strong>Insertar → Salto de página</strong>.</li>
+                <li>Útil para forzar el inicio de un nuevo capítulo o sección en una página nueva.</li>
+                <li>Los saltos de página se muestran como líneas punteadas en el modo <strong>Diseño de impresión</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Saltos de sección</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Saltos → Salto de sección</strong>.</li>
+                <li>Tipos de saltos:
+                  <ul class="steps">
+                    <li><strong>Página siguiente:</strong> Comienza la nueva sección en la siguiente página.</li>
+                    <li><strong>Continuo:</strong> La nueva sección comienza en el mismo punto.</li>
+                    <li><strong>Página par/impar:</strong> La sección comienza en la siguiente página par o impar.</li>
+                  </ul>
+                </li>
+                <li>Permite cambiar márgenes, orientación o encabezados/pies en diferentes secciones.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Saltos+de+Sección" alt="Saltos de sección en Word">
+            <figcaption>Ejemplo de saltos de sección en Word, mostrando cómo dividir el documento para aplicar formatos diferentes.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Encabezados, pies de página y numeración -->
+        <div class="card">
+          <h4>Encabezados, pies de página y numeración de páginas</h4>
+          <p>Añade información repetitiva en cada página, como títulos, fechas o números de página:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar encabezados y pies</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Encabezado</strong> o <strong>Pie de página</strong>.</li>
+                <li>Elige un diseño predefinido o crea uno personalizado.</li>
+                <li>Los encabezados y pies se editan en un área separada del documento.</li>
+                <li>Puedes insertar:
+                  <ul class="steps">
+                    <li>Número de página.</li>
+                    <li>Fecha y hora (automática o fija).</li>
+                    <li>Título del documento.</li>
+                    <li>Logotipos o imágenes.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5>Numeración de páginas</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Número de página</strong>.</li>
+                <li>Elige la posición (superior, inferior, márgenes) y el estilo de numeración.</li>
+                <li>Para personalizar, selecciona <strong>Formato de número de página</strong>.</li>
+                <li>Puedes iniciar la numeración desde un número diferente (ej: 1, 5, 10).</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Encabezados+y+Pies" alt="Encabezados y pies de página en Word">
+                <figcaption>Ejemplo de encabezados y pies de página en Word, mostrando opciones para insertar números de página, fechas y logotipos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Para documentos largos, usa <strong>encabezados diferentes en la primera página</strong> (ej: portadas) y <strong>páginas pares e impares</strong> para diseños de libro.
+          </div>
+        </div>
+
+        <!-- Portadas y páginas en blanco -->
+        <div class="card">
+          <h4>Portadas y páginas en blanco</h4>
+          <p>Añade portadas profesionales o páginas en blanco para separar secciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar una portada</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Portada</strong>.</li>
+                <li>Elige un diseño predefinido (ej: "Austera", "Elegante", "Moderna").</li>
+                <li>Personaliza el título, subtítulo, fecha, autor y otros campos.</li>
+                <li>Las portadas se insertan al inicio del documento y se actualizan automáticamente.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Portadas+en+Word" alt="Portadas en Word">
+                <figcaption>Galeria de portadas predefinidas en Word, mostrando diseños para informes, tesis y presentaciones.</figcaption>
+              </figure>
+            </div>
+            <div>
+              <h5>Insertar una página en blanco</h5>
+              <ul class="steps">
+                <li>Coloca el cursor donde desees insertar la página.</li>
+                <li>Presiona <span class="keyboard-shortcut">Ctrl + Enter</span> para insertar un salto de página.</li>
+                <li>O ve a <strong>Insertar → Página en blanco</strong>.</li>
+                <li>Útil para separar capítulos o secciones en informes largos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fondos de página, bordes y marcas de agua -->
+        <div class="card">
+          <h4>Fondos de página, bordes y marcas de agua</h4>
+          <p>Añade elementos visuales para mejorar el diseño de tus documentos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Color de página y bordes</h5>
+              <ul class="steps">
+                <li>Cambia el color de fondo en <strong>Diseño → Color de página</strong>.</li>
+                <li>Añade bordes decorativos en <strong>Diseño → Bordes de página</strong>.</li>
+                <li>Personaliza el estilo, color y ancho de los bordes.</li>
+                <li>Opciones de arte para bordes (ej: estrellas, líneas, diseños temáticos).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Marcas de agua</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Marca de agua</strong>.</li>
+                <li>Elige una marca predefinida (ej: "Confidencial", "Borrador", "Urgente").</li>
+                <li>O crea una personalizada con texto o imagen.</li>
+                <li>Ajusta la transparencia, tamaño y posición.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Marcas+de+Agua" alt="Marcas de agua en Word">
+                <figcaption>Ejemplo de marcas de agua en Word, mostrando opciones para insertar texto o imágenes como fondo semitransparente.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Uso práctico:</strong> Las marcas de agua son útiles para indicar el estado de un documento (ej: "Borrador", "Confidencial") o añadir un logotipo sutil en informes oficiales.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 5: Inserción de Elementos -->
+      <section id="modulo5" class="block">
+        <h3>Módulo 5. Inserción de Elementos</h3>
+        <p class="lead">Enriquece tus documentos con imágenes, formas, tablas, gráficos, cuadros de texto y más. Aprende a insertar y personalizar estos elementos para crear documentos visualmente atractivos y funcionales.</p>
+
+        <!-- Imágenes: insertar, ajustar y dar formato -->
+        <div class="card">
+          <h4>Imágenes: insertar, ajustar y dar formato</h4>
+          <p>Añade imágenes para ilustrar tus documentos y ajusta su apariencia:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar imágenes</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Imágenes</strong> y elige:
+                  <ul class="steps">
+                    <li><strong>Este dispositivo:</strong> Para imágenes guardadas en tu equipo.</li>
+                    <li><strong>Imágenes en línea:</strong> Busca en Bing o OneDrive.</li>
+                    <li><strong>Iconos:</strong> Para insertar iconos vectoriales.</li>
+                    <li><strong>Modelos 3D:</strong> Para objetos tridimensionales.</li>
+                  </ul>
+                </li>
+                <li>Arrastra y suelta imágenes directamente desde el explorador de archivos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Ajustar y recortar imágenes</h5>
+              <ul class="steps">
+                <li>Selecciona la imagen y usa los controladores para redimensionarla (mantén <span class="keyboard-shortcut">Shift</span> para conservar proporciones).</li>
+                <li>Recorta la imagen con <strong>Formato de imagen → Recortar</strong>.</li>
+                <li>Ajusta el brillo, contraste y nitidez en <strong>Formato de imagen → Correcciones</strong>.</li>
+                <li>Aplica estilos artísticos en <strong>Formato de imagen → Estilos artísticos</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Edición+de+Imágenes" alt="Edición de imágenes en Word">
+                <figcaption>Herramientas de edición de imágenes en Word, mostrando opciones para recortar, ajustar brillo/contraste y aplicar estilos artísticos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Formato y disposición</h5>
+              <ul class="steps">
+                <li>Ajusta el <strong>ajuste de texto</strong> (en línea, cuadrado, apretado, etc.) en <strong>Formato de imagen → Ajuste de texto</strong>.</li>
+                <li>Añade bordes, efectos (sombra, reflejo, resplandor) y estilos predefinidos.</li>
+                <li>Usa <strong>Formato de imagen → Posición</strong> para alinear la imagen con precisión.</li>
+                <li>Agrupa imágenes con otros objetos para moverlas juntas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Alternativas y accesibilidad</h5>
+              <ul class="steps">
+                <li>Añade <strong>texto alternativo</strong> para que los lectores de pantalla describan la imagen.</li>
+                <li>Ve a <strong>Formato de imagen → Texto alternativo</strong>.</li>
+                <li>Incluye descripciones claras para usuarios con discapacidad visual.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formas y SmartArt -->
+        <div class="card">
+          <h4>Formas y SmartArt</h4>
+          <p>Crea diagramas y elementos gráficos con formas y SmartArt:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar formas</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Formas</strong> y elige entre líneas, rectángulos, círculos, flechas, etc.</li>
+                <li>Dibuja la forma arrastrando el cursor.</li>
+                <li>Personaliza el relleno, borde y efectos en <strong>Formato de forma</strong>.</li>
+                <li>Usa <span class="keyboard-shortcut">Shift</span> al dibujar para mantener proporciones.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Crear diagramas con SmartArt</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → SmartArt</strong>.</li>
+                <li>Elige un tipo de diagrama:
+                  <ul class="steps">
+                    <li><strong>Lista:</strong> Para procesos o jerarquías simples.</li>
+                    <li><strong>Proceso:</strong> Para flujos de trabajo o pasos secuenciales.</li>
+                    <li><strong>Ciclo:</strong> Para procesos circulares o continuos.</li>
+                    <li><strong>Jerarquía:</strong> Para organigramas o estructuras organizativas.</li>
+                  </ul>
+                </li>
+                <li>Edita el texto en el panel de texto y personaliza colores y estilos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=SmartArt+en+Word" alt="Diagramas SmartArt en Word">
+                <figcaption>Ejemplo de diagramas SmartArt en Word, mostrando opciones para organigramas, procesos y listas visuales.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa <strong>SmartArt</strong> para convertir listas aburridas en diagramas visuales. Por ejemplo, transforma una lista de pasos en un <strong>diagrama de proceso</strong> o un organigrama.
+          </div>
+        </div>
+
+        <!-- Tablas: creación, diseño y formato -->
+        <div class="card">
+          <h4>Tablas: creación, diseño y formato</h4>
+          <p>Organiza datos en tablas y aplícales formato profesional:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear una tabla</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Tabla</strong> y arrastra para seleccionar filas y columnas.</li>
+                <li>O haz clic en <strong>Insertar tabla</strong> para especificar el número exacto de filas y columnas.</li>
+                <li>Dibuja una tabla con el lápiz en <strong>Insertar → Tabla → Dibujar tabla</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Diseño y formato de tablas</h5>
+              <ul class="steps">
+                <li>Aplica estilos predefinidos en <strong>Diseño de tabla → Estilos de tabla</strong>.</li>
+                <li>Personaliza bordes, sombreados y colores de fila/columna.</li>
+                <li>Usa <strong>Diseño de tabla → Bandas</strong> para alternar colores en filas o columnas.</li>
+                <li>Ajusta el ancho de columnas arrastrando los bordes o en <strong>Diseño de tabla → Tamaño de celda</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Tablas+en+Word" alt="Tablas en Word">
+                <figcaption>Ejemplo de tablas en Word, mostrando opciones para insertar, diseñar y aplicar formato condicional.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Fórmulas en tablas</h5>
+              <ul class="steps">
+                <li>Coloca el cursor en la celda donde deseas el resultado.</li>
+                <li>Ve a <strong>Diseño de tabla → Fórmula</strong>.</li>
+                <li>Escribe la fórmula (ej: <code>=SUM(ABOVE)</code> para sumar los valores de arriba).</li>
+                <li>Usa funciones como <code>PROMEDIO</code>, <code>MAX</code>, <code>MIN</code>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Convertir texto en tabla</h5>
+              <ul class="steps">
+                <li>Separa los datos con tabulaciones, comas o párrafos.</li>
+                <li>Selecciona el texto y ve a <strong>Insertar → Tabla → Convertir texto en tabla</strong>.</li>
+                <li>Elige el separador y ajusta el formato.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráficos: tipos, personalización y edición -->
+        <div class="card">
+          <h4>Gráficos: tipos, personalización y edición</h4>
+          <p>Visualiza datos con gráficos dinámicos y personalizables:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar un gráfico</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Gráfico</strong>.</li>
+                <li>Elige un tipo de gráfico:
+                  <ul class="steps">
+                    <li><strong>Columna:</strong> Para comparar valores entre categorías.</li>
+                    <li><strong>Línea:</strong> Para mostrar tendencias a lo largo del tiempo.</li>
+                    <li><strong>Circular:</strong> Para mostrar proporciones de un total.</li>
+                    <li><strong>Barras:</strong> Similar a columnas, pero con barras horizontales.</li>
+                    <li><strong>Área:</strong> Para enfatizar el volumen de cambio.</li>
+                  </ul>
+                </li>
+                <li>Edita los datos en la hoja de cálculo integrada.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Personalizar gráficos</h5>
+              <ul class="steps">
+                <li>Cambia el diseño en <strong>Diseño de gráfico → Diseños de gráfico</strong>.</li>
+                <li>Ajusta colores, estilos y efectos en <strong>Formato de gráfico</strong>.</li>
+                <li>Añade títulos, etiquetas de datos y leyendas.</li>
+                <li>Cambia el tipo de gráfico en <strong>Diseño de gráfico → Cambiar tipo de gráfico</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Gráficos+en+Word" alt="Gráficos en Word">
+                <figcaption>Ejemplo de gráficos en Word, mostrando cómo insertar datos y personalizar diseños, colores y estilos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Para gráficos complejos, crea el gráfico en <strong>Excel</strong> y luego cópialo y pégalo en Word. Esto te permite aprovechar las funciones avanzadas de Excel para análisis de datos.
+          </div>
+        </div>
+
+        <!-- Cuadros de texto -->
+        <div class="card">
+          <h4>Cuadros de texto</h4>
+          <p>Inserta texto en cualquier lugar del documento con cuadros de texto:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar y formato</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Cuadro de texto</strong> y elige un diseño predefinido o dibuja uno.</li>
+                <li>Escribe o pega texto dentro del cuadro.</li>
+                <li>Personaliza el borde, relleno y efectos en <strong>Formato de forma</strong>.</li>
+                <li>Ajusta el <strong>ajuste de texto</strong> para que el texto fluya alrededor del cuadro.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Vincular cuadros de texto</h5>
+              <ul class="steps">
+                <li>Crea un segundo cuadro de texto.</li>
+                <li>Haz clic en el borde del primer cuadro y selecciona <strong>Crear vínculo</strong> (icono de cadena).</li>
+                <li>Haz clic en el segundo cuadro para vincularlos.</li>
+                <li>El texto fluirá automáticamente del primer cuadro al segundo.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Cuadros+de+Texto" alt="Cuadros de texto en Word">
+                <figcaption>Ejemplo de cuadros de texto en Word, mostrando cómo insertar, vincular y aplicar formato.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Uso práctico:</strong> Los cuadros de texto son ideales para diseñar <strong>folletos</strong>, <strong>newsletters</strong> o <strong>documentos con diseño de revista</strong>, donde el texto debe fluir alrededor de imágenes o en columnas.
+          </div>
+        </div>
+
+        <!-- WordArt y efectos visuales -->
+        <div class="card">
+          <h4>WordArt y efectos visuales</h4>
+          <p>Añade texto decorativo y efectos para destacar títulos o secciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar WordArt</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → WordArt</strong> y elige un estilo.</li>
+                <li>Escribe el texto y ajusta la fuente, tamaño y color.</li>
+                <li>Personaliza el contorno, relleno y efectos 3D en <strong>Formato de WordArt</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Efectos visuales</h5>
+              <ul class="steps">
+                <li>Aplica <strong>sombras</strong>, <strong>reflejos</strong> o <strong>resplandores</strong> a texto o formas.</li>
+                <li>Usa <strong>efectos 3D</strong> para dar profundidad a títulos o logotipos.</li>
+                <li>Combina WordArt con formas y cuadros de texto para diseños creativos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=WordArt+y+Efectos" alt="WordArt y efectos en Word">
+                <figcaption>Ejemplo de WordArt y efectos visuales en Word, mostrando cómo crear títulos decorativos con sombras, reflejos y 3D.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inserción de vínculos e hipervínculos -->
+        <div class="card">
+          <h4>Inserción de vínculos e hipervínculos</h4>
+          <p>Añade enlaces a páginas web, correos, archivos o lugares dentro del documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar hipervínculos</h5>
+              <ul class="steps">
+                <li>Selecciona el texto o imagen que será el enlace.</li>
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + K</span> o ve a <strong>Insertar → Hipervínculo</strong>.</li>
+                <li>Elige el tipo de vínculo:
+                  <ul class="steps">
+                    <li><strong>Archivo o página web existente</strong>.</li>
+                    <li><strong>Lugar en este documento</strong> (para saltar a secciones).</li>
+                    <li><strong>Dirección de correo electrónico</strong>.</li>
+                    <li><strong>Nuevo documento</strong>.</li>
+                  </ul>
+                </li>
+                <li>Personaliza el texto a mostrar y la dirección del vínculo.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar hipervínculos</h5>
+              <ul class="steps">
+                <li>Edita un vínculo haciendo clic derecho sobre él y seleccionando <strong>Editar hipervínculo</strong>.</li>
+                <li>Elimina un vínculo con clic derecho → <strong>Quitar hipervínculo</strong>.</li>
+                <li>Cambia el estilo de los vínculos en <strong>Inicio → Estilos → Hipervínculo</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Hipervínculos+en+Word" alt="Hipervínculos en Word">
+                <figcaption>Ejemplo de inserción y gestión de hipervínculos en Word, mostrando cómo enlazar a páginas web, correos y secciones del documento.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa hipervínculos para crear <strong>tablas de contenido interactivas</strong> o <strong>índices</strong> que permitan navegar fácilmente en documentos largos.
+          </div>
+        </div>
+
+        <!-- Inserción de ecuaciones y símbolos especiales -->
+        <div class="card">
+          <h4>Inserción de ecuaciones y símbolos especiales</h4>
+          <p>Añade fórmulas matemáticas, símbolos científicos o caracteres especiales:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar ecuaciones</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Ecuación</strong>.</li>
+                <li>Selecciona una ecuación predefinida o escribe la tuya usando la barra de herramientas de ecuaciones.</li>
+                <li>Incluye:
+                  <ul class="steps">
+                    <li>Fracciones y radicales.</li>
+                    <li>Símbolos griegos (α, β, γ).</li>
+                    <li>Operadores (∑, ∏, ∫).</li>
+                    <li>Matrices y vectores.</li>
+                  </ul>
+                </li>
+                <li>Convierte ecuaciones a formato profesional (LaTeX) si es necesario.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Insertar símbolos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Símbolo</strong>.</li>
+                <li>Elige entre símbolos recientes o más símbolos.</li>
+                <li>Busca por categoría (ej: monetarios, matemáticos, flechas).</li>
+                <li>Asigna atajos de teclado a símbolos frecuentes.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Ecuaciones+y+Símbolos" alt="Ecuaciones y símbolos en Word">
+                <figcaption>Ejemplo de inserción de ecuaciones y símbolos en Word, mostrando la barra de herramientas de ecuaciones y el selector de símbolos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Atajos para símbolos comunes:</strong>
+            <ul class="steps">
+              <li><span class="keyboard-shortcut">Alt + 0169</span>: © (copyright).</li>
+              <li><span class="keyboard-shortcut">Alt + 0174</span>: ® (registro).</li>
+              <li><span class="keyboard-shortcut">Alt + 0128</span>: € (euro).</li>
+              <li><span class="keyboard-shortcut">Alt + 26</span>: → (flecha derecha).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 6: Herramientas de Revisión -->
+      <section id="modulo6" class="block">
+        <h3>Módulo 6. Herramientas de Revisión</h3>
+        <p class="lead">Revisa y perfecciona tus documentos con herramientas de ortografía, gramática, sinónimos, traducción, comentarios y control de cambios. Ideal para trabajar en equipo o pulir documentos importantes.</p>
+
+        <!-- Ortografía y gramática automática -->
+        <div class="card">
+          <h4>Ortografía y gramática automática</h4>
+          <p>Corrige errores y mejora la claridad de tus documentos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Revisar ortografía y gramática</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">F7</span> o ve a <strong>Revisar → Ortografía y gramática</strong>.</li>
+                <li>Word resalta errores con líneas rojas (ortografía) y azules (gramática).</li>
+                <li>Haz clic derecho sobre una palabra resaltada para ver sugerencias.</li>
+                <li>Configura opciones avanzadas en <strong>Archivo → Opciones → Revisión</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Opciones de revisión</h5>
+              <ul class="steps">
+                <li>Ignora errores específicos con <strong>Omitir una vez</strong> o <strong>Omitir todas</strong>.</li>
+                <li>Añade palabras al diccionario con <strong>Agregar al diccionario</strong>.</li>
+                <li>Cambia el idioma de revisión en <strong>Revisar → Idioma → Establecer idioma de corrección</strong>.</li>
+                <li>Activa o desactiva la revisión automática según tus necesidades.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Revisión+de+Ortografía" alt="Revisión de ortografía en Word">
+                <figcaption>Herramienta de revisión de ortografía y gramática en Word, mostrando sugerencias y opciones de corrección.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa el <strong>Lector Inmersivo</strong> (en la pestaña <strong>Vista</strong>) para mejorar la legibilidad y detectar errores en documentos largos.
+          </div>
+        </div>
+
+        <!-- Diccionario de sinónimos -->
+        <div class="card">
+          <h4>Diccionario de sinónimos y traductor</h4>
+          <p>Enriquece tu vocabulario y traduce texto directamente en Word:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Buscar sinónimos</h5>
+              <ul class="steps">
+                <li>Selecciona la palabra y usa el atajo <span class="keyboard-shortcut">Shift + F7</span>.</li>
+                <li>O haz clic derecho sobre la palabra y selecciona <strong>Sinónimos</strong>.</li>
+                <li>Word muestra una lista de sinónimos; haz clic en uno para reemplazar la palabra.</li>
+                <li>Usa <strong>Buscar más sinónimos en línea</strong> para opciones adicionales.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Traducir texto</h5>
+              <ul class="steps">
+                <li>Selecciona el texto a traducir.</li>
+                <li>Ve a <strong>Revisar → Traductor</strong>.</li>
+                <li>Elige los idiomas de origen y destino.</li>
+                <li>Word muestra la traducción en un panel; haz clic en <strong>Insertar</strong> para reemplazar el texto original.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Sinónimos+y+Traductor" alt="Sinónimos y traductor en Word">
+                <figcaption>Herramientas de sinónimos y traductor en Word, mostrando cómo enriquecer el vocabulario y traducir texto directamente.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revisión de idioma -->
+        <div class="card">
+          <h4>Revisión de idioma y estilo</h4>
+          <p>Asegúrate de que tu documento esté escrito en el idioma correcto y con un estilo consistente:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configurar el idioma</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y ve a <strong>Revisar → Idioma → Establecer idioma de corrección</strong>.</li>
+                <li>Elige el idioma (ej: Español, Inglés, Francés).</li>
+                <li>Marca <strong>No volver a comprobar la ortografía o gramática</strong> si es necesario.</li>
+                <li>Descarga paquetes de idioma adicionales si no están instalados.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Estilo y claridad</h5>
+              <ul class="steps">
+                <li>Usa el <strong>Editor de Word</strong> (pestaña <strong>Revisar</strong>) para mejorar la claridad y concisión.</li>
+                <li>El Editor sugiere mejoras en:
+                  <ul class="steps">
+                    <li>Corrección (ortografía y gramática).</li>
+                    <li>Claridad (frases complejas, vocabulario).</li>
+                    <li>Concisión (repeticiones, palabras innecesarias).</li>
+                    <li>Formalidad (tono adecuado al contexto).</li>
+                  </ul>
+                </li>
+                <li>Haz clic en las sugerencias para aplicarlas automáticamente.</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Editor+de+Estilo" alt="Editor de estilo en Word">
+            <figcaption>Editor de estilo en Word, mostrando sugerencias para mejorar la claridad, concisión y formalidad del texto.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Comentarios y control de cambios -->
+        <div class="card">
+          <h4>Comentarios y control de cambios</h4>
+          <p>Colabora con otros revisores y realiza un seguimiento de las modificaciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Añadir y gestionar comentarios</h5>
+              <ul class="steps">
+                <li>Selecciona el texto y ve a <strong>Revisar → Nuevo comentario</strong>.</li>
+                <li>Escribe tu comentario en el globo que aparece.</li>
+                <li>Responde a comentarios existentes con <strong>Responder</strong>.</li>
+                <li>Marca comentarios como <strong>Resuelto</strong> una vez atendidos.</li>
+                <li>Elimina comentarios con clic derecho → <strong>Eliminar comentario</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Control de cambios</h5>
+              <ul class="steps">
+                <li>Activa el control de cambios en <strong>Revisar → Control de cambios</strong>.</li>
+                <li>Todas las ediciones (inserciones, eliminaciones, cambios de formato) se marcarán.</li>
+                <li>Configura opciones en <strong>Revisar → Control de cambios → Opciones de control de cambios</strong>.</li>
+                <li>Acepta o rechaza cambios con <strong>Revisar → Aceptar/Rechazar</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Comentarios+y+Cambios" alt="Comentarios y control de cambios en Word">
+                <figcaption>Ejemplo de comentarios y control de cambios en Word, mostrando cómo colaborar y realizar seguimiento de modificaciones.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Buena práctica:</strong> Usa <strong>comentarios</strong> para sugerencias y <strong>control de cambios</strong> para ediciones directas. Esto facilita la revisión y evita confusiones en documentos colaborativos.
+          </div>
+        </div>
+
+        <!-- Comparar y combinar documentos -->
+        <div class="card">
+          <h4>Comparar y combinar documentos</h4>
+          <p>Combina cambios de múltiples versiones o compara documentos para ver diferencias:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Comparar documentos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Revisar → Comparar → Comparar documentos</strong>.</li>
+                <li>Selecciona el documento original y el revisado.</li>
+                <li>Word muestra las diferencias en un nuevo documento con cambios resaltados.</li>
+                <li>Usa la barra de herramientas para navegar entre cambios y aceptarlos o rechazarlos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Combinar documentos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Revisar → Comparar → Combinar documentos</strong>.</li>
+                <li>Selecciona los documentos a combinar.</li>
+                <li>Word fusiona los cambios de múltiples revisores en un solo documento.</li>
+                <li>Resuelve conflictos manualmente si hay cambios contradictorios.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Comparar+Documentos" alt="Comparar documentos en Word">
+                <figcaption>Herramienta para comparar y combinar documentos en Word, mostrando diferencias y cambios resaltados.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Antes de combinar documentos, asegúrate de que todos los revisores hayan usado el <strong>control de cambios</strong> para que Word pueda rastrear quién hizo cada modificación.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 7: Tablas y Formularios -->
+      <section id="modulo7" class="block">
+        <h3>Módulo 7. Tablas y Formularios</h3>
+        <p class="lead">Organiza datos en tablas profesionales y crea formularios interactivos para recopilar información de manera estructurada. Ideal para informes, encuestas, registros y más.</p>
+
+        <!-- Creación de tablas desde cero -->
+        <div class="card">
+          <h4>Creación de tablas desde cero</h4>
+          <p>Inserta y personaliza tablas para organizar datos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar una tabla</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Insertar → Tabla</strong>.</li>
+                <li>Arrastra para seleccionar el número de filas y columnas.</li>
+                <li>O haz clic en <strong>Insertar tabla</strong> para especificar el tamaño exacto.</li>
+                <li>Dibuja una tabla con el lápiz en <strong>Insertar → Tabla → Dibujar tabla</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Ajustar filas y columnas</h5>
+              <ul class="steps">
+                <li>Añade o elimina filas/columnas con clic derecho sobre la tabla.</li>
+                <li>Arrastra los bordes para ajustar el ancho de columnas o alto de filas.</li>
+                <li>Usa <strong>Diseño de tabla → Tamaño de celda</strong> para ajustes precisos.</li>
+                <li>Distribuye filas o columnas equitativamente con <strong>Distribuir filas/columnas</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Crear+Tablas" alt="Crear tablas en Word">
+                <figcaption>Ejemplo de creación de tablas en Word, mostrando cómo insertar, ajustar filas/columnas y distribuir celdas.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Convertir texto en tabla y viceversa -->
+        <div class="card">
+          <h4>Convertir texto en tabla y viceversa</h4>
+          <p>Transforma texto estructurado en tablas y viceversa para mayor flexibilidad:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Convertir texto en tabla</h5>
+              <ul class="steps">
+                <li>Separa los datos con tabulaciones, comas, punto y coma o párrafos.</li>
+                <li>Selecciona el texto y ve a <strong>Insertar → Tabla → Convertir texto en tabla</strong>.</li>
+                <li>Elige el separador de texto (tabulaciones, comas, etc.).</li>
+                <li>Word creará una tabla con los datos organizados en filas y columnas.</li>
+              </ul>
+              <div class="callout info">
+                <strong>Ejemplo:</strong>
+                <pre>
+Nombre    Edad    Ciudad
+Ana      28      Madrid
+Luis     34      Barcelona
+                </pre>
+                <p>Seleccionar este texto y convertirlo en tabla con "Tabulación" como separador.</p>
+              </div>
+            </div>
+            <div>
+              <h5>Convertir tabla en texto</h5>
+              <ul class="steps">
+                <li>Selecciona la tabla y ve a <strong>Diseño de tabla → Convertir en texto</strong>.</li>
+                <li>Elige el separador (párrafos, tabulaciones, comas).</li>
+                <li>Word convertirá cada celda en un elemento de texto separado.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Convertir+Texto+en+Tabla" alt="Convertir texto en tabla en Word">
+                <figcaption>Ejemplo de conversión de texto en tabla y viceversa en Word, mostrando el proceso paso a paso.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dar formato a filas, columnas y celdas -->
+        <div class="card">
+          <h4>Dar formato a filas, columnas y celdas</h4>
+          <p>Personaliza el aspecto de tus tablas para mejorar la legibilidad y el diseño:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Estilos de tabla</h5>
+              <ul class="steps">
+                <li>Aplica estilos predefinidos en <strong>Diseño de tabla → Estilos de tabla</strong>.</li>
+                <li>Elige entre diseños con o sin bordes, colores alternados, etc.</li>
+                <li>Personaliza los colores de la tabla en <strong>Diseño de tabla → Bordes → Color de borde</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Formato de celdas</h5>
+              <ul class="steps">
+                <li>Selecciona las celdas y ajusta el formato en <strong>Inicio</strong> (fuente, alineación, color).</li>
+                <li>Cambia el color de relleno en <strong>Diseño de tabla → Sombreado</strong>.</li>
+                <li>Combina celdas con <strong>Diseño de tabla → Combinar celdas</strong>.</li>
+                <li>Divide celdas con <strong>Diseño de tabla → Dividir celdas</strong>.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Bordes y líneas</h5>
+              <ul class="steps">
+                <li>Aplica bordes a celdas seleccionadas en <strong>Diseño de tabla → Bordes</strong>.</li>
+                <li>Elige el estilo, color y grosor de los bordes.</li>
+                <li>Usa <strong>Sin bordes</strong> para ocultar líneas en celdas específicas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Alineación y dirección del texto</h5>
+              <ul class="steps">
+                <li>Alinea el texto en las celdas (izquierda, centro, derecha, justificar).</li>
+                <li>Cambia la dirección del texto (horizontal, vertical, girado) en <strong>Diseño de tabla → Dirección del texto</strong>.</li>
+                <li>Ajusta el margen interno de las celdas para mejorar la legibilidad.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Formato+de+Tablas" alt="Formato de tablas en Word">
+                <figcaption>Ejemplo de formato de tablas en Word, mostrando estilos, bordes, colores de relleno y alineación de texto.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sumar o calcular dentro de una tabla -->
+        <div class="card">
+          <h4>Sumar o calcular dentro de una tabla</h4>
+          <p>Realiza cálculos básicos directamente en las celdas de tus tablas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar fórmulas</h5>
+              <ul class="steps">
+                <li>Coloca el cursor en la celda donde deseas el resultado.</li>
+                <li>Ve a <strong>Diseño de tabla → Fórmula</strong>.</li>
+                <li>Word inserta automáticamente <code>=SUM(ABOVE)</code> para sumar los valores de arriba.</li>
+                <li>Edita la fórmula según tus necesidades (ej: <code>=PRODUCT(LEFT)</code> para multiplicar).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Funciones disponibles</h5>
+              <ul class="steps">
+                <li><code>SUM</code>: Suma de valores.</li>
+                <li><code>AVERAGE</code>: Promedio.</li>
+                <li><code>MIN</code>/<code>MAX</code>: Valor mínimo/máximo.</li>
+                <li><code>COUNT</code>: Contar celdas no vacías.</li>
+                <li><code>PRODUCT</code>: Multiplicación.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Fórmulas+en+Tablas" alt="Fórmulas en tablas de Word">
+                <figcaption>Ejemplo de fórmulas en tablas de Word, mostrando cómo sumar, calcular promedios y usar funciones matemáticas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Nota:</strong> Las fórmulas en tablas de Word son básicas. Para cálculos complejos, considera usar <strong>Excel</strong> y luego copiar la tabla a Word.
+          </div>
+        </div>
+
+        <!-- Crear formularios interactivos -->
+        <div class="card">
+          <h4>Crear formularios interactivos</h4>
+          <p>Diseña formularios con campos editables para encuestas, registros o documentos legales:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar campos de formulario</h5>
+              <ul class="steps">
+                <li>Activa la pestaña <strong>Programador</strong> en <strong>Archivo → Opciones → Personalizar cinta</strong>.</li>
+                <li>Coloca el cursor donde desees el campo y elige:
+                  <ul class="steps">
+                    <li><strong>Cuadro de texto</strong>: Para respuestas abiertas.</li>
+                    <li><strong>Casilla de verificación</strong>: Para opciones sí/no.</li>
+                    <li><strong>Lista desplegable</strong>: Para seleccionar entre opciones predefinidas.</li>
+                    <li><strong>Selector de fecha</strong>: Para ingresar fechas.</li>
+                  </ul>
+                </li>
+                <li>Configura las propiedades de cada campo (ej: formato, valor predeterminado).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Protección del formulario</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Revisar → Restringir edición</strong>.</li>
+                <li>Selecciona <strong>Permitir solo este tipo de edición en el documento</strong>.</li>
+                <li>Marca <strong>Rellenar formularios</strong> y haz clic en <strong>Sí, aplicar protección</strong>.</li>
+                <li>Establece una contraseña para evitar cambios no autorizados.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Formularios+en+Word" alt="Formularios interactivos en Word">
+                <figcaption>Ejemplo de formulario interactivo en Word, mostrando campos de texto, casillas de verificación y listas desplegables.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa formularios para crear <strong>contratos</strong>, <strong>encuestas</strong> o <strong>registros</strong> que otros puedan completar sin modificar la estructura del documento.
+          </div>
+        </div>
+
+        <!-- Campos de texto, listas desplegables, casillas -->
+        <div class="card">
+          <h4>Campos de texto, listas desplegables y casillas</h4>
+          <p>Detalles sobre los tipos de campos para formularios:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Cuadros de texto</h5>
+              <ul class="steps">
+                <li>Ideal para respuestas abiertas (ej: nombres, direcciones, comentarios).</li>
+                <li>Configura el formato (ej: solo números, fecha, texto enriquecido).</li>
+                <li>Establece un texto predeterminado o un mensaje de ayuda.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Listas desplegables</h5>
+              <ul class="steps">
+                <li>Útil para opciones predefinidas (ej: sí/no, países, categorías).</li>
+                <li>Edita las opciones en <strong>Propiedades → Opciones de lista desplegable</strong>.</li>
+                <li>Permite seleccionar múltiples opciones si es necesario.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Casillas de verificación</h5>
+              <ul class="steps">
+                <li>Para opciones binarias (ej: acepto los términos, asistiré al evento).</li>
+                <li>Configura el tamaño y el valor predeterminado (marcado/desmarcado).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Selectores de fecha</h5>
+              <ul class="steps">
+                <li>Facilita la selección de fechas sin errores de formato.</li>
+                <li>Configura el formato de fecha (dd/mm/aaaa, mm/dd/aaaa, etc.).</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Campos+de+Formulario" alt="Campos de formulario en Word">
+                <figcaption>Ejemplo de campos de formulario en Word, mostrando cuadros de texto, listas desplegables y casillas de verificación.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protección del formulario -->
+        <div class="card">
+          <h4>Protección del formulario</h4>
+          <p>Evita modificaciones no autorizadas en tus formularios:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Restringir edición</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Revisar → Restringir edición</strong>.</li>
+                <li>Selecciona <strong>Permitir solo este tipo de edición en el documento</strong>.</li>
+                <li>Marca <strong>Rellenar formularios</strong>.</li>
+                <li>Haz clic en <strong>Sí, aplicar protección</strong> y establece una contraseña.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Permisos avanzados</h5>
+              <ul class="steps">
+                <li>Configura permisos específicos para diferentes usuarios.</li>
+                <li>Usa <strong>Archivo → Información → Proteger documento</strong> para opciones avanzadas.</li>
+                <li>Restringe la impresión o copia del contenido si es necesario.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Protección+de+Formularios" alt="Protección de formularios en Word">
+                <figcaption>Ejemplo de protección de formularios en Word, mostrando cómo restringir la edición y establecer contraseñas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> Siempre guarda una copia del formulario <strong>sin protección</strong> por si necesitas realizar cambios en el futuro.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 8: Diseño Profesional de Documentos -->
+      <section id="modulo8" class="block">
+        <h3>Módulo 8. Diseño Profesional de Documentos</h3>
+        <p class="lead">Crea documentos con un diseño impecable: cartas, informes, currículums, folletos y más. Utiliza plantillas, estilos, tablas de contenido y herramientas avanzadas para lograr resultados profesionales.</p>
+
+        <!-- Diseño de cartas, informes y currículums -->
+        <div class="card">
+          <h4>Diseño de cartas, informes y currículums</h4>
+          <p>Plantillas y estructuras para documentos formales:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Cartas formales</h5>
+              <ul class="steps">
+                <li>Usa plantillas predefinidas en <strong>Archivo → Nuevo</strong> (busca "carta").</li>
+                <li>Incluye:
+                  <ul class="steps">
+                    <li>Encabezado con tu información y la del destinatario.</li>
+                    <li>Fecha y referencia (si aplica).</li>
+                    <li>Saludo formal (ej: "Estimado/a [Nombre]").</li>
+                    <li>Cuerpo del mensaje (claro y conciso).</li>
+                    <li>Despedida y firma.</li>
+                  </ul>
+                </li>
+                <li>Aplica estilos consistentes para títulos y párrafos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Carta+Formal+en+Word" alt="Plantilla de carta formal en Word">
+                <figcaption>Ejemplo de carta formal en Word, mostrando estructura con encabezado, cuerpo y firma.</figcaption>
+              </figure>
+            </div>
+            <div>
+              <h5>Informes académicos o técnicos</h5>
+              <ul class="steps">
+                <li>Usa plantillas de informes o crea una estructura personalizada.</li>
+                <li>Incluye:
+                  <ul class="steps">
+                    <li>Portada con título, autor, fecha y logotipos.</li>
+                    <li>Índice o tabla de contenido automática.</li>
+                    <li>Resumen ejecutivo (si aplica).</li>
+                    <li>Secciones numeradas con títulos y subtítulos.</li>
+                    <li>Gráficos, tablas y figuras con pies explicativos.</li>
+                    <li>Conclusiones y bibliografía.</li>
+                  </ul>
+                </li>
+                <li>Usa estilos como "Título 1", "Título 2" para generar la tabla de contenido automáticamente.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Currículums vitae</h5>
+              <ul class="steps">
+                <li>Busca plantillas de currículum en <strong>Archivo → Nuevo</strong>.</li>
+                <li>Secciones esenciales:
+                  <ul class="steps">
+                    <li>Información personal (nombre, contacto, perfil profesional).</li>
+                    <li>Experiencia laboral (en orden cronológico inverso).</li>
+                    <li>Formación académica.</li>
+                    <li>Habilidades y competencias.</li>
+                    <li>Idiomas, certificaciones, proyectos relevantes.</li>
+                  </ul>
+                </li>
+                <li>Usa viñetas para listas y mantén un diseño limpio y profesional.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Currículum+en+Word" alt="Plantilla de currículum en Word">
+                <figcaption>Ejemplo de currículum profesional en Word, mostrando secciones organizadas y diseño limpio.</figcaption>
+              </figure>
+            </div>
+            <div>
+              <h5>Consejos de diseño</h5>
+              <ul class="steps">
+                <li>Mantén la coherencia en fuentes, colores y espaciado.</li>
+                <li>Usa negritas y cursivas para enfatizar, pero sin excederte.</li>
+                <li>Incluye espacio en blanco para mejorar la legibilidad.</li>
+                <li>Guarda el documento en PDF para compartirlo sin perder el formato.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creación de plantillas personalizadas -->
+        <div class="card">
+          <h4>Creación de plantillas personalizadas</h4>
+          <p>Guarda diseños como plantillas para reutilizarlos en el futuro:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Guardar como plantilla</h5>
+              <ul class="steps">
+                <li>Diseña tu documento con todos los elementos necesarios (encabezados, estilos, logos).</li>
+                <li>Ve a <strong>Archivo → Guardar como</strong>.</li>
+                <li>Selecciona <strong>Plantilla de Word (*.dotx)</strong> como tipo de archivo.</li>
+                <li>Guarda en la carpeta <strong>Plantillas personalizadas de Office</strong> para acceso rápido.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Usar plantillas personalizadas</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Nuevo → Personalizado</strong>.</li>
+                <li>Selecciona tu plantilla y crea un nuevo documento basado en ella.</li>
+                <li>Las plantillas conservan estilos, macros y configuraciones.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Plantillas+Personalizadas" alt="Plantillas personalizadas en Word">
+                <figcaption>Ejemplo de cómo guardar y usar plantillas personalizadas en Word para documentos recurrentes.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Crea plantillas para documentos que uses frecuentemente, como <strong>facturas</strong>, <strong>actas de reunión</strong> o <strong>informes mensuales</strong>, para ahorrar tiempo.
+          </div>
+        </div>
+
+        <!-- Diseño de folletos, trípticos y carteles -->
+        <div class="card">
+          <h4>Diseño de folletos, trípticos y carteles</h4>
+          <p>Maquetación avanzada para materiales promocionales o informativos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Folletos y trípticos</h5>
+              <ul class="steps">
+                <li>Configura el documento en <strong>Diseño → Tamaño → Más tamaños de papel</strong> (ej: A4 doblado en tres).</li>
+                <li>Usa <strong>Diseño → Columnas</strong> para crear 2 o 3 columnas.</li>
+                <li>Inserta cuadros de texto para contenido flexible.</li>
+                <li>Incluye imágenes, logos y gráficos con ajuste de texto alrededor.</li>
+                <li>Usa colores y fuentes llamativas, pero mantén la legibilidad.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Folletos+en+Word" alt="Diseño de folletos en Word">
+                <figcaption>Ejemplo de diseño de folleto en Word, mostrando columnas, cuadros de texto e imágenes.</figcaption>
+              </figure>
+            </div>
+            <div>
+              <h5>Carteles y afiches</h5>
+              <ul class="steps">
+                <li>Configura el tamaño del papel según el cartel (ej: A3, A2).</li>
+                <li>Usa <strong>Diseño → Orientación → Horizontal</strong>.</li>
+                <li>Inserta un cuadro de texto grande para el título principal.</li>
+                <li>Añade imágenes de alta resolución y ajusta el brillo/contraste si es necesario.</li>
+                <li>Incluye información clave (fecha, lugar, contacto) en un tamaño legible desde la distancia.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Para folletos, usa la opción <strong>Diseño → Saltos → Salto de sección</strong> para crear páginas enfrentadas (como en un libro).
+          </div>
+        </div>
+
+        <!-- Uso de secciones y columnas -->
+        <div class="card">
+          <h4>Uso de secciones y columnas</h4>
+          <p>Organiza documentos complejos con secciones y columnas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Secciones del documento</h5>
+              <ul class="steps">
+                <li>Usa saltos de sección para:
+                  <ul class="steps">
+                    <li>Cambiar la orientación de algunas páginas (ej: horizontal para tablas grandes).</li>
+                    <li>Aplicar encabezados/pies diferentes en partes del documento.</li>
+                    <li>Numerar páginas de manera distinta (ej: romanos en el índice, arábigos en el contenido).</li>
+                  </ul>
+                </li>
+                <li>Inserta saltos en <strong>Diseño → Saltos → Salto de sección</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Columnas de texto</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Columnas</strong> y elige el número de columnas (1 a 3).</li>
+                <li>Personaliza el ancho y espaciado entre columnas.</li>
+                <li>Usa líneas entre columnas para mejorar la legibilidad.</li>
+                <li>Inserta saltos de columna manuales con <strong>Diseño → Saltos → Salto de columna</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Secciones+y+Columnas" alt="Secciones y columnas en Word">
+                <figcaption>Ejemplo de uso de secciones y columnas en Word, mostrando cómo cambiar la orientación y organizar el texto.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tablas de contenido automáticas -->
+        <div class="card">
+          <h4>Tablas de contenido automáticas</h4>
+          <p>Crea índices dinámicos basados en los estilos de tu documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar tabla de contenido</h5>
+              <ul class="steps">
+                <li>Aplica estilos de título (Título 1, Título 2, etc.) a los encabezados de tu documento.</li>
+                <li>Coloca el cursor donde deseas la tabla de contenido.</li>
+                <li>Ve a <strong>Referencias → Tabla de contenido</strong> y elige un diseño.</li>
+                <li>Word generará automáticamente la tabla con los títulos y números de página.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Actualizar y personalizar</h5>
+              <ul class="steps">
+                <li>Actualiza la tabla haciendo clic en ella y seleccionando <strong>Actualizar tabla</strong>.</li>
+                <li>Elige entre actualizar solo los números de página o toda la tabla.</li>
+                <li>Personaliza el formato (fuentes, tabulaciones, niveles mostrados) en <strong>Referencias → Tabla de contenido → Tabla de contenido personalizada</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Tabla+de+Contenido" alt="Tabla de contenido en Word">
+                <figcaption>Ejemplo de tabla de contenido automática en Word, mostrando cómo se genera a partir de los estilos de título.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa la opción <strong>Mostrar niveles</strong> para decidir qué niveles de título incluir (ej: solo hasta Título 3).
+          </div>
+        </div>
+
+        <!-- Índices, notas al pie y citas bibliográficas -->
+        <div class="card">
+          <h4>Índices, notas al pie y citas bibliográficas</h4>
+          <p>Añade referencias académicas y notas explicativas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Notas al pie y notas al final</h5>
+              <ul class="steps">
+                <li>Coloca el cursor donde deseas la nota.</li>
+                <li>Ve a <strong>Referencias → Insertar nota al pie</strong> o <strong>Insertar nota al final</strong>.</li>
+                <li>Word inserta un superíndice y te lleva al área de notas para escribir el contenido.</li>
+                <li>Personaliza el formato de las notas en <strong>Referencias → Notas al pie → Configuración de notas al pie</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Citas y bibliografía</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Referencias → Insertar cita</strong>.</li>
+                <li>Elige el estilo de cita (APA, MLA, Chicago, etc.).</li>
+                <li>Añade una nueva fuente con los detalles bibliográficos (autor, título, año, etc.).</li>
+                <li>Inserta la cita en el texto y Word generará la bibliografía automáticamente.</li>
+                <li>Actualiza la bibliografía con <strong>Referencias → Bibliografía → Actualizar citas y bibliografía</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Citas+y+Bibliografía" alt="Citas y bibliografía en Word">
+                <figcaption>Ejemplo de inserción de citas y generación de bibliografía en Word, mostrando estilos APA y MLA.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referencias cruzadas y pies de ilustración -->
+        <div class="card">
+          <h4>Referencias cruzadas y pies de ilustración</h4>
+          <p>Crea enlaces internos y leyendas para figuras y tablas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Referencias cruzadas</h5>
+              <ul class="steps">
+                <li>Coloca el cursor donde deseas la referencia.</li>
+                <li>Ve a <strong>Referencias → Referencia cruzada</strong>.</li>
+                <li>Elige el tipo de referencia (título, figura, tabla, etc.) y el elemento específico.</li>
+                <li>Selecciona si deseas mostrar el número de página, el texto del título, etc.</li>
+                <li>Word insertará un enlace que se actualiza automáticamente.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Pies de ilustración</h5>
+              <ul class="steps">
+                <li>Selecciona la imagen o tabla.</li>
+                <li>Ve a <strong>Referencias → Insertar título</strong>.</li>
+                <li>Elige la etiqueta (Figura, Tabla, Ecuación) y escribe el texto del pie.</li>
+                <li>Personaliza el formato (numeración, posición, fuente) en <strong>Referencias → Insertar título → Título</strong>.</li>
+                <li>Word generará automáticamente leyendas como "Figura 1: Descripción".</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Referencias+Cruzadas" alt="Referencias cruzadas en Word">
+                <figcaption>Ejemplo de referencias cruzadas y pies de ilustración en Word, mostrando cómo enlazar figuras y tablas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa referencias cruzadas para crear <strong>índices de figuras</strong> o <strong>tablas de contenido detalladas</strong> en documentos técnicos.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 9: Combinar Correspondencia -->
+      <section id="modulo9" class="block">
+        <h3>Módulo 9. Combinar Correspondencia</h3>
+        <p class="lead">Genera documentos personalizados en masa, como cartas, etiquetas, sobres o correos electrónicos, utilizando una plantilla y una fuente de datos (Excel, Access, Outlook). Ideal para comunicaciones masivas con un toque personal.</p>
+
+        <!-- ¿Qué es la combinación de correspondencia? -->
+        <div class="card">
+          <h4>¿Qué es la combinación de correspondencia?</h4>
+          <p>La combinación de correspondencia permite:</p>
+          <ul class="steps">
+            <li>Unir un <strong>documento principal</strong> (plantilla) con una <strong>fuente de datos</strong> (ej: lista de clientes en Excel).</li>
+            <li>Generar múltiples copias personalizadas (ej: cartas con nombres diferentes, etiquetas con direcciones únicas).</li>
+            <li>Automatizar procesos repetitivos y reducir errores manuales.</li>
+          </ul>
+          <div class="grid grid-2">
+            <div>
+              <h5>Elementos clave</h5>
+              <ul class="steps">
+                <li><strong>Documento principal:</strong> Contiene el texto fijo y los campos de combinación (ej: "Estimado [Nombre]").</li>
+                <li><strong>Fuente de datos:</strong> Base de datos con la información variable (ej: Excel, Access, Outlook).</li>
+                <li><strong>Documento combinado:</strong> Resultado final con todos los documentos personalizados.</li>
+              </ul>
+            </div>
+            <div>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Combinar+Correspondencia" alt="Proceso de combinación de correspondencia en Word">
+                <figcaption>Esquema del proceso de combinación de correspondencia en Word, mostrando documento principal, fuente de datos y resultado.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crear cartas personalizadas con base de datos -->
+        <div class="card">
+          <h4>Crear cartas personalizadas con base de datos</h4>
+          <p>Pasos para generar cartas personalizadas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Preparar el documento principal</h5>
+              <ul class="steps">
+                <li>Abre un nuevo documento en Word.</li>
+                <li>Escribe el texto fijo de la carta (ej: encabezado, cuerpo, despedida).</li>
+                <li>Deja espacios para los campos personalizados (ej: nombre, dirección).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Iniciar la combinación</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Correspondencia → Iniciar combinación de correspondencia → Cartas</strong>.</li>
+                <li>Selecciona <strong>Seleccionar destinatarios → Usar lista existente</strong>.</li>
+                <li>Elige tu fuente de datos (archivo Excel, base de datos Access, contactos de Outlook).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Insertar campos de combinación</h5>
+              <ul class="steps">
+                <li>Coloca el cursor donde deseas insertar un campo (ej: nombre del destinatario).</li>
+                <li>Ve a <strong>Correspondencia → Insertar campo de combinación</strong>.</li>
+                <li>Selecciona el campo correspondiente (ej: "Nombre", "Apellido", "Dirección").</li>
+                <li>Repite para todos los campos variables.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Vista previa y finalización</h5>
+              <ul class="steps">
+                <li>Usa <strong>Correspondencia → Vista previa de resultados</strong> para revisar.</li>
+                <li>Navega entre registros con las flechas de vista previa.</li>
+                <li>Ve a <strong>Correspondencia → Finalizar y combinar → Editar documentos individuales</strong>.</li>
+                <li>Elige si deseas combinar todos los registros o solo algunos.</li>
+                <li>Word generará un nuevo documento con todas las cartas personalizadas.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Cartas+Personalizadas" alt="Cartas personalizadas con combinación de correspondencia">
+                <figcaption>Ejemplo de creación de cartas personalizadas en Word, mostrando cómo insertar campos y generar documentos individuales.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa la opción <strong>Reglas</strong> en la pestaña <strong>Correspondencia</strong> para añadir lógica condicional (ej: "Si el género es femenino, usar 'Estimada'; si no, 'Estimado').
+          </div>
+        </div>
+
+        <!-- Combinar etiquetas y sobres -->
+        <div class="card">
+          <h4>Combinar etiquetas y sobres</h4>
+          <p>Genera etiquetas para sobres o productos, y prepara sobres con direcciones personalizadas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Etiquetas de dirección</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Correspondencia → Iniciar combinación de correspondencia → Etiquetas</strong>.</li>
+                <li>Selecciona el proveedor de etiquetas (ej: Avery) y el número de producto.</li>
+                <li>Word mostrará una hoja con el diseño de las etiquetas.</li>
+                <li>Inserta los campos de dirección en la primera etiqueta.</li>
+                <li>Usa <strong>Correspondencia → Actualizar etiquetas</strong> para replicar en todas.</li>
+                <li>Finaliza con <strong>Correspondencia → Finalizar y combinar</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Sobres</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Correspondencia → Iniciar combinación de correspondencia → Sobres</strong>.</li>
+                <li>Configura el tamaño del sobre y la posición de la dirección.</li>
+                <li>Inserta los campos de dirección del remitente y destinatario.</li>
+                <li>Usa <strong>Correspondencia → Finalizar y combinar</strong> para imprimir o generar los sobres.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Etiquetas+y+Sobres" alt="Etiquetas y sobres en Word">
+                <figcaption>Ejemplo de combinación de correspondencia para etiquetas y sobres en Word, mostrando diseños de Avery y configuración de direcciones.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Para etiquetas, usa la opción <strong>Vista previa de resultados</strong> para asegurarte de que el texto quepa correctamente en cada etiqueta antes de imprimir.
+          </div>
+        </div>
+
+        <!-- Combinar con Excel u otras fuentes de datos -->
+        <div class="card">
+          <h4>Combinar con Excel u otras fuentes de datos</h4>
+          <p>Usa diferentes orígenes de datos para personalizar tus documentos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Excel como fuente de datos</h5>
+              <ul class="steps">
+                <li>Prepara tu archivo Excel con una fila de encabezados (ej: Nombre, Apellido, Email).</li>
+                <li>Guarda el archivo y ciérralo antes de usarlo en Word.</li>
+                <li>En Word, selecciona <strong>Usar lista existente</strong> y elige tu archivo Excel.</li>
+                <li>Selecciona la hoja y el rango de celdas que contienen los datos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Otras fuentes de datos</h5>
+              <ul class="steps">
+                <li><strong>Access:</strong> Usa consultas o tablas como origen.</li>
+                <li><strong>Outlook:</strong> Selecciona contactos directamente.</li>
+                <li><strong>Lista nueva:</strong> Crea una lista de destinatarios desde cero en Word.</li>
+                <li><strong>Archivo de texto:</strong> Usa archivos CSV o TXT con datos separados por comas o tabulaciones.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Excel+y+Word" alt="Combinar Word con Excel">
+                <figcaption>Ejemplo de combinación de correspondencia usando Excel como fuente de datos en Word, mostrando cómo seleccionar hojas y rangos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Nota:</strong> Asegúrate de que los nombres de los encabezados en tu fuente de datos coincidan con los campos que insertas en Word (ej: "Nombre" en Excel debe ser "Nombre" en Word).
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 10: Funciones Avanzadas -->
+      <section id="modulo10" class="block">
+        <h3>Módulo 10. Funciones Avanzadas</h3>
+        <p class="lead">Automatiza tareas repetitivas, protege documentos y utiliza herramientas avanzadas como macros, campos, formularios electrónicos y más. Ideal para usuarios que buscan maximizar su productividad.</p>
+
+        <!-- Uso de macros y automatización -->
+        <div class="card">
+          <h4>Uso de macros y automatización</h4>
+          <p>Las macros permiten grabar y reproducir acciones para ahorrar tiempo:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Grabar una macro</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Vista → Macros → Grabar macro</strong>.</li>
+                <li>Asigna un nombre descriptivo y elige donde guardarla (documento actual o todas las plantillas).</li>
+                <li>Realiza las acciones que deseas automatizar (ej: aplicar formato, insertar tabla).</li>
+                <li>Detén la grabación con <strong>Vista → Macros → Detener grabación</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Ejecutar y gestionar macros</h5>
+              <ul class="steps">
+                <li>Ejecuta una macro con <span class="keyboard-shortcut">Alt + F8</span> o desde <strong>Vista → Macros → Ver macros</strong>.</li>
+                <li>Asigna un atajo de teclado o un botón en la barra de herramientas para acceso rápido.</li>
+                <li>Edita el código VBA de la macro para personalizarla (requiere conocimientos de programación).</li>
+                <li>Elimina macros no utilizadas para mantener el documento limpio.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Macros+en+Word" alt="Macros en Word">
+                <figcaption>Ejemplo de grabación y ejecución de macros en Word, mostrando el editor de VBA para personalización avanzada.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Ejemplos prácticos de macros</h5>
+              <ul class="steps">
+                <li><strong>Formato rápido:</strong> Aplicar un conjunto de estilos a un texto seleccionado.</li>
+                <li><strong>Inserción automática:</strong> Añadir una tabla con formato predefinido en un clic.</li>
+                <li><strong>Limpieza de documento:</strong> Eliminar espacios dobles o formatos inconsistentes.</li>
+                <li><strong>Generación de informes:</strong> Extraer datos de una tabla y crear un resumen.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Seguridad con macros</h5>
+              <ul class="steps">
+                <li>Las macros pueden contener código malicioso. Solo ejecuta macros de fuentes confiables.</li>
+                <li>Configura la seguridad de macros en <strong>Archivo → Opciones → Centro de confianza → Configuración del Centro de confianza → Configuración de macros</strong>.</li>
+                <li>Opciones recomendadas:
+                  <ul class="steps">
+                    <li>Desactivar todas las macros sin notificación (más seguro).</li>
+                    <li>Desactivar macros con notificación (recomendado).</li>
+                    <li>Habilitar todas las macros (solo para documentos confiables).</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protección de documentos -->
+        <div class="card">
+          <h4>Protección de documentos</h4>
+          <p>Protege tus documentos contra cambios no autorizados o accesos no deseados:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Contraseña para abrir o modificar</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Información → Proteger documento → Cifrar con contraseña</strong>.</li>
+                <li>Establece una contraseña para abrir el documento.</li>
+                <li>Para restringir ediciones, usa <strong>Proteger documento → Restringir edición</strong>.</li>
+                <li>Elige qué tipo de cambios permitir (ej: solo comentarios, solo rellenar formularios).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Marcas de agua y firmas digitales</h5>
+              <ul class="steps">
+                <li>Añade una marca de agua en <strong>Diseño → Marca de agua</strong> (ej: "Confidencial", "Borrador").</li>
+                <li>Inserta una firma digital en <strong>Insertar → Firma → Firmas de Microsoft Office</strong>.</li>
+                <li>Configura permisos para evitar la impresión o copia del contenido.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Protección+de+Documentos" alt="Protección de documentos en Word">
+                <figcaption>Ejemplo de protección de documentos en Word, mostrando cómo establecer contraseñas y añadir marcas de agua.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> No olvides tus contraseñas. Word no puede recuperarlas si las pierdes.
+          </div>
+        </div>
+
+        <!-- Seguimiento de versiones -->
+        <div class="card">
+          <h4>Seguimiento de versiones</h4>
+          <p>Controla los cambios en tus documentos y recupera versiones anteriores:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Historial de versiones en OneDrive</h5>
+              <ul class="steps">
+                <li>Guarda el documento en OneDrive o SharePoint.</li>
+                <li>Abre el historial de versiones en <strong>Archivo → Información → Historial de versiones</strong>.</li>
+                <li>Selecciona una versión anterior para verla o restaurarla.</li>
+                <li>Compara versiones para ver qué cambios se realizaron.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Comparar documentos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Revisar → Comparar → Comparar documentos</strong>.</li>
+                <li>Selecciona el documento original y el revisado.</li>
+                <li>Word muestra las diferencias en un nuevo documento con cambios resaltados.</li>
+                <li>Usa la barra de herramientas para navegar entre cambios y aceptarlos o rechazarlos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Historial+de+Versiones" alt="Historial de versiones en Word">
+                <figcaption>Ejemplo de historial de versiones y comparación de documentos en Word, mostrando cómo recuperar versiones anteriores.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inserción de campos y códigos -->
+        <div class="card">
+          <h4>Inserción de campos y códigos</h4>
+          <p>Los campos permiten insertar información dinámica que se actualiza automáticamente:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Tipos de campos comunes</h5>
+              <ul class="steps">
+                <li><strong>Fecha y hora:</strong> Inserta la fecha actual que se actualiza automáticamente.</li>
+                <li><strong>Número de página:</strong> Para encabezados o pies de página.</li>
+                <li><strong>Título del documento:</strong> Muestra el nombre del archivo.</li>
+                <li><strong>Fórmulas:</strong> Cálculos en tablas (ej: suma, promedio).</li>
+                <li><strong>Referencias cruzadas:</strong> Enlaces a otros elementos del documento.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Insertar y actualizar campos</h5>
+              <ul class="steps">
+                <li>Coloca el cursor donde deseas el campo.</li>
+                <li>Ve a <strong>Insertar → Campo</strong>.</li>
+                <li>Selecciona la categoría y el campo específico (ej: Date, Page, NumPages).</li>
+                <li>Configura el formato (ej: fecha en formato "dd/mm/aaaa").</li>
+                <li>Actualiza los campos seleccionándolos y presionando <span class="keyboard-shortcut">F9</span>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Campos+en+Word" alt="Campos en Word">
+                <figcaption>Ejemplo de inserción de campos en Word, mostrando cómo añadir fechas, números de página y referencias cruzadas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa el campo <strong>Date</strong> con formato <code>dddd, d "de" MMMM "de" yyyy</code> para mostrar fechas como "Lunes, 26 de octubre de 2025".
+          </div>
+        </div>
+
+        <!-- Formularios electrónicos avanzados -->
+        <div class="card">
+          <h4>Formularios electrónicos avanzados</h4>
+          <p>Crea formularios interactivos con lógica y validación de datos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Campos avanzados</h5>
+              <ul class="steps">
+                <li>Usa <strong>cuadros de texto con formato</strong> para fechas, números o texto enriquecido.</li>
+                <li>Añade <strong>listas desplegables con opciones dinámicas</strong> (ej: mostrar ciudades según el país seleccionado).</li>
+                <li>Configura <strong>casillas de verificación con valores personalizados</strong>.</li>
+                <li>Inserta <strong>botones de acción</strong> para navegar entre secciones del formulario.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Validación y protección</h5>
+              <ul class="steps">
+                <li>Establece reglas de validación para campos (ej: solo números, rango de fechas).</li>
+                <li>Usa mensajes de entrada y error para guiar al usuario.</li>
+                <li>Protege el formulario con <strong>Revisar → Restringir edición</strong>.</li>
+                <li>Guarda el formulario como plantilla (.dotx) para reutilizarlo.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Formularios+Avanzados" alt="Formularios avanzados en Word">
+                <figcaption>Ejemplo de formulario electrónico avanzado en Word, mostrando listas desplegables dinámicas y validación de datos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Para formularios complejos, considera usar <strong>Microsoft Forms</strong> o <strong>Google Forms</strong> y luego exportar las respuestas a Word.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 11: Trabajo Colaborativo y Nube -->
+      <section id="modulo11" class="block">
+        <h3>Módulo 11. Trabajo Colaborativo y Nube</h3>
+        <p class="lead">Colabora en tiempo real con otros usuarios, guarda documentos en OneDrive o SharePoint, y comparte archivos de manera segura. Aprende a usar las herramientas de colaboración integradas en Word 2025.</p>
+
+        <!-- Guardar en OneDrive o SharePoint -->
+        <div class="card">
+          <h4>Guardar en OneDrive o SharePoint</h4>
+          <p>Almacena tus documentos en la nube para acceder desde cualquier lugar y colaborar con otros:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Guardar en OneDrive</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Guardar como</strong>.</li>
+                <li>Selecciona <strong>OneDrive</strong> como ubicación.</li>
+                <li>Elige una carpeta existente o crea una nueva.</li>
+                <li>Activa el <strong>AutoGuardado</strong> para sincronizar cambios automáticamente.</li>
+                <li>Configura el guardado automático en <strong>Archivo → Opciones → Guardar</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Beneficios de OneDrive</h5>
+              <ul class="steps">
+                <li>Acceso a tus documentos desde cualquier dispositivo con internet.</li>
+                <li>Historial de versiones para recuperar cambios anteriores.</li>
+                <li>Colaboración en tiempo real con otros usuarios.</li>
+                <li>Protección contra pérdida de datos con copias de seguridad automáticas.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=OneDrive+en+Word" alt="OneDrive en Word">
+                <figcaption>Ejemplo de cómo guardar y sincronizar documentos en OneDrive directamente desde Word.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa la carpeta <strong>OneDrive - [Tu Empresa]</strong> si trabajas en un entorno corporativo, para mantener los documentos dentro del dominio de tu organización.
+          </div>
+        </div>
+
+        <!-- Compartir documentos en línea -->
+        <div class="card">
+          <h4>Compartir documentos en línea</h4>
+          <p>Comparte tus documentos con otros usuarios y controla los permisos de acceso:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Compartir desde Word</h5>
+              <ul class="steps">
+                <li>Haz clic en el botón <strong>Compartir</strong> en la esquina superior derecha.</li>
+                <li>Ingresa las direcciones de correo de los destinatarios.</li>
+                <li>Elige el nivel de permiso:
+                  <ul class="steps">
+                    <li><strong>Puede editar:</strong> Permite modificar el documento.</li>
+                    <li><strong>Puede ver:</strong> Solo lectura.</li>
+                  </ul>
+                </li>
+                <li>Añade un mensaje opcional y envía la invitación.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Opciones avanzadas</h5>
+              <ul class="steps">
+                <li>Genera un <strong>enlace compartible</strong> para enviar por correo o mensajería.</li>
+                <li>Configura la fecha de caducidad del enlace.</li>
+                <li>Establece una contraseña para acceder al documento.</li>
+                <li>Bloquea el enlace para evitar que se reenvíe a otros usuarios.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Compartir+Documentos" alt="Compartir documentos en Word">
+                <figcaption>Ejemplo de cómo compartir documentos en Word, mostrando opciones de permisos y generación de enlaces.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colaboración en tiempo real -->
+        <div class="card">
+          <h4>Colaboración en tiempo real</h4>
+          <p>Trabaja simultáneamente con otros usuarios en el mismo documento:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Coautoría en Word</h5>
+              <ul class="steps">
+                <li>Todos los colaboradores deben tener el documento guardado en OneDrive o SharePoint.</li>
+                <li>Los cambios se sincronizan en tiempo real y se muestran con colores diferentes por usuario.</li>
+                <li>Usa el panel <strong>Personas</strong> para ver quién está editando y dónde.</li>
+                <li>Los conflictos se resuelven automáticamente, priorizando el último cambio.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Comentarios y chat</h5>
+              <ul class="steps">
+                <li>Añade comentarios con <strong>Revisar → Nuevo comentario</strong>.</li>
+                <li>Responde a comentarios existentes para mantener conversaciones.</li>
+                <li>Usa el chat integrado (en la versión web) para comunicarte con los colaboradores.</li>
+                <li>Marca comentarios como resueltos una vez atendidos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Colaboración+en+Tiempo+Real" alt="Colaboración en tiempo real en Word">
+                <figcaption>Ejemplo de colaboración en tiempo real en Word, mostrando cambios sincronizados y comentarios de múltiples usuarios.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa la función <strong>@mención</strong> en los comentarios para notificar a un colaborador específico (ej: "@Andrés, ¿puedes revisar esta sección?").
+          </div>
+        </div>
+
+        <!-- Control de versiones y comentarios en grupo -->
+        <div class="card">
+          <h4>Control de versiones y comentarios en grupo</h4>
+          <p>Gestiona las diferentes versiones de un documento y organízate con tu equipo:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Historial de versiones</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Información → Historial de versiones</strong>.</li>
+                <li>Selecciona una versión anterior para verla o restaurarla.</li>
+                <li>Compara versiones para ver qué cambios se realizaron.</li>
+                <li>Descarga versiones anteriores si es necesario.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Notificaciones y alertas</h5>
+              <ul class="steps">
+                <li>Configura notificaciones por correo para cambios importantes.</li>
+                <li>Recibe alertas cuando alguien comente o edite el documento.</li>
+                <li>Revisa el historial de actividad para ver quién hizo qué y cuándo.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Control+de+Versiones" alt="Control de versiones en Word">
+                <figcaption>Ejemplo de control de versiones en Word, mostrando cómo restaurar versiones anteriores y comparar cambios.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> El historial de versiones solo está disponible para documentos guardados en <strong>OneDrive</strong> o <strong>SharePoint</strong>.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 12: Impresión y Exportación -->
+      <section id="modulo12" class="block">
+        <h3>Módulo 12. Impresión y Exportación</h3>
+        <p class="lead">Prepara tus documentos para imprimir o exportar a otros formatos como PDF, HTML o XPS. Ajusta la configuración de página, calidad de impresión y opciones de exportación para obtener los mejores resultados.</p>
+
+        <!-- Vista preliminar e impresión -->
+        <div class="card">
+          <h4>Vista preliminar e impresión</h4>
+          <p>Revisa y ajusta tu documento antes de imprimir:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Vista preliminar</h5>
+              <ul class="steps">
+                <li>Usa el atajo <span class="keyboard-shortcut">Ctrl + F2</span> o ve a <strong>Archivo → Imprimir</strong>.</li>
+                <li>Revisa el diseño, márgenes y saltos de página.</li>
+                <li>Usa el zoom para inspeccionar detalles.</li>
+                <li>Navega entre páginas con las flechas o el panel de miniaturas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Opciones de impresión</h5>
+              <ul class="steps">
+                <li>Selecciona la impresora y el rango de páginas a imprimir.</li>
+                <li>Elige entre imprimir <strong>todas las páginas</strong>, <strong>página actual</strong> o <strong>páginas específicas</strong>.</li>
+                <li>Configura el número de copias y la orientación (vertical/horizontal).</li>
+                <li>Usa <strong>Imprimir a doble cara</strong> para ahorrar papel.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Vista+Preliminar" alt="Vista preliminar en Word">
+                <figcaption>Ejemplo de vista preliminar en Word, mostrando opciones para ajustar márgenes, orientación y rango de páginas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configuración avanzada</h5>
+              <ul class="steps">
+                <li>Ajusta el <strong>tamaño del papel</strong> y los <strong>márgenes</strong>.</li>
+                <li>Configura la <strong>calidad de impresión</strong> (borrador, estándar, alta).</li>
+                <li>Elige imprimir en <strong>escala de grises</strong> o <strong>color</strong>.</li>
+                <li>Usa <strong>imprimir marcas de agua</strong> o <strong>fondos</strong> si es necesario.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Impresión de sobres y etiquetas</h5>
+              <ul class="steps">
+                <li>Para sobres, usa <strong>Correspondencia → Sobres</strong>.</li>
+                <li>Para etiquetas, usa <strong>Correspondencia → Etiquetas</strong>.</li>
+                <li>Configura el tamaño y la posición según el tipo de sobre o etiqueta.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuración de impresora y márgenes -->
+        <div class="card">
+          <h4>Configuración de impresora y márgenes</h4>
+          <p>Ajusta la configuración para obtener los mejores resultados de impresión:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Seleccionar impresora</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Imprimir</strong>.</li>
+                <li>Selecciona la impresora deseada en el menú desplegable.</li>
+                <li>Si la impresora no está lista, haz clic en <strong>Agregar impresora</strong>.</li>
+                <li>Configura las propiedades de la impresora (calidad, tipo de papel, etc.).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Ajustar márgenes</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Diseño → Márgenes</strong>.</li>
+                <li>Elige entre márgenes predefinidos (Normal, Estrecho, Moderado, Ancho).</li>
+                <li>Para márgenes personalizados, selecciona <strong>Márgenes personalizados</strong>.</li>
+                <li>Ajusta los márgenes superior, inferior, izquierdo y derecho.</li>
+                <li>Usa la opción <strong>Márgenes simétricos</strong> para documentos a doble cara.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Configuración+de+Impresora" alt="Configuración de impresora en Word">
+                <figcaption>Ejemplo de configuración de impresora y márgenes en Word, mostrando cómo seleccionar impresoras y ajustar márgenes personalizados.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa la opción <strong>Vista de lectura</strong> (<strong>Vista → Modo de lectura</strong>) para revisar cómo se verá el documento en dispositivos móviles o tablets.
+          </div>
+        </div>
+
+        <!-- Exportar a PDF y otros formatos -->
+        <div class="card">
+          <h4>Exportar a PDF y otros formatos</h4>
+          <p>Convierte tus documentos a otros formatos para compartir o archivar:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Exportar a PDF</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Exportar → Crear PDF/XPS</strong>.</li>
+                <li>Elige la ubicación y el nombre del archivo.</li>
+                <li>Configura opciones como:
+                  <ul class="steps">
+                    <li>Incluir marcas de revisión.</li>
+                    <li>Optimizar para tamaño o calidad.</li>
+                    <li>Incluir propiedades del documento.</li>
+                  </ul>
+                </li>
+                <li>Haz clic en <strong>Publicar</strong> para generar el PDF.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Otros formatos de exportación</h5>
+              <ul class="steps">
+                <li><strong>XPS:</strong> Formato similar a PDF, ideal para impresión.</li>
+                <li><strong>HTML:</strong> Para publicar en la web (guarda como página web).</li>
+                <li><strong>TXT:</strong> Texto plano sin formato.</li>
+                <li><strong>RTF:</strong> Formato enriquecido compatible con otros procesadores de texto.</li>
+                <li><strong>ODT:</strong> Formato de OpenDocument para compatibilidad con LibreOffice.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Exportar+a+PDF" alt="Exportar a PDF en Word">
+                <figcaption>Ejemplo de exportación a PDF en Word, mostrando opciones para optimizar calidad y incluir marcas de revisión.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Para documentos legales o importantes, exporta a PDF con <strong>marcas de revisión</strong> y <strong>firma digital</strong> para garantizar la autenticidad.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 13: Trucos y Atajos Útiles -->
+      <section id="modulo13" class="block">
+        <h3>Módulo 13. Trucos y Atajos Útiles</h3>
+        <p class="lead">Domina atajos de teclado, recupera documentos no guardados, personaliza la cinta de opciones y optimiza el rendimiento de Word. Estos trucos te ayudarán a trabajar más rápido y eficientemente.</p>
+
+        <!-- Atajos de teclado esenciales -->
+        <div class="card">
+          <h4>Atajos de teclado esenciales</h4>
+          <p>Memoriza estos atajos para agilizar tu trabajo en Word:</p>
+          <div class="grid grid-2">
+            <div>
+              <table>
+                <thead>
+                  <tr><th>Atajo</th><th>Función</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + C</span></td><td>Copiar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + X</span></td><td>Cortar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + V</span></td><td>Pegar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Z</span></td><td>Deshacer</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Y</span></td><td>Rehacer</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + S</span></td><td>Guardar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + P</span></td><td>Imprimir</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + F</span></td><td>Buscar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + H</span></td><td>Reemplazar</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr><th>Atajo</th><th>Función</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + N</span></td><td>Nuevo documento</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + O</span></td><td>Abrir documento</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + W</span></td><td>Cerrar documento</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Alt + Ctrl + S</span></td><td>Dividir ventana</td></tr>
+                  <tr><td><span class="keyboard-shortcut">F12</span></td><td>Guardar como</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Alt + 1</span></td><td>Aplicar estilo Título 1</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Alt + 2</span></td><td>Aplicar estilo Título 2</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Alt + 3</span></td><td>Aplicar estilo Título 3</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/185ABD/FFFFFF?text=Atajos+de+Teclado" alt="Atajos de teclado en Word">
+            <figcaption>Infografía con los atajos de teclado más útiles en Word, organizados por categorías (edición, formato, navegación).</figcaption>
+          </figure>
+        </div>
+
+        <!-- Recuperación de documentos no guardados -->
+        <div class="card">
+          <h4>Recuperación de documentos no guardados</h4>
+          <p>Recupera documentos que cerraste sin guardar o que se perdieron por un error:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>AutoRecuperación</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Abrir → Recuperar documentos no guardados</strong>.</li>
+                <li>Word mostrará una lista de documentos recuperables.</li>
+                <li>Selecciona el documento y haz clic en <strong>Abrir</strong>.</li>
+                <li>Guarda el documento inmediatamente para evitar perderlo nuevamente.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Configurar AutoGuardado</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Opciones → Guardar</strong>.</li>
+                <li>Activa <strong>Guardar información de AutoRecuperación cada X minutos</strong>.</li>
+                <li>Establece un intervalo corto (ej: 5 minutos) para minimizar la pérdida de datos.</li>
+                <li>Configura la ubicación de los archivos de AutoRecuperación.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Recuperar+Documentos" alt="Recuperar documentos en Word">
+                <figcaption>Ejemplo de cómo recuperar documentos no guardados en Word y configurar el AutoGuardado.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> Los archivos de AutoRecuperación se eliminan después de cerrar Word correctamente. Guarda siempre tus documentos manualmente.
+          </div>
+        </div>
+
+        <!-- Personalización de la cinta de opciones -->
+        <div class="card">
+          <h4>Personalización de la cinta de opciones</h4>
+          <p>Ajusta la cinta de opciones para tener acceso rápido a las herramientas que más usas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Añadir comandos a la cinta</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Opciones → Personalizar cinta</strong>.</li>
+                <li>Selecciona una pestaña existente o crea una nueva.</li>
+                <li>Elige comandos de la lista y haz clic en <strong>Agregar</strong>.</li>
+                <li>Organiza los comandos arrastrándolos a la posición deseada.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Barra de herramientas de acceso rápido</h5>
+              <ul class="steps">
+                <li>Personaliza la barra de herramientas haciendo clic en la flecha desplegable al final.</li>
+                <li>Selecciona comandos para añadir (ej: Guardar como PDF, Imprimir, Deshacer).</li>
+                <li>Reorganiza los botones arrastrándolos.</li>
+                <li>Exporta o importa configuraciones para usarlas en otros equipos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Personalizar+Cinta" alt="Personalizar cinta en Word">
+                <figcaption>Ejemplo de personalización de la cinta de opciones y la barra de herramientas de acceso rápido en Word.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Añade comandos como <strong>Guardar como PDF</strong>, <strong>Nuevo comentario</strong> o <strong>Traductor</strong> a la barra de acceso rápido para agilizar tu flujo de trabajo.
+          </div>
+        </div>
+
+        <!-- Optimización del rendimiento del programa -->
+        <div class="card">
+          <h4>Optimización del rendimiento del programa</h4>
+          <p>Mejora la velocidad y estabilidad de Word con estos ajustes:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Desactivar complementos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Archivo → Opciones → Complementos</strong>.</li>
+                <li>Selecciona <strong>Complementos de COM</strong> y haz clic en <strong>Ir</strong>.</li>
+                <li>Desmarca los complementos que no uses (ej: barras de herramientas de terceros).</li>
+                <li>Reinicia Word para que los cambios surtan efecto.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Reparar Office</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Panel de control → Programas → Programas y características</strong>.</li>
+                <li>Selecciona <strong>Microsoft Office</strong> y haz clic en <strong>Cambiar</strong>.</li>
+                <li>Elige <strong>Reparación rápida</strong> o <strong>Reparación en línea</strong>.</li>
+                <li>Sigue las instrucciones para completar el proceso.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Optimizar+Word" alt="Optimizar Word">
+                <figcaption>Ejemplo de cómo optimizar el rendimiento de Word, mostrando la desactivación de complementos y reparación de Office.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Otras optimizaciones</h5>
+              <ul class="steps">
+                <li>Guarda documentos grandes en formato <strong>.docx</strong> en lugar de <strong>.doc</strong>.</li>
+                <li>Divide documentos muy largos en varios archivos.</li>
+                <li>Usa estilos en lugar de formato manual para reducir el tamaño del archivo.</li>
+                <li>Limpia el formato no utilizado con <strong>Inicio → Estilos → Inspector de estilos</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Actualizaciones</h5>
+              <ul class="steps">
+                <li>Mantén Word y Windows actualizados para tener las últimas correcciones de errores.</li>
+                <li>Ve a <strong>Archivo → Cuenta → Opciones de actualización</strong>.</li>
+                <li>Activa las actualizaciones automáticas para Office.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 14: Prácticas y Proyectos -->
+      <section id="modulo14" class="block">
+        <h3>Módulo 14. Prácticas y Proyectos</h3>
+        <p class="lead">Pon en práctica lo aprendido con ejercicios reales. Crea una carta formal, un informe académico, un folleto publicitario y un contrato editable. Estos proyectos te ayudarán a consolidar tus conocimientos y prepararte para situaciones reales.</p>
+
+        <!-- Actividades prácticas por nivel -->
+        <div class="card">
+          <h4>Actividades prácticas por nivel</h4>
+          <p>Ejercicios sugeridos para practicar según tu experiencia:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Nivel principiante</h5>
+              <ul class="steps">
+                <li><strong>Carta formal:</strong> Redacta una carta con membrete, destinatario, cuerpo y firma. Usa estilos para los párrafos.</li>
+                <li><strong>Currículum vitae:</strong> Crea un CV con secciones para experiencia, formación y habilidades. Usa viñetas y alineación.</li>
+                <li><strong>Lista de tareas:</strong> Haz una lista de compras o tareas con viñetas y numeración.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Nivel intermedio</h5>
+              <ul class="steps">
+                <li><strong>Informe académico:</strong> Diseña un informe con portada, índice, desarrollo, conclusiones y bibliografía. Usa estilos para generar la tabla de contenido.</li>
+                <li><strong>Factura:</strong> Crea una factura con logo, tabla de productos, subtotales, impuestos y total. Usa fórmulas en la tabla.</li>
+                <li><strong>Newsletter:</strong> Maqueta un boletín con columnas, imágenes y cuadros de texto.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Nivel avanzado</h5>
+              <ul class="steps">
+                <li><strong>Folleto publicitario:</strong> Diseña un tríptico con imágenes, texto promocional y código QR. Usa columnas y ajustes de texto.</li>
+                <li><strong>Contrato editable:</strong> Crea un contrato con campos de formulario (fechas, nombres, casillas de verificación) y protégelo.</li>
+                <li><strong>Informe con gráficos:</strong> Importa datos de Excel, genera gráficos y analiza tendencias. Usa referencias cruzadas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Proyectos integradores</h5>
+              <ul class="steps">
+                <li>Combina varias herramientas en un solo proyecto (ej: informe con tabla de contenido, gráficos, referencias y combinación de correspondencia).</li>
+                <li>Colabora con un compañero en un documento compartido en OneDrive.</li>
+                <li>Automatiza tareas repetitivas con macros.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Proyectos+Prácticos" alt="Proyectos prácticos en Word">
+                <figcaption>Ejemplo de proyectos prácticos en Word, mostrando una carta formal, un informe con gráficos y un folleto publicitario.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creación de documentos reales -->
+        <div class="card">
+          <h4>Creación de documentos reales</h4>
+          <p>Ejemplos detallados de documentos que puedes crear:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Carta formal</h5>
+              <ul class="steps">
+                <li><strong>Encabezado:</strong> Incluye tu información y la del destinatario (nombre, dirección, fecha).</li>
+                <li><strong>Saludo:</strong> Usa un saludo formal (ej: "Estimado/a [Nombre]").</li>
+                <li><strong>Cuerpo:</strong> Redacta el mensaje en párrafos claros y concisos.</li>
+                <li><strong>Despedida:</strong> Usa una fórmula de cortesía (ej: "Atentamente,").</li>
+                <li><strong>Firma:</strong> Inserta una línea para firma o una imagen de tu firma escaneada.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Informe académico</h5>
+              <ul class="steps">
+                <li><strong>Portada:</strong> Título, autor, fecha, logotipos institucionales.</li>
+                <li><strong>Índice:</strong> Genera una tabla de contenido automática.</li>
+                <li><strong>Desarrollo:</strong> Secciones numeradas con títulos y subtítulos.</li>
+                <li><strong>Gráficos y tablas:</strong> Inserta datos de Excel y añade pies explicativos.</li>
+                <li><strong>Bibliografía:</strong> Usa citas y genera la bibliografía automáticamente.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Informe+Académico" alt="Informe académico en Word">
+                <figcaption>Ejemplo de informe académico en Word, mostrando portada, índice, gráficos y bibliografía.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Folleto publicitario</h5>
+              <ul class="steps">
+                <li><strong>Diseño:</strong> Usa columnas y cuadros de texto para organizar el contenido.</li>
+                <li><strong>Imágenes:</strong> Inserta fotos de alta calidad y ajusta el texto alrededor.</li>
+                <li><strong>Colores y fuentes:</strong> Elige una paleta llamativa pero legible.</li>
+                <li><strong>Llamados a la acción:</strong> Incluye frases como "¡Contáctanos hoy!" o "Visita nuestra web".</li>
+                <li><strong>Código QR:</strong> Añade un código que lleve a tu sitio web o redes sociales.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Contrato editable</h5>
+              <ul class="steps">
+                <li><strong>Campos de formulario:</strong> Usa cuadros de texto para nombres, fechas y términos.</li>
+                <li><strong>Casillas de verificación:</strong> Para opciones de sí/no (ej: "Acepto los términos").</li>
+                <li><strong>Listas desplegables:</strong> Para seleccionar entre opciones predefinidas.</li>
+                <li><strong>Protección:</strong> Restringe la edición para que solo se puedan completar los campos.</li>
+                <li><strong>Firma:</strong> Deja espacio para firmas manuales o digitales.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluación final de conocimientos -->
+        <div class="card">
+          <h4>Evaluación final de conocimientos</h4>
+          <p>Pon a prueba lo que has aprendido con un proyecto integrador:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Proyecto integrador</h5>
+              <ul class="steps">
+                <li>Crea un <strong>informe anual</strong> para una empresa ficticia que incluya:
+                  <ul class="steps">
+                    <li>Portada con logo y título.</li>
+                    <li>Índice automático.</li>
+                    <li>Resumen ejecutivo.</li>
+                    <li>Secciones con texto, tablas y gráficos.</li>
+                    <li>Bibliografía y anexos.</li>
+                  </ul>
+                </li>
+                <li>Usa <strong>combinación de correspondencia</strong> para generar cartas personalizadas a los accionistas.</li>
+                <li>Protege el documento con una contraseña y añade una marca de agua "Confidencial".</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Autoevaluación</h5>
+              <ul class="steps">
+                <li>Revisa tu proyecto con esta lista:
+                  <ul class="steps">
+                    <li>¿El documento tiene un diseño profesional y coherente?</li>
+                    <li>¿Los estilos y la tabla de contenido funcionan correctamente?</li>
+                    <li>¿Las tablas y gráficos están bien formateados y son claros?</li>
+                    <li>¿La combinación de correspondencia generó documentos personalizados sin errores?</li>
+                    <li>¿El documento está protegido y listo para compartir?</li>
+                  </ul>
+                </li>
+                <li>Comparte tu proyecto con un compañero o mentor para recibir retroalimentación.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/185ABD/FFFFFF?text=Proyecto+Integrador" alt="Proyecto integrador en Word">
+                <figcaption>Ejemplo de proyecto integrador en Word, mostrando un informe anual con portada, gráficos y combinación de correspondencia.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Beneficios:</strong>
+            <ul class="steps">
+              <li>Consolida todos los conceptos aprendidos en un solo proyecto.</li>
+              <li>Desarrolla habilidades para resolver problemas reales en entornos laborales.</li>
+              <li>Prepárate para certificaciones como <strong>Microsoft Office Specialist (MOS)</strong>.</li>
+              <li>Mejora tu portafolio con proyectos demostrables.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" width="24" height="24" alt="Microsoft Word">
+          <span>Guía Completa de Microsoft Word 2025</span>
+        </div>
+        <p class="footer-note">Domina Word con ejemplos prácticos, desde lo básico hasta funciones avanzadas, diseño profesional y colaboración en la nube.</p>
+        <div class="footer-social" aria-label="Redes sociales">
+          <a href="#" aria-label="Twitter/X" title="Twitter/X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" aria-label="YouTube" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Módulos</div>
+        <ul class="footer-list">
+          <li><a href="#modulo1">1. Introducción</a></li>
+          <li><a href="#modulo2">2. Trabajo con Texto</a></li>
+          <li><a href="#modulo3">3. Formato de Texto</a></li>
+          <li><a href="#modulo4">4. Diseño de Página</a></li>
+          <li><a href="#modulo5">5. Inserción de Elementos</a></li>
+          <li><a href="#modulo6">6. Herramientas de Revisión</a></li>
+          <li><a href="#modulo7">7. Tablas y Formularios</a></li>
+          <li><a href="#modulo8">8. Diseño Profesional</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Recursos</div>
+        <ul class="footer-list">
+          <li><a href="#modulo13">Atajos de Teclado</a></li>
+          <li><a href="#modulo14">Prácticas y Proyectos</a></li>
+          <li><a href="https://support.microsoft.com/es-es/word" target="_blank">Soporte de Microsoft</a></li>
+          <li><a href="https://www.office.com" target="_blank">Office Online</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Contacto</div>
+        <ul class="footer-list">
+          <li><a href="mailto:info@wordguia.com">info@wordguia.com</a></li>
+          <li>© 2025 Guía de Microsoft Word</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <a class="backtop" href="#top" aria-label="Volver arriba">↑</a>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchData = [
+        { title: "Introducción a Microsoft Word", href: "#modulo1", description: "Interfaz, historia y operaciones básicas con documentos." },
+        { title: "Trabajo con Texto", href: "#modulo2", description: "Escribir, editar, seleccionar, copiar, pegar y buscar texto." },
+        { title: "Formato de Texto y Párrafos", href: "#modulo3", description: "Fuentes, colores, alineación, sangrías, viñetas y estilos." },
+        { title: "Diseño de Página y Maquetación", href: "#modulo4", description: "Márgenes, saltos, encabezados, pies de página y portadas." },
+        { title: "Inserción de Elementos", href: "#modulo5", description: "Imágenes, tablas, gráficos, formas, ecuaciones y vínculos." },
+        { title: "Herramientas de Revisión", href: "#modulo6", description: "Ortografía, sinónimos, traductor, comentarios y control de cambios." },
+        { title: "Tablas y Formularios", href: "#modulo7", description: "Creación, formato, fórmulas y formularios interactivos." },
+        { title: "Diseño Profesional de Documentos", href: "#modulo8", description: "Cartas, informes, currículums, folletos y tablas de contenido." },
+        { title: "Combinar Correspondencia", href: "#modulo9", description: "Cartas, etiquetas, sobres y combinación con Excel." },
+        { title: "Funciones Avanzadas", href: "#modulo10", description: "Macros, protección, campos, seguimiento de versiones y formularios electrónicos." },
+        { title: "Trabajo Colaborativo y Nube", href: "#modulo11", description: "OneDrive, compartir documentos y colaboración en tiempo real." },
+        { title: "Impresión y Exportación", href: "#modulo12", description: "Vista preliminar, configuración de impresora y exportar a PDF." },
+        { title: "Trucos y Atajos Útiles", href: "#modulo13", description: "Atajos de teclado, recuperación de documentos y optimización." },
+        { title: "Prácticas y Proyectos", href: "#modulo14", description: "Ejercicios prácticos y proyectos integradores." }
+      ];
+
+      const searchInput = document.getElementById('siteSearch');
+      const searchResults = document.getElementById('searchResults');
+      const clearSearch = document.getElementById('clearSearch');
+
+      function showSearchResults(query) {
+        searchResults.innerHTML = '';
+        if (!query) {
+          searchResults.classList.remove('show');
+          return;
+        }
+        const filtered = searchData.filter(item =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.description.toLowerCase().includes(query.toLowerCase())
+        );
+        if (filtered.length > 0) {
+          filtered.forEach(item => {
+            const resultItem = document.createElement('a');
+            resultItem.href = item.href;
+            resultItem.className = 'search-result';
+            resultItem.innerHTML = `
+              <strong>${item.title}</strong>
+              <p>${item.description}</p>
+            `;
+            searchResults.appendChild(resultItem);
+          });
+          searchResults.classList.add('show');
+        } else {
+          const noResults = document.createElement('div');
+          noResults.className = 'no-results';
+          noResults.textContent = 'No se encontraron resultados.';
+          searchResults.appendChild(noResults);
+          searchResults.classList.add('show');
+        }
+      }
+
+      searchInput.addEventListener('input', () => {
+        showSearchResults(searchInput.value);
+      });
+
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        searchResults.classList.remove('show');
+        searchInput.focus();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+          searchResults.classList.remove('show');
+        }
+      });
+
+      window.addEventListener('scroll', function() {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset;
+        const trackLength = docHeight - winHeight;
+        const progress = Math.floor(scrollTop / trackLength * 100);
+        document.getElementById('progressBar').style.width = progress + '%';
+      });
+
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('change', function() {
+        document.body.classList.toggle('theme-dark', this.checked);
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+      });
+
+      if (localStorage.getItem('theme') === 'dark') {
+        themeToggle.checked = true;
+        document.body.classList.add('theme-dark');
+      }
+
+      const backTop = document.querySelector('.backtop');
+      window.addEventListener('scroll', function() {
+        backTop.style.display = window.pageYOffset > 300 ? 'grid' : 'none';
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      const tocToggle = document.getElementById('tocToggle');
+      const toc = document.getElementById('toc');
+      tocToggle.addEventListener('click', function() {
+        toc.classList.toggle('show');
+        const isExpanded = toc.classList.contains('show');
+        tocToggle.textContent = isExpanded ? '📋 Ocultar tabla de contenidos' : '📋 Mostrar tabla de contenidos';
+      });
+
+      if (window.innerWidth <= 1024) {
+        toc.classList.remove('show');
+      }
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 1024) {
+          toc.classList.remove('show');
+          tocToggle.textContent = '📋 Mostrar tabla de contenidos';
+        } else {
+          toc.classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

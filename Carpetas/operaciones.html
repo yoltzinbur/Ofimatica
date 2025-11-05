@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operaciones | Manual de Archivos y Carpetas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html" class="active">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Operaciones comunes ⚙️</h1>
+
+  <div class="grid grid-2">
+    <div class="card reveal">
+      <div class="icon">✨</div>
+      <h2>Crear</h2>
+      <p>Botón derecho → <em>Nuevo</em> → Archivo/Carpeta. Nombra con claridad.</p>
+      <p class="tip ok"><span class="badge">Ejemplo</span> <code>2025-10-23_proyecto-v01</code></p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">✏️</div>
+      <h2>Renombrar</h2>
+      <p><span class="kb">Windows</span> F2 • <span class="kb">macOS</span> Enter.</p>
+      <p class="tip">Evita espacios dobles y caracteres raros.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📄</div>
+      <h2>Copiar / Pegar</h2>
+      <p><span class="kb">Ctrl+C</span> / <span class="kb">Ctrl+V</span> • <span class="kb">⌘C</span> / <span class="kb">⌘V</span></p>
+      <p class="tip">Duplica sin mover el original.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📤</div>
+      <h2>Mover (Cortar / Pegar)</h2>
+      <p><span class="kb">Ctrl+X</span> / <span class="kb">⌘X</span> para cambiar de ubicación.</p>
+      <p class="tip">También puedes arrastrar y soltar.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🗑️</div>
+      <h2>Eliminar</h2>
+      <p>Envia a Papelera. Vacíala periódicamente.</p>
+      <p class="warn tip">Cuidado con borrar sin respaldo.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📦</div>
+      <h2>Comprimir .zip</h2>
+      <p>Agrupa y reduce tamaño: botón derecho → <em>Comprimir</em>.</p>
+      <p class="tip">Ideal para enviar varias cosas juntas.</p>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h2>Mini-guía ilustrada</h2>
+    <img class="illus" src="https://dummyimage.com/800x220/eaf6ff/5e6a85&text=Crear%2C+Copiar%2C+Mover%2C+Eliminar" alt="Operaciones ilustradas">
+    <p>Dominar estas operaciones te ahorra tiempo y evita errores.</p>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

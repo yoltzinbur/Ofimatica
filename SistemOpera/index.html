@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Windows Creativo — Dossier Informático Extenso (Restaurado)</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Segoe UI,system-ui,-apple-system,Roboto,Arial,sans-serif;background:#0a1022;color:#e9f0ff;line-height:1.6}
+
+    :root{
+      --emerald:#15c58a; --blue:#2f6ef4; --gold:#f2b800; --ink:#0a1022;
+      --panel:rgba(255,255,255,.08); --panel-2:rgba(255,255,255,.14);
+      --stroke:rgba(255,255,255,.2); --shadow:0 20px 50px rgba(0,0,0,.45);
+      --r-xl:22px;--r-lg:16px;--r-md:12px;--r-sm:10px;
+      --grad-1:linear-gradient(135deg, rgba(47,110,244,.95), rgba(21,197,138,.95));
+      --grad-2:linear-gradient(135deg, rgba(21,197,138,.95), rgba(242,184,0,.95));
+      --glass:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+    }
+
+    .bg{position:fixed;inset:0;background:
+      radial-gradient(900px 500px at 15% 25%, rgba(21,197,138,.18), transparent 70%),
+      radial-gradient(1100px 650px at 80% 15%, rgba(47,110,244,.2), transparent 70%),
+      radial-gradient(1000px 620px at 50% 95%, rgba(242,184,0,.16), transparent 75%),
+      linear-gradient(180deg,#0a1022,#0b1a3a)}
+    .bg::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.035"/></svg>')}
+
+    .wrap{position:relative;max-width:1200px;margin:0 auto;padding:28px}
+
+    .masthead{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(10,16,34,.95), rgba(10,16,34,.75));backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke)}
+    .mast{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 18px}
+    .logo{width:36px;height:36px;border-radius:12px;background:conic-gradient(from 210deg, var(--emerald), var(--blue), var(--gold), var(--emerald));display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .search{margin-left:auto}
+    .search input{width:260px;max-width:48vw;padding:10px 12px;border-radius:12px;border:1px solid var(--stroke);background:rgba(255,255,255,.1);color:#fff;outline:none}
+
+    .grid{display:grid;grid-template-columns: 1fr;gap:22px;margin-top:22px}
+
+    .panel{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--r-xl);backdrop-filter:blur(12px);box-shadow:var(--shadow);overflow:hidden}
+
+    .hero{display:grid;grid-template-columns: 1.2fr .8fr;gap:24px;padding:22px;border-bottom:1px solid var(--stroke)}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}}
+    .hero h1{margin:.2em 0 .4em;font-size:clamp(28px,4vw,46px)}
+    .lead{color:#d3e5ff;opacity:.95}
+
+    .section{padding:22px}
+    .section h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px)}
+    .section h3{margin:12px 0 6px;font-size:clamp(18px,2.3vw,22px)}
+    .muted{opacity:.8}
+
+    .cards{display:grid;grid-template-columns: repeat(3, 1fr);gap:16px;margin-top:10px}
+    @media (max-width: 980px){.cards{grid-template-columns: repeat(2, 1fr)}}
+    @media (max-width: 680px){.cards{grid-template-columns: 1fr}}
+    .card{background:rgba(255,255,255,.1);border:1px solid var(--stroke);border-radius:16px;padding:14px}
+
+    .metric{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.08);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px}
+
+    .code{position:relative;background:#0b1430;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:12px;overflow:auto}
+    .code pre{margin:0;font-family:Consolas,Monaco,Menlo,monospace;font-size:13px;color:#e6f3ff}
+    .copy{position:absolute;top:8px;right:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid var(--stroke);cursor:pointer;font-weight:700}
+
+    .gallery{display:grid;grid-template-columns: repeat(4, 1fr);gap:14px}
+    @media (max-width: 960px){.gallery{grid-template-columns: repeat(3, 1fr)}}
+    @media (max-width: 680px){.gallery{grid-template-columns: repeat(2, 1fr)}}
+    .shot{border-radius:14px;overflow:hidden;border:1px solid var(--stroke);background:#0e1a3c}
+
+    .table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}
+    .table th,.table td{border-bottom:1px solid rgba(255,255,255,.12);padding:10px 12px;text-align:left}
+    .table th{background:rgba(255,255,255,.08)}
+
+    .faq details{background:rgba(255,255,255,.08);border:1px solid var(--stroke);border-radius:12px;padding:12px}
+    .faq details summary{cursor:pointer;font-weight:800}
+
+    .footer{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:18px;border-top:1px solid var(--stroke);background:rgba(255,255,255,.06)}
+    .topchips{border-top:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));backdrop-filter:blur(8px)}
+    .topchips .row{max-width:1200px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 18px}
+    .chip{all:unset;cursor:pointer;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#eaf2ff;font-weight:700}
+    .chip.active{background:#f87171;color:#fff;box-shadow:0 0 0 8px rgba(248,113,113,.14) inset}
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="mast">
+      <div class="logo">🪟</div>
+      <div class="brand">Windows Creativo — Informe Técnico</div>
+      <div class="search"><input id="tocSearch" placeholder="Buscar secciones…"/></div>
+    </div>
+    <nav class="topchips" aria-label="Secciones abreviadas">
+      <div class="row" id="chipsRow">
+        <button class="chip active" data-target="#rendimiento">Rep.</button>
+        <button class="chip" data-target="#componentes">Comp.</button>
+        <!-- Quitados: Usu. y Sal. -->
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <article class="panel">
+        <!-- HERO -->
+        <section class="hero">
+          <div>
+            <h1>Windows Creativo: sistema visual informático, documentado <span style="color:var(--emerald)">a fondo</span>.</h1>
+            <p class="lead">Un dossier completo con fundamentos de diseño, componentes, pautas de UX, accesibilidad y performance. Incluye imágenes, diagramas SVG y ejemplos de código, todo en un único archivo (HTML+CSS+JS).</p>
+            <div class="cta">
+              <button class="btn primary pulse" id="btnScroll">Explorar secciones</button>
+            </div>
+          </div>
+          <div class="illus">
+            <img alt="Collage Windows Creativo" src="data:image/svg+xml;utf8,
+              %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 560'%3E
+                %3Cdefs%3E
+                  %3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E
+                    %3Cstop offset='0%25' stop-color='%232f6ef4'/%3E
+                    %3Cstop offset='100%25' stop-color='%2315c58a'/%3E
+                  %3C/linearGradient%3E
+                  %3Cfilter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E
+                    %3CfeGaussianBlur stdDeviation='8'/%3E
+                  %3C/filter%3E
+                %3C/defs%3E
+                %3Crect width='100%25' height='100%25' fill='%230a1022'/%3E
+                %3Cg opacity='.22'%3E
+                  %3Ccircle cx='140' cy='120' r='90' fill='url(%23g)' filter='url(%23b)'/%3E
+                  %3Ccircle cx='780' cy='100' r='110' fill='url(%23g)' filter='url(%23b)'/%3E
+                  %3Ccircle cx='460' cy='500' r='120' fill='url(%23g)' filter='url(%23b)'/%3E
+                %3C/g%3E
+                %3Cg%3E
+                  %3Crect x='40' y='40' width='300' height='190' rx='18' fill='url(%23g)' opacity='.95'/%3E
+                  %3Crect x='380' y='40' width='480' height='120' rx='18' fill='white' opacity='.08' stroke='%23fff' stroke-opacity='.18'/%3E
+                  %3Crect x='40' y='260' width='220' height='120' rx='18' fill='white' opacity='.08' stroke='%23fff' stroke-opacity='.18'/%3E
+                  %3Crect x='280' y='260' width='220' height='260' rx='18' fill='white' opacity='.08' stroke='%23fff' stroke-opacity='.18'/%3E
+                  %3Crect x='520' y='180' width='340' height='340' rx='18' fill='white' opacity='.08' stroke='%23fff' stroke-opacity='.18'/%3E
+                %3C/g%3E
+              %3C/svg%3E" />
+          </div>
+        </section>
+
+        <!-- 1. Qué es -->
+        <section id="que-es" class="section">
+          <h2>1. ¿Qué es <em>Windows Creativo</em>?</h2>
+          <p><strong>Windows Creativo</strong> es un sistema visual inspirado en interfaces de escritorio modernas (Windows 10/11) con enfoque en <em>glassmorphism</em>, modularidad y documentación técnica. Está pensado para prototipos, demos públicas, landings técnicas y material educativo de UI/UX.</p>
+          <div class="cards">
+            <div class="card"><strong>Objetivo</strong><br/>Unificar estilo y componentes para crear experiencias consistentes con look &amp; feel de “ventanas”.</div>
+            <div class="card"><strong>Ámbito</strong><br/>Web estática o SPA ligera, sin dependencias obligatorias.</div>
+            <div class="card"><strong>Entrega</strong><br/>Un solo archivo (este), fácil de abrir en VS Code y desplegar.</div>
+          </div>
+        </section>
+
+        <!-- 2. Principios -->
+        <section id="principios" class="section">
+          <h2>2. Principios de diseño</h2>
+          <div class="cards">
+            <div class="card"><h3>Claridad</h3><p class="muted">Tipografías legibles, jerarquías consistentes y contraste suficiente.</p></div>
+            <div class="card"><h3>Jerarquía Visual</h3><p class="muted">Ventanas y paneles con sombra y blur para guiar la atención.</p></div>
+            <div class="card"><h3>Modularidad</h3><p class="muted">Tiles, barra, ventanas y toasts como bloques reusables.</p></div>
+            <div class="card"><h3>Accesibilidad</h3><p class="muted">Soporte teclado, roles ARIA y tamaños táctiles.</p></div>
+            <div class="card"><h3>Rendimiento</h3><p class="muted">SVGs embebidos, sin assets externos, CSS/JS mínimo.</p></div>
+            <div class="card"><h3>Escalabilidad</h3><p class="muted">Tokens de diseño (CSS vars) para tematizar a gran escala.</p></div>
+          </div>
+        </section>
+
+        <!-- 3. Componentes -->
+        <section id="componentes" class="section">
+          <h2>3. Componentes del sistema</h2>
+          <h3>3.1 Barra y menú Inicio</h3>
+          <p>La barra inferior concentra acciones globales. El menú Inicio despliega <em>tiles</em> y atajos.</p>
+          <div class="code"><button class="copy" data-copy="#snippet1">Copiar</button><pre id="snippet1">&lt;div class="taskbar" role="toolbar" aria-label="Barra"&gt;
+  &lt;button class="start" aria-haspopup="true" aria-controls="menuStart"&gt;Inicio&lt;/button&gt;
+  &lt;nav id="menuStart" hidden&gt;...tiles...&lt;/nav&gt;
+&lt;/div&gt;</pre></div>
+
+          <h3>3.2 Ventanas</h3>
+          <p>Paneles con títulos, acciones (min/max/cerrar), foco al frente y arrastre por barra superior.</p>
+          <div class="code"><button class="copy" data-copy="#snippet2">Copiar</button><pre id="snippet2">&lt;section class="window active" role="dialog" aria-modal="false" aria-label="Galería"&gt;
+  &lt;header class="titlebar"&gt;...&lt;/header&gt;
+  &lt;main class="content"&gt;...&lt;/main&gt;
+&lt;/section&gt;</pre></div>
+
+          <h3>3.3 Tiles</h3>
+          <p>Bloques accionables para navegación o estados. Tamaños M/L, icono opcional, etiqueta y badge.</p>
+        </section>
+
+        <!-- 4. UX -->
+        <section id="ux" class="section">
+          <h2>4. Patrones UX recomendados</h2>
+          <table class="table">
+            <thead><tr><th>Patrón</th><th>Cuándo usar</th><th>Notas</th></tr></thead>
+            <tbody>
+              <tr><td>Dialog modal</td><td>Confirmaciones críticas</td><td>Bloquear fondo, foco contenido</td></tr>
+              <tr><td>Toast</td><td>Feedback corto</td><td>Auto cierre &lt; 2s</td></tr>
+              <tr><td>Drawer</td><td>Filtros, menús laterales</td><td>Deslizar desde borde</td></tr>
+              <tr><td>Tabs</td><td>Alternar vistas hermanas</td><td>Soporte teclado</td></tr>
+              <tr><td>Command palette</td><td>Accesos rápidos</td><td>Ctrl/⌘ + K</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 5. Accesibilidad -->
+        <section id="accesibilidad" class="section">
+          <h2>5. Accesibilidad</h2>
+          <ul>
+            <li>Contraste mínimo 4.5:1 en texto normal; 3:1 en títulos grandes.</li>
+            <li>Navegación por teclado: orden lógico y foco visible.</li>
+            <li>Roles ARIA en diálogos, menús y toolbars.</li>
+            <li>Objetivos táctiles ≥ 44×44 px.</li>
+            <li>Evitar animaciones intensas por defecto; respetar <code>prefers-reduced-motion</code>.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Rendimiento -->
+        <section id="rendimiento" class="section">
+          <h2>6. Rendimiento y métricas</h2>
+          <div class="cards">
+            <div class="metric"><span>First Paint</span><strong>~0.4s</strong></div>
+            <div class="metric"><span>Transferencia</span><strong>&lt; 250 KB</strong></div>
+            <div class="metric"><span>Dependencias</span><strong>0</strong></div>
+          </div>
+          <p class="muted">*Valores aproximados: dependen del dispositivo/navegador.</p>
+          <div class="shot" style="margin-top:10px">
+            <img alt="Gráfico de carga" src="data:image/svg+xml;utf8,
+              %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 180'%3E
+                %3Crect width='100%25' height='100%25' fill='%230e1a3c'/%3E
+                %3Cpolyline points='20,150 120,120 220,130 320,90 420,80 520,60 620,70' fill='none' stroke='%2315c58a' stroke-width='4'/%3E
+                %3Ctext x='24' y='28' fill='%23d9e7ff' font-size='16' font-family='Segoe UI' %3EPerformance trend%3C/text%3E
+              %3C/svg%3E"/>
+          </div>
+        </section>
+
+        <!-- 7. Galería -->
+        <section id="galeria" class="section">
+          <h2>7. Galería visual (mockups)</h2>
+          <p class="muted">Imágenes SVG generadas y embebidas para ilustrar ventanas, tiles, barra y vistas.</p>
+          <div class="gallery" id="gallery"></div>
+        </section>
+
+        <!-- 8. Casos de uso -->
+        <section id="casos" class="section">
+          <h2>8. Casos de uso</h2>
+          <div class="cards">
+            <div class="card"><strong>Landing de producto</strong><br/>Mostrar features con estética de escritorio.</div>
+            <div class="card"><strong>Demo de UI</strong><br/>Exponer patrón de ventanas, toasts y barra.</div>
+            <div class="card"><strong>Educación</strong><br/>Material para clases de diseño de interfaces.</div>
+            <div class="card"><strong>Showroom creativo</strong><br/>Portafolio o “app de apps” con tiles.</div>
+            <div class="card"><strong>Documentación</strong><br/>Manual técnico en un solo archivo.</div>
+            <div class="card"><strong>Pitch técnico</strong><br/>Storytelling con imágenes y métricas.</div>
+          </div>
+        </section>
+
+        <!-- 9. Arquitectura -->
+        <section id="arquitectura" class="section">
+          <h2>9. Arquitectura de front</h2>
+          <p>El sistema se sostiene con <em>tokens de diseño</em> (CSS variables), capas de presentación (<code>.panel</code>, <code>.card</code>, <code>.window</code>) y utilidades mínimas JS para interacciones (copiar, filtro de índice, toasts).</p>
+          <div class="code"><button class="copy" data-copy="#snippet3">Copiar</button><pre id="snippet3">// Utilidades mínimas
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const copy = (text) => navigator.clipboard.writeText(text);
+
+// Toast básico
+const toast = (msg) => {
+  const el = document.createElement('div');
+  el.textContent = msg;
+  el.style.cssText = `position:fixed;left:50%;bottom:20px;transform:translateX(-50%);`+
+    `background:rgba(21,197,138,.95);padding:10px 14px;border-radius:12px;`+
+    `color:#fff;font-weight:800;z-index:9999;box-shadow:0 12px 30px rgba(0,0,0,.35)`;
+  document.body.appendChild(el);
+  setTimeout(()=>{el.style.transition='opacity .3s';el.style.opacity='0';setTimeout(()=>el.remove(),300)},1100);
+};</pre></div>
+        </section>
+
+        <!-- 10. Roadmap -->
+        <section id="roadmap" class="section">
+          <h2>10. Roadmap</h2>
+          <ul>
+            <li>Plantillas de ventanas con slots y estados (loading/empty/error).</li>
+            <li>Soporte de temas claro/oscuro auto (prefers-color-scheme).</li>
+            <li>Componentes avanzados: Command Palette y Notificaciones agrupadas.</li>
+            <li>Exportación a Web Components y variante React.</li>
+          </ul>
+        </section>
+
+        <!-- 11. FAQ -->
+        <section id="faq" class="section faq">
+          <h2>11. Preguntas frecuentes</h2>
+          <details open>
+            <summary>¿Puedo usar librerías?</summary>
+            <p>Sí, pero este archivo está pensado sin dependencias. Puedes portar estilos a Tailwind, React o Web Components.</p>
+          </details>
+          <details>
+            <summary>¿Cómo cambio los colores?</summary>
+            <p>Edita las variables CSS en <code>:root</code>: <code>--emerald</code>, <code>--blue</code>, <code>--gold</code>.</p>
+          </details>
+          <details>
+            <summary>¿Es responsive?</summary>
+            <p>Sí. El layout de tarjetas y galería se adapta desde 1200px hasta móviles de 360px.</p>
+          </details>
+        </section>
+
+        <!-- 12. Créditos -->
+        <section id="creditos" class="section">
+          <h2>12. Créditos</h2>
+          <p>Diseño y documentación: Tú. Este archivo puede reusarse, adaptarse y versionarse para proyectos creativos e informáticos.</p>
+        </section>
+
+        <div class="footer">
+          <small>Windows Creativo · Dossier v1.0 — HTML+CSS+JS en un solo archivo</small>
+          <div><button class="btn ghost" id="btnTop">Volver arriba</button></div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script>
+  (function(){
+    const input = document.getElementById('tocSearch');
+    if(!input) return;
+
+    const chips = Array.from(document.querySelectorAll('#chipsRow .chip'));
+    const sections = Array.from(document.querySelectorAll('.section'));
+    const sectionInfo = sections.map(s => ({
+      el: s, id: s.id || '',
+      title: (s.querySelector('h2,h3')?.textContent || '').trim().toLowerCase()
+    }));
+
+    const setChipActiveById = (id) => {
+      const chip = chips.find(c => c.getAttribute('data-target') === `#${id}`);
+      if(!chip) return;
+      chips.forEach(x => x.classList.toggle('active', x === chip));
+    };
+    const showAll = () => sections.forEach(s => s.style.display = '');
+
+    const onType = () => {
+      const q = input.value.trim().toLowerCase();
+      if(!q){ showAll(); return; }
+      let firstMatch = null;
+      sectionInfo.forEach(info => {
+        const match = info.title.includes(q) || info.id.includes(q);
+        info.el.style.display = match ? '' : 'none';
+        if(match && !firstMatch) firstMatch = info.el;
+      });
+      if(!firstMatch){ typeof toast==='function' && toast('Sin coincidencias'); }
+    };
+
+    const onEnter = (ev) => {
+      if(ev.key !== 'Enter') return;
+      const firstVisible = sections.find(s => s.style.display !== 'none');
+      if(firstVisible){
+        firstVisible.scrollIntoView({behavior:'smooth', block:'start'});
+        setChipActiveById(firstVisible.id);
+      }
+    };
+
+    window.addEventListener('keydown', (e)=>{
+      if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+        e.preventDefault(); input.focus(); input.select();
+      }
+    });
+
+    input.addEventListener('input', onType);
+    input.addEventListener('keydown', onEnter);
+
+    // Scroll helpers
+    document.getElementById('btnScroll')?.addEventListener('click',()=>{
+      document.getElementById('que-es')?.scrollIntoView({behavior:'smooth'});
+    });
+    document.getElementById('btnTop')?.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Chips → scroll
+    const chipsEls = Array.from(document.querySelectorAll('#chipsRow .chip'));
+    chipsEls.forEach(ch => ch.addEventListener('click', ()=>{
+      chipsEls.forEach(x=>x.classList.toggle('active', x===ch));
+      const tgt = ch.getAttribute('data-target');
+      const el = document.querySelector(tgt);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+    // Auto-highlight on scroll (solo Rep. y Comp. + secciones generales)
+    const map = new Map(chipsEls.map(c=>[c.getAttribute('data-target'), c]));
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          const id = '#'+ent.target.id;
+          if(map.has(id)){
+            chipsEls.forEach(x=>x.classList.toggle('active', x===map.get(id)));
+          }
+        }
+      });
+    }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
+
+    ['rendimiento','componentes','galeria','accesibilidad','roadmap','casos','arquitectura','que-es']
+      .forEach(id=>{ const el=document.getElementById(id); if(el) obs.observe(el); });
+
+  })();
+  </script>
+</body>
+</html>

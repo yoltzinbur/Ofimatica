@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosario | Manual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html" class="active">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Glosario 📚</h1>
+
+  <div class="grid grid-3">
+    <div class="card reveal">
+      <h2>Extensión</h2>
+      <p>Texto al final del nombre que indica tipo. Ej.: <strong>.pdf</strong></p>
+    </div>
+    <div class="card reveal">
+      <h2>Metadatos</h2>
+      <p>Propiedades: autor, tamaño, fechas, etiquetas.</p>
+    </div>
+    <div class="card reveal">
+      <h2>Permisos</h2>
+      <p>Lectura, escritura o ejecución para usuarios/grupos.</p>
+    </div>
+    <div class="card reveal">
+      <h2>Ruta</h2>
+      <p>Ubicación de un archivo o carpeta en el sistema.</p>
+    </div>
+    <div class="card reveal">
+      <h2>Compresión</h2>
+      <p>Reducir tamaño o agrupar archivos en uno solo.</p>
+    </div>
+    <div class="card reveal">
+      <h2>Versión</h2>
+      <p>Identificador de iteraciones: <code>v01, v02…</code></p>
+    </div>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipos de Archivos | Manual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><div class="logo">📁</div>Manual de Archivos &amp; Carpetas</div>
+    <div class="menu">
+      <a href="index.html">Inicio</a><a href="conceptos.html">Conceptos</a>
+      <a href="tipos.html" class="active">Tipos</a><a href="operaciones.html">Operaciones</a>
+      <a href="organizacion.html">Organización</a><a href="atajos.html">Atajos</a>
+      <a href="errores.html">Errores</a><a href="glosario.html">Glosario</a><a href="recursos.html">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <h1 class="fade-in">Tipos de archivos 🗃️</h1>
+
+  <div class="grid grid-3">
+    <div class="card reveal">
+      <div class="icon">📝</div>
+      <h2>Documentos</h2>
+      <p><strong>.pdf .docx .pptx .txt</strong></p>
+      <p class="tip ok">Uso: informes, tareas, presentaciones.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🖼️</div>
+      <h2>Imágenes</h2>
+      <p><strong>.jpg .png .svg</strong></p>
+      <p class="tip">PNG para gráficos; JPG para fotos; SVG para vectores.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🎬</div>
+      <h2>Video</h2>
+      <p><strong>.mp4 .mov .mkv</strong></p>
+      <p class="tip">MP4 es el más compatible.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🎵</div>
+      <h2>Audio</h2>
+      <p><strong>.mp3 .wav .ogg</strong></p>
+      <p class="tip">WAV = sin compresión (más pesado).</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">📦</div>
+      <h2>Comprimidos</h2>
+      <p><strong>.zip .rar .7z</strong></p>
+      <p class="tip">Agrupan y reducen tamaño para compartir.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">⚙️</div>
+      <h2>Ejecutables</h2>
+      <p><strong>.exe .app .bat .sh</strong></p>
+      <p class="warn tip">No ejecutes archivos de origen desconocido.</p>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <h2>¿Cómo identificar la extensión?</h2>
+    <img class="illus" src="https://dummyimage.com/800x220/ebfff3/5e6a85&text=Nombre+%2B+Extensi%C3%B3n" alt="Nombre y extensión">
+    <p class="tip">Activa “mostrar extensiones” en tu explorador de archivos para evitar confusiones.</p>
+  </div>
+
+  <p><a class="btn" href="index.html">⬅ Volver al inicio</a></p>
+</main>
+
+<footer>Hecho con 💙</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
