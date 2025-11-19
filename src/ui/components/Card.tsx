@@ -9,7 +9,7 @@ export default function Card({seccion, index, activeSlide, slideStyles, next, pr
            <img src={informatica} alt={`Imagen de la sección ${seccion.title}`} className='size-full object-cover' />
         </figure>
         <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3
-        w-3xl px-5 text-center flex flex-col justify-center items-center gap-2
+        md:w-3xl px-5 text-center flex flex-col justify-center items-center gap-2
         ${index === activeSlide ? '' : 'hidden'}`}>
             <h2 className='text-5xl font-black tracking-widest uppercase'>
                 {seccion.title}

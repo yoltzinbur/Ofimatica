@@ -21,25 +21,27 @@ export default function NavSection() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[#020617] relative">
+    <div className="min-h-screen w-full bg-[#020617] relative overflow-hidden">
       {/* Fondo mamalón */}
       <div className="absolute inset-0" style={{backgroundImage: `radial-gradient(circle 500px at 50% 200px, #3e3e3e, transparent)`,}}/>
       {/* Contenido - Contenedor del carrusel */}
-      <div className='min-h-dvh w-dvw place-items-center grid grid-cols-3 px-16'>
-        {SECCIONES.map((seccion, index): ReactNode => {
-          return (
-            <React.Fragment key={seccion.id}> 
-              <Card 
-                seccion={seccion}
-                index={index}
-                activeSlide={activeSlide}
-                slideStyles={slideStyles}
-                next={next}
-                prev={prev}
-              />
-            </React.Fragment>
-          );
-        })}
+      <div className='min-h-dvh w-dvw grid place-items-center'>
+        <div className='absolute top-1/12 place-items-center grid grid-cols-3 px-16'>
+          {SECCIONES.map((seccion, index): ReactNode => {
+            return (
+              <React.Fragment key={seccion.id}> 
+                <Card 
+                  seccion={seccion}
+                  index={index}
+                  activeSlide={activeSlide}
+                  slideStyles={slideStyles}
+                  next={next}
+                  prev={prev}
+                />
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     </div>
   )
