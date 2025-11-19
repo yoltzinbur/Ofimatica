@@ -1156,6 +1156,435 @@
                 font-size: 0.9rem;
             }
         }
+
+
+    /* Section Styling */
+.section-normalizacion {
+    padding: 80px 0;
+    background: transparent;
+}
+
+.section-title-normalizacion {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.section-subtitle-normalizacion {
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+/* Flowing Wave Content */
+.wave-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: visible;
+}
+
+.wave-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(66, 153, 225, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(159, 122, 234, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.wave-content > * {
+    position: relative;
+    z-index: 1;
+}
+
+.wave-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wave-content h3 i {
+    color: #4299e1;
+    font-size: 2.5rem;
+}
+
+.wave-content h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a5568;
+    margin: 30px 0 15px 0;
+}
+
+.wave-content p {
+    color: #666;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Liquid Split Comparison */
+.liquid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 60px 0;
+    position: relative;
+}
+
+.liquid-split::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #4299e1, #9f7aea, #ed64a6);
+    transform: translateX(-50%);
+}
+
+.liquid-side {
+    padding: 40px;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.liquid-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+.liquid-side.bad::before {
+    background: linear-gradient(135deg, #fff 0%, #ffe0e0 100%);
+}
+
+.liquid-side.good::before {
+    background: linear-gradient(135deg, #fff 0%, #e0ffe0 100%);
+}
+
+.liquid-side:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+}
+
+.liquid-side > * {
+    position: relative;
+    z-index: 1;
+}
+
+.liquid-side h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.liquid-side.bad h4 {
+    color: #ff6b6b;
+}
+
+.liquid-side.good h4 {
+    color: #51cf66;
+}
+
+/* Tables */
+.table-container {
+    margin: 30px 0;
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+th {
+    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+    color: white;
+    padding: 15px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #666;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    word-wrap: break-word;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: linear-gradient(90deg, #f7fafc 0%, #edf2f7 100%);
+}
+
+/* Morphing Code Blocks */
+.morph-code {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    color: #e2e8f0;
+    padding: 40px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    margin: 40px 0;
+    position: relative;
+    clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    transition: clip-path 0.4s ease;
+}
+
+.morph-code:hover {
+    clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+}
+
+.morph-code::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #4299e1, #9f7aea, #ed64a6, #4299e1);
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0.6;
+    animation: rotate-gradient 4s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    0% { filter: blur(15px) hue-rotate(0deg); }
+    100% { filter: blur(15px) hue-rotate(360deg); }
+}
+
+/* Bubble Info */
+.bubble-info {
+    background: linear-gradient(135deg, rgba(99, 128, 255, 0.95) 0%, rgba(99, 206, 255, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 50px;
+    margin: 50px 0;
+    position: relative;
+    overflow: hidden;
+    clip-path: ellipse(90% 85% at 50% 50%);
+    animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { clip-path: ellipse(90% 85% at 50% 50%); }
+    50% { clip-path: ellipse(95% 90% at 50% 50%); }
+}
+
+.bubble-info::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -150px;
+    right: -150px;
+    animation: bubble-float 10s linear infinite;
+}
+
+@keyframes bubble-float {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-100px, 100px) scale(1.1); }
+    66% { transform: translate(-50px, 50px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.bubble-info h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.bubble-info p {
+    color: rgba(255,255,255,0.95);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+/* Flowing List */
+.flow-list {
+    margin: 40px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.flow-list li {
+    padding: 25px 25px 25px 60px;
+    margin: 20px 0;
+    position: relative;
+    color: #666;
+    line-height: 1.8;
+    background: white;
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+    transition: all 0.4s ease;
+}
+
+.flow-list li:hover {
+    clip-path: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
+    transform: translateX(20px);
+}
+
+.flow-list li:before {
+    content: "→";
+    position: absolute;
+    left: 20px;
+    color: #4299e1;
+    font-weight: 700;
+    font-size: 2rem;
+    transition: all 0.4s ease;
+}
+
+.flow-list li:hover:before {
+    transform: translateX(10px) scale(1.3);
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    color: white;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4299e1, #9f7aea, #ed64a6);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #4299e1;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer li {
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.footer li:hover {
+    transform: translateX(5px);
+}
+
+.footer a {
+    color: #cbd5e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #4299e1;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #4a5568;
+    color: #cbd5e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .wave-content {
+        padding: 30px;
+    }
+
+    .liquid-split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .liquid-split::before {
+        display: none;
+    }
+    
+    .liquid-side {
+        padding: 20px;
+    }
+    
+    th, td {
+        padding: 10px 5px;
+        font-size: 0.85rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1768,6 +2197,512 @@
                 </div>
             </div>
 
+ 
+
+    <!-- Main Content -->
+        
+        <!-- Introduction -->
+        <section class="section-normalizacion">
+            <h2 class="section-title">¿Qué es la Normalización?</h2>
+            <p class="section-subtitle">Un proceso sistemático para organizar los datos y eliminar redundancias innecesarias</p>
+            
+            <div class="wave-content">
+                <h3><i class="fa fa-book"></i> Fundamentos de la Normalización</h3>
+                <p>La normalización de bases de datos es un conjunto de técnicas diseñadas para eliminar redundancias y dependencias indeseadas en el almacenamiento de datos. Este proceso fue introducido por Edgar F. Codd en 1970 y se ha convertido en uno de los pilares fundamentales del diseño de bases de datos relacionales.</p>
+                
+                <p>El objetivo principal es organizar los datos de manera que se minimicen los problemas de inserción, actualización y eliminación, garantizando así la consistencia y precisión de la información almacenada. Una base de datos bien normalizada elimina la duplicación de datos, reduce el espacio de almacenamiento necesario y facilita el mantenimiento a largo plazo del sistema.</p>
+
+                <h4>¿Por Qué es Importante Normalizar?</h4>
+                <p>Sin normalización, una base de datos puede sufrir de múltiples problemas graves. Los datos duplicados consumen espacio innecesario y crean oportunidades para inconsistencias cuando se actualiza información en un lugar pero no en otro. Las anomalías de inserción, actualización y eliminación dificultan las operaciones básicas de gestión de datos y pueden llevar a la corrupción de la información.</p>
+
+                <p>La normalización no solo ahorra espacio de almacenamiento, sino que también mejora significativamente el rendimiento de las consultas cuando se implementa correctamente. Además, facilita la comprensión de la estructura de datos y simplifica el desarrollo y mantenimiento de aplicaciones que interactúan con la base de datos.</p>
+            </div>
+        </section>
+
+        <!-- Normal Forms -->
+        <section class="section">
+            <h2 class="section-title">Las Formas Normales</h2>
+            <p class="section-subtitle">Cada forma normal representa un nivel progresivo de organización de datos</p>
+
+            <!-- 1FN -->
+            <div class="wave-content">
+                <h3><i class="fa fa-database"></i> Primera Forma Normal (1FN)</h3>
+                <p>Una tabla está en Primera Forma Normal si todos sus atributos contienen valores atómicos (indivisibles) y no hay grupos repetitivos. Cada celda de la tabla debe contener exactamente un valor, no listas o conjuntos de valores.</p>
+
+                <div class="liquid-split">
+                    <div class="liquid-side bad">
+                        <h4>❌ NO está en 1FN</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Teléfonos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Juan Pérez</td>
+                                        <td>555-1234, 555-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>María López</td>
+                                        <td>555-8765, 555-4321</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 20px; color: #666; font-size: 0.95rem;">Problema: La columna "Teléfonos" contiene múltiples valores separados por comas</p>
+                    </div>
+
+                    <div class="liquid-side good">
+                        <h4>✓ SÍ está en 1FN</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID_Persona</th>
+                                        <th>Nombre</th>
+                                        <th>Teléfono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Juan Pérez</td>
+                                        <td>555-1234</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Juan Pérez</td>
+                                        <td>555-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>María López</td>
+                                        <td>555-8765</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 20px; color: #666; font-size: 0.95rem;">Solución: Cada teléfono en su propia fila con valores atómicos</p>
+                    </div>
+                </div>
+
+                <div class="morph-code">
+-- Implementación en SQL de 1FN
+CREATE TABLE personas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE telefonos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    persona_id INT NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    tipo VARCHAR(50),
+    FOREIGN KEY (persona_id) REFERENCES personas(id)
+);
+                </div>
+            </div>
+
+            <!-- 2FN -->
+            <div class="wave-content">
+                <h3><i class="fa fa-sitemap"></i> Segunda Forma Normal (2FN)</h3>
+                <p>Una tabla está en Segunda Forma Normal si está en 1FN y todos los atributos no clave dependen completamente de la clave primaria completa, no de parte de ella. Esto solo aplica a tablas con claves primarias compuestas.</p>
+
+                <div class="liquid-split">
+                    <div class="liquid-side bad">
+                        <h4>❌ NO está en 2FN</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID_Pedido</th>
+                                        <th>ID_Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Nombre_Producto</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>101</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                        <td>Laptop HP</td>
+                                        <td>$12,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>101</td>
+                                        <td>8</td>
+                                        <td>1</td>
+                                        <td>Mouse</td>
+                                        <td>$350</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 20px; color: #666; font-size: 0.95rem;">Problema: Nombre_Producto y Precio solo dependen de ID_Producto, no de la clave completa</p>
+                    </div>
+
+                    <div class="liquid-side good">
+                        <h4>✓ SÍ está en 2FN</h4>
+                        <p style="font-weight: 600; margin-bottom: 10px;">Tabla: Productos</p>
+                        <div class="table-container">
+                            <table style="margin-bottom: 20px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID_Producto</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Laptop HP</td>
+                                        <td>$12,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Mouse</td>
+                                        <td>$350</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-weight: 600; margin-bottom: 10px;">Tabla: Detalle_Pedidos</p>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID_Pedido</th>
+                                        <th>ID_Producto</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>101</td>
+                                        <td>5</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>101</td>
+                                        <td>8</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="morph-code">
+-- Implementación en SQL de 2FN
+CREATE TABLE productos (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_producto VARCHAR(200) NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE detalle_pedidos (
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    PRIMARY KEY (id_pedido, id_producto),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+                </div>
+            </div>
+
+            <!-- 3FN -->
+            <div class="wave-content">
+                <h3><i class="fa fa-filter"></i> Tercera Forma Normal (3FN)</h3>
+                <p>Una tabla está en Tercera Forma Normal si está en 2FN y no tiene dependencias transitivas. Esto significa que ningún atributo no clave debe depender de otro atributo no clave.</p>
+
+                <div class="liquid-split">
+                    <div class="liquid-side bad">
+                        <h4>❌ NO está en 3FN</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID_Empleado</th>
+                                        <th>Nombre</th>
+                                        <th>ID_Depto</th>
+                                        <th>Nombre_Depto</th>
+                                        <th>Ubicación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Carlos Ruiz</td>
+                                        <td>10</td>
+                                        <td>Ventas</td>
+                                        <td>Edificio A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Ana Torres</td>
+                                        <td>20</td>
+                                        <td>IT</td>
+                                        <td>Edificio B</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 20px; color: #666; font-size: 0.95rem;">Problema: Nombre_Depto y Ubicación dependen de ID_Depto, no de ID_Empleado</p>
+                    </div>
+
+                    <div class="liquid-side good">
+                        <h4>✓ SÍ está en 3FN</h4>
+                        <p style="font-weight: 600; margin-bottom: 10px;">Tabla: Empleados</p>
+                        <div class="table-container">
+                            <table style="margin-bottom: 20px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID_Empleado</th>
+                                        <th>Nombre</th>
+                                        <th>ID_Depto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Carlos Ruiz</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Ana Torres</td>
+                                        <td>20</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-weight: 600; margin-bottom: 10px;">Tabla: Departamentos</p>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID_Depto</th>
+                                        <th>Nombre</th>
+                                        <th>Ubicación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Ventas</td>
+                                        <td>Edificio A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20</td>
+                                        <td>IT</td>
+                                        <td>Edificio B</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="morph-code">
+-- Implementación en SQL de 3FN
+CREATE TABLE departamentos (
+    id_departamento INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_departamento VARCHAR(100) NOT NULL,
+    ubicacion VARCHAR(200)
+);
+
+CREATE TABLE empleados (
+    id_empleado INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    id_departamento INT NOT NULL,
+    FOREIGN KEY (id_departamento) REFERENCES departamentos(id_departamento)
+);
+                </div>
+            </div>
+
+            <!-- BCNF -->
+            <div class="wave-content">
+                <h3><i class="fa fa-trophy"></i> Forma Normal de Boyce-Codd (BCNF)</h3>
+                <p>Una tabla está en BCNF si está en 3FN y para cada dependencia funcional X → Y, X debe ser una superclave. Es una versión más estricta de 3FN que elimina anomalías adicionales.</p>
+
+                <p>En términos simples, BCNF requiere que cualquier atributo que determine a otro debe ser una clave candidata. Esta forma normal es especialmente útil cuando tienes múltiples claves candidatas que se superponen.</p>
+
+                <div class="bubble-info">
+                    <h4><i class="fa fa-lightbulb-o"></i> Ejemplo de BCNF</h4>
+                    <p>Considera una tabla de asignación de profesores a cursos. Si un curso solo puede ser impartido por un profesor, pero un profesor tiene una oficina fija, entonces "Profesor" determina "Oficina", pero "Profesor" no es una superclave de la tabla original. Para cumplir BCNF, necesitamos separar la información del profesor en su propia tabla.</p>
+                </div>
+
+                <div class="morph-code">
+-- Implementación BCNF
+CREATE TABLE profesores (
+    nombre_profesor VARCHAR(100) PRIMARY KEY,
+    oficina VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE cursos_asignados (
+    id_curso VARCHAR(20) PRIMARY KEY,
+    nombre_profesor VARCHAR(100) NOT NULL,
+    FOREIGN KEY (nombre_profesor) REFERENCES profesores(nombre_profesor)
+);
+
+CREATE TABLE inscripciones (
+    id_estudiante INT NOT NULL,
+    id_curso VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id_estudiante, id_curso),
+    FOREIGN KEY (id_curso) REFERENCES cursos_asignados(id_curso)
+);
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="section">
+            <h2 class="section-title">Beneficios de la Normalización</h2>
+            <p class="section-subtitle">Ventajas que impactan directamente en la calidad del sistema</p>
+
+            <div class="wave-content">
+                <h3><i class="fa fa-check-circle"></i> Ventajas Principales</h3>
+                
+                <ul class="flow-list">
+                    <li><strong>Eliminación de Redundancia:</strong> Cada dato se almacena una sola vez, reduciendo drásticamente el espacio necesario y eliminando la posibilidad de inconsistencias por duplicación de información.</li>
+                    
+                    <li><strong>Integridad de Datos:</strong> Las restricciones de integridad referencial garantizan que las relaciones entre tablas sean consistentes, evitando datos huérfanos o referencias inválidas.</li>
+                    
+                    <li><strong>Actualizaciones Simplificadas:</strong> Al tener cada dato en un único lugar, las actualizaciones se realizan una sola vez, eliminando el riesgo de inconsistencias y reduciendo el tiempo de mantenimiento.</li>
+                    
+                    <li><strong>Mejor Rendimiento de Consultas:</strong> Aunque puede parecer contraintuitivo, las tablas normalizadas bien diseñadas permiten optimizar consultas específicas y reducir el tiempo de búsqueda.</li>
+                    
+                    <li><strong>Escalabilidad Mejorada:</strong> Los sistemas normalizados se adaptan mejor al crecimiento, permitiendo agregar nuevos tipos de datos sin reestructurar completamente la base de datos.</li>
+                    
+                    <li><strong>Facilita el Mantenimiento:</strong> La estructura lógica y organizada hace que sea más fácil para los desarrolladores entender y modificar el esquema de la base de datos.</li>
+                </ul>
+
+                <div class="bubble-info" style="background: linear-gradient(135deg, rgba(112, 169, 255, 0.95) 0%, rgba(112, 240, 255, 0.95) 100%);">
+                    <h4><i class="fa fa-exclamation-triangle"></i> Consideraciones Importantes</h4>
+                    <p>Aunque la normalización ofrece muchos beneficios, también es importante reconocer que no siempre es necesario normalizar hasta el nivel más alto. En algunos casos, la desnormalización controlada puede mejorar el rendimiento de lectura en sistemas con cargas de trabajo específicas. La clave está en encontrar el equilibrio adecuado entre normalización y rendimiento según las necesidades del sistema.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="section">
+            <h2 class="section-title">Ejemplo Práctico Completo</h2>
+            <p class="section-subtitle">De una tabla no normalizada a un esquema completamente normalizado</p>
+
+            <div class="wave-content">
+                <h3><i class="fa fa-graduation-cap"></i> Sistema de Gestión de Biblioteca</h3>
+                <p>Veamos cómo normalizar una tabla de préstamos de biblioteca que inicialmente contiene toda la información en una sola estructura.</p>
+
+                <h4>Tabla Original (No Normalizada)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID_Prestamo</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Libros</th>
+                                <th>Autores</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Juan Pérez</td>
+                                <td>juan@mail.com</td>
+                                <td>1984, Cien Años</td>
+                                <td>Orwell, García Márquez</td>
+                                <td>2024-01-15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Esquema Normalizado (3FN)</h4>
+                <div class="morph-code">
+-- Tabla de Usuarios
+CREATE TABLE usuarios (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- Tabla de Autores
+CREATE TABLE autores (
+    id_autor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_autor VARCHAR(100) NOT NULL
+);
+
+-- Tabla de Libros
+CREATE TABLE libros (
+    id_libro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(200) NOT NULL,
+    id_autor INT NOT NULL,
+    isbn VARCHAR(20) UNIQUE,
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+);
+
+-- Tabla de Préstamos
+CREATE TABLE prestamos (
+    id_prestamo INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    fecha_prestamo DATE NOT NULL,
+    fecha_devolucion DATE,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+-- Tabla de Detalle de Préstamos
+CREATE TABLE detalle_prestamos (
+    id_prestamo INT NOT NULL,
+    id_libro INT NOT NULL,
+    PRIMARY KEY (id_prestamo, id_libro),
+    FOREIGN KEY (id_prestamo) REFERENCES prestamos(id_prestamo),
+    FOREIGN KEY (id_libro) REFERENCES libros(id_libro)
+);
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="section">
+            <h2 class="section-title">Mejores Prácticas</h2>
+            <p class="section-subtitle">Consejos para aplicar normalización efectivamente</p>
+
+            <div class="wave-content">
+                <h3><i class="fa fa-star"></i> Recomendaciones Clave</h3>
+                
+                <ul class="flow-list">
+                    <li><strong>Comienza con un Análisis Detallado:</strong> Antes de normalizar, comprende completamente los requisitos del negocio y las relaciones entre los datos. Un análisis inadecuado puede llevar a un diseño ineficiente.</li>
+                    
+                    <li><strong>Documenta las Dependencias Funcionales:</strong> Identifica y documenta todas las dependencias funcionales en tus datos. Esto facilita el proceso de normalización y ayuda a evitar errores.</li>
+                    
+                    <li><strong>Normaliza Paso a Paso:</strong> No intentes saltar directamente a 3FN. Avanza gradualmente a través de cada forma normal, verificando que cumples todos los requisitos en cada etapa.</li>
+                    
+                    <li><strong>Usa Nombres Descriptivos:</strong> Los nombres de tablas y columnas deben ser claros y reflejar su propósito. Esto mejora la mantenibilidad y reduce errores.</li>
+                    
+                    <li><strong>Considera el Rendimiento:</strong> En sistemas de alta carga, puede ser necesario desnormalizar estratégicamente algunas tablas. Documenta estas decisiones y sus razones.</li>
+                    
+                    <li><strong>Implementa Índices Apropiados:</strong> La normalización crea más tablas y relaciones. Usa índices estratégicamente en claves foráneas y columnas frecuentemente consultadas.</li>
+                </ul>
+
+                <div class="bubble-info">
+                    <h4><i class="fa fa-info-circle"></i> Cuándo NO Normalizar</h4>
+                    <p>Hay situaciones donde la normalización completa puede no ser ideal: sistemas de análisis con grandes volúmenes de datos históricos (data warehouses), tablas de búsqueda pequeñas y raramente modificadas, datos que se leen frecuentemente pero se actualizan rara vez, o cuando el rendimiento de lectura es crítico y se prefiere redundancia controlada. En estos casos, la desnormalización estratégica puede ser beneficiosa.</p>
+                </div>
+            </div>
+        </section>
+
 
 
 
@@ -1839,32 +2774,44 @@
             <h3 class="section-minititle">Componentes y Símbolos Principales</h3>
             <div class="er-symbols">
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">▭</div>
+                    <div class="er-symbol-icon">
+                        <img src="img/rectangulo.webp" width="120px">
+                    </div>
                     <h4>Entidad</h4>
                     <p>Rectángulo que representa un objeto o concepto del mundo real (Cliente, Producto, Pedido)</p>
                 </div>
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">○</div>
+                    <div class="er-symbol-icon">
+                         <img src="img/ovalo.webp" width="120px">
+                    </div>
                     <h4>Atributo</h4>
                     <p>Óvalo que representa una característica o propiedad de una entidad (nombre, precio, fecha)</p>
                 </div>
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">◆</div>
+                    <div class="er-symbol-icon">
+                        <img src="img/rombo.png" width="100px">
+                    </div>
                     <h4>Relación</h4>
                     <p>Rombo que representa una asociación entre dos o más entidades (compra, trabaja_en, pertenece_a)</p>
                 </div>
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">⚪</div>
+                    <div class="er-symbol-icon">
+                         <img src="img/ovalosub.png" width="180px">
+                    </div>
                     <h4>Atributo Clave</h4>
                     <p>Óvalo subrayado que identifica de forma única cada instancia de una entidad (ID, DNI, código)</p>
                 </div>
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">⊚</div>
+                    <div class="er-symbol-icon">
+                         <img src="img/ovalodoble.png" width="180px">
+                    </div>
                     <h4>Atributo Multivaluado</h4>
                     <p>Óvalo doble que puede contener múltiples valores (teléfonos, emails, idiomas)</p>
                 </div>
                 <div class="er-symbol">
-                    <div class="er-symbol-icon">⟨⟩</div>
+                    <div class="er-symbol-icon">
+                         <img src="img/ovalolinea.webp" width="140px">
+                    </div>
                     <h4>Atributo Derivado</h4>
                     <p>Óvalo con línea punteada cuyo valor se calcula de otros atributos (edad desde fecha_nacimiento)</p>
                 </div>
