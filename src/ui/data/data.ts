@@ -29,6 +29,6 @@ export const SECCIONES: Seccion[] = [
         id: 'python',
         title: 'Python',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, possimus?',
-        path: '/secciones/InformationPython/index.html'
+        path: '/secciones/InformationPython/python.html'
     }
 ]  

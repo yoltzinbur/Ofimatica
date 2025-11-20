@@ -16,7 +16,7 @@ export default function IndexSection() {
                 Explora paso a paso la historia, evolución y conceptos esenciales de la informática. 
                 Cada tema cuenta con información relevante y fácil de comprender.
             </p>
-            <Link to="/nav/NavSection"
+            <Link to="/navegacion"
             className="inline-block mt-8 px-10 py-4 bg-gradient-to-r from-btn-start to-btn-end rounded-[40px]
             text-white font-bold text-xl shadow-lg hover:shadow-2xls hover:scale-105 transition-all duration-300">
                 Comenzar
