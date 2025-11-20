@@ -29,6 +29,6 @@ export const SECCIONES: Seccion[] = [
         id: 'python',
         title: 'Python',
         content: 'Lenguaje de programación de alto nivel, interpretado y de propósito general, que facilita el desarrollo rápido de aplicaciones, análisis de datos y la inteligencia artificial.',
-        path: '/secciones/InformationPython/python.html'
+        path: '/secciones/python/python.html'
     }
 ]  
