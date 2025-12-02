@@ -1,17 +1,17 @@
 import NavSection from "../features/nav/NavSection"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import IndexSection from "../ui/components/IndexSection"
+import { Routes, Route, HashRouter } from "react-router-dom"
+import Index from "../ui/components/Index"
 
 function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={ <IndexSection /> }></Route>
+        <Route path="/" element={ <Index /> }></Route>
         <Route path="/navegacion" element={ <NavSection /> }></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </>
   )
 }

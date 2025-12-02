@@ -2,7 +2,8 @@ export interface Seccion {
     id: string,
     title: string,
     content: string,
-    path: string
+    path: string,
+    img: string
 }
 
 export interface Card {

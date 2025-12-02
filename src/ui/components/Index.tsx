@@ -1,7 +1,7 @@
 import StormBackground from "./StormBackground";
 import { Link } from "react-router-dom";
 
-export default function IndexSection() {
+export default function Index() {
   return (
     <section className='relative h-screen flex justify-center items-center text-center overflow-hidden
     bg-gradient-to-br from-hero-start to-hero-end'>
@@ -10,7 +10,7 @@ export default function IndexSection() {
         <div className="relative z-[30] max-w-xl md:max-w-3xl lg:max-w-4xl px-4 text-index-text
         shadow-none text-shadow-[0_0_6px_rgba(0,0,0,0.6)]">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 lg:mb-6">
-                Guía de Informática Básica
+                Ayuda Cero
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-index-text text-shadow-[0_0_8px_rgba(0,0,0,0.6)]">
                 Explora paso a paso la historia, evolución y conceptos esenciales de la informática. 
