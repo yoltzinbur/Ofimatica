@@ -1,11 +1,11 @@
-import StormBackground from "./StormBackground";
+import Storm from "./Storm";
 import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
     <section className='relative h-screen flex justify-center items-center text-center overflow-hidden
     bg-gradient-to-br from-hero-start to-hero-end'>
-        <StormBackground />
+        <Storm />
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-[1]"></div>
         <div className="relative z-[30] max-w-xl md:max-w-3xl lg:max-w-4xl px-4 text-index-text
         shadow-none text-shadow-[0_0_6px_rgba(0,0,0,0.6)]">

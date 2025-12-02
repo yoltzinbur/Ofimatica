@@ -2,7 +2,7 @@ import React, { useState, type ReactNode } from 'react'
 import { SECCIONES } from '../../ui/data/data';
 import Card from '../../ui/components/Card';
 
-export default function NavSection() {
+export default function Nav() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const next = () => {

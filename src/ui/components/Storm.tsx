@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useRef } from 'react'
 
-export default function StormBackground() {
+export default function Storm() {
     const lightningRef = useRef<HTMLDivElement>(null);
     const rainRef = useRef<HTMLDivElement>(null);
     const glassRef = useRef<HTMLDivElement>(null);
