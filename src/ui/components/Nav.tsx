@@ -1,6 +1,6 @@
 import React, { useState, type ReactNode } from 'react'
-import { SECCIONES } from '../../ui/data/data';
-import Card from '../../ui/components/Card';
+import { SECCIONES } from '../data/data';
+import Card from './Card';
 
 export default function Nav() {
   const [activeSlide, setActiveSlide] = useState(0);

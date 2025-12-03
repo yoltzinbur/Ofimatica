@@ -1,4 +1,4 @@
-import Nav from "../features/nav/Nav"
+import Nav from "../ui/components/Nav"
 import { Routes, Route, HashRouter } from "react-router-dom"
 import Index from "../ui/components/Index"
 

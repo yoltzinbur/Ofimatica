@@ -12,7 +12,7 @@ export const SECCIONES: Seccion[] = [
         id: 'ofimatica',
         title: 'Ofimatica',
         content: 'Conjunto de herramientas y aplicaciones informáticas que se usan para optimizar, automatizar y mejorar las tareas de oficina.',
-        path: '/ofimativa/ofimatica.php',
+        path: '/ofimatica/ofimatica.html',
         img: '/img/ofimatica.jpg'
     },
     {
