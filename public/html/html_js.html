@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML JavaScript · Guía HTML</title>
+  <meta name="description" content="Cómo insertar JavaScript en HTML: etiqueta script, scripts externos con src, defer y async, ubicación en head/body y uso de noscript.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo{border:1px dashed #cbd5e1;border-radius:.6rem;padding:.75rem;background:#fbfdff}
+    .muted{color:#475569}
+  </style>
+
+  <!-- Ejemplo mínimo en <head> con defer para no bloquear el render -->
+  <script defer>
+    // Este script solo marca que la página cargó
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('head-ready');
+      if (el) el.textContent = '✓ Script en <head> con defer ejecutado';
+    });
+  </script>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html" class="active">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/html_js.html</p>
+        <h1>HTML JavaScript</h1>
+        <p>Inserta JavaScript en HTML con la etiqueta <code>&lt;script&gt;</code>. Puedes escribir el código <em>inline</em> o enlazar un archivo externo con <code>src</code>. Para rendimiento, considera <code>defer</code> o <code>async</code> y ubica los scripts adecuadamente.</p>
+
+        <p id="head-ready" class="muted">Cargando…</p>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" aria-label="Copiar"
+            data-code='&lt;script&gt;
+  document.getElementById("demo").textContent = "Hola desde JS";
+&lt;/script&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;script&gt;
+  document.getElementById("demo").textContent = "Hola desde JS";
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <p id="demo">—</p>
+          <button class="badge" onclick='document.getElementById("demo").textContent = "Hola desde JS (click)";'>
+            Cambiar texto
+          </button>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem">
+          <section class="card card--soft">
+            <h2>Script externo con <code>src</code></h2>
+            <p>Reutiliza y organiza el código en archivos separados.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;!-- En el HTML --&gt;
+&lt;script src="assets/app.js"&gt;&lt;/script&gt;'>
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;!-- En el HTML --&gt;
+&lt;script src="assets/app.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <p class="muted">Nota: si usas <code>src</code>, no mezcles código inline en la misma etiqueta.</p>
+          </section>
+
+          <section class="card card--soft">
+            <h2><code>defer</code> y <code>async</code></h2>
+            <ul class="check">
+              <li><code>defer</code>: descarga en paralelo y ejecuta tras parsear el HTML (en orden).</li>
+              <li><code>async</code>: descarga y ejecuta en cuanto esté listo (no garantiza orden).</li>
+            </ul>
+            <div class="code">
+              <button class="copy" data-code='&lt;script src="assets/app.js" defer&gt;&lt;/script&gt;
+&lt;script src="assets/otro.js" async&gt;&lt;/script&gt;'>
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;script src="assets/app.js" defer&gt;&lt;/script&gt;
+&lt;script src="assets/otro.js" async&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </section>
+        </div>
+
+        <h2>Ubicación: <code>&lt;head&gt;</code> vs <code>&lt;body&gt;</code></h2>
+        <p>En <code>&lt;head&gt;</code> usa <code>defer</code> para no bloquear el render. Alternativamente, coloca el script al final de <code>&lt;body&gt;</code> para que el DOM ya exista.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;!-- Opción A: en el head con defer --&gt;
+&lt;script src="main.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Opción B: justo antes de &lt;/body&gt; --&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;!-- Opción A: en el head con defer --&gt;
+&lt;script src="main.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Opción B: justo antes de &lt;/body&gt; --&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <h2>Soporte sin JavaScript: <code>&lt;noscript&gt;</code></h2>
+        <p>Muestra un mensaje alternativo si el navegador no ejecuta JavaScript.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;noscript&gt;Activa JavaScript para ver esta página correctamente.&lt;/noscript&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;noscript&gt;Activa JavaScript para ver esta página correctamente.&lt;/noscript&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <noscript>Activa JavaScript para ver esta página correctamente.</noscript>
+        </div>
+
+        <!-- Mini demo práctica en la propia página -->
+        <h2>Demo: evento y manipulación del DOM</h2>
+        <div class="code">
+          <button class="copy" data-code='&lt;p id="msg"&gt;Mensaje inicial&lt;/p&gt;
+&lt;button onclick=&quot;document.getElementById(&#39;msg&#39;).textContent=&#39;¡Actualizado por JS!&#39;&quot;&gt;Actualizar&lt;/button&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;p id="msg"&gt;Mensaje inicial&lt;/p&gt;
+&lt;button onclick="document.getElementById('msg').textContent='¡Actualizado por JS!'"&gt;Actualizar&lt;/button&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <p id="msg">Mensaje inicial</p>
+          <button class="badge" onclick="document.getElementById('msg').textContent='¡Actualizado por JS!'">Actualizar</button>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_html_js" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cómo enlazas un archivo JS externo?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="1"> &lt;script src="app.js"&gt;&lt;/script&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;link rel="script" href="app.js"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;script href="app.js"&gt;&lt;/script&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué hace <code>defer</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="1"> Ejecuta el script tras parsear el HTML (manteniendo el orden).</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> Ejecuta el script en cuanto se descarga, sin importar el orden.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> Evita que el script se descargue.</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Para qué sirve <code>&lt;noscript&gt;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="1"> Mostrar contenido alterno si JS está deshabilitado.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Desactivar los scripts de la página.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Cargar scripts de forma asíncrona.</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="iframes.html" aria-label="Anterior">← Iframes HTML</a>
+        <a href="rutas.html" aria-label="Siguiente">Rutas de archivos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+
+  <!-- Ejemplo de script al final del body -->
+  <script>
+    // Marca visual rápida al final del body
+    console.log('Script al final del body listo');
+  </script>
+</body>
+</html>

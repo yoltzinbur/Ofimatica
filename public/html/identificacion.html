@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Identificación HTML · Guía HTML</title>
+  <meta name="description" content="Uso del atributo id en HTML: identificador único, selección con CSS y JavaScript, enlaces internos (marcadores) y buenas prácticas.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .demo{border:1px dashed #cbd5e1;border-radius:.6rem;padding:.75rem;background:#fbfdff}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    #aviso-unico{background:#ecfeff;border:1px solid #a5f3fc;padding:.6rem;border-radius:.6rem}
+    #destino{scroll-margin-top:6rem}
+    .note{background:#fff7ed;border:1px solid #fed7aa;padding:.6rem;border-radius:.6rem}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" class="active" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/identificacion.html</p>
+        <h1>Identificación HTML (<code>id</code>)</h1>
+        <p>El atributo <code>id</code> asigna un identificador <strong>único</strong> a un elemento. Sirve para apuntarlo desde CSS, JavaScript o enlaces internos (marcadores).</p>
+
+        <div id="aviso-unico" class="note">
+          <strong>Importante:</strong> el valor de <code>id</code> debe ser único dentro del documento.
+        </div>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" data-code='&lt;h2 id="seccion-intro"&gt;Introducción&lt;/h2&gt;
+&lt;p&gt;Contenido de la introducción.&lt;/p&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;h2 id="seccion-intro"&gt;Introducción&lt;/h2&gt;
+&lt;p&gt;Contenido de la introducción.&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem">
+          <section class="card card--soft">
+            <h2>Seleccionar con CSS (<code>#</code>)</h2>
+            <p>Para seleccionar por <code>id</code> usa el hash <code>#</code> seguido del nombre.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;style&gt;
+#destacado{background:#f0f9ff;border:1px solid #bae6fd;padding:.6rem;border-radius:.6rem}
+&lt;/style&gt;
+&lt;p id="destacado"&gt;Bloque resaltado por id.&lt;/p&gt;'>Copiar</button>
+<pre><code class="language-html">#destacado{background:#f0f9ff;border:1px solid #bae6fd;padding:.6rem;border-radius:.6rem}
+&lt;p id="destacado"&gt;Bloque resaltado por id.&lt;/p&gt;</code></pre>
+            </div>
+            <div class="render demo">
+              <p id="destacado" style="background:#f0f9ff;border:1px solid #bae6fd;padding:.6rem;border-radius:.6rem">Bloque resaltado por id.</p>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h2>Seleccionar con JavaScript</h2>
+            <p>Usa <code>document.getElementById('id')</code> para obtener exactamente un elemento.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;button id="btn"&gt;Cambiar texto&lt;/button&gt;
+&lt;p id="mensaje"&gt;Texto original&lt;/p&gt;
+&lt;script&gt;
+document.getElementById("btn").addEventListener("click", () =&gt; {
+  document.getElementById("mensaje").textContent = "Texto actualizado";
+});
+&lt;/script&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;button id="btn"&gt;Cambiar texto&lt;/button&gt;
+&lt;p id="mensaje"&gt;Texto original&lt;/p&gt;
+&lt;script&gt;
+document.getElementById("btn").addEventListener("click", () =&gt; {
+  document.getElementById("mensaje").textContent = "Texto actualizado";
+});
+&lt;/script&gt;</code></pre>
+            </div>
+          </section>
+        </div>
+
+        <h2>Enlaces internos (marcadores)</h2>
+        <p>Un enlace puede “saltar” a un elemento con <code>id</code> usando <code>href="#id"</code>.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;a href="#destino"&gt;Ir a la sección destino&lt;/a&gt;
+...
+&lt;h3 id="destino"&gt;Sección destino&lt;/h3&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;a href="#destino"&gt;Ir a la sección destino&lt;/a&gt;
+...
+&lt;h3 id="destino"&gt;Sección destino&lt;/h3&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <a class="badge" href="#destino">Ir a la sección destino</a>
+          <div style="height:1rem"></div>
+          <p style="margin:0">Contenido intermedio…</p>
+          <div style="height:16px"></div>
+          <h3 id="destino">Sección destino</h3>
+          <p>Has llegado aquí mediante un marcador interno.</p>
+        </div>
+
+        <h2>Diferencia entre <code>id</code> y <code>class</code></h2>
+        <ul class="check">
+          <li><strong>id</strong>: único en el documento. Selección precisa, anclajes, scripts.</li>
+          <li><strong>class</strong>: reutilizable en múltiples elementos. Ideal para estilos repetibles.</li>
+          <li>Puedes combinar ambos: p. ej., <code>id="hero"</code> y <code>class="seccion portada"</code>.</li>
+        </ul>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa nombres descriptivos y estables (kebab-case): <code>main-header</code>, <code>site-footer</code>.</li>
+          <li>Evita reutilizar el mismo <code>id</code> en varios elementos.</li>
+          <li>No empieces con números ni uses espacios; los <code>id</code> distinguen mayúsculas/minúsculas.</li>
+          <li>Úsalo para objetivos específicos (marcadores, JS) más que para estilado masivo.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_id" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es la regla clave del atributo <code>id</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id1" data-correct="1"> Debe ser único en el documento</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id1" data-correct="0"> Puede repetirse tantas veces como quieras</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id1" data-correct="0"> Debe comenzar siempre con un número</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué selector CSS selecciona el elemento con <code>id="hero"</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id2" data-correct="1"> #hero { ... }</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id2" data-correct="0"> .hero { ... }</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id2" data-correct="0"> hero { ... }</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué método JS obtiene un elemento por su <code>id</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id3" data-correct="1"> document.getElementById()</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id3" data-correct="0"> document.getElementsByClassName()</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="id3" data-correct="0"> document.querySelectorAll()</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="clases.html" aria-label="Anterior">← Clases HTML</a>
+        <a href="iframes.html" aria-label="Siguiente">Iframes HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

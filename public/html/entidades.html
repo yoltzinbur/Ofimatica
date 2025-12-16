@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entidades HTML · Guía HTML</title>
+  <meta name="description" content="Entidades HTML: caracteres reservados, entidades con nombre y numéricas, espacio duro, guiones suaves, ejemplos y buenas prácticas.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .demo{padding:1rem;border:1px solid #e2e8f0;border-radius:.6rem;background:#f8fafc}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .entities-table{width:100%;border-collapse:collapse}
+    .entities-table th,.entities-table td{border:1px solid #e2e8f0;padding:.5rem;text-align:left}
+    .entities-table th{background:#f1f5f9}
+    .note{background:#fff7ed;border:1px solid #fed7aa;padding:.75rem;border-radius:.6rem}
+    .kbd{font:600 .9rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;background:#eef2f7;border-radius:.35rem;padding:.05rem .35rem}
+    .ex{display:inline-block;min-width:2.2rem;text-align:center;border:1px dashed #cbd5e1;padding:.2rem .4rem;border-radius:.35rem;background:#fff}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" class="active" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/entidades.html</p>
+        <h1>Entidades HTML</h1>
+        <p>Las <strong>entidades HTML</strong> permiten escribir caracteres que el parser interpreta como <em>código</em> o que no están en el teclado, usando nombres (<code>&amp;nbsp;</code>) o códigos numéricos (<code>&amp;#160;</code> o <code>&amp;#x00A0;</code>).</p>
+
+        <h2>¿Cuándo usar entidades?</h2>
+        <ul>
+          <li>Para mostrar <strong>caracteres reservados</strong>: <span class="ex">&lt;</span>, <span class="ex">&gt;</span>, <span class="ex">&amp;</span>, <span class="ex">&quot;</span>, <span class="ex">'</span>.</li>
+          <li>Para <strong>espacios especiales</strong> y tipografía: <code>&amp;nbsp;</code> (espacio duro), <code>&amp;shy;</code> (guion suave).</li>
+          <li>Para símbolos, letras griegas, flechas, etc. (ver <a href="simbolos.html">Símbolos HTML</a>).</li>
+        </ul>
+
+        <div class="note"><strong>Codificación:</strong> Usa <code>&lt;meta charset="utf-8"&gt;</code>. Con UTF-8 puedes escribir la mayoría de caracteres directamente; las entidades siguen siendo útiles para los <em>reservados</em> y ciertos espacios/controles.</div>
+
+        <h2>Caracteres reservados comunes</h2>
+        <div class="grid-2">
+          <div class="code">
+            <button class="copy" data-code="&amp;lt;div class=&quot;caja&quot;&gt;Tom &amp;amp; Jerry&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&amp;lt;div class=&quot;caja&quot;&gt;Tom &amp;amp; Jerry&lt;/div&gt;</code></pre>
+          </div>
+          <div class="demo">
+            <p><strong>Se renderiza como:</strong></p>
+            <div>&lt;div class="caja"&gt;Tom &amp; Jerry&lt;/div&gt;</div>
+          </div>
+        </div>
+
+        <h2>Con nombre vs numéricas</h2>
+        <p>Las entidades pueden escribirse con <strong>nombre</strong> (<code>&amp;copy;</code>) o con <strong>número</strong> decimal/hex (<code>&amp;#169;</code> / <code>&amp;#x00A9;</code>).</p>
+        <div class="grid-2">
+          <div class="code">
+            <button class="copy" data-code="&amp;copy; 2025 · &amp;#169; 2025 · &amp;#x00A9; 2025">Copiar</button>
+<pre><code class="language-html">&amp;copy; 2025 · &amp;#169; 2025 · &amp;#x00A9; 2025</code></pre>
+          </div>
+          <div class="demo">© 2025 · © 2025 · © 2025</div>
+        </div>
+
+        <h2>Tabla rápida de entidades</h2>
+        <table class="entities-table">
+          <thead>
+            <tr><th>Carácter</th><th>Nombre</th><th>Decimal</th><th>Hex</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="ex">&amp;</td><td><code>&amp;amp;</code></td><td><code>&amp;#38;</code></td><td><code>&amp;#x26;</code></td><td>Mostrar el propio ampersand</td></tr>
+            <tr><td class="ex">&lt;</td><td><code>&amp;lt;</code></td><td><code>&amp;#60;</code></td><td><code>&amp;#x3C;</code></td><td>Mostrar el signo menor que</td></tr>
+            <tr><td class="ex">&gt;</td><td><code>&amp;gt;</code></td><td><code>&amp;#62;</code></td><td><code>&amp;#x3E;</code></td><td>Mostrar el signo mayor que</td></tr>
+            <tr><td class="ex">&quot;</td><td><code>&amp;quot;</code></td><td><code>&amp;#34;</code></td><td><code>&amp;#x22;</code></td><td>Comillas dobles en atributos</td></tr>
+            <tr><td class="ex">'</td><td><code>&amp;apos;</code></td><td><code>&amp;#39;</code></td><td><code>&amp;#x27;</code></td><td>Comilla simple (HTML5)</td></tr>
+            <tr><td class="ex">©</td><td><code>&amp;copy;</code></td><td><code>&amp;#169;</code></td><td><code>&amp;#x00A9;</code></td><td>Copyright</td></tr>
+            <tr><td class="ex">®</td><td><code>&amp;reg;</code></td><td><code>&amp;#174;</code></td><td><code>&amp;#x00AE;</code></td><td>Marca registrada</td></tr>
+            <tr><td class="ex">€</td><td><code>&amp;euro;</code></td><td><code>&amp;#8364;</code></td><td><code>&amp;#x20AC;</code></td><td>Símbolo euro</td></tr>
+            <tr><td class="ex"> </td><td><code>&amp;nbsp;</code></td><td><code>&amp;#160;</code></td><td><code>&amp;#x00A0;</code></td><td>Espacio duro (no separable)</td></tr>
+            <tr><td class="ex">­</td><td><code>&amp;shy;</code></td><td><code>&amp;#173;</code></td><td><code>&amp;#x00AD;</code></td><td>Guion suave (posible corte)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Espacios y guiones especiales</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Espacio duro: <code>&amp;nbsp;</code></h3>
+            <p>Evita que dos palabras se separen al final de línea.</p>
+            <div class="code">
+              <button class="copy" data-code="Precio:&amp;nbsp;$199">Copiar</button>
+<pre><code class="language-html">Precio:&amp;nbsp;$199</code></pre>
+            </div>
+            <div class="demo">Precio:&nbsp;$199</div>
+          </div>
+          <div>
+            <h3>Guion suave: <code>&amp;shy;</code></h3>
+            <p>Inserta un posible punto de corte (solo se muestra si hay salto).</p>
+            <div class="code">
+              <button class="copy" data-code="extraor&amp;shy;dinariamente">Copiar</button>
+<pre><code class="language-html">extraor&amp;shy;dinariamente</code></pre>
+            </div>
+            <div class="demo" style="max-width:180px">extraor&shy;dinariamente</div>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul>
+          <li>Escribe directamente con <strong>UTF-8</strong> cuando sea posible, pero usa entidades para <strong>caracteres reservados</strong> y espacios/tipos especiales.</li>
+          <li>Para máxima compatibilidad, los símbolos pueden escribirse como <strong>códigos numéricos</strong> (<code>&amp;#...;</code> o <code>&amp;#x...;</code>).</li>
+          <li>En atributos HTML, usa <code>&amp;quot;</code> o comillas simples alrededor del valor y escapa <code>&amp;</code> y <code>&lt;</code> si aparecen.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_entidades" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cómo escribes un signo &lt; en HTML?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en1" data-correct="1"> &amp;lt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en1" data-correct="0"> &lt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en1" data-correct="0"> &amp;#lt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué hace <code>&amp;nbsp;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en2" data-correct="1"> Inserta un espacio no separable</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en2" data-correct="0"> Inserta un salto de línea</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en2" data-correct="0"> Inserta un tabulador</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cuál <em>no</em> es un carácter reservado?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en3" data-correct="0"> &amp;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en3" data-correct="1"> ©</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="en3" data-correct="0"> &lt;</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="estilo.html" aria-label="Anterior">← Guía de estilo HTML</a>
+        <a href="simbolos.html" aria-label="Siguiente">Símbolos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

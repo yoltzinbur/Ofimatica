@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imágenes HTML · Guía HTML</title>
+  <meta name="description" content="Cómo insertar imágenes en HTML: src, alt, tamaños, formatos, imágenes responsivas, figure/figcaption, picture/srcset y carga diferida.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Evitar desbordes en esta página */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2-min{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo-img{border-radius:.6rem;display:block;max-width:100%;height:auto}
+    figure{margin:0}
+    .formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+
+    /* ▼ Nueva galería responsiva para tus imágenes locales */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .gallery figure{margin:0}
+    .gallery img{
+      width:100%;
+      aspect-ratio:16/9;      /* tarjetas parejas */
+      object-fit:cover;       /* recorte agradable si varían tamaños */
+      border-radius:.6rem;
+      display:block;
+    }
+    .gallery figcaption{font-size:.9rem;color:var(--muted,#64748b);margin-top:.35rem}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" class="active">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/imagenes.html</p>
+        <h1>Imágenes HTML</h1>
+        <p>Inserta imágenes con <code>&lt;img&gt;</code>, indicando la fuente con <code>src</code> y un <code>alt</code> descriptivo para accesibilidad.</p>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" aria-label="Copiar"
+            data-code="&lt;img src=&quot;assets/img/foto.jpg&quot; alt=&quot;Paisaje al atardecer sobre el lago&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="assets/img/foto.jpg" alt="Paisaje al atardecer sobre el lago"&gt;</code></pre>
+        </div>
+        <div class="render">
+          <img class="demo-img" src="https://via.placeholder.com/640x360?text=Foto" alt="Paisaje al atardecer sobre el lago">
+        </div>
+
+        <!-- ▼ NUEVA SECCIÓN: galería con tus 3 imágenes locales -->
+        <h2>Galería (imágenes locales)</h2>
+        <p>Ejemplo usando archivos de tu carpeta <code>img/</code>:</p>
+        <section class="gallery" aria-label="Galería de ejemplo">
+          <figure>
+            <img src="img/callejon.jpg" alt="Callejón empedrado con plantas" loading="lazy" width="640" height="360">
+            <figcaption><small>Callejón</small></figcaption>
+          </figure>
+          <figure>
+            <img src="img/casa.jpg" alt="Fachada de una casa" loading="lazy" width="640" height="360">
+            <figcaption><small>Casa</small></figcaption>
+          </figure>
+          <figure>
+            <img src="img/paisaje.jpg" alt="Paisaje con agua y montañas" loading="lazy" width="640" height="360">
+            <figcaption><small>Paisaje</small></figcaption>
+          </figure>
+        </section>
+        <!-- ▲ Fin galería -->
+
+        <h2>Tamaño: atributos vs CSS</h2>
+        <div class="grid-2-min">
+          <div class="card card--soft">
+            <h3>Con atributos</h3>
+            <p>Reservan espacio y ayudan a evitar el “salto” de contenido.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;img src=&quot;assets/img/foto.jpg&quot; alt=&quot;Montañas&quot; width=&quot;320&quot; height=&quot;180&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="assets/img/foto.jpg" alt="Montañas" width="320" height="180"&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Responsivo con CSS</h3>
+            <p>Evita desbordes en pantallas pequeñas.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;img src=&quot;assets/img/foto.jpg&quot; alt=&quot;Montañas&quot; style=&quot;max-width:100%;height:auto&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="assets/img/foto.jpg" alt="Montañas" style="max-width:100%;height:auto"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Texto alternativo <code>alt</code></h2>
+        <ul class="check">
+          <li>Describe brevemente el contenido o función de la imagen.</li>
+          <li>Si es decorativa, usa <code>alt=""</code>.</li>
+          <li>No repitas “imagen de…”, ve directo a lo esencial.</li>
+        </ul>
+
+        <h2>Formatos comunes</h2>
+        <div class="formats">
+          <div class="card card--soft">
+            <h3>JPEG/JPG</h3>
+            <p>Fotografías, buen balance calidad/peso.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>PNG</h3>
+            <p>Transparencia y gráficos nítidos.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>GIF</h3>
+            <p>Animaciones simples, paleta limitada.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>SVG</h3>
+            <p>Gráficos vectoriales, se escalan sin perder calidad.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>WebP/AVIF</h3>
+            <p>Alta compresión con buena calidad (soporte moderno).</p>
+          </div>
+        </div>
+
+        <h2><code>&lt;figure&gt;</code> y <code>&lt;figcaption&gt;</code></h2>
+        <p>Agrupan una imagen con su pie explicativo.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;figure&gt;&#10;  &lt;img src=&quot;assets/img/gato.jpg&quot; alt=&quot;Gato blanco dormido sobre un libro&quot; width=&quot;320&quot; height=&quot;200&quot;&gt;&#10;  &lt;figcaption&gt;Gato bibliotecario en su siesta.&lt;/figcaption&gt;&#10;&lt;/figure&gt;">Copiar</button>
+<pre><code class="language-html">&lt;figure&gt;
+  &lt;img src="assets/img/gato.jpg" alt="Gato blanco dormido sobre un libro" width="320" height="200"&gt;
+  &lt;figcaption&gt;Gato bibliotecario en su siesta.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </div>
+
+        <h2>Imágenes responsivas con <code>&lt;picture&gt;</code> y <code>srcset</code></h2>
+        <p>Entrega la mejor versión según el ancho de pantalla o soporte del navegador.</p>
+
+        <h3>Por formato</h3>
+        <div class="code">
+          <button class="copy" data-code="&lt;picture&gt;&#10;  &lt;source srcset=&quot;assets/img/banner.avif&quot; type=&quot;image/avif&quot;&gt;&#10;  &lt;source srcset=&quot;assets/img/banner.webp&quot; type=&quot;image/webp&quot;&gt;&#10;  &lt;img src=&quot;assets/img/banner.jpg&quot; alt=&quot;Banner con montañas y lago&quot; width=&quot;800&quot; height=&quot;360&quot; style=&quot;max-width:100%;height:auto&quot;&gt;&#10;&lt;/picture&gt;">Copiar</button>
+<pre><code class="language-html">&lt;picture&gt;
+  &lt;source srcset="assets/img/banner.avif" type="image/avif"&gt;
+  &lt;source srcset="assets/img/banner.webp" type="image/webp"&gt;
+  &lt;img src="assets/img/banner.jpg" alt="Banner con montañas y lago" width="800" height="360" style="max-width:100%;height:auto"&gt;
+&lt;/picture&gt;</code></pre>
+        </div>
+
+        <h3>Por tamaño (densidades/ancho)</h3>
+        <div class="code">
+          <button class="copy" data-code="&lt;img&#10;  src=&quot;assets/img/card-640.jpg&quot;&#10;  srcset=&quot;assets/img/card-320.jpg 320w, assets/img/card-640.jpg 640w, assets/img/card-960.jpg 960w&quot;&#10;  sizes=&quot;(max-width:600px) 100vw, 480px&quot;&#10;  alt=&quot;Tarjeta de producto&quot; width=&quot;640&quot; height=&quot;360&quot; style=&quot;max-width:100%;height:auto&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img
+  src="assets/img/card-640.jpg"
+  srcset="assets/img/card-320.jpg 320w, assets/img/card-640.jpg 640w, assets/img/card-960.jpg 960w"
+  sizes="(max-width:600px) 100vw, 480px"
+  alt="Tarjeta de producto" width="640" height="360" style="max-width:100%;height:auto"&gt;</code></pre>
+        </div>
+
+        <h2>Carga diferida (lazy loading)</h2>
+        <p>Retrasa la carga de imágenes fuera de pantalla para mejorar rendimiento.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;img src=&quot;assets/img/galeria-01.jpg&quot; alt=&quot;Foto 1&quot; loading=&quot;lazy&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="assets/img/galeria-01.jpg" alt="Foto 1" loading="lazy" width="640" height="360"&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_imagenes" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo es clave para accesibilidad?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i1" data-correct="1"> alt</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i1" data-correct="0"> title</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i1" data-correct="0"> sizes</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué hace <code>loading="lazy"</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i2" data-correct="1"> Retrasa la carga fuera de pantalla</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i2" data-correct="0"> Aumenta la resolución</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i2" data-correct="0"> Convierte JPG a WebP</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué elemento permite proveer formatos alternativos (WebP/AVIF)?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i3" data-correct="1"> &lt;picture&gt; (con &lt;source&gt;)</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i3" data-correct="0"> &lt;figure&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i3" data-correct="0"> &lt;canvas&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) Para evitar desbordes en móviles, una regla útil es…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i4" data-correct="1"> max-width:100%; height:auto</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i4" data-correct="0"> width:auto; height:100%</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="i4" data-correct="0"> position:fixed</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="enlaces.html" aria-label="Anterior">← Enlaces HTML</a>
+        <a href="favicon.html" aria-label="Siguiente">Favicon HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

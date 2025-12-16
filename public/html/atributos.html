@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atributos HTML · Guía HTML</title>
+  <meta name="description" content="Atributos HTML: sintaxis nombre=valor, comillas, booleanos, atributos globales y específicos, buenas prácticas y cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes anti-desborde SOLO para esta página (scoped) -->
+  <style>
+    /* No tocamos .container ni márgenes globales */
+    .page-attrs .code { overflow: hidden; }
+    .page-attrs .code pre{
+      white-space: pre-wrap;       /* envuelve líneas largas */
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    /* La tabla no se expande más allá de su tarjeta */
+    .page-attrs table.demo{
+      width: 100%;
+      table-layout: fixed;          /* evita crecer por contenido largo */
+      border-collapse: collapse;
+    }
+    .page-attrs table.demo th,
+    .page-attrs table.demo td{
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    /* Medios dentro de tarjetas: seguros */
+    .page-attrs .card img,
+    .page-attrs .card svg,
+    .page-attrs .card video,
+    .page-attrs .card canvas{
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..."></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html" class="active">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-attrs">
+      <article class="card">
+        <p class="badge">/atributos.html</p>
+        <h1>Atributos HTML</h1>
+
+        <h2>Reglas básicas</h2>
+        <ul class="check">
+          <li>La forma general es <strong>nombre="valor"</strong> (usa comillas).</li>
+          <li>Algunos atributos son <strong>booleanos</strong> (presencia = activo), p. ej. <code>disabled</code>, <code>required</code>, <code>checked</code>.</li>
+          <li>Los nombres de atributos no distinguen mayúsculas/minúsculas, pero se recomienda usar <strong>minúsculas</strong>.</li>
+        </ul>
+
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Ejemplo con varios atributos</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;/contacto&quot; id=&quot;cta&quot; class=&quot;btn&quot; title=&quot;Ir a contacto&quot;&gt;Contáctanos&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="/contacto" id="cta" class="btn" title="Ir a contacto"&gt;Contáctanos&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Ejemplo booleano</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;input type=&quot;text&quot; required placeholder=&quot;Obligatorio&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;input type="text" required placeholder="Obligatorio"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Atributos globales más usados</h2>
+        <p>Funcionan en (casi) todos los elementos:</p>
+        <table class="demo">
+          <thead><tr><th>Atributo</th><th>Uso</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>Identificador único</td><td><code>&lt;section id="intro"&gt;</code></td></tr>
+            <tr><td><code>class</code></td><td>Clases CSS</td><td><code>&lt;p class="lead muted"&gt;</code></td></tr>
+            <tr><td><code>title</code></td><td>Texto de ayuda (tooltip)</td><td><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></td></tr>
+            <tr><td><code>style</code></td><td>Estilo en línea (evítalo para proyectos grandes)</td><td><code>&lt;div style="color:tomato"&gt;</code></td></tr>
+            <tr><td><code>lang</code></td><td>Idioma del contenido</td><td><code>&lt;p lang="es"&gt;</code></td></tr>
+            <tr><td><code>dir</code></td><td>Dirección del texto</td><td><code>&lt;p dir="rtl"&gt;</code></td></tr>
+            <tr><td><code>data-*</code></td><td>Datos personalizados para JS</td><td><code>&lt;li data-id="42"&gt;</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Atributos específicos frecuentes</h2>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Enlaces</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;https://ejemplo.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Abrir en pestaña nueva&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="https://ejemplo.com" target="_blank" rel="noopener noreferrer"&gt;Abrir en pestaña nueva&lt;/a&gt;</code></pre>
+            </div>
+            <ul class="check">
+              <li><code>href</code>: destino</li>
+              <li><code>target="_blank"</code>: abre en nueva pestaña</li>
+              <li><code>rel="noopener noreferrer"</code>: seguridad/rendimiento</li>
+              <li><code>download</code>: fuerza descarga de un recurso</li>
+            </ul>
+          </div>
+
+          <div class="card card--soft">
+            <h3>Imágenes</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;img src=&quot;img/logo.png&quot; alt=&quot;Logotipo de la empresa&quot; width=&quot;180&quot; height=&quot;60&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="img/logo.png" alt="Logotipo de la empresa" width="180" height="60"&gt;</code></pre>
+            </div>
+            <ul class="check">
+              <li><code>src</code>: ruta de la imagen</li>
+              <li><code>alt</code>: texto alternativo (accesibilidad y SEO)</li>
+              <li><code>width</code>/<code>height</code>: dimensiones (px)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Escribe atributos en <strong>minúsculas</strong> y valores entre <strong>comillas</strong>.</li>
+          <li>Incluye siempre <code>alt</code> en <code>&lt;img&gt;</code> (describe la imagen o deja <code>alt=""</code> si es decorativa).</li>
+          <li>Usa <code>rel="noopener noreferrer"</code> con <code>target="_blank"</code>.</li>
+          <li>Prefiere clases e identificadores semánticos: <code>btn-primario</code> mejor que <code>azul1</code>.</li>
+        </ul>
+
+        <h2>Ejemplo rápido</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;button id=&quot;comprar&quot; class=&quot;btn btn--primary&quot; title=&quot;Añadir al carrito&quot; disabled&gt;Comprar&lt;/button&gt;">Copiar</button>
+<pre><code class="language-html">&lt;button id="comprar" class="btn btn--primary" title="Añadir al carrito" disabled&gt;Comprar&lt;/button&gt;</code></pre>
+        </div>
+
+        <form class="quiz" id="q_atributos" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo hace accesible una imagen?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="1"> alt</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="0"> title</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="0"> href</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál identifica de forma <em>única</em> un elemento?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="1"> id</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="0"> class</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="0"> name</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) En un enlace con <code>target="_blank"</code>, ¿qué otro atributo se recomienda?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="1"> rel="noopener noreferrer"</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="0"> alt</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="0"> lang</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Cuál de estos es un atributo <em>booleano</em>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a4" data-correct="1"> required</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a4" data-correct="0"> href</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a4" data-correct="0"> src</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>5) ¿Para qué sirven los atributos <code>data-*</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a5" data-correct="1"> Guardar datos personalizados para JavaScript</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a5" data-correct="0"> Cambiar el idioma del documento</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a5" data-correct="0"> Definir comentarios visibles</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="elementos.html" aria-label="Anterior">← Elementos HTML</a>
+        <a href="encabezados.html" aria-label="Siguiente">Encabezados HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

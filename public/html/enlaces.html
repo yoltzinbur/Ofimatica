@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enlaces HTML · Guía HTML</title>
+  <meta name="description" content="Cómo crear enlaces en HTML: href, rutas absolutas y relativas, target, rel, anclas internas, mailto, tel, download e imágenes como enlace.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Evitar desbordes en ejemplos de código */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2-min{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo-links a{margin:.25rem .35rem .25rem 0;display:inline-block}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html" class="active">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/enlaces.html</p>
+        <h1>Enlaces HTML</h1>
+        <p>Los enlaces se crean con <code>&lt;a&gt;</code> y el atributo <code>href</code> indicando el destino.</p>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;https://www.ejemplo.com&quot;&gt;Ir al sitio&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="https://www.ejemplo.com"&gt;Ir al sitio&lt;/a&gt;</code></pre>
+        </div>
+
+        <h2>Rutas absolutas vs relativas</h2>
+        <div class="grid-2-min">
+          <div class="card card--soft">
+            <h3>Absoluta (URL completa)</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;https://www.w3schools.com/html/&quot;&gt;W3Schools HTML&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="https://www.w3schools.com/html/"&gt;W3Schools HTML&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Relativa (dentro del sitio)</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;imagenes.html&quot;&gt;Ir a imágenes&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="imagenes.html"&gt;Ir a imágenes&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Abrir en nueva pestaña</h2>
+        <p>Usa <code>target="_blank"</code>. Por seguridad/rendimiento añade <code>rel="noopener noreferrer"</code>.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;https://developer.mozilla.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;MDN en nueva pestaña&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer"&gt;MDN en nueva pestaña&lt;/a&gt;</code></pre>
+        </div>
+
+        <h2>Anclas internas (saltos en la misma página)</h2>
+        <p>Crea un destino con <code>id</code> y enlázalo con <code>#id</code>.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;#contacto&quot;&gt;Ir a Contacto&lt;/a&gt;&#10;...&#10;&lt;h2 id=&quot;contacto&quot;&gt;Contacto&lt;/h2&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="#contacto"&gt;Ir a Contacto&lt;/a&gt;
+...
+&lt;h2 id="contacto"&gt;Contacto&lt;/h2&gt;</code></pre>
+        </div>
+
+        <h2>mailto:, tel: y otros esquemas</h2>
+        <div class="grid-2-min demo-links">
+          <div class="card card--soft">
+            <h3>Correo</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;mailto:soporte@ejemplo.com?subject=Consulta&quot;&gt;Escríbenos&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="mailto:soporte@ejemplo.com?subject=Consulta"&gt;Escríbenos&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Teléfono</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;tel:+5215512345678&quot;&gt;Llamar&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="tel:+5215512345678"&gt;Llamar&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Imagen como enlace</h2>
+        <p>Envuelve la imagen con <code>&lt;a&gt;</code>. No olvides el <code>alt</code> en la imagen.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;index.html&quot;&gt;&#10;  &lt;img src=&quot;assets/img/logo-mini.png&quot; alt=&quot;Ir al inicio&quot; width=&quot;120&quot;&gt;&#10;&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="index.html"&gt;
+  &lt;img src="assets/img/logo-mini.png" alt="Ir al inicio" width="120"&gt;
+&lt;/a&gt;</code></pre>
+        </div>
+
+        <h2>Descargar un archivo</h2>
+        <p>El atributo <code>download</code> sugiere descargar el recurso en lugar de abrirlo en el navegador.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;assets/guia.pdf&quot; download&gt;Descargar guía (PDF)&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="assets/guia.pdf" download&gt;Descargar guía (PDF)&lt;/a&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_enlaces" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo define el destino del enlace?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="1"> href</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="0"> src</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="0"> alt</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) Con <code>target="_blank"</code>, ¿qué <code>rel</code> se recomienda?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="1"> noopener noreferrer</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="0"> nofollow</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="0"> author</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cómo enlazas a una sección con id="faq" en la misma página?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="1"> &lt;a href="#faq"&gt;FAQ&lt;/a&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="0"> &lt;a href="faq.html"&gt;FAQ&lt;/a&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="0"> &lt;a id="#faq"&gt;FAQ&lt;/a&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué esquema abre el cliente de correo?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l4" data-correct="1"> mailto:</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l4" data-correct="0"> tel:</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l4" data-correct="0"> ftp:</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="html_css.html" aria-label="Anterior">← HTML CSS</a>
+        <a href="imagenes.html" aria-label="Siguiente">Imágenes HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

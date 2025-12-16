@@ -19,7 +19,7 @@ export const SECCIONES: Seccion[] = [
         id: 'html',
         title: 'HTML',
         content: 'HTML es el lenguaje fundamental para estructurar y presentar contenido en una página web.',
-        path: '/html/html.php',
+        path: '/html/html.html',
         img: '/img/html.jpg'
     },
     {

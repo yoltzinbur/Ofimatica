@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Lo mínimo recomendable en toda página -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Encabezado HTML · Guía HTML</title>
+  <meta name="description" content="Qué va dentro de &lt;head&gt;: title, meta tags, favicon, CSS, JS, base y más. Buenos ejemplos y prácticas.">
+  <meta name="author" content="Guía HTML">
+  <meta name="robots" content="index,follow">
+
+  <!-- Recursos del sitio -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Opcionales ilustrativos para la página -->
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .muted{color:#475569}
+    .badge.kbd{font-family:ui-monospace,Menlo,Consolas,monospace}
+  </style>
+
+  <!-- base: hace relativas las URLs (ejemplo) -->
+  <!-- OJO: si la usas, afecta a TODOS los enlaces relativos de la página -->
+  <!-- <base href="/" target="_self"> -->
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" class="active" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/cabecera.html</p>
+        <h1>Encabezado HTML (<code>&lt;head&gt;</code>)</h1>
+        <p>El elemento <code>&lt;head&gt;</code> contiene <em>metadatos</em> y recursos de la página: título, metaetiquetas, hojas de estilo, scripts, favicon y más.</p>
+
+        <h2>Ejemplo completo de <code>&lt;head&gt;</code></h2>
+        <div class="code">
+          <button class="copy" data-code='&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Título de la página&lt;/title&gt;
+  &lt;meta name="description" content="Descripción concisa de la página"&gt;
+  &lt;meta name="author" content="Tu nombre o marca"&gt;
+  &lt;link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"&gt;
+  &lt;link rel="stylesheet" href="assets/style.css"&gt;
+  &lt;script defer src="assets/app.js"&gt;&lt;/script&gt;
+  &lt;!-- &lt;base href="/" target="_self"&gt;  (opcional y con cuidado) --&gt;
+&lt;/head&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Título de la página&lt;/title&gt;
+  &lt;meta name="description" content="Descripción concisa de la página"&gt;
+  &lt;meta name="author" content="Tu nombre o marca"&gt;
+  &lt;link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"&gt;
+  &lt;link rel="stylesheet" href="assets/style.css"&gt;
+  &lt;script defer src="assets/app.js"&gt;&lt;/script&gt;
+  &lt;!-- &lt;base href="/" target="_self"&gt;  (opcional y con cuidado) --&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+
+        <div class="grid-2">
+          <section class="card card--soft">
+            <h3><code>&lt;title&gt;</code></h3>
+            <p>Se muestra en la pestaña/ventana del navegador y es clave para accesibilidad y SEO.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;title&gt;Guía de HTML: &lt;head&gt;&lt;/title&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;title&gt;Guía de HTML: &lt;head&gt;&lt;/title&gt;</code></pre>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Metaetiquetas útiles</h3>
+            <ul class="check">
+              <li><code>charset</code>: codificación del documento (UTF-8).</li>
+              <li><code>viewport</code>: diseño adaptable a móviles.</li>
+              <li><code>description</code>: resumen claro (≈ 50–160 caracteres).</li>
+              <li><code>author</code>, <code>robots</code>: información y rastreo.</li>
+            </ul>
+            <div class="code">
+              <button class="copy" data-code='&lt;meta name="robots" content="index,follow"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;meta name="robots" content="index,follow"&gt;</code></pre>
+            </div>
+            <p class="muted">Nota: la meta <code>keywords</code> ya no es usada por motores de búsqueda modernos.</p>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Favicon y CSS</h3>
+            <div class="code">
+              <button class="copy" data-code='&lt;link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="stylesheet" href="assets/style.css"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="stylesheet" href="assets/style.css"&gt;</code></pre>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Scripts</h3>
+            <p>Coloca JS en <code>&lt;head&gt;</code> con <code>defer</code> para no bloquear el renderizado.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;script defer src="assets/app.js"&gt;&lt;/script&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;script defer src="assets/app.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Estilos embebidos</h3>
+            <p>Para pequeños ajustes locales puedes usar <code>&lt;style&gt;</code>.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;style&gt;
+  .btn-primary{padding:.6rem 1rem;border-radius:.6rem}
+&lt;/style&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;style&gt;
+  .btn-primary{padding:.6rem 1rem;border-radius:.6rem}
+&lt;/style&gt;</code></pre>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h3><code>&lt;base&gt;</code> (con cuidado)</h3>
+            <p>Define la URL base para todas las rutas relativas.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;base href="/" target="_self"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;base href="/" target="_self"&gt;</code></pre>
+            </div>
+            <p class="muted">Si la usas, verifica que todos tus enlaces/recursos sigan resolviendo correctamente.</p>
+          </section>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_cabecera" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta define el texto de la pestaña del navegador?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="1"> &lt;title&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;meta&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;link&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué meta hace que el sitio sea adaptable en móviles?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="1"> viewport</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> robots</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> author</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Para qué sirve el atributo <code>defer</code> en &lt;script&gt;?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="1"> Carga el script sin bloquear el render y lo ejecuta tras el parseo.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Hace el script más rápido siempre.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Lo ejecuta antes de analizar el HTML.</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué efecto tiene usar <code>&lt;base href="/"&gt;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="1"> Cambia el punto de partida de todas las rutas relativas.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> Deshabilita los enlaces externos.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> No tiene efecto visible.</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="rutas.html" aria-label="Anterior">← Rutas de archivos HTML</a>
+        <a href="diseno.html" aria-label="Siguiente">Diseño HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

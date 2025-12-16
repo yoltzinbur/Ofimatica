@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Párrafos HTML · Guía HTML</title>
+  <meta name="description" content="Cómo usar <p>, saltos de línea <br>, líneas horizontales <hr>, colapso de espacios en HTML y el elemento <pre>.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes anti-desborde SOLO para esta página -->
+  <style>
+    .page-parrafos .code{ overflow:hidden }
+    .page-parrafos .code pre{
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .page-parrafos .demo-inline{ background:var(--code); padding:.4rem .6rem; border-radius:.4rem; display:inline-block }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions" aria-label="Atajos">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side" aria-label="Navegación por temas">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..." aria-label="Filtrar temas"></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" class="active">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-parrafos">
+      <article class="card">
+        <p class="badge">/parrafos.html</p>
+        <h1>Párrafos HTML</h1>
+        <p>El elemento <code>&lt;p&gt;</code> define un párrafo. Los navegadores añaden margen antes y después de cada párrafo para separarlos visualmente.</p>
+
+        <h2>Crear párrafos</h2>
+        <div class="code">
+          <button class="copy" aria-label="Copiar"
+            data-code="&lt;p&gt;Este es el primer párrafo.&lt;/p&gt;
+&lt;p&gt;Este es el segundo párrafo.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Este es el primer párrafo.&lt;/p&gt;
+&lt;p&gt;Este es el segundo párrafo.&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>Colapso de espacios en HTML</h2>
+        <p>Varios espacios o saltos de línea en el HTML se <em>colapsan</em> en un único espacio al mostrarse. Si necesitas mantener espacios y saltos tal cual, usa <code>&lt;pre&gt;</code>.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Texto normal (colapsa)</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p&gt;Hola       mundo
+con   múltiples   espacios.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Hola       mundo
+con   múltiples   espacios.&lt;/p&gt;</code></pre>
+            </div>
+            <p class="demo-inline">Render: Hola mundo con múltiples espacios.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>Texto preformateado</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;pre&gt;Hola       mundo
+con   múltiples   espacios.&lt;/pre&gt;">Copiar</button>
+<pre><code class="language-html">&lt;pre&gt;Hola       mundo
+con   múltiples   espacios.&lt;/pre&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Saltos de línea y líneas horizontales</h2>
+        <p>No uses varios <code>&lt;p&gt;</code> o <code>&lt;br&gt;</code> seguidos para “hacer espacio”. Para espaciado, usa CSS. El salto de línea <code>&lt;br&gt;</code> es útil dentro de direcciones, poemas o frases cortas.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Salto de línea</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p&gt;Línea 1&lt;br&gt;Línea 2&lt;br&gt;Línea 3&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Línea 1&lt;br&gt;Línea 2&lt;br&gt;Línea 3&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Línea horizontal</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p&gt;Encabezado de sección&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Contenido de la sección&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Encabezado de sección&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Contenido de la sección&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Párrafos vs. elementos en línea</h2>
+        <p><code>&lt;p&gt;</code> es un elemento <em>de bloque</em> (ocupa todo el ancho). Elementos como <code>&lt;span&gt;</code>, <code>&lt;strong&gt;</code> o <code>&lt;em&gt;</code> son <em>en línea</em> y no inician un nuevo párrafo.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;p&gt;Este es un &lt;strong&gt;párrafo&lt;/strong&gt; con un &lt;span&gt;trozo en línea&lt;/span&gt;.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Este es un &lt;strong&gt;párrafo&lt;/strong&gt; con un &lt;span&gt;trozo en línea&lt;/span&gt;.&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa <strong>un párrafo por idea</strong> o bloque de contenido.</li>
+          <li>Para separar visualmente, aplica <strong>márgenes con CSS</strong>, no múltiples <code>&lt;br&gt;</code>.</li>
+          <li>Usa <code>&lt;pre&gt;</code> solo cuando necesites preservar espacios/saltos tal cual (código, poesía, ASCII art).</li>
+          <li>Evita anidar elementos de bloque dentro de <code>&lt;p&gt;</code> (por ejemplo, no coloques <code>&lt;div&gt;</code> o <code>&lt;h2&gt;</code> dentro de un <code>&lt;p&gt;</code>).</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_parrafos" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta define un párrafo?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="1"> &lt;p&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;span&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> &lt;div&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuándo usar &lt;br&gt;?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="1"> Para un salto de línea dentro de un mismo párrafo</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> Para crear grandes espacios verticales</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué elemento mantiene espacios y saltos tal cual?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="1"> &lt;pre&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> &lt;p&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> &lt;span&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué etiqueta dibuja una separación temática?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="1"> &lt;hr&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> &lt;br&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> &lt;em&gt;</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="encabezados.html" aria-label="Anterior">← Encabezados HTML</a>
+        <a href="estilos.html" aria-label="Siguiente">Estilos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

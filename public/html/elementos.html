@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elementos HTML · Guía HTML</title>
+  <meta name="description" content="Qué es un elemento HTML, anidamiento, elementos vacíos, cierre opcional y uso de mayúsculas/minúsculas, con ejemplos y mini cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..."></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html" class="active">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/elementos.html</p>
+        <h1>Elementos HTML</h1>
+
+        <h2>¿Qué es un elemento?</h2>
+        <p>Un <strong>elemento HTML</strong> suele estar formado por una <em>etiqueta de apertura</em>, el <em>contenido</em> y una <em>etiqueta de cierre</em>:</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;p&gt;Hola, mundo&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Hola, mundo&lt;/p&gt;</code></pre>
+        </div>
+        <ul class="check">
+          <li><strong>Apertura:</strong> <code>&lt;p&gt;</code></li>
+          <li><strong>Contenido:</strong> <code>Hola, mundo</code></li>
+          <li><strong>Cierre:</strong> <code>&lt;/p&gt;</code></li>
+        </ul>
+
+        <h2>Anidamiento de elementos</h2>
+        <p>Los elementos pueden <em>anidarse</em> (colocarse dentro de otros). Mantén el orden: el último en abrir es el primero en cerrar.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;p&gt;Texto con &lt;strong&gt;énfasis fuerte&lt;/strong&gt; y &lt;em&gt;énfasis&lt;/em&gt;.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Texto con &lt;strong&gt;énfasis fuerte&lt;/strong&gt; y &lt;em&gt;énfasis&lt;/em&gt;.&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>Elementos vacíos (void)</h2>
+        <p>Algunos elementos no tienen contenido y, por lo tanto, no llevan etiqueta de cierre. Ejemplos comunes:</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="Línea 1&lt;br&gt;Línea 2">Copiar</button>
+<pre><code class="language-html">Línea 1&lt;br&gt;Línea 2</code></pre>
+            </div>
+            <p class="badge">br – salto de línea</p>
+          </div>
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;img src=&quot;img/foto.jpg&quot; alt=&quot;Descripción&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="img/foto.jpg" alt="Descripción"&gt;</code></pre>
+            </div>
+            <p class="badge">img – imagen con <code>alt</code></p>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:.6rem">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;hr&gt;">Copiar</button>
+<pre><code class="language-html">&lt;hr&gt;</code></pre>
+            </div>
+            <p class="badge">hr – regla horizontal</p>
+          </div>
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;meta charset=&quot;utf-8&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&#10;&lt;input type=&quot;text&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;meta charset="utf-8"&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;input type="text"&gt;</code></pre>
+            </div>
+            <p class="badge">meta, link, input – otros elementos vacíos</p>
+          </div>
+        </div>
+
+        <h2>¿Cierre opcional?</h2>
+        <p>Algunos elementos (p. ej., <code>&lt;li&gt;</code>, <code>&lt;p&gt;</code>) tienen cierre <em>opcional</em> según las reglas del parser HTML. <strong>Recomendación:</strong> ciérralos siempre para evitar errores de anidamiento y mantener el código claro.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;ul&gt;&#10;  &lt;li&gt;Uno&lt;/li&gt;&#10;  &lt;li&gt;Dos&lt;/li&gt;&#10;&lt;/ul&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <h2>Mayúsculas vs minúsculas</h2>
+        <p>HTML no distingue mayúsculas/minúsculas en nombres de etiquetas y atributos; sin embargo, la <strong>convención moderna</strong> es escribirlos en <strong>minúsculas</strong> y con comillas para valores de atributos.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;P CLASS=&quot;destacado&quot;&gt;Funciona, pero usa minúsculas&lt;/P&gt;&#10;&lt;p class=&quot;destacado&quot;&gt;Forma recomendada&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;P CLASS="destacado"&gt;Funciona, pero usa minúsculas&lt;/P&gt;
+&lt;p class="destacado"&gt;Forma recomendada&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>Comentarios</h2>
+        <p>No son elementos, pero te ayudan a documentar:</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;!-- Sección de artículos --&gt;&#10;&lt;section&gt;...&lt;/section&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!-- Sección de artículos --&gt;
+&lt;section&gt;...&lt;/section&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_elements" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál de estos es un elemento vacío (void)?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e1" data-correct="1"> &lt;br&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e1" data-correct="0"> &lt;em&gt;&lt;/em&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e1" data-correct="0"> &lt;strong&gt;&lt;/strong&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) En un elemento estándar, ¿qué parte va primero?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e2" data-correct="1"> La etiqueta de apertura</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e2" data-correct="0"> La etiqueta de cierre</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e2" data-correct="0"> El comentario</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué recomendación es correcta sobre &lt;li&gt; y &lt;p&gt;?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e3" data-correct="1"> Cerrar siempre las etiquetas, aunque el cierre sea opcional</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e3" data-correct="0"> Nunca cerrar etiquetas</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e3" data-correct="0"> Mezclar mayúsculas y minúsculas al azar</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) HTML es…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="1"> No sensible a mayúsculas/minúsculas, pero se recomienda minúsculas</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="0"> Sensible a mayúsculas/minúsculas: usa siempre MAYÚSCULAS</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="0"> Sensible a mayúsculas/minúsculas: usa siempre minúsculas por obligación</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>5) ¿Qué afirmación sobre anidamiento es correcta?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e5" data-correct="1"> El último elemento en abrir debe ser el primero en cerrar</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e5" data-correct="0"> El orden de cierre no importa</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e5" data-correct="0"> Los elementos no se pueden anidar</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="basico.html" aria-label="Anterior">← HTML básico</a>
+        <a href="atributos.html" aria-label="Siguiente">Atributos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

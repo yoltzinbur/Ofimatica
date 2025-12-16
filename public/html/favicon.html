@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Favicon HTML · Guía HTML</title>
+  <meta name="description" content="Cómo agregar favicons en HTML: .ico clásico, PNG múltiples tamaños, apple-touch-icon y manifest. Consejos de caché y ubicación.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Evitar desbordes en ejemplos de código */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .favicon-demo{width:48px;height:48px;border-radius:8px;display:inline-block;background:#0ea5e9}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" class="active">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/favicon.html</p>
+        <h1>Favicon HTML</h1>
+        <p>El <strong>favicon</strong> es el ícono pequeño que aparece en la pestaña del navegador, marcadores y accesos directos. Se declara con una etiqueta <code>&lt;link rel="icon"&gt;</code> dentro de <code>&lt;head&gt;</code>.</p>
+
+        <h2>Opción clásica: <code>favicon.ico</code> en la raíz</h2>
+        <p>Muchos navegadores buscan <code>/favicon.ico</code> automáticamente. Aun así, es buena práctica enlazarlo explícitamente:</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;link rel="icon" href="/favicon.ico" type="image/x-icon"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;link rel="icon" href="/favicon.ico" type="image/x-icon"&gt;</code></pre>
+        </div>
+
+        <h2>Recomendado: PNG con varios tamaños</h2>
+        <p>Usa PNG por su calidad y transparencia. Provee al menos 16×16 y 32×32&nbsp;px (y opcionalmente 48×48):</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;&#10;&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;</code></pre>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>iOS / iPadOS (pantalla de inicio)</h3>
+            <p>Para íconos al “Agregar a pantalla de inicio” en Apple, añade un <code>apple-touch-icon</code> (suele usarse 180×180):</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Manifest para PWA</h3>
+            <p>Si tu sitio tiene <em>manifest</em>, enlázalo (define íconos adicionales y tema):</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;link rel="manifest" href="/site.webmanifest"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;link rel="manifest" href="/site.webmanifest"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Consejos de caché</h2>
+        <ul class="check">
+          <li>Los navegadores <strong>cachan</strong> el favicon. Si no se actualiza, cambia el nombre del archivo (<code>favicon-v2.png</code>) o añade una query (<code>?v=2</code>).</li>
+          <li>Mantén tus archivos en la <strong>raíz</strong> (<code>/</code>) para rutas sencillas y compatibilidad.</li>
+          <li>Evita usar solo <code>shortcut icon</code>; hoy se usa simplemente <code>rel="icon"</code>.</li>
+        </ul>
+
+        <h2>Ejemplo completo</h2>
+        <div class="code">
+          <button class="copy" data-code='&lt;!-- En &lt;head&gt; --&gt;&#10;&lt;link rel="icon" href="/favicon.ico" type="image/x-icon"&gt;&#10;&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;&#10;&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;&#10;&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;&#10;&lt;link rel="manifest" href="/site.webmanifest"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;!-- En &lt;head&gt; --&gt;
+&lt;link rel="icon" href="/favicon.ico" type="image/x-icon"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/site.webmanifest"&gt;</code></pre>
+        </div>
+
+        <div class="render">
+          <span class="favicon-demo" title="Vista ficticia de un favicon"></span>
+          <small style="margin-left:.5rem">Vista de ejemplo (representación). Tu favicon real se ve en la pestaña del navegador.</small>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_favicon" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta se usa para enlazar el favicon?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="1"> &lt;link rel="icon"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="0"> &lt;meta name="icon"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="0"> &lt;img rel="icon"&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Dónde es común colocar el archivo por defecto para autodetección?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="1"> /favicon.ico en la raíz</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="0"> /assets/img/favicon.ico</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="0"> /icons/default/</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué tamaño se suele usar para <code>apple-touch-icon</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="0"> 16×16</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="1"> 180×180</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="0"> 12×12</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) Si el navegador no refresca el favicon, una solución es…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f4" data-correct="1"> Cambiar nombre o añadir ?v=2</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f4" data-correct="0"> Usar &lt;meta http-equiv="refresh"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f4" data-correct="0"> Quitar todos los tamaños</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="imagenes.html" aria-label="Anterior">← Imágenes HTML</a>
+        <a href="titulo.html" aria-label="Siguiente">Título de la página HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

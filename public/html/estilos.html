@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estilos HTML · Guía HTML</title>
+  <meta name="description" content="Cómo usar el atributo style, propiedades comunes (color, background-color, font-family, font-size, text-align, border), valores de color y buenas prácticas.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes anti-desborde SOLO para esta página -->
+  <style>
+    .page-estilos .code{ overflow:hidden }
+    .page-estilos .code pre{
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .swatch{
+      display:inline-block; width:1.25rem; height:1.25rem; border-radius:.3rem;
+      border:1px solid var(--border); vertical-align:middle; margin-right:.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions" aria-label="Atajos">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side" aria-label="Navegación por temas">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..." aria-label="Filtrar temas"></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" class="active">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-estilos">
+      <article class="card">
+        <p class="badge">/estilos.html</p>
+        <h1>Estilos HTML</h1>
+        <p>En HTML puedes aplicar estilos rápidos con el <strong>atributo</strong> <code>style</code>. En proyectos reales, es mejor mover esos estilos a <strong>CSS</strong> (interno o externo), pero el atributo es útil para ejemplos puntuales.</p>
+
+        <h2>El atributo <code>style</code></h2>
+        <p>La sintaxis es <code>style="propiedad: valor;"</code>. Puedes incluir varias declaraciones separadas por <code>;</code>.</p>
+        <div class="code">
+          <button class="copy" aria-label="Copiar"
+            data-code="&lt;p style=&quot;color: blue; background-color: #f0f8ff;&quot;&gt;Texto con color y fondo.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color: blue; background-color: #f0f8ff;"&gt;Texto con color y fondo.&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>Propiedades comunes</h2>
+        <section class="grid-3">
+          <article class="card card--soft">
+            <h3>Color y fondo</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p style=&quot;color: crimson;&quot;&gt;Texto rojo&lt;/p&gt;
+&lt;p style=&quot;background-color: lightgoldenrodyellow;&quot;&gt;Fondo suave&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color: crimson;"&gt;Texto rojo&lt;/p&gt;
+&lt;p style="background-color: lightgoldenrodyellow;"&gt;Fondo suave&lt;/p&gt;</code></pre>
+            </div>
+          </article>
+
+          <article class="card card--soft">
+            <h3>Fuente y tamaño</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p style=&quot;font-family: Arial, Helvetica, sans-serif; font-size: 18px;&quot;&gt;Fuente y tamaño&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;"&gt;Fuente y tamaño&lt;/p&gt;</code></pre>
+            </div>
+          </article>
+
+          <article class="card card--soft">
+            <h3>Alineación, borde y espaciado</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;div style=&quot;text-align:center; border:1px solid #d1d5db; padding:.5rem; margin:.5rem 0;&quot;&gt;Caja centrada&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div style="text-align:center; border:1px solid #d1d5db; padding:.5rem; margin:.5rem 0;"&gt;Caja centrada&lt;/div&gt;</code></pre>
+            </div>
+          </article>
+        </section>
+
+        <h2>Múltiples estilos en una misma etiqueta</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;h2 style=&quot;color:#0ea5e9; font-size:28px; text-align:center; background:#eef6ff; padding:.5rem; border-radius:.5rem;&quot;&gt;Encabezado estilizado&lt;/h2&gt;">Copiar</button>
+<pre><code class="language-html">&lt;h2 style="color:#0ea5e9; font-size:28px; text-align:center; background:#eef6ff; padding:.5rem; border-radius:.5rem;"&gt;Encabezado estilizado&lt;/h2&gt;</code></pre>
+        </div>
+
+        <h2>Valores de color</h2>
+        <p>Puedes escribir colores como <em>nombres</em>, <em>hex</em>, <em>RGB</em> o <em>HSL</em>:</p>
+        <table class="demo table-fit">
+          <thead><tr><th>Forma</th><th>Ejemplo</th><th>Vista</th></tr></thead>
+          <tbody>
+            <tr><td>Nombre</td><td><code>color: tomato;</code></td><td><span class="swatch" style="background:tomato"></span>tomato</td></tr>
+            <tr><td>Hex</td><td><code>#16a34a</code></td><td><span class="swatch" style="background:#16a34a"></span>#16a34a</td></tr>
+            <tr><td>RGB</td><td><code>rgb(14,165,233)</code></td><td><span class="swatch" style="background:rgb(14,165,233)"></span>rgb(14,165,233)</td></tr>
+            <tr><td>HSL</td><td><code>hsl(200 98% 39%)</code></td><td><span class="swatch" style="background:hsl(200 98% 39%)"></span>hsl(200 98% 39%)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Inline vs. CSS (recomendado)</h2>
+        <p>Para mantener el HTML limpio y reutilizable, usa CSS en lugar de muchos <code>style=""</code>:</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Inline (rápido, no escalable)</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;p style=&quot;color:#0b1324; background:#eef6ff; padding:.4rem .6rem;&quot;&gt;Estilo inline&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color:#0b1324; background:#eef6ff; padding:.4rem .6rem;"&gt;Estilo inline&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Con clase CSS (preferido)</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;!-- HTML --&gt;
+&lt;p class=&quot;chip&quot;&gt;Con clase&lt;/p&gt;
+
+&lt;!-- CSS --&gt;
+.chip{ color:#0b1324; background:#eef6ff; padding:.4rem .6rem; border-radius:.5rem }">Copiar</button>
+<pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;p class="chip"&gt;Con clase&lt;/p&gt;
+
+&lt;!-- CSS --&gt;
+.chip{ color:#0b1324; background:#eef6ff; padding:.4rem .6rem; border-radius:.5rem }</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa <strong>clases</strong> y CSS externo para proyectos reales; deja el inline para demos puntuales.</li>
+          <li>Escribe propiedades en <strong>kebab-case</strong> (<code>font-size</code>, <code>background-color</code>).</li>
+          <li>Separa las declaraciones con <code>;</code> y no olvides los <strong>valores</strong> con unidades cuando aplique (px, rem, %).</li>
+          <li>Evita estilos inline en elementos repetidos; complica el mantenimiento.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_estilos" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cómo se añaden varios estilos en el atributo <code>style</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e1" data-correct="1"> Separando cada “propiedad: valor” con <code>;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e1" data-correct="0"> Usando comas entre propiedades</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué propiedad cambia el color del texto?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e2" data-correct="1"> <code>color</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e2" data-correct="0"> <code>background-color</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cuál es la forma recomendada para proyectos grandes?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e3" data-correct="0"> Usar <code>style=""</code> en todos los elementos</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e3" data-correct="1"> Usar clases y CSS externo</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Cuál de estas NO es una forma válida de color?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="0"> <code>#ff0000</code> (hex)</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="0"> <code>rgb(255,0,0)</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="e4" data-correct="1"> <code>cmyk(0,100,100,0)</code></label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="parrafos.html" aria-label="Anterior">← Párrafos HTML</a>
+        <a href="formato.html" aria-label="Siguiente">Formato HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

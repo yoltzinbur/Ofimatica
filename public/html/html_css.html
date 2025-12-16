@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML CSS · Guía HTML</title>
+  <meta name="description" content="Cómo usar CSS con HTML: estilos en línea, internos y externos; sintaxis de selectores, propiedades comunes y cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Solo para esta página: evitar desbordes en los ejemplos */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-3-min{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'><div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html" class="active">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/html_css.html</p>
+        <h1>Usar CSS con HTML</h1>
+        <p>CSS (Cascading Style Sheets) controla la presentación: colores, tamaños, espaciados, tipografías, <em>layout</em>, etc. Hay tres maneras principales de aplicarlo:</p>
+
+        <h2>1) Estilos en línea (inline)</h2>
+        <p>Se usan en el atributo <code>style</code> de una etiqueta. Útil para demos, pero no recomendado en proyectos grandes.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;p style=&quot;color:tomato;font-weight:bold&quot;&gt;Texto en rojo y en negrita&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color:tomato;font-weight:bold"&gt;Texto en rojo y en negrita&lt;/p&gt;</code></pre>
+        </div>
+
+        <h2>2) Hoja de estilo interna (&lt;style&gt;)</h2>
+        <p>Se define en la cabecera del documento y afecta a la página actual.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;head&gt;&#10;  &lt;style&gt;&#10;    h1{ color:#1e293b }&#10;    .btn{ background:#16a34a; color:#fff; padding:.5rem 1rem; border-radius:.5rem }&#10;  &lt;/style&gt;&#10;&lt;/head&gt;">Copiar</button>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;style&gt;
+    h1{ color:#1e293b }
+    .btn{ background:#16a34a; color:#fff; padding:.5rem 1rem; border-radius:.5rem }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+
+        <h2>3) Hoja de estilo externa (recomendada)</h2>
+        <p>Enlaza un archivo <code>.css</code> separado que puedes reutilizar en muchas páginas.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;head&gt;&#10;  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;&#10;&lt;/head&gt;">Copiar</button>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+
+        <h2>Sintaxis básica de CSS</h2>
+        <div class="code">
+          <button class="copy" data-code="selector { propiedad: valor; otra-propiedad: otro-valor; }&#10;/* Ejemplo */&#10;p { color:#0f172a; line-height:1.6 }&#10;.destacado { background:gold }&#10;#cabecera { border-bottom:2px solid #e2e8f0 }">Copiar</button>
+<pre><code class="language-css">selector { propiedad: valor; otra-propiedad: otro-valor; }
+/* Ejemplo */
+p { color:#0f172a; line-height:1.6 }
+.destacado { background:gold }
+#cabecera { border-bottom:2px solid #e2e8f0 }</code></pre>
+        </div>
+
+        <h2>Propiedades frecuentes</h2>
+        <div class="grid-3-min">
+          <div class="card card--soft">
+            <h3>Color y tipografía</h3>
+            <div class="code">
+              <button class="copy" data-code="p { color:#334155; font-family: Arial, Helvetica, sans-serif; font-size:16px }">Copiar</button>
+<pre><code class="language-css">p { color:#334155; font-family: Arial, Helvetica, sans-serif; font-size:16px }</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Espaciado</h3>
+            <div class="code">
+              <button class="copy" data-code=".box { margin:16px; padding:12px }">Copiar</button>
+<pre><code class="language-css">.box { margin:16px; padding:12px }</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Bordes y fondo</h3>
+            <div class="code">
+              <button class="copy" data-code=".panel { border:2px dashed #94a3b8; background-color:#f8fafc; border-radius:10px }">Copiar</button>
+<pre><code class="language-css">.panel { border:2px dashed #94a3b8; background-color:#f8fafc; border-radius:10px }</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Cascada y especificidad (mini resumen)</h2>
+        <ul class="check">
+          <li>La “C” de CSS es <strong>Cascading</strong>: el último estilo compatible suele ganar.</li>
+          <li>La <strong>especificidad</strong> decide empates: <code>id</code> &gt; <code>clase</code> &gt; <code>etiqueta</code> &gt; <em>universal</em>.</li>
+          <li>Evita el uso de <code>!important</code> salvo casos puntuales.</li>
+        </ul>
+
+        <h2>Ejemplo completo</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;style&gt;&#10;  .card-demo{border:1px solid #e5e7eb;padding:1rem;border-radius:.75rem}&#10;  .card-demo h3{margin:0 0 .5rem;color:#0f172a}&#10;  .card-demo .btn{background:#2563eb;color:#fff;padding:.4rem .8rem;border-radius:.5rem}&#10;&lt;/style&gt;&#10;&#10;&lt;div class=&quot;card-demo&quot;&gt;&#10;  &lt;h3&gt;Producto&lt;/h3&gt;&#10;  &lt;p&gt;Texto descriptivo…&lt;/p&gt;&#10;  &lt;button class=&quot;btn&quot;&gt;Comprar&lt;/button&gt;&#10;&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;style&gt;
+  .card-demo{border:1px solid #e5e7eb;padding:1rem;border-radius:.75rem}
+  .card-demo h3{margin:0 0 .5rem;color:#0f172a}
+  .card-demo .btn{background:#2563eb;color:#fff;padding:.4rem .8rem;border-radius:.5rem}
+&lt;/style&gt;
+
+&lt;div class="card-demo"&gt;
+  &lt;h3&gt;Producto&lt;/h3&gt;
+  &lt;p&gt;Texto descriptivo…&lt;/p&gt;
+  &lt;button class="btn"&gt;Comprar&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_htmlcss" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es la forma recomendada para reutilizar estilos en varias páginas?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="1"> Hoja de estilo externa con &lt;link rel="stylesheet"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="0"> Estilos en línea</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="0"> Estilos en la etiqueta &lt;font&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué selector tiene mayor especificidad?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="1"> #menu</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="0"> .menu</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="0"> nav</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué propiedad cambia el espacio interior de un elemento?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="1"> padding</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="0"> margin</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="0"> border-width</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="colores.html" aria-label="Anterior">← Colores HTML</a>
+        <a href="enlaces.html" aria-label="Siguiente">Enlaces HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

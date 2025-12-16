@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Div HTML · Guía HTML</title>
+  <meta name="description" content="Uso del elemento div en HTML: agrupación de contenido, clases e identificadores, maquetación con CSS y buenas prácticas.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo{border:1px dashed var(--border,#d9d9df);padding:.75rem;border-radius:.6rem;background:#fafafe}
+    .layout{display:grid;grid-template-columns:240px 1fr;gap:1rem}
+    .layout .sidebar{background:#eef2ff;border:1px solid #c7d2fe;border-radius:.5rem;padding:.5rem}
+    .layout .content{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:.5rem;padding:.5rem}
+    .card-demo{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+    .card{border:1px solid #e5e7eb;border-radius:.6rem;padding:.75rem;background:#ffffff}
+    .tip{display:inline-block;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:.4rem;padding:.15rem .45rem;font-size:.85em}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li><li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li><li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li><li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li><li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li><li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li><li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li><li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li><li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li><li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li><li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li><li><a href="division.html" class="active">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li><li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li><li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li><li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li><li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li><li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li><li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li><li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li><li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/division.html</p>
+        <h1>División HTML (<code>&lt;div&gt;</code>)</h1>
+        <p><code>&lt;div&gt;</code> es un elemento de <strong>bloque</strong> que se usa para <strong>agrupar</strong> otros elementos y aplicar estilos con <code>CSS</code> o scripts con <code>JavaScript</code>. No aporta significado semántico por sí mismo (<span class="tip">usa elementos semánticos cuando sea posible</span>).</p>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;div&gt;
+  &lt;h2&gt;Sección&lt;/h2&gt;
+  &lt;p&gt;Contenido dentro del div.&lt;/p&gt;
+&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;h2&gt;Sección&lt;/h2&gt;
+  &lt;p&gt;Contenido dentro del div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <div>
+            <h2 style="margin:.2rem 0">Sección</h2>
+            <p style="margin:0">Contenido dentro del div.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem">
+          <section class="card card--soft">
+            <h2>Con <code>class</code> (reutilizable)</h2>
+            <p>Usa clases cuando quieras el mismo estilo en varios elementos.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;div class=&quot;caja&quot;&gt;A&lt;/div&gt;
+&lt;div class=&quot;caja&quot;&gt;B&lt;/div&gt;
+&lt;style&gt;
+.caja{border:1px solid #cbd5e1;padding:.5rem;border-radius:.5rem}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div class="caja"&gt;A&lt;/div&gt;
+&lt;div class="caja"&gt;B&lt;/div&gt;
+&lt;style&gt;
+.caja{border:1px solid #cbd5e1;padding:.5rem;border-radius:.5rem}
+&lt;/style&gt;</code></pre>
+            </div>
+            <div class="render demo">
+              <div style="border:1px solid #cbd5e1;padding:.5rem;border-radius:.5rem;display:inline-block;margin-right:.5rem">A</div>
+              <div style="border:1px solid #cbd5e1;padding:.5rem;border-radius:.5rem;display:inline-block">B</div>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h2>Con <code>id</code> (único)</h2>
+            <p>Usa <code>id</code> para identificar un único elemento del documento.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;div id=&quot;banner&quot;&gt;Bienvenido&lt;/div&gt;
+&lt;style&gt;
+#banner{background:#2563eb;color:#fff;padding:.65rem 1rem;border-radius:.5rem}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div id="banner"&gt;Bienvenido&lt;/div&gt;
+&lt;style&gt;
+#banner{background:#2563eb;color:#fff;padding:.65rem 1rem;border-radius:.5rem}
+&lt;/style&gt;</code></pre>
+            </div>
+            <div class="render demo">
+              <div style="background:#2563eb;color:#fff;padding:.65rem 1rem;border-radius:.5rem;display:inline-block">Bienvenido</div>
+            </div>
+          </section>
+        </div>
+
+        <h2>Maquetación con <code>div</code> + CSS</h2>
+        <p>Aunque existen etiquetas semánticas (<code>header</code>, <code>nav</code>, <code>main</code>, <code>aside</code>, <code>footer</code>), a veces se combinan <code>div</code> con <em>grid/flex</em> para estructurar.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;div class=&quot;layout&quot;&gt;
+  &lt;div class=&quot;sidebar&quot;&gt;Menú&lt;/div&gt;
+  &lt;div class=&quot;content&quot;&gt;Contenido principal&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.layout{display:grid;grid-template-columns:240px 1fr;gap:1rem}
+.sidebar{background:#eef2ff;border:1px solid #c7d2fe;border-radius:.5rem;padding:.5rem}
+.content{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:.5rem;padding:.5rem}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div class="layout"&gt;
+  &lt;div class="sidebar"&gt;Menú&lt;/div&gt;
+  &lt;div class="content"&gt;Contenido principal&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="render layout" style="margin:.5rem 0 1rem">
+          <div class="sidebar">Menú</div>
+          <div class="content">Contenido principal</div>
+        </div>
+
+        <h2>Ejemplo de tarjetas</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;div class=&quot;cards&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;h3&gt;Producto A&lt;/h3&gt;&lt;p&gt;Descripción corta.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;h3&gt;Producto B&lt;/h3&gt;&lt;p&gt;Otra descripción.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div class="cards"&gt;
+  &lt;div class="card"&gt;&lt;h3&gt;Producto A&lt;/h3&gt;&lt;p&gt;Descripción corta.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="card"&gt;&lt;h3&gt;Producto B&lt;/h3&gt;&lt;p&gt;Otra descripción.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="render card-demo">
+          <div class="card"><h3 style="margin:.2rem 0 .4rem">Producto A</h3><p style="margin:0">Descripción corta.</p></div>
+          <div class="card"><h3 style="margin:.2rem 0 .4rem">Producto B</h3><p style="margin:0">Otra descripción.</p></div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Prefiere etiquetas semánticas cuando describan mejor el contenido.</li>
+          <li>Evita el “divitis”: demasiados <code>div</code> sin necesidad.</li>
+          <li>Usa nombres de clase claros (p. ej., <code>.sidebar</code>, <code>.card</code>).</li>
+          <li>Recuerda que <code>&lt;div&gt;</code> es de bloque; para marcar texto en línea usa <code>&lt;span&gt;</code>.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_div" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Para qué se usa principalmente <code>&lt;div&gt;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d1" data-correct="1"> Para agrupar contenido y aplicar estilos/JS</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d1" data-correct="0"> Para insertar imágenes</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d1" data-correct="0"> Para crear enlaces</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál es verdadero sobre <code>class</code> vs <code>id</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d2" data-correct="1"> <code>class</code> puede repetirse; <code>id</code> debe ser único</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d2" data-correct="0"> Ambos deben ser únicos</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d2" data-correct="0"> Ninguno puede usarse en <code>&lt;div&gt;</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cuál es una buena alternativa semántica a un <code>div</code> que actúa como encabezado?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d3" data-correct="1"> &lt;header&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d3" data-correct="0"> &lt;span&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="d3" data-correct="0"> &lt;br&gt;</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="bloques.html" aria-label="Anterior">← Bloque e Inline</a>
+        <a href="clases.html" aria-label="Siguiente">Clases HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

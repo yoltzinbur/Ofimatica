@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clases HTML · Guía HTML</title>
+  <meta name="description" content="Uso del atributo class en HTML: aplicar estilos a múltiples elementos, múltiples clases, selección con CSS y JavaScript.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .badge-demo{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;background:#eef2ff;color:#1e3a8a;border:1px solid #c7d2fe}
+    .tarjeta{border:1px solid #e5e7eb;border-radius:.6rem;padding:.75rem;background:#fff}
+    .destacado{background:#fff7ed;border:1px solid #fed7aa}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem}
+    .tag{border:1px solid #cbd5e1;border-radius:999px;padding:.1rem .6rem;font-size:.85em;background:#f8fafc}
+    .demo{border:1px dashed #cbd5e1;border-radius:.6rem;padding:.75rem;background:#fbfdff}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li><li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li><li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li><li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li><li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li><li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li><li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li><li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li><li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li><li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li><li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li><li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html" class="active">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li><li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li><li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li><li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li><li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li><li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li><li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li><li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li><li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/clases.html</p>
+        <h1>Clases HTML (<code>class</code>)</h1>
+        <p>El atributo <code>class</code> permite asignar un nombre (o varios) a un elemento para aplicarle estilos con CSS o seleccionarlo con JavaScript. Varios elementos pueden compartir la misma clase.</p>
+
+        <h2>Sintaxis básica</h2>
+        <div class="code">
+          <button class="copy" data-code='&lt;p class="nota"&gt;Texto con estilo de la clase &lt;em&gt;nota&lt;/em&gt;.&lt;/p&gt;
+&lt;style&gt;
+.nota{background:#fff7ed;border:1px solid #fed7aa;padding:.5rem;border-radius:.5rem}
+&lt;/style&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;p class="nota"&gt;Texto con estilo de la clase &lt;em&gt;nota&lt;/em&gt;.&lt;/p&gt;
+&lt;style&gt;
+.nota{background:#fff7ed;border:1px solid #fed7aa;padding:.5rem;border-radius:.5rem}
+&lt;/style&gt;</code></pre>
+        </div>
+        <div class="render demo">
+          <p class="badge-demo">Ejemplo con class="nota"</p>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem">
+          <section class="card card--soft">
+            <h2>Múltiples clases</h2>
+            <p>Puedes separar clases por espacios para combinar estilos.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;div class="tarjeta destacado"&gt;
+  Contenido importante
+&lt;/div&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;div class="tarjeta destacado"&gt;
+  Contenido importante
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="render demo">
+              <div class="tarjeta destacado">Contenido importante</div>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h2>Seleccionar por clase en CSS</h2>
+            <p>Usa el punto (<code>.</code>) antes del nombre: <code>.tarjeta { ... }</code>.</p>
+            <div class="code">
+              <button class="copy" data-code='&lt;style&gt;
+.tarjeta{border:1px solid #e5e7eb;border-radius:.6rem;padding:.6rem}
+.tarjeta .tag{margin-right:.25rem}
+&lt;/style&gt;'>Copiar</button>
+<pre><code class="language-html">.tarjeta{border:1px solid #e5e7eb;border-radius:.6rem;padding:.6rem}
+.tarjeta .tag{margin-right:.25rem}</code></pre>
+            </div>
+            <div class="render demo">
+              <div class="tarjeta">
+                <div class="tags">
+                  <span class="tag">.tarjeta</span><span class="tag">.tag</span>
+                </div>
+                <p style="margin:.4rem 0 0">Estilizadas por clase.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <h2>Seleccionar por clase en JavaScript</h2>
+        <p>Dos formas comunes:</p>
+        <ul class="check">
+          <li><code>document.getElementsByClassName('clase')</code> — HTMLCollection vivo.</li>
+          <li><code>document.querySelectorAll('.clase')</code> — NodeList estático (permite selectores complejos).</li>
+        </ul>
+        <div class="code">
+          <button class="copy" data-code='&lt;ul&gt;
+  &lt;li class="item"&gt;A&lt;/li&gt;
+  &lt;li class="item"&gt;B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+const items = document.getElementsByClassName("item");
+for(const el of items){ el.style.fontWeight = "bold"; }
+&lt;/script&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li class="item"&gt;A&lt;/li&gt;
+  &lt;li class="item"&gt;B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+const items = document.getElementsByClassName("item");
+for(const el of items){ el.style.fontWeight = "bold"; }
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa nombres descriptivos y en minúsculas/kebab-case: <code>.product-card</code>, <code>.btn-primary</code>.</li>
+          <li>Reutiliza clases para estilos consistentes en varios elementos.</li>
+          <li>Evita nombres demasiado genéricos como <code>.red</code> si el significado es semántico (mejor <code>.error</code>).</li>
+          <li>Combina múltiples clases para variaciones: <code>class="btn btn--primary"</code>.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_clases" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué selector CSS aplica a una clase llamada <code>card</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="1"> .card { ... }</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> #card { ... }</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> card { ... }</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cómo asignas múltiples clases a un elemento?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="1"> Separadas por espacios, p. ej. <code>class="box large"</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> Con comas, p. ej. <code>class="box, large"</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> No es posible múltiples clases</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué método JS devuelve una colección viva de elementos por clase?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="1"> getElementsByClassName</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> querySelector</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> getElementById</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="division.html" aria-label="Anterior">← División HTML</a>
+        <a href="identificacion.html" aria-label="Siguiente">Identificación HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplos de HTML · Guía HTML</title>
+  <meta name="description" content="Ejemplos interactivos de HTML con vista previa y práctica.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- 🌟 Estilos extra solo para mostrar los ejemplos -->
+  <style>
+    .ejemplo {
+      background: #f9f9fb;
+      border-left: 4px solid #2a73cc;
+      padding: 1em;
+      margin: 1.5em 0;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    }
+    .ejemplo h3 {
+      margin-top: 0;
+      color: #2a73cc;
+    }
+    .codigo {
+      width: 100%;
+      background: #222;
+      color: #eee;
+      padding: 0.8em;
+      border-radius: 6px;
+      font-family: monospace;
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+    iframe.vista-previa {
+      width: 100%;
+      height: 160px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      border-radius: 6px;
+      background: white;
+    }
+    button.probar {
+      background: #2a73cc;
+      color: white;
+      border: none;
+      padding: 0.5em 1.2em;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.6em;
+      font-size: 0.9em;
+    }
+    button.probar:hover {
+      background: #1f5ca2;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 📚 Menú lateral -->
+    <aside class="side">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..."></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+        <li><a href="api.html">API web HTML</a></li>
+        <li><a href="ejemplos.html" class="active">Ejemplos de HTML</a></li>
+      </ul>
+    </aside>
+
+    <!-- 🧠 Contenido principal -->
+    <main>
+      <article class="card">
+        <p class="badge">/ejemplos.html</p>
+        <h1>Ejemplos de HTML Interactivos</h1>
+        <p>A continuación encontrarás ejemplos básicos de etiquetas HTML que puedes editar y probar en tiempo real.</p>
+      </article>
+
+      <!-- 🌟 Ejemplos interactivos 🌟 -->
+      <div class="ejemplo">
+        <h3>1. Encabezados</h3>
+        <p>Los encabezados definen niveles de títulos desde <code>&lt;h1&gt;</code> (más importante) hasta <code>&lt;h6&gt;</code>.</p>
+        <textarea class="codigo">
+<h1>Título principal (h1)</h1>
+<h2>Subtítulo (h2)</h2>
+<h3>Encabezado pequeño (h3)</h3></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>2. Párrafos y formato de texto</h3>
+        <p>Los párrafos se escriben con <code>&lt;p&gt;</code> y puedes usar <code>&lt;strong&gt;</code> (negrita) o <code>&lt;em&gt;</code> (cursiva).</p>
+        <textarea class="codigo">
+<p>Hola, este es un <strong>párrafo</strong> en <em>HTML</em>.</p></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>3. Enlaces</h3>
+        <p>Los enlaces se crean con <code>&lt;a&gt;</code> y se pueden abrir en otra pestaña con <code>target="_blank"</code>.</p>
+        <textarea class="codigo">
+<a href="https://www.google.com" target="_blank">Ir a Google</a></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>4. Imágenes</h3>
+        <p>Las imágenes se insertan con <code>&lt;img&gt;</code> y deben tener los atributos <code>src</code> (fuente) y <code>alt</code> (texto alternativo).</p>
+        <textarea class="codigo">
+<img src="img/casa.jpg" alt="Ejemplo de imagen"></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>5. Listas</h3>
+        <p>HTML permite listas ordenadas (<code>&lt;ol&gt;</code>) y no ordenadas (<code>&lt;ul&gt;</code>).</p>
+        <textarea class="codigo">
+<ol>
+  <li>Primer paso</li>
+  <li>Segundo paso</li>
+  <li>Tercer paso</li>
+</ol>
+<ul>
+  <li>Manzanas</li>
+  <li>Peras</li>
+  <li>Plátanos</li>
+</ul></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>6. Tabla simple</h3>
+        <p>Una tabla usa las etiquetas <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> y <code>&lt;td&gt;</code>.</p>
+        <textarea class="codigo">
+<table border="1">
+  <tr><th>Nombre</th><th>Edad</th></tr>
+  <tr><td>Laura</td><td>25</td></tr>
+  <tr><td>Juan</td><td>30</td></tr>
+</table></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <div class="ejemplo">
+        <h3>7. Formulario básico</h3>
+        <p>Los formularios recogen información del usuario mediante diferentes tipos de entrada.</p>
+        <textarea class="codigo">
+<form>
+  <label>Nombre:</label>
+  <input type="text" placeholder="Escribe tu nombre">
+  <br><br>
+  <label>Correo:</label>
+  <input type="email" placeholder="nombre@correo.com">
+  <br><br>
+  <button type="submit">Enviar</button>
+</form></textarea>
+        <button class="probar">Probar</button>
+        <iframe class="vista-previa"></iframe>
+      </div>
+
+      <nav class="pager">
+        <a href="api.html" aria-label="Anterior">← API web HTML</a>
+        <a href="editor.html" aria-label="Siguiente">Editor HTML (tips) →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+
+  <!-- 🚀 Script para probar los ejemplos -->
+  <script>
+    document.querySelectorAll('.ejemplo').forEach(ej => {
+      const btn = ej.querySelector('.probar');
+      const textarea = ej.querySelector('.codigo');
+      const iframe = ej.querySelector('.vista-previa');
+      btn.addEventListener('click', () => {
+        iframe.srcdoc = textarea.value;
+      });
+    });
+  </script>
+</body>
+</html>

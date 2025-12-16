@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listas HTML · Guía HTML</title>
+  <meta name="description" content="Listas HTML: ul, ol, li, dl/dt/dd, tipos de numeración, start/reversed, listas anidadas y personalización de viñetas con CSS.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Ajustes locales para esta página */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo-list{padding-left:1.25rem}
+    .badge-note{display:inline-block;background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:.4rem;padding:.15rem .45rem;font-size:.85em}
+    .list-none{list-style:none;padding-left:0}
+    .list-square{list-style-type:square}
+    .list-roman{list-style-type:upper-roman}
+    .custom-markers li::marker{content:"✔ ";font-weight:700}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li><li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li><li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li><li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li><li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li><li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li><li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li><li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li><li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li><li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li><li><a href="listas.html" class="active">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li><li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li><li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li><li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li><li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li><li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li><li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li><li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li><li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li><li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/listas.html</p>
+        <h1>Listas HTML</h1>
+        <p>Las listas organizan ítems con <code>&lt;li&gt;</code>. Hay tres tipos principales: <span class="badge-note">no ordenadas</span> (<code>&lt;ul&gt;</code>), <span class="badge-note">ordenadas</span> (<code>&lt;ol&gt;</code>) y <span class="badge-note">de descripción</span> (<code>&lt;dl&gt;</code>).</p>
+
+        <h2>Lista no ordenada (<code>ul</code>)</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;ul&gt;
+  &lt;li&gt;Manzana&lt;/li&gt;
+  &lt;li&gt;Naranja&lt;/li&gt;
+  &lt;li&gt;Plátano&lt;/li&gt;
+&lt;/ul&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Manzana&lt;/li&gt;
+  &lt;li&gt;Naranja&lt;/li&gt;
+  &lt;li&gt;Plátano&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+        <div class="render">
+          <ul class="demo-list list-square">
+            <li>Manzana</li><li>Naranja</li><li>Plátano</li>
+          </ul>
+        </div>
+
+        <h2>Lista ordenada (<code>ol</code>)</h2>
+        <p>Admite estilos de numeración (<code>type</code>), inicio personalizado (<code>start</code>) e inversión (<code>reversed</code>).</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Type / Start</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;ol type=&quot;A&quot; start=&quot;3&quot;&gt;
+  &lt;li&gt;Paso&lt;/li&gt;
+  &lt;li&gt;Paso&lt;/li&gt;
+&lt;/ol&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ol type="A" start="3"&gt;
+  &lt;li&gt;Paso&lt;/li&gt;
+  &lt;li&gt;Paso&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+            <div class="render">
+              <ol class="demo-list" type="A" start="3">
+                <li>Paso</li><li>Paso</li>
+              </ol>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Reversed</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;ol reversed&gt;
+  &lt;li&gt;Cuenta atrás&lt;/li&gt;
+  &lt;li&gt;Lanzamiento&lt;/li&gt;
+&lt;/ol&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ol reversed&gt;
+  &lt;li&gt;Cuenta atrás&lt;/li&gt;
+  &lt;li&gt;Lanzamiento&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+            <div class="render">
+              <ol class="demo-list" reversed>
+                <li>Cuenta atrás</li><li>Lanzamiento</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h2>Listas anidadas</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;ul&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend&lt;/li&gt;
+&lt;/ul&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <h2>Lista de descripción (<code>dl</code>)</h2>
+        <p>Útil para pares término–definición.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;dl&gt;
+  &lt;dt&gt;API&lt;/dt&gt;
+  &lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;
+  &lt;dt&gt;DOM&lt;/dt&gt;
+  &lt;dd&gt;Modelo de objetos del documento.&lt;/dd&gt;
+&lt;/dl&gt;">Copiar</button>
+<pre><code class="language-html">&lt;dl&gt;
+  &lt;dt&gt;API&lt;/dt&gt;
+  &lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;
+  &lt;dt&gt;DOM&lt;/dt&gt;
+  &lt;dd&gt;Modelo de objetos del documento.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </div>
+        <div class="render">
+          <dl>
+            <dt><strong>API</strong></dt><dd>Interfaz de programación de aplicaciones.</dd>
+            <dt><strong>DOM</strong></dt><dd>Modelo de objetos del documento.</dd>
+          </dl>
+        </div>
+
+        <h2>Personalizar viñetas con CSS</h2>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Tipos predefinidos</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;ul class=&quot;list-square&quot;&gt;...&lt;/ul&gt;
+&lt;ol class=&quot;list-roman&quot;&gt;...&lt;/ol&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul class="list-square"&gt;...&lt;/ul&gt;
+&lt;ol class="list-roman"&gt;...&lt;/ol&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Con <code>::marker</code></h3>
+            <div class="code">
+              <button class="copy" data-code="ul.custom-markers li::marker{content:&quot;✔ &quot;;font-weight:700}">Copiar</button>
+<pre><code class="language-css">ul.custom-markers li::marker{content:"✔ ";font-weight:700}</code></pre>
+            </div>
+            <div class="render">
+              <ul class="demo-list custom-markers">
+                <li>Accesible</li><li>Rápido</li><li>Moderno</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2>Quitar viñetas</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;ul class=&quot;list-none&quot;&gt;
+  &lt;li&gt;Elemento sin viñeta&lt;/li&gt;
+&lt;/ul&gt;
+&lt;style&gt;
+  .list-none{list-style:none;padding-left:0}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul class="list-none"&gt;
+  &lt;li&gt;Elemento sin viñeta&lt;/li&gt;
+&lt;/ul&gt;
+&lt;style&gt;
+  .list-none{list-style:none;padding-left:0}
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <h2>Accesibilidad</h2>
+        <ul class="check">
+          <li>Usa listas solo para contenido que realmente sea una lista.</li>
+          <li>No insertes saltos de línea para simular listas; emplea <code>ul/ol</code> con <code>li</code>.</li>
+          <li>En listas de navegación, puedes retirar viñetas con CSS pero mantén la estructura semántica.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_listas" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta contiene los ítems de una lista?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="1"> li</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="0"> ul</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l1" data-correct="0"> dl</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cómo comienzas una lista ordenada por la letra “C”?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="1"> &lt;ol type="A" start="3"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="0"> &lt;ol type="C"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l2" data-correct="0"> &lt;ul start="C"&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué elemento define términos y descripciones?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="1"> dl (con dt y dd)</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="0"> ol</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="l3" data-correct="0"> nav</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="tablas.html" aria-label="Anterior">← Tablas HTML</a>
+        <a href="bloques.html" aria-label="Siguiente">Bloque e Inline →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

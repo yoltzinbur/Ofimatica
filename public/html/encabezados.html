@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encabezados HTML · Guía HTML</title>
+  <meta name="description" content="Cómo usar h1–h6 correctamente: jerarquía, buenas prácticas, accesibilidad y SEO, tamaños con CSS y ejemplos.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes anti-desborde SOLO para esta página (no cambia márgenes globales) -->
+  <style>
+    .page-headings .code { overflow: hidden; }
+    .page-headings .code pre{
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .page-headings .sizes-demo h1,
+    .page-headings .sizes-demo h2,
+    .page-headings .sizes-demo h3,
+    .page-headings .sizes-demo h4,
+    .page-headings .sizes-demo h5,
+    .page-headings .sizes-demo h6{ margin:.35rem 0 }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions" aria-label="Atajos">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side" aria-label="Navegación por temas">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..." aria-label="Filtrar temas"></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" class="active">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-headings">
+      <article class="card">
+        <p class="badge">/encabezados.html</p>
+        <h1>Encabezados HTML</h1>
+        <p>Los <strong>encabezados</strong> van de <code>&lt;h1&gt;</code> (más importante) a <code>&lt;h6&gt;</code> (menos importante). No se usan para “hacer el texto grande”: para el tamaño utiliza <strong>CSS</strong>. Los encabezados ayudan a usuarios y buscadores a entender la estructura del contenido.</p>
+
+        <h2>Jerarquía recomendada</h2>
+        <table class="demo">
+          <thead><tr><th>Nivel</th><th>Uso típico</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>h1</code></td><td>Título principal de la página (único en la mayoría de sitios)</td><td><code>&lt;h1&gt;Guía HTML&lt;/h1&gt;</code></td></tr>
+            <tr><td><code>h2</code></td><td>Secciones principales</td><td><code>&lt;h2&gt;Introducción&lt;/h2&gt;</code></td></tr>
+            <tr><td><code>h3</code></td><td>Subsecciones dentro de un h2</td><td><code>&lt;h3&gt;Documento mínimo&lt;/h3&gt;</code></td></tr>
+            <tr><td><code>h4</code></td><td>Bloques dentro de un h3</td><td><code>&lt;h4&gt;Doctype&lt;/h4&gt;</code></td></tr>
+            <tr><td><code>h5</code></td><td>Detalles</td><td><code>&lt;h5&gt;Notas&lt;/h5&gt;</code></td></tr>
+            <tr><td><code>h6</code></td><td>Detalles mínimos</td><td><code>&lt;h6&gt;Anexo&lt;/h6&gt;</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Estructura correcta vs incorrecta</h2>
+        <div class="grid-2">
+          <figure class="card card--soft">
+            <figcaption class="badge">Correcto (jerárquico)</figcaption>
+            <div class="code">
+              <button class="copy" data-code="&lt;h1&gt;Guía HTML&lt;/h1&gt;
+&lt;h2&gt;Introducción&lt;/h2&gt;
+&lt;h3&gt;Documento mínimo&lt;/h3&gt;
+&lt;h2&gt;Elementos&lt;/h2&gt;
+&lt;h3&gt;Párrafos&lt;/h3&gt;">Copiar</button>
+<pre><code class="language-html">&lt;h1&gt;Guía HTML&lt;/h1&gt;
+&lt;h2&gt;Introducción&lt;/h2&gt;
+&lt;h3&gt;Documento mínimo&lt;/h3&gt;
+&lt;h2&gt;Elementos&lt;/h2&gt;
+&lt;h3&gt;Párrafos&lt;/h3&gt;</code></pre>
+            </div>
+          </figure>
+
+          <figure class="card card--soft">
+            <figcaption class="badge badge--info">Incorrecto (salta niveles / abuso)</figcaption>
+            <div class="code">
+              <button class="copy" data-code="&lt;h1&gt;Guía HTML&lt;/h1&gt;
+&lt;h4&gt;Introducción (no hay h2/h3)&lt;/h4&gt;
+&lt;h1&gt;Otro título (varios h1)&lt;/h1&gt;">Copiar</button>
+<pre><code class="language-html">&lt;h1&gt;Guía HTML&lt;/h1&gt;
+&lt;h4&gt;Introducción (no hay h2/h3)&lt;/h4&gt;
+&lt;h1&gt;Otro título (varios h1)&lt;/h1&gt;</code></pre>
+            </div>
+          </figure>
+        </div>
+
+        <h2>Tamaños con CSS (no cambies el nivel por el tamaño)</h2>
+        <p>Si quieres que un <code>h3</code> “se vea grande”, hazlo con CSS, no cambiando a <code>h1</code> por estética.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;style&gt;
+h3.destacado{ font-size:2rem; }
+&lt;/style&gt;
+&lt;h3 class=&quot;destacado&quot;&gt;Subsección importante&lt;/h3&gt;">Copiar</button>
+<pre><code class="language-html">&lt;style&gt;
+h3.destacado{ font-size:2rem; }
+&lt;/style&gt;
+&lt;h3 class="destacado"&gt;Subsección importante&lt;/h3&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft sizes-demo">
+            <h1>H1 (más importante)</h1>
+            <h2>H2</h2>
+            <h3>H3</h3>
+            <h4>H4</h4>
+            <h5>H5</h5>
+            <h6>H6 (menos importante)</h6>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas, accesibilidad y SEO</h2>
+        <ul class="check">
+          <li>Un <strong>h1</strong> claro que resuma el propósito de la página.</li>
+          <li>No saltes niveles (de <code>h2</code> pasa a <code>h3</code>, etc.).</li>
+          <li>No uses encabezados para dar estilo; usa CSS.</li>
+          <li>Los encabezados mejoran la <strong>navegación con lectores de pantalla</strong> (permiten saltar por niveles).</li>
+          <li>Incluye palabras clave naturales en encabezados, sin “stuffing”.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_headings" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es el nivel más alto?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h1" data-correct="1"> h1</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h1" data-correct="0"> h3</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h1" data-correct="0"> h6</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué es correcto respecto al tamaño?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h2" data-correct="1"> Cambiar el tamaño con CSS, no cambiando el nivel</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h2" data-correct="0"> Usar h1 siempre porque es más grande</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Es adecuado saltar de h2 a h4?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h3" data-correct="0"> Sí, si se ve mejor</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h3" data-correct="1"> No, se debe mantener la jerarquía</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Cuántos h1 debería tener una página común?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h4" data-correct="1"> Normalmente uno</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="h4" data-correct="0"> Uno por cada sección</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="atributos.html" aria-label="Anterior">← Atributos HTML</a>
+        <a href="parrafos.html" aria-label="Siguiente">Párrafos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html> 
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API web HTML (resumen) · Guía HTML</title>
+  <meta name="description" content="Resumen de las principales APIs de HTML5 con ejemplos y cuestionario interactivo.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class="side">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..."></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+        <li><a href="api.html" class="active">API web HTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/api.html</p>
+        <h1>API web HTML (resumen)</h1>
+
+        <p>HTML5 introdujo muchas <strong>APIs (Application Programming Interfaces)</strong> que permiten a las páginas web interactuar con el navegador, los dispositivos y los datos del usuario sin depender de plugins externos.</p>
+
+        <section class="grid-3">
+          <article class="card feature">
+            <div class="feature__icon">📍</div>
+            <h3>Geolocation API</h3>
+            <p>Permite obtener la ubicación del usuario (con su permiso). Ideal para mapas o servicios basados en ubicación.</p>
+          </article>
+
+          <article class="card feature">
+            <div class="feature__icon">💾</div>
+            <h3>Web Storage API</h3>
+            <p>Guarda datos en el navegador con <code>localStorage</code> o <code>sessionStorage</code>, reemplazando las cookies tradicionales.</p>
+          </article>
+
+          <article class="card feature">
+            <div class="feature__icon">🎤</div>
+            <h3>Media API</h3>
+            <p>Permite acceder a la cámara o micrófono del dispositivo para aplicaciones multimedia o videollamadas.</p>
+          </article>
+        </section>
+
+        <h2>Otras APIs importantes</h2>
+        <ul class="check">
+          <li><strong>Canvas API:</strong> para dibujar gráficos y animaciones en 2D.</li>
+          <li><strong>Drag and Drop API:</strong> permite arrastrar y soltar elementos dentro del navegador.</li>
+          <li><strong>Web Workers API:</strong> ejecuta procesos en segundo plano sin bloquear la interfaz.</li>
+          <li><strong>WebSockets API:</strong> permite comunicación en tiempo real con el servidor.</li>
+          <li><strong>History API:</strong> controla la navegación y el historial del navegador.</li>
+        </ul>
+
+        <h2>Ejemplo: obtener ubicación con Geolocation</h2>
+        <div class="code" style="margin-top:1rem">
+          <button class="copy" aria-label="Copiar"
+            data-code="navigator.geolocation.getCurrentPosition(function(pos){ alert('Latitud: ' + pos.coords.latitude); });">
+            Copiar
+          </button>
+<pre><code class="language-js">navigator.geolocation.getCurrentPosition(function(pos) {
+  alert("Latitud: " + pos.coords.latitude);
+});</code></pre>
+        </div>
+
+        <h2>Seguridad y permisos</h2>
+        <p>Algunas APIs requieren permisos del usuario y solo funcionan en sitios seguros (<strong>HTTPS</strong>). El navegador solicitará consentimiento antes de acceder a la ubicación, cámara o micrófono.</p>
+
+        <!-- MINI CUESTIONARIO -->
+        <form class="quiz" id="q_api" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué significa API?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="1"> Application Programming Interface</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="0"> Advanced Plugin Installer</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q1" data-correct="0"> Automatic Program Index</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué hace la Geolocation API?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="1"> Obtiene la ubicación del usuario</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="0"> Dibuja gráficos en 3D</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q2" data-correct="0"> Crea animaciones en Canvas</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué API permite guardar datos sin usar cookies?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="1"> Web Storage API</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="0"> Media API</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q3" data-correct="0"> Canvas API</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué requisito es necesario para usar APIs seguras?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q4" data-correct="1"> Que el sitio esté en HTTPS y el usuario dé permiso</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q4" data-correct="0"> Solo tener conexión a internet</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="q4" data-correct="0"> Activar modo oscuro</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="xhtml.html" aria-label="Anterior">← HTML vs XHTML</a>
+        <a href="ejemplos.html" aria-label="Siguiente">Ejemplos de HTML →</a>
+      </nav>
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

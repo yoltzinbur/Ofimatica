@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conjuntos de caracteres · Guía HTML</title>
+  <meta name="description" content="Qué es un conjunto de caracteres (charset), cómo declarar UTF-8 en HTML, diferencias con entidades HTML, errores comunes y mini cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .demo{padding:1rem;border:1px solid #e2e8f0;border-radius:.6rem;background:#f8fafc}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .tbl{width:100%;border-collapse:collapse;margin:.75rem 0 1rem}
+    .tbl th,.tbl td{border:1px solid #e2e8f0;padding:.55rem .6rem;text-align:left}
+    .tbl th{background:#f1f5f9}
+    .note{background:#eef6ff;border:1px solid #bfdbfe;padding:.8rem;border-radius:.6rem}
+    .warn{background:#fff7ed;border:1px solid #fdba74;padding:.8rem;border-radius:.6rem}
+    .ok{background:#ecfdf5;border:1px solid #a7f3d0;padding:.8rem;border-radius:.6rem}
+    kbd{background:#111827;color:#fff;border-radius:.35rem;padding:.15rem .35rem;font:500 .85rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" class="active" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/charset.html</p>
+        <h1>Conjuntos de caracteres (charset)</h1>
+        <p>El <strong>conjunto de caracteres</strong> define cómo se representan los caracteres en bytes. En HTML moderno se usa <strong>UTF-8</strong> por defecto, que cubre prácticamente todos los idiomas y símbolos.</p>
+
+        <div class="ok">
+          <p><strong>Regla de oro:</strong> declara <code>&lt;meta charset="utf-8"&gt;</code> en el <a href="cabecera.html">encabezado</a> y guarda tus archivos como <em>UTF-8</em> en el editor.</p>
+        </div>
+
+        <h2>Cómo declarar UTF-8 en HTML</h2>
+        <div class="grid-2">
+          <div class="code">
+            <button class="copy" data-code='<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejemplo UTF-8</title>
+</head>
+<body>¡Funciona ñ, á, ü, € y emojis 😀!</body>
+</html>'>Copiar</button>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Ejemplo UTF-8&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;¡Funciona ñ, á, ü, € y emojis 😀!&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="demo">¡Funciona ñ, á, ü, € y emojis 😀!</div>
+        </div>
+
+        <h2>UTF-8 vs otras codificaciones</h2>
+        <table class="tbl">
+          <thead>
+            <tr><th>Codificación</th><th>Rango</th><th>Notas</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>UTF-8</strong></td><td>Unicode (1.1M+ puntos de código)</td><td>Estándar actual, compatible con <a href="emojis.html">emojis</a>, lenguajes, símbolos; tamaño variable por carácter.</td></tr>
+            <tr><td>ISO-8859-1</td><td>Europa Occidental</td><td>Antigua; no incluye símbolos como “€” ni muchos acentos combinados.</td></tr>
+            <tr><td>Windows-1252</td><td>Superset de ISO-8859-1</td><td>Añade “€” y comillas tipográficas; aún así, preferir UTF-8.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Relación con entidades HTML</h2>
+        <p>Las <a href="entidades.html">entidades HTML</a> como <code>&amp;amp;</code> o <code>&amp;nbsp;</code> <em>no sustituyen</em> al charset. Sirven para representar caracteres especiales en HTML, pero debes usar igualmente una codificación correcta.</p>
+
+        <h2>Errores comunes (mojibake)</h2>
+        <div class="warn">
+          <p>Si el navegador interpreta el archivo con un charset distinto al real, aparecen caracteres rotos como <strong>Ã±</strong> en lugar de <strong>ñ</strong>.</p>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <h3>Ejemplo incorrecto</h3>
+            <div class="code">
+              <button class="copy" data-code='<!doctype html>
+<html><head>
+  <!-- Falta meta charset -->
+  <title>Mal codificado</title>
+</head>
+<body>EspaÃ±a y piÃ±a</body></html>'>Copiar</button>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;&lt;head&gt;
+  &lt;!-- Falta meta charset --&gt;
+  &lt;title&gt;Mal codificado&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;EspaÃ±a y piÃ±a&lt;/body&gt;&lt;/html&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <h3>Solución</h3>
+            <div class="code">
+              <button class="copy" data-code='<!doctype html>
+<html><head>
+  <meta charset="utf-8">
+  <title>Bien codificado</title>
+</head>
+<body>España y piña</body></html>'>Copiar</button>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Bien codificado&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;España y piña&lt;/body&gt;&lt;/html&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Fuentes de verdad del charset</h2>
+        <ul>
+          <li><strong>Cabecera HTTP</strong>: un servidor puede enviar <code>Content-Type: text/html; charset=utf-8</code>. Si existe, tiene prioridad.</li>
+          <li><strong>Meta en HTML</strong>: <code>&lt;meta charset="utf-8"&gt;</code> lo declara en el documento.</li>
+          <li><strong>Editor</strong>: guarda el archivo como <em>UTF-8</em> (sin BOM). En muchos editores puedes verlo/cambiarlo desde la barra de estado.</li>
+        </ul>
+
+        <h2>¿BOM sí o no?</h2>
+        <p>El <em>Byte Order Mark</em> (BOM) no es necesario en UTF-8 y puede causar problemas en algunas salidas (por ejemplo, antes de enviar cabeceras). Recomendación: <strong>UTF-8 sin BOM</strong>.</p>
+
+        <h2>Comprobación rápida</h2>
+        <ol>
+          <li>Confirma en tu editor que el archivo está en <strong>UTF-8</strong> (sin BOM).</li>
+          <li>Incluye <code>&lt;meta charset="utf-8"&gt;</code> tan arriba como sea posible dentro de <code>&lt;head&gt;</code>.</li>
+          <li>Si sirves por web, verifica que el servidor envía <code>charset=utf-8</code> en la cabecera <code>Content-Type</code>.</li>
+        </ol>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_charset" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es la forma correcta de declarar el charset en HTML?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="1"> &lt;meta charset="utf-8"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> &lt;meta http-equiv="charset" content="utf8"&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> &lt;meta encoding="unicode"&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué sucede si el servidor envía un charset distinto al del meta?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="1"> La cabecera HTTP suele tener prioridad.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> El meta siempre gana.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> No importa, el navegador adivina.</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué recomendación es correcta respecto al BOM?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="1"> Usar UTF-8 <strong>sin</strong> BOM en HTML.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> Siempre usar BOM para todos los archivos.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> Evitar UTF-8.</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+
+        <div class="note" style="margin-top:1rem">
+          <p><strong>Tip:</strong> si copias/pegas desde otra app y aparecen símbolos raros, vuelve a escribir el carácter o usa una <a href="entidades.html">entidad HTML</a> puntual (p. ej., <code>&amp;euro;</code>).</p>
+        </div>
+      </article>
+
+      <nav class="pager">
+        <a href="emojis.html" aria-label="Anterior">← Emojis HTML</a>
+        <a href="urlencode.html" aria-label="Siguiente">Codificación de URL →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+
+</body>
+</html>

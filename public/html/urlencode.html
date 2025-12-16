@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codificación de URL · Guía HTML</title>
+  <meta name="description" content="Qué es la codificación de URL (percent-encoding), caracteres reservados, espacios (%20 vs +), ejemplos prácticos y funciones encodeURI/encodeURIComponent en JavaScript.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .demo{padding:1rem;border:1px solid #e2e8f0;border-radius:.6rem;background:#f8fafc}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .tbl{width:100%;border-collapse:collapse;margin:.75rem 0 1rem}
+    .tbl th,.tbl td{border:1px solid #e2e8f0;padding:.55rem .6rem;text-align:left}
+    .tbl th{background:#f1f5f9}
+    .note{background:#eef6ff;border:1px solid #bfdbfe;padding:.8rem;border-radius:.6rem}
+    .warn{background:#fff7ed;border:1px solid #fdba74;padding:.8rem;border-radius:.6rem}
+    .ok{background:#ecfdf5;border:1px solid #a7f3d0;padding:.8rem;border-radius:.6rem}
+    kbd{background:#111827;color:#fff;border-radius:.35rem;padding:.15rem .35rem;font:500 .85rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" class="active" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/urlencode.html</p>
+        <h1>Codificación de URL (URL Encoding)</h1>
+        <p>La <strong>codificación de URL</strong> —también llamada <em>percent-encoding</em>— convierte caracteres no seguros en una representación segura usando <code>%</code> seguido de su valor hexadecimal en <a href="charset.html">UTF-8</a>. Ej.: un espacio se codifica como <code>%20</code>.</p>
+
+        <div class="ok">
+          <p><strong>Cuándo codificar:</strong> siempre que pongas texto del usuario o caracteres especiales en una URL (ruta, query, fragmento). Evita construir URLs "a mano".</p>
+        </div>
+
+        <h2>Ejemplo rápido</h2>
+        <div class="grid-2">
+          <div class="code">
+            <button class="copy" data-code='<!-- Texto con espacios y acentos -->
+<a href="buscar.html?q=Café con leche&origen= móvil">Buscar</a>
+
+<!-- Versión codificada -->
+<a href="buscar.html?q=Caf%C3%A9%20con%20leche&origen=%20m%C3%B3vil">Buscar (segura)</a>'>Copiar</button>
+<pre><code class="language-html">&lt;!-- Texto con espacios y acentos --&gt;
+&lt;a href="buscar.html?q=Café con leche&amp;origen= móvil"&gt;Buscar&lt;/a&gt;
+
+&lt;!-- Versión codificada --&gt;
+&lt;a href="buscar.html?q=Caf%C3%A9%20con%20leche&amp;origen=%20m%C3%B3vil"&gt;Buscar (segura)&lt;/a&gt;</code></pre>
+          </div>
+          <div class="demo">
+            <p class="mono">Original: <code>q=Café con leche&amp;origen= móvil</code></p>
+            <p class="mono">Codificada: <code>q=Caf%C3%A9%20con%20leche&amp;origen=%20m%C3%B3vil</code></p>
+          </div>
+        </div>
+
+        <h2>Caracteres reservados más comunes</h2>
+        <table class="tbl">
+          <thead><tr><th>Carácter</th><th>Uso</th><th>Codificado</th></tr></thead>
+          <tbody>
+            <tr><td><code>space</code></td><td>Separador no válido</td><td><code>%20</code> (<em>en formularios</em> puede ser <code>+</code>)</td></tr>
+            <tr><td><code>#</code></td><td>Inicio de fragmento</td><td><code>%23</code></td></tr>
+            <tr><td><code>?</code></td><td>Inicio de query</td><td><code>%3F</code></td></tr>
+            <tr><td><code>&amp;</code></td><td>Separador de parámetros</td><td><code>%26</code></td></tr>
+            <tr><td><code>=</code></td><td>Asignación en query</td><td><code>%3D</code></td></tr>
+            <tr><td><code>%</code></td><td>Indicador de codificación</td><td><code>%25</code></td></tr>
+            <tr><td><code>/</code></td><td>Separador de ruta</td><td><code>%2F</code> (si es parte de un segmento)</td></tr>
+            <tr><td><code>:</code></td><td>Esquema/host/puerto</td><td><code>%3A</code> (si aparece en datos)</td></tr>
+            <tr><td><code>+</code></td><td>En <em>x-www-form-urlencoded</em>: espacio</td><td><code>%2B</code> (si quieres un «+» literal)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <p><strong>Espacios: <code>%20</code> vs <code>+</code></strong> — En el estándar de URL el espacio es <code>%20</code>. En el formato de formularios <span class="mono">application/x-www-form-urlencoded</span> se usa <code>+</code> para espacios en la <em>query</em>. Ambos son comunes; sé consistente.</p>
+        </div>
+
+        <h2>JavaScript: funciones para codificar</h2>
+        <ul>
+          <li><code>encodeURI(url)</code>: codifica una URL completa pero <em>no</em> codifica <code>:/?#&amp;=</code> (necesarios para la estructura).</li>
+          <li><code>encodeURIComponent(valor)</code>: codifica un componente (por ejemplo, el valor de un parámetro). <strong>Úsala para query params.</strong></li>
+        </ul>
+
+        <div class="grid-2">
+          <div class="code">
+            <button class="copy" data-code='// Construir query segura
+const params = new URLSearchParams({
+  q: "Café con leche",
+  origen: "móvil+web"
+});
+const url = "/buscar.html?" + params.toString();
+// "/buscar.html?q=Caf%C3%A9+con+leche&origen=m%C3%B3vil%2Bweb"
+console.log(url);'>Copiar</button>
+<pre><code class="language-js">// Construir query segura
+const params = new URLSearchParams({
+  q: "Café con leche",
+  origen: "móvil+web"
+});
+const url = "/buscar.html?" + params.toString();
+// "/buscar.html?q=Caf%C3%A9+con+leche&origen=m%C3%B3vil%2Bweb"
+console.log(url);</code></pre>
+          </div>
+          <div class="code">
+            <button class="copy" data-code='// Diferencia entre encodeURI y encodeURIComponent
+const base = "https://ejemplo.com/buscar?q=";
+const valor = "c++ guía #1";
+// ❌ Incorrecto: deja caracteres peligrosos en el valor
+console.log(base + encodeURI(valor));
+// ✅ Correcto para parámetros:
+console.log(base + encodeURIComponent(valor));'>Copiar</button>
+<pre><code class="language-js">// Diferencia entre encodeURI y encodeURIComponent
+const base = "https://ejemplo.com/buscar?q=";
+const valor = "c++ guía #1";
+// ❌ Incorrecto: deja caracteres peligrosos en el valor
+console.log(base + encodeURI(valor));
+// ✅ Correcto para parámetros:
+console.log(base + encodeURIComponent(valor));</code></pre>
+          </div>
+        </div>
+
+        <h2>Formulario: envío <span class="mono">application/x-www-form-urlencoded</span></h2>
+        <p>Al enviar un formulario con método <code>GET</code> o <code>POST</code> (por defecto), el navegador codifica el cuerpo/URL usando este formato: pares <code>clave=valor</code> unidos por <code>&amp;</code>, espacios como <code>+</code> y otros caracteres con <code>%xx</code>.</p>
+
+        <div class="code">
+          <button class="copy" data-code='<!-- Ejemplo de formulario -->
+<form action="/buscar.html" method="get">
+  <label>Búsqueda: <input name="q" value="Café con leche"></label>
+  <button>Enviar</button>
+</form>
+<!-- URL resultante (aprox.): /buscar.html?q=Caf%C3%A9+con+leche -->'>Copiar</button>
+<pre><code class="language-html">&lt;!-- Ejemplo de formulario --&gt;
+&lt;form action="/buscar.html" method="get"&gt;
+  &lt;label&gt;Búsqueda: &lt;input name="q" value="Café con leche"&gt;&lt;/label&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+&lt;!-- URL resultante (aprox.): /buscar.html?q=Caf%C3%A9+con+leche --&gt;</code></pre>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul>
+          <li>Usa <code>encodeURIComponent</code> para valores de parámetros; <code>encodeURI</code> para la URL completa.</li>
+          <li>Para construir URLs, preferir <code>URL</code> y <code>URLSearchParams</code>.</li>
+          <li>No dupliques codificación (evita terminar con <code>%2520</code> en vez de <code>%20</code>).</li>
+          <li>Mantén las URL legibles; codifica solo lo necesario.</li>
+        </ul>
+
+        <h2>Tabla rápida de codificación</h2>
+        <table class="tbl">
+          <thead><tr><th>Carácter</th><th>Codificación</th><th>Carácter</th><th>Codificación</th></tr></thead>
+          <tbody>
+            <tr><td><code>¡</code></td><td><code>%C2%A1</code></td><td><code>¿</code></td><td><code>%C2%BF</code></td></tr>
+            <tr><td><code>ñ</code></td><td><code>%C3%B1</code></td><td><code>Ñ</code></td><td><code>%C3%91</code></td></tr>
+            <tr><td><code>á</code></td><td><code>%C3%A1</code></td><td><code>é</code></td><td><code>%C3%A9</code></td></tr>
+            <tr><td><code>€</code></td><td><code>%E2%82%AC</code></td><td><code>@</code></td><td><code>%40</code></td></tr>
+            <tr><td><code>&amp;</code></td><td><code>%26</code></td><td><code>+</code> (literal)</td><td><code>%2B</code></td></tr>
+            <tr><td><code>/</code> (en dato)</td><td><code>%2F</code></td><td><code>%</code></td><td><code>%25</code></td></tr>
+          </tbody>
+        </table>
+
+        <div class="warn">
+          <p><strong>Ojo:</strong> si pegas una URL ya codificada dentro de otra función de codificación, terminarás con caracteres doblemente codificados (ej. <code>%252F</code>). Decodifica con <code>decodeURIComponent</code> si es necesario.</p>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_urlencode" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es la codificación estándar de un espacio en una URL?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u1" data-correct="1"> <code>%20</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u1" data-correct="0"> <code>_</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u1" data-correct="0"> <code>*</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) Para codificar el valor de un parámetro de query debes usar…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u2" data-correct="1"> <code>encodeURIComponent</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u2" data-correct="0"> <code>encodeURI</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u2" data-correct="0"> Ninguna: no se codifican parámetros</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) En formularios <span class="mono">x-www-form-urlencoded</span> el espacio suele representarse como…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u3" data-correct="1"> <code>+</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u3" data-correct="0"> <code>%09</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="u3" data-correct="0"> <code>%00</code></label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+
+        <div class="note" style="margin-top:1rem">
+          <p><strong>Tip:</strong> Para depurar, pega tu URL en la consola del navegador y usa <code>decodeURIComponent()</code> para leerla fácilmente.</p>
+        </div>
+      </article>
+
+      <nav class="pager">
+        <a href="charset.html" aria-label="Anterior">← Conjuntos de caracteres</a>
+        <a href="xhtml.html" aria-label="Siguiente">HTML vs XHTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+
+</body>
+</html>

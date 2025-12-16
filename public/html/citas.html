@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citas HTML · Guía HTML</title>
+  <meta name="description" content="Elementos de cita en HTML: blockquote, q, cite, abbr, address, bdo/bdi, atributos y buenas prácticas con ejemplos y cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes suaves para evitar desbordes de código -->
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;}
+    .demo-note{font-size:.95rem;opacity:.85}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html" class="active">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/citas.html</p>
+        <h1>Citas HTML</h1>
+        <p>HTML incluye elementos para representar <em>citas y referencias</em> con significado semántico: <code>&lt;blockquote&gt;</code>, <code>&lt;q&gt;</code>, <code>&lt;cite&gt;</code>, <code>&lt;abbr&gt;</code>, <code>&lt;address&gt;</code> y control de dirección de texto con <code>&lt;bdo&gt;</code>/<code>&lt;bdi&gt;</code>.</p>
+
+        <h2>Bloques de cita: <code>&lt;blockquote&gt;</code></h2>
+        <p>Para citas largas en bloque. Puedes indicar la fuente con el atributo <code>cite</code> (URL).</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="&lt;blockquote cite=&quot;https://www.ejemplo.com/articulo&quot;&gt;&#10;  La simplicidad es la máxima sofisticación.&#10;&lt;/blockquote&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;blockquote cite="https://www.ejemplo.com/articulo"&gt;
+  La simplicidad es la máxima sofisticación.
+&lt;/blockquote&gt;</code></pre>
+            </div>
+            <div class="demo-note">Consejo: el atributo <code>cite</code> no se muestra; sirve como metadato para agentes de usuario.</div>
+          </div>
+          <div class="card card--soft">
+            <blockquote cite="https://www.ejemplo.com/articulo" style="margin:0">
+              «La simplicidad es la máxima sofisticación.»
+            </blockquote>
+          </div>
+        </div>
+
+        <h2>Citas en línea: <code>&lt;q&gt;</code></h2>
+        <p>Para citas cortas dentro del texto. El navegador suele añadir comillas automáticamente. También acepta <code>cite</code>.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="&lt;p&gt;Como dijo Ada Lovelace: &lt;q cite=&quot;https://www.britannica.com/biography/Ada-Lovelace&quot;&gt;El motor puede componer música&lt;/q&gt;.&lt;/p&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;p&gt;Como dijo Ada Lovelace: &lt;q cite="https://www.britannica.com/biography/Ada-Lovelace"&gt;El motor puede componer música&lt;/q&gt;.&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p>Como dijo Ada Lovelace: <q cite="https://www.britannica.com/biography/Ada-Lovelace">El motor puede componer música</q>.</p>
+          </div>
+        </div>
+
+        <h2>Referencia de obras: <code>&lt;cite&gt;</code></h2>
+        <p>Identifica el <em>título de una obra</em> (libro, artículo, película…). No es para personas.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="&lt;p&gt;Leí &lt;cite&gt;El nombre de la rosa&lt;/cite&gt; el verano pasado.&lt;/p&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;p&gt;Leí &lt;cite&gt;El nombre de la rosa&lt;/cite&gt; el verano pasado.&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p>Leí <cite>El nombre de la rosa</cite> el verano pasado.</p>
+          </div>
+        </div>
+
+        <h2>Abreviaturas: <code>&lt;abbr&gt;</code></h2>
+        <p>Define abreviaturas y siglas. Usa el atributo <code>title</code> con la expansión.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="&lt;p&gt;&lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; da estilo a las páginas.&lt;/p&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;p&gt;&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt; da estilo a las páginas.&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p><abbr title="Cascading Style Sheets">CSS</abbr> da estilo a las páginas.</p>
+          </div>
+        </div>
+
+        <h2>Información de contacto: <code>&lt;address&gt;</code></h2>
+        <p>Para datos de autor o contacto del documento o sección (no para direcciones postales genéricas sin relación).</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="&lt;address&gt;&#10;  Escrito por &lt;a href=&quot;mailto:ana@example.com&quot;&gt;Ana&lt;/a&gt;&lt;br&gt;&#10;  Madrid, España&#10;&lt;/address&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;address&gt;
+  Escrito por &lt;a href="mailto:ana@example.com"&gt;Ana&lt;/a&gt;&lt;br&gt;
+  Madrid, España
+&lt;/address&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <address>
+              Escrito por <a href="mailto:ana@example.com">Ana</a><br>
+              Madrid, España
+            </address>
+          </div>
+        </div>
+
+        <h2>Dirección de texto: <code>&lt;bdo&gt;</code> y<code> &lt;bdi&gt;</code></h2>
+        <p><code>&lt;bdo dir="rtl|ltr"&gt;</code> anula la dirección del texto; <code>&lt;bdi&gt;</code> aísla fragmentos cuyo sentido de escritura puede variar.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" aria-label="Copiar"
+                data-code="Texto normal | &lt;bdo dir=&quot;rtl&quot;&gt;Texto invertido&lt;/bdo&gt;">
+                Copiar
+              </button>
+<pre><code class="language-html">Texto normal | &lt;bdo dir="rtl"&gt;Texto invertido&lt;/bdo&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p>Texto normal | <bdo dir="rtl">Texto invertido</bdo></p>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa <code>&lt;blockquote&gt;</code> para citas extensas y <code>&lt;q&gt;</code> para citas cortas en línea.</li>
+          <li>Indica la fuente con <code>cite</code> cuando sea posible.</li>
+          <li>No uses <code>&lt;cite&gt;</code> para personas; es para títulos de obras.</li>
+          <li>Siempre incluye <code>title</code> en <code>&lt;abbr&gt;</code> para accesibilidad.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_citas" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué elemento usas para una cita larga con posible URL de fuente?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="1"> &lt;blockquote&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> &lt;q&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> &lt;cite&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Para qué sirve el atributo <code>title</code> en <code>&lt;abbr&gt;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="1"> Para mostrar la expansión de la abreviatura</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> Para enlazar a la fuente</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> Para cambiar el color del texto</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cuál marca el <em>título de una obra</em>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> &lt;q&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="1"> &lt;cite&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> &lt;address&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué hace <code>&lt;bdo dir="rtl"&gt;</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="1"> Fuerza la dirección del texto de derecha a izquierda</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> Añade comillas automáticamente</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> Define una abreviatura</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="formato.html" aria-label="Anterior">← Formato HTML</a>
+        <a href="comentarios.html" aria-label="Siguiente">Comentarios HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

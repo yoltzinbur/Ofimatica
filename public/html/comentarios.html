@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comentarios HTML · Guía HTML</title>
+  <meta name="description" content="Comentarios HTML: sintaxis <!-- -->, comentar bloques, ocultar partes del documento, notas TODO y buenas prácticas con ejemplos y cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Pequeño ajuste para que el código largo no desborde -->
+  <style>.code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}</style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html" class="active">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/comentarios.html</p>
+        <h1>Comentarios HTML</h1>
+        <p>Los comentarios permiten dejar notas en el código sin que se muestren en la página. No afectan al diseño ni al SEO (los navegadores los ignoran al renderizar).</p>
+
+        <h2>Sintaxis básica</h2>
+        <p>La forma general es <code>&lt;!-- comentario --&gt;</code>. No puede contener <code>--</code> consecutivos dentro del texto.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;!-- Esto es un comentario --&gt;&#10;&lt;p&gt;Contenido visible&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!-- Esto es un comentario --&gt;
+&lt;p&gt;Contenido visible&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p style="margin:0">Contenido visible</p>
+            <small class="muted">El comentario no aparece.</small>
+          </div>
+        </div>
+
+        <h2>Comentar bloques de HTML</h2>
+        <p>Puedes envolver varias líneas para desactivar secciones temporalmente.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;!--&#10;&lt;section class=&quot;promo&quot;&gt;&#10;  &lt;h2&gt;Oferta!&lt;/h2&gt;&#10;  &lt;p&gt;Descuento del 20%&lt;/p&gt;&#10;&lt;/section&gt;&#10;--&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!--
+&lt;section class="promo"&gt;
+  &lt;h2&gt;Oferta!&lt;/h2&gt;
+  &lt;p&gt;Descuento del 20%&lt;/p&gt;
+&lt;/section&gt;
+--&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <p><em>La sección comentada no se renderiza.</em></p>
+          </div>
+        </div>
+
+        <h2>Comentarios dentro de elementos</h2>
+        <p>Úsalos para anotar partes específicas sin romper la estructura.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;ul&gt;&#10;  &lt;li&gt;Inicio&lt;/li&gt;&#10;  &lt;li&gt;Productos&lt;/li&gt; &lt;!-- destacarlo en la próxima versión --&gt;&#10;  &lt;li&gt;Contacto&lt;/li&gt;&#10;&lt;/ul&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Inicio&lt;/li&gt;
+  &lt;li&gt;Productos&lt;/li&gt; &lt;!-- destacarlo en la próxima versión --&gt;
+  &lt;li&gt;Contacto&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <h2>Usos comunes</h2>
+        <ul class="check">
+          <li>Notas y <strong>TODOs</strong> para el equipo.</li>
+          <li>Desactivar temporalmente componentes sin borrarlos.</li>
+          <li>Marcar secciones grandes del documento.</li>
+        </ul>
+
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Marcadores de sección</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;!-- ====== CABECERA ====== --&gt;&#10;&lt;header&gt;...&lt;/header&gt;&#10;&lt;!-- ====== CONTENIDO ====== --&gt;&#10;&lt;main&gt;...&lt;/main&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!-- ====== CABECERA ====== --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;!-- ====== CONTENIDO ====== --&gt;
+&lt;main&gt;...&lt;/main&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>TODO / notas</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;!-- TODO: reemplazar la imagen por versión optimizada WebP --&gt;&#10;&lt;img src=&quot;img/hero.jpg&quot; alt=&quot;Portada&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!-- TODO: reemplazar la imagen por versión optimizada WebP --&gt;
+&lt;img src="img/hero.jpg" alt="Portada"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Escribe comentarios <strong>claros y breves</strong>; evita redundancias.</li>
+          <li>No dejes credenciales, claves o datos sensibles en comentarios.</li>
+          <li>Recuerda que los comentarios son visibles en el <em>código fuente</em> del navegador.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_comentarios" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Cuál es la sintaxis correcta de un comentario?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="1"> &lt;!-- comentario --&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> &lt;comment&gt;...&lt;/comment&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> // comentario</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Se muestran los comentarios en la página?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> Sí, siempre</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="1"> No, los ignora el navegador</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> Solo si tienen el atributo <code>show</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Para qué es útil comentar un bloque de HTML?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="1"> Desactivar temporalmente una sección</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> Acelerar la carga automáticamente</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> Cambiar el color del fondo</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Es buena idea poner credenciales en comentarios?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> Sí, nadie puede verlos</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="1"> No, el código fuente es visible para cualquiera</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> Solo en producción</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="citas.html" aria-label="Anterior">← Citas HTML</a>
+        <a href="colores.html" aria-label="Siguiente">Colores HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

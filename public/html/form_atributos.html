@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atributos de formulario · Guía HTML</title>
+  <meta name="description" content="Atributos del elemento form: action, target, method, enctype, autocomplete, novalidate, accept-charset y name; ejemplos y vista previa.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .tbl{width:100%;border-collapse:collapse;margin:.75rem 0 1rem}
+    .tbl th,.tbl td{border:1px solid #e2e8f0;padding:.55rem .6rem;text-align:left;vertical-align:top}
+    .tbl th{background:#f1f5f9}
+    .note{background:#eef2ff;border:1px solid #c7d2fe;padding:.75rem;border-radius:.5rem}
+    .warn{background:#fff7ed;border:1px solid #fdba74;padding:.75rem;border-radius:.5rem}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1rem}
+    .render{padding:1rem;border:1px solid #e5e7eb;border-radius:.75rem;background:#fafafa;margin:.5rem 0 1rem}
+    .render form{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .render input,.render select{background:#fff;color:#111827;border:1px solid #cbd5e1;border-radius:.5rem;padding:.45rem .6rem}
+    .render input:focus,.render select:focus{border-color:#60a5fa;box-shadow:0 0 0 .15rem rgba(96,165,250,.35);outline:0}
+    .render button{padding:.5rem .8rem;border:1px solid #d1d5db;background:#f8fafc;border-radius:.5rem;cursor:pointer}
+    .render button:hover{background:#eef2f7}
+    .code{position:relative}
+    .copy{position:absolute;right:.5rem;top:.5rem}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+
+      <h4>FORMULARIOS HTML</h4>
+      <ul class='menu'>
+        <li><a href="forms.html" data-title="formularios html">Formularios HTML</a></li>
+        <li><a href="form_atributos.html" class="active" data-title="atributos de formulario">Atributos de formulario</a></li>
+        <li><a href="form_elementos.html" data-title="elementos de formulario">Elementos de formulario</a></li>
+        <li><a href="input_tipos.html" data-title="tipos de entrada">Tipos de entrada</a></li>
+        <li><a href="input_atributos.html" data-title="atributos de entrada">Atributos de entrada</a></li>
+        <li><a href="input_validacion.html" data-title="validación de entrada">Validación de entrada</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/form_atributos.html</p>
+        <h1>Atributos de formulario</h1>
+        <p>El elemento <code>&lt;form&gt;</code> admite diversos atributos que controlan <em>a dónde</em> y <em>cómo</em> se envían los datos, si se <em>autocompletan</em>, el <em>charset</em>, etc. Aquí verás los más importantes con ejemplos y vista previa.</p>
+
+        <h2>Resumen</h2>
+        <table class="tbl">
+          <thead><tr><th>Atributo</th><th>Descripción</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>action</code></td><td>URL de tu sitio a la que se envían los datos.</td><td><code>action="procesar.html"</code></td></tr>
+            <tr><td><code>target</code></td><td>Dónde abrir la respuesta: <code>_self</code>, <code>_blank</code>, <code>_parent</code>, <code>_top</code> o un nombre de iframe.</td><td><code>target="_blank"</code></td></tr>
+            <tr><td><code>method</code></td><td>Método HTTP: <code>get</code> (URL) o <code>post</code> (cuerpo).</td><td><code>method="post"</code></td></tr>
+            <tr><td><code>enctype</code></td><td>Codificación de los datos (solo con <code>post</code>): <code>application/x-www-form-urlencoded</code> (por defecto), <code>multipart/form-data</code>, <code>text/plain</code>.</td><td><code>enctype="multipart/form-data"</code></td></tr>
+            <tr><td><code>autocomplete</code></td><td>Activa/desactiva el autocompletado del navegador.</td><td><code>autocomplete="on|off"</code></td></tr>
+            <tr><td><code>novalidate</code></td><td>Desactiva la validación HTML5 para todo el formulario.</td><td><code>novalidate</code></td></tr>
+            <tr><td><code>accept-charset</code></td><td>Conjuntos de caracteres aceptados al enviar.</td><td><code>accept-charset="UTF-8"</code></td></tr>
+            <tr><td><code>name</code></td><td>Nombre del formulario (útil para scripts o asociar controles vía <code>form</code>).</td><td><code>name="alta"</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2><code>action</code></h2>
+        <p>Define el destino al que se envían los datos del formulario.</p>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html">
+  <label for="q">Buscar</label>
+  <input id="q" name="q" required>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html"&gt;
+  &lt;label for="q"&gt;Buscar&lt;/label&gt;
+  &lt;input id="q" name="q" required&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+        <div class="render">
+          <form action="gracias.html" onsubmit="return false">
+            <label for="q-demo">Buscar</label>
+            <input id="q-demo" name="q" required>
+            <button>Enviar</button>
+          </form>
+        </div>
+
+        <h2><code>target</code></h2>
+        <p>Controla dónde se abre la respuesta al enviar el formulario.</p>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html" target="_blank">
+  <label for="correo">Correo</label>
+  <input id="correo" name="email" type="email" required>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" target="_blank"&gt;
+  &lt;label for="correo"&gt;Correo&lt;/label&gt;
+  &lt;input id="correo" name="email" type="email" required&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2><code>method</code> y <code>enctype</code></h2>
+        <div class="grid-2">
+          <div>
+            <h3>GET (parámetros en la URL)</h3>
+            <div class="code">
+              <button class="copy" data-code='<form action="buscar.html" method="get">
+  <label for="s">Buscar</label>
+  <input id="s" name="q" placeholder="término" required>
+  <button>Buscar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="buscar.html" method="get"&gt;
+  &lt;label for="s"&gt;Buscar&lt;/label&gt;
+  &lt;input id="s" name="q" placeholder="término" required&gt;
+  &lt;button&gt;Buscar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <h3>POST + archivos</h3>
+            <div class="note"><strong>Regla:</strong> para subir archivos usa <code>method="post"</code> y <code>enctype="multipart/form-data"</code>.</div>
+            <div class="code">
+              <button class="copy" data-code='<form action="subir.html" method="post" enctype="multipart/form-data">
+  <label for="cv">CV (PDF):</label>
+  <input id="cv" name="cv" type="file" accept="application/pdf" required>
+  <button>Subir</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="subir.html" method="post" enctype="multipart/form-data"&gt;
+  &lt;label for="cv"&gt;CV (PDF):&lt;/label&gt;
+  &lt;input id="cv" name="cv" type="file" accept="application/pdf" required&gt;
+  &lt;button&gt;Subir&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2><code>autocomplete</code></h2>
+        <p>Permite al navegador sugerir y completar valores según el historial del usuario.</p>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html" autocomplete="on">
+  <label>Nombre: <input name="name" autocomplete="name"></label>
+  <label>Correo: <input name="email" type="email" autocomplete="email"></label>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" autocomplete="on"&gt;
+  &lt;label&gt;Nombre: &lt;input name="name" autocomplete="name"&gt;&lt;/label&gt;
+  &lt;label&gt;Correo: &lt;input name="email" type="email" autocomplete="email"&gt;&lt;/label&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2><code>novalidate</code></h2>
+        <p>Desactiva la validación nativa HTML5 del formulario (útil si validas tú mismo en JS o servidor).</p>
+        <div class="warn">Al usar <code>novalidate</code>, el navegador no mostrará mensajes ni bloqueará el envío aunque falten campos requeridos.</div>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html" method="post" novalidate>
+  <label>Email: <input name="email" type="email" required></label>
+  <button>Enviar sin validar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" method="post" novalidate&gt;
+  &lt;label&gt;Email: &lt;input name="email" type="email" required&gt;&lt;/label&gt;
+  &lt;button&gt;Enviar sin validar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2><code>accept-charset</code></h2>
+        <p>Especifica los conjuntos de caracteres permitidos al enviar. En la práctica, usa <strong>UTF-8</strong> salvo que tengas requisitos especiales.</p>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html" accept-charset="UTF-8">
+  <label for="n">Nombre</label>
+  <input id="n" name="nombre" required>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" accept-charset="UTF-8"&gt;
+  &lt;label for="n"&gt;Nombre&lt;/label&gt;
+  &lt;input id="n" name="nombre" required&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2><code>name</code></h2>
+        <p>Da un nombre al formulario. Sirve para referenciarlo en scripts o para asociar controles externos mediante el atributo <code>form</code>.</p>
+        <div class="code">
+          <button class="copy" data-code='<form id="f1" name="registro" action="gracias.html">
+  <label>Usuario: <input name="user" required></label>
+  <button>Enviar</button>
+</form>
+
+<!-- Control fuera del form, asociado por id -->
+<label for="extra">Dato externo</label>
+<input id="extra" name="extra" form="f1" placeholder="Se enviará con el form #f1">'/>Copiar</button>
+<pre><code class="language-html">&lt;form id="f1" name="registro" action="gracias.html"&gt;
+  &lt;label&gt;Usuario: &lt;input name="user" required&gt;&lt;/label&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Control fuera del form, asociado por id --&gt;
+&lt;label for="extra"&gt;Dato externo&lt;/label&gt;
+&lt;input id="extra" name="extra" form="f1" placeholder="Se enviará con el form #f1"&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_form_attrs" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo debes usar para abrir la respuesta en otra pestaña?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="1"> <code>target="_blank"</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="0"> <code>rel="_blank"</code></label>
+          </fieldset>
+          <fieldset class="q">
+            <legend>2) ¿Cuál es obligatorio para subir archivos?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="1"> <code>method="post"</code> + <code>enctype="multipart/form-data"</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="0"> <code>method="get"</code> + <code>enctype="text/plain"</code></label>
+          </fieldset>
+          <fieldset class="q">
+            <legend>3) ¿Qué hace <code>novalidate</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="1"> Desactiva la validación nativa del navegador</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="0"> Cambia el método a GET</label>
+          </fieldset>
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+
+      </article>
+
+      <nav class="pager">
+        <a href="forms.html" aria-label="Anterior">← Formularios HTML</a>
+        <a href="form_elementos.html" aria-label="Siguiente">Elementos de formulario →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

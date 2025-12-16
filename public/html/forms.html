@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formularios HTML · Guía HTML</title>
+  <meta name="description" content="Formulario HTML: etiqueta form, atributos action/method/target/enctype/autocomplete/novalidate/accept-charset, elementos label/input/select/textarea/button/datalist/fieldset/legend/output, atributos form*, validación y ejemplos.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem}
+    .tbl{width:100%;border-collapse:collapse;margin:.75rem 0 1rem}
+    .tbl th,.tbl td{border:1px solid #e2e8f0;padding:.55rem .6rem;text-align:left;vertical-align:top}
+    .tbl th{background:#f1f5f9}
+    .note{background:#eef2ff;border:1px solid #c7d2fe;padding:.75rem;border-radius:.5rem}
+    .ok{background:#ecfdf5;border:1px solid #a7f3d0;padding:.75rem;border-radius:.5rem}
+    .warn{background:#fff7ed;border:1px solid #fdba74;padding:.75rem;border-radius:.5rem}
+    .bad{background:#fef2f2;border:1px solid #fecaca;padding:.75rem;border-radius:.5rem}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .render{padding:1rem;border:1px solid #e5e7eb;border-radius:.75rem;background:#fafafa;margin:.5rem 0 1rem}
+    .render form{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .render label{font-weight:600}
+    .render input[type="search"],
+    .render input[type="text"],
+    .render input[type="email"],
+    .render input[type="number"],
+    .render input[type="tel"],
+    .render select,.render textarea{
+      background:#ffffff;color:#111827;border:1px solid #cbd5e1;border-radius:.5rem;
+      padding:.45rem .6rem;outline:none;max-width:100%
+    }
+    .render input::placeholder{color:#6b7280}
+    .render input:focus, .render select:focus, .render textarea:focus{
+      border-color:#60a5fa;box-shadow:0 0 0 .15rem rgba(96,165,250,.35)
+    }
+    .render button{padding:.5rem .8rem;border:1px solid #d1d5db;background:#f8fafc;border-radius:.5rem;cursor:pointer}
+    .render button:hover{background:#eef2f7}
+    .code{position:relative}
+    .copy{position:absolute;right:.5rem;top:.5rem}
+    .example-card{border:1px dashed #e5e7eb;padding:.75rem;border-radius:.5rem;background:#fff}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+
+      <h4>FORMULARIOS HTML</h4>
+      <ul class='menu'>
+        <li><a href="forms.html" class="active" data-title="formularios html">Formularios HTML</a></li>
+        <li><a href="form_atributos.html" data-title="atributos de formulario">Atributos de formulario</a></li>
+        <li><a href="form_elementos.html" data-title="elementos de formulario">Elementos de formulario</a></li>
+        <li><a href="input_tipos.html" data-title="tipos de entrada">Tipos de entrada</a></li>
+        <li><a href="input_atributos.html" data-title="atributos de entrada">Atributos de entrada</a></li>
+        <li><a href="input_validacion.html" data-title="validación de entrada">Validación de entrada</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/forms.html</p>
+        <h1>Formularios HTML</h1>
+        <p>Un <code>&lt;form&gt;</code> recopila datos del usuario y los envía al servidor. Los atributos más usados son <code>action</code>, <code>method</code>, <code>target</code>, <code>enctype</code>, <code>autocomplete</code>, <code>name</code>, <code>novalidate</code> y <code>accept-charset</code>.</p>
+
+        <h2>Plantilla básica</h2>
+        <div class="code">
+          <button class="copy" data-code='<!-- action: a una página de TU sitio -->
+<form action="gracias.html" method="get" autocomplete="on">
+  <label for="q">Buscar:</label>
+  <input id="q" name="q" type="search" placeholder="Escribe tu búsqueda" required>
+  <button type="submit">Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;!-- action: a una página de TU sitio --&gt;
+&lt;form action="gracias.html" method="get" autocomplete="on"&gt;
+  &lt;label for="q"&gt;Buscar:&lt;/label&gt;
+  &lt;input id="q" name="q" type="search" placeholder="Escribe tu búsqueda" required&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <!-- Vista previa ejecutada -->
+        <div class="render">
+          <form action="gracias.html" method="get" autocomplete="on" onsubmit="return false">
+            <label for="q-demo">Buscar:</label>
+            <input id="q-demo" name="q" type="search" placeholder="Escribe tu búsqueda" required>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+
+        <h2>Atributos de <span class="mono">&lt;form&gt;</span></h2>
+        <table class="tbl">
+          <thead><tr><th>Atributo</th><th>Descripción</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>action</code></td><td>URL (de tu propio sitio) a la que se enviarán los datos.</td><td><code>action="procesar.html"</code></td></tr>
+            <tr><td><code>method</code></td><td>Método HTTP: <code>get</code> (parámetros en la URL) o <code>post</code> (cuerpo de la petición).</td><td><code>method="post"</code></td></tr>
+            <tr><td><code>target</code></td><td>Dónde abrir la respuesta: <code>_self</code>, <code>_blank</code>, <code>_parent</code>, <code>_top</code> o un nombre de iframe.</td><td><code>target="_blank"</code></td></tr>
+            <tr><td><code>enctype</code></td><td>Codificación de datos (solo con <code>method="post"</code>). Por defecto <code>application/x-www-form-urlencoded</code>.</td><td><code>enctype="multipart/form-data"</code></td></tr>
+            <tr><td><code>autocomplete</code></td><td>Activa o desactiva el autocompletado del navegador.</td><td><code>autocomplete="on|off"</code></td></tr>
+            <tr><td><code>name</code></td><td>Nombre del formulario (útil en JS y para asociar controles con el atributo <code>form</code>).</td><td><code>name="login"</code></td></tr>
+            <tr><td><code>novalidate</code></td><td>Desactiva la validación nativa HTML5 del formulario.</td><td><code>novalidate</code></td></tr>
+            <tr><td><code>accept-charset</code></td><td>Conjuntos de caracteres aceptados. Normalmente basta con UTF-8.</td><td><code>accept-charset="UTF-8"</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Métodos y envío</h2>
+        <div class="grid-2">
+          <div class="example-card">
+            <h3>GET (parámetros en la URL)</h3>
+            <div class="code">
+              <button class="copy" data-code='<form action="gracias.html" method="get">
+  <label for="q2">Buscar</label>
+  <input id="q2" name="q" placeholder="Escribe tu búsqueda" required>
+  <button>Buscar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" method="get"&gt;
+  &lt;label for="q2"&gt;Buscar&lt;/label&gt;
+  &lt;input id="q2" name="q" placeholder="Escribe tu búsqueda" required&gt;
+  &lt;button&gt;Buscar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+            <p>Útil para búsquedas, filtros y acciones que pueden compartirse como URL.</p>
+          </div>
+
+          <div class="example-card">
+            <h3>POST (datos en el cuerpo)</h3>
+            <div class="code">
+              <button class="copy" data-code='<form action="procesar.html" method="post">
+  <label for="correo">Correo</label>
+  <input id="correo" name="email" type="email" required>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="procesar.html" method="post"&gt;
+  &lt;label for="correo"&gt;Correo&lt;/label&gt;
+  &lt;input id="correo" name="email" type="email" required&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+            <p>Preferido para datos sensibles o grandes (no quedan en la URL).</p>
+          </div>
+        </div>
+
+        <h2>Tipos de codificación (<code>enctype</code>)</h2>
+        <table class="tbl">
+          <thead><tr><th>Valor</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>application/x-www-form-urlencoded</code> (por defecto)</td><td>Convierte espacios a <code>+</code> y escapa caracteres; adecuado para la mayoría de formularios.</td></tr>
+            <tr><td><code>multipart/form-data</code></td><td>Obligatorio para subir archivos con <code>&lt;input type="file"&gt;</code>.</td></tr>
+            <tr><td><code>text/plain</code></td><td>Envía texto sin codificar; raramente recomendado.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note"><strong>Regla de oro:</strong> para subir archivos usa <code>method="post"</code> + <code>enctype="multipart/form-data"</code>.</div>
+
+        <h2>Controles habituales</h2>
+        <div class="grid-3">
+          <div>
+            <h3>Texto y contraseña</h3>
+            <div class="code">
+              <button class="copy" data-code='<label for="user">Usuario</label>
+<input id="user" name="user" type="text" autocomplete="username" required>
+<label for="pass">Contraseña</label>
+<input id="pass" name="pass" type="password" autocomplete="current-password" minlength="6" required>'>Copiar</button>
+<pre><code class="language-html">&lt;label for="user"&gt;Usuario&lt;/label&gt;
+&lt;input id="user" name="user" type="text" autocomplete="username" required&gt;
+&lt;label for="pass"&gt;Contraseña&lt;/label&gt;
+&lt;input id="pass" name="pass" type="password" autocomplete="current-password" minlength="6" required&gt;</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <h3>Radios y checkboxes</h3>
+            <div class="code">
+              <button class="copy" data-code='<!-- mismo name agrupa radios -->
+<label><input type="radio" name="genero" value="m" required> Masculino</label>
+<label><input type="radio" name="genero" value="f"> Femenino</label>
+<label><input type="checkbox" name="tyc" required> Acepto Términos</label>'>Copiar</button>
+<pre><code class="language-html">&lt;!-- mismo name agrupa radios --&gt;
+&lt;label&gt;&lt;input type="radio" name="genero" value="m" required&gt; Masculino&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="genero" value="f"&gt; Femenino&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="tyc" required&gt; Acepto Términos&lt;/label&gt;</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <h3>Select / Optgroup</h3>
+            <div class="code">
+              <button class="copy" data-code='<label for="pais">País</label>
+<select id="pais" name="pais" required>
+  <option value="">Seleccione…</option>
+  <optgroup label="América">
+    <option value="mx">México</option>
+    <option value="ar">Argentina</option>
+  </optgroup>
+</select>'>Copiar</button>
+<pre><code class="language-html">&lt;label for="pais"&gt;País&lt;/label&gt;
+&lt;select id="pais" name="pais" required&gt;
+  &lt;option value=""&gt;Seleccione…&lt;/option&gt;
+  &lt;optgroup label="América"&gt;
+    &lt;option value="mx"&gt;México&lt;/option&gt;
+    &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <h3>Textarea</h3>
+            <div class="code">
+              <button class="copy" data-code='<label for="msg">Mensaje</label>
+<textarea id="msg" name="mensaje" rows="4" cols="30" placeholder="Escribe aquí…"></textarea>'>Copiar</button>
+<pre><code class="language-html">&lt;label for="msg"&gt;Mensaje&lt;/label&gt;
+&lt;textarea id="msg" name="mensaje" rows="4" cols="30" placeholder="Escribe aquí…"&gt;&lt;/textarea&gt;</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <h3>Datalist (sugerencias)</h3>
+            <div class="code">
+              <button class="copy" data-code='<label for="navegador">Navegador</label>
+<input list="browsers" id="navegador" name="navegador">
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+  <option value="Edge">
+</datalist>'>Copiar</button>
+<pre><code class="language-html">&lt;label for="navegador"&gt;Navegador&lt;/label&gt;
+&lt;input list="browsers" id="navegador" name="navegador"&gt;
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Edge"&gt;
+&lt;/datalist&gt;</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <h3>Output (resultado calculado)</h3>
+            <div class="code">
+              <button class="copy" data-code='<form oninput="res.value = parseInt(a.value||0) + parseInt(b.value||0)">
+  <input id="a" type="number" value="2"> +
+  <input id="b" type="number" value="3"> =
+  <output name="res" for="a b">5</output>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form oninput="res.value = parseInt(a.value||0) + parseInt(b.value||0)"&gt;
+  &lt;input id="a" type="number" value="2"&gt; +
+  &lt;input id="b" type="number" value="3"&gt; =
+  &lt;output name="res" for="a b"&gt;5&lt;/output&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Asociación de etiquetas</h2>
+        <ul>
+          <li><strong>Explícita:</strong> <code>&lt;label for="idDelInput"&gt;</code> se vincula con el <code>id</code> del control.</li>
+          <li><strong>Implícita:</strong> envolver el control dentro del <code>&lt;label&gt;...&lt;/label&gt;</code>.</li>
+          <li>Usa <code>fieldset</code> y <code>legend</code> para agrupar y dar contexto.</li>
+        </ul>
+        <div class="code">
+          <button class="copy" data-code='<fieldset>
+  <legend>Contacto</legend>
+  <label for="nom">Nombre</label>
+  <input id="nom" name="nombre" required>
+</fieldset>'>Copiar</button>
+<pre><code class="language-html">&lt;fieldset&gt;
+  &lt;legend&gt;Contacto&lt;/legend&gt;
+  &lt;label for="nom"&gt;Nombre&lt;/label&gt;
+  &lt;input id="nom" name="nombre" required&gt;
+&lt;/fieldset&gt;</code></pre>
+        </div>
+
+        <h2>Atributos <span class="mono">form*</span> (en controles)</h2>
+        <p>Algunos atributos permiten definir comportamiento de envío por control, incluso si el control está <em>fuera</em> del formulario.</p>
+        <table class="tbl">
+          <thead><tr><th>Atributo</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>form</code></td><td>Asocia un control a un formulario por <code>id</code>.</td><td><code>&lt;input form="f1"&gt;</code></td></tr>
+            <tr><td><code>formaction</code></td><td>URL de envío alternativa para ese botón/submit.</td><td><code>&lt;button formaction="buscar.html"&gt;</code></td></tr>
+            <tr><td><code>formenctype</code></td><td>Codificación alternativa.</td><td><code>&lt;button formenctype="multipart/form-data"&gt;</code></td></tr>
+            <tr><td><code>formmethod</code></td><td>Método alterno (<code>get</code>/<code>post</code>).</td><td><code>&lt;button formmethod="get"&gt;</code></td></tr>
+            <tr><td><code>formnovalidate</code></td><td>Evita validar al enviar con ese botón.</td><td><code>&lt;button formnovalidate&gt;</code></td></tr>
+            <tr><td><code>formtarget</code></td><td>Destino alterno (<code>_blank</code>, etc.).</td><td><code>&lt;button formtarget="_blank"&gt;</code></td></tr>
+          </tbody>
+        </table>
+
+        <div class="code">
+          <button class="copy" data-code='<form id="buscador" action="gracias.html" method="post">
+  <label>Correo: <input type="email" name="email" required></label>
+  <button type="submit">Enviar (POST)</button>
+  <button type="submit" formmethod="get" formaction="buscar.html">Buscar (GET)</button>
+</form>
+
+<!-- input FUERA del form, asociado por id -->
+<label for="q-ext">Consulta externa:</label>
+<input id="q-ext" name="q" form="buscador" placeholder="Se enviará con el formulario #buscador">'/>Copiar</button>
+<pre><code class="language-html">&lt;form id="buscador" action="gracias.html" method="post"&gt;
+  &lt;label&gt;Correo: &lt;input type="email" name="email" required&gt;&lt;/label&gt;
+  &lt;button type="submit"&gt;Enviar (POST)&lt;/button&gt;
+  &lt;button type="submit" formmethod="get" formaction="buscar.html"&gt;Buscar (GET)&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- input FUERA del form, asociado por id --&gt;
+&lt;label for="q-ext"&gt;Consulta externa:&lt;/label&gt;
+&lt;input id="q-ext" name="q" form="buscador" placeholder="Se enviará con el formulario #buscador"&gt;</code></pre>
+        </div>
+
+        <h2>Botones</h2>
+        <div class="code">
+          <button class="copy" data-code='<button type="submit" name="accion" value="enviar">Enviar</button>
+<button type="reset">Limpiar</button>
+<button type="button" onclick="alert(&quot;Solo acción local&quot;)">Solo botón</button>'>Copiar</button>
+<pre><code class="language-html">&lt;button type="submit" name="accion" value="enviar"&gt;Enviar&lt;/button&gt;
+&lt;button type="reset"&gt;Limpiar&lt;/button&gt;
+&lt;button type="button" onclick="alert(&quot;Solo acción local&quot;)"&gt;Solo botón&lt;/button&gt;</code></pre>
+        </div>
+
+        <h2>Validación HTML5</h2>
+        <ul>
+          <li>Requeridos: <code>required</code>.</li>
+          <li>Rangos y longitudes: <code>min</code>/<code>max</code>, <code>minlength</code>/<code>maxlength</code>.</li>
+          <li>Patrones: <code>pattern</code> (expresión regular).</li>
+          <li>Tipos con validación integrada: <code>email</code>, <code>url</code>, <code>number</code>, <code>date</code>, etc.</li>
+          <li>Desactivar validación del formulario: <code>novalidate</code> o por botón con <code>formnovalidate</code>.</li>
+        </ul>
+        <div class="code">
+          <button class="copy" data-code='<form action="gracias.html" method="post">
+  <label>Email: <input name="email" type="email" required></label>
+  <label>Teléfono: <input name="tel" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos"></label>
+  <button>Enviar</button>
+</form>'>Copiar</button>
+<pre><code class="language-html">&lt;form action="gracias.html" method="post"&gt;
+  &lt;label&gt;Email: &lt;input name="email" type="email" required&gt;&lt;/label&gt;
+  &lt;label&gt;Teléfono: &lt;input name="tel" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos"&gt;&lt;/label&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <h2>Resumen rápido</h2>
+        <table class="tbl">
+          <thead><tr><th>Situación</th><th>Usa</th></tr></thead>
+          <tbody>
+            <tr><td>Búsquedas/filtros compartibles</td><td><code>method="get"</code></td></tr>
+            <tr><td>Datos sensibles o largos</td><td><code>method="post"</code></td></tr>
+            <tr><td>Subir archivos</td><td><code>enctype="multipart/form-data"</code></td></tr>
+            <tr><td>Desactivar validación</td><td><code>novalidate</code> o <code>formnovalidate</code></td></tr>
+            <tr><td>Abrir en nueva pestaña</td><td><code>target="_blank"</code></td></tr>
+            <tr><td>Especificar charset</td><td><code>accept-charset="UTF-8"</code></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_forms" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo es obligatorio para que un campo se envíe?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="1"> <code>name</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="0"> <code>id</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="0"> <code>class</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué <code>enctype</code> se usa para subir archivos?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="1"> <code>multipart/form-data</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="0"> <code>application/x-www-form-urlencoded</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué combina un <code>label</code> con un <code>input</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="1"> <code>for</code> del label con el <code>id</code> del input</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="0"> <code>name</code> del label con el <code>id</code> del input</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+
+      </article>
+
+      <nav class="pager">
+        <a href="xhtml.html" aria-label="Anterior">← HTML vs XHTML</a>
+        <a href="form_atributos.html" aria-label="Siguiente">Atributos de formulario →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formato HTML · Guía HTML</title>
+  <meta name="description" content="Etiquetas de formato en HTML: b, strong, i, em, small, mark, del, ins, sub, sup, y buenas prácticas de semántica y accesibilidad.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+
+  <!-- Ajustes anti-desborde SOLO para esta página -->
+  <style>
+    .page-formato .code{ overflow:hidden }
+    .page-formato .code pre{
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .page-formato table.demo{ width:100%; table-layout:fixed }
+    .page-formato table.demo th,
+    .page-formato table.demo td{ overflow-wrap:anywhere; word-break:break-word }
+    .demo-render{
+      border:1px dashed var(--border);
+      border-radius:.6rem; padding:.6rem .8rem; background:#fff;
+    }
+    @media (prefers-color-scheme: dark){ .demo-render{ background:#0e1525 } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">📘 <span>Guía HTML</span></div>
+      <nav class="top-actions" aria-label="Atajos">
+        <a class="link-muted" href="index.html">Inicio</a>
+        <a class="link-muted" href="referencias.html">Referencias</a>
+      </nav>
+      <div style="flex:1"></div>
+      <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="side" aria-label="Navegación por temas">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..." aria-label="Filtrar temas"></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html" class="active">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-formato">
+      <article class="card">
+        <p class="badge">/formato.html</p>
+        <h1>Formato HTML</h1>
+        <p>Estas etiquetas aplican <strong>formato de texto</strong> directo. Algunas son puramente visuales y otras son <em>semánticas</em> (aportan significado adicional para accesibilidad y SEO).</p>
+
+        <h2>Negrita y énfasis: visual vs. semántico</h2>
+        <div class="grid-2">
+          <section class="card card--soft">
+            <h3>Negrita</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;b&gt;Negrita visual&lt;/b&gt; y &lt;strong&gt;importancia semántica&lt;/strong&gt;">Copiar</button>
+<pre><code class="language-html">&lt;b&gt;Negrita visual&lt;/b&gt; y &lt;strong&gt;importancia semántica&lt;/strong&gt;</code></pre>
+            </div>
+            <div class="demo-render">
+              <b>Negrita visual</b> y <strong>importancia semántica</strong>
+            </div>
+            <ul class="check" style="margin-top:.6rem">
+              <li><code>&lt;b&gt;</code>: resalta sin significado extra.</li>
+              <li><code>&lt;strong&gt;</code>: indica <em>importancia</em> (se anuncia con más énfasis por lectores de pantalla).</li>
+            </ul>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Cursiva</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;i&gt;Cursiva visual&lt;/i&gt; y &lt;em&gt;énfasis semántico&lt;/em&gt;">Copiar</button>
+<pre><code class="language-html">&lt;i&gt;Cursiva visual&lt;/i&gt; y &lt;em&gt;énfasis semántico&lt;/em&gt;</code></pre>
+            </div>
+            <div class="demo-render">
+              <i>Cursiva visual</i> y <em>énfasis semántico</em>
+            </div>
+            <ul class="check" style="margin-top:.6rem">
+              <li><code>&lt;i&gt;</code>: estilo alternativo sin significado.</li>
+              <li><code>&lt;em&gt;</code>: marca énfasis (anidable para más énfasis).</li>
+            </ul>
+          </section>
+        </div>
+
+        <h2>Más etiquetas de formato</h2>
+        <table class="demo" style="margin-top:.5rem">
+          <thead><tr><th>Etiqueta</th><th>Uso</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;small&gt;</code></td>
+              <td>Texto complementario o notas.</td>
+              <td><code>&lt;small&gt;Términos y condiciones&lt;/small&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;mark&gt;</code></td>
+              <td>Resaltar como “marcado”.</td>
+              <td><code>&lt;mark&gt;Palabra clave&lt;/mark&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;del&gt;</code></td>
+              <td>Contenido eliminado.</td>
+              <td><code>&lt;del&gt;$29.99&lt;/del&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;ins&gt;</code></td>
+              <td>Contenido insertado.</td>
+              <td><code>&lt;ins&gt;$24.99&lt;/ins&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;sub&gt;</code></td>
+              <td>Subíndice (fórmulas, químico).</td>
+              <td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;sup&gt;</code></td>
+              <td>Superíndice (potencias, notas).</td>
+              <td><code>x&lt;sup&gt;2&lt;/sup&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="grid-3" style="margin-top:1rem">
+          <section class="card card--soft">
+            <h3>Ejemplo combinado</h3>
+            <div class="code">
+              <button class="copy" data-code="Oferta: &lt;del&gt;$29.99&lt;/del&gt; &lt;ins&gt;$24.99&lt;/ins&gt; &lt;small&gt;(solo hoy)&lt;/small&gt;">Copiar</button>
+<pre><code class="language-html">Oferta: &lt;del&gt;$29.99&lt;/del&gt; &lt;ins&gt;$24.99&lt;/ins&gt; &lt;small&gt;(solo hoy)&lt;/small&gt;</code></pre>
+            </div>
+            <div class="demo-render">Oferta: <del>$29.99</del> <ins>$24.99</ins> <small>(solo hoy)</small></div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Químico / Matemático</h3>
+            <div class="code">
+              <button class="copy" data-code="H&lt;sub&gt;2&lt;/sub&gt;O · E = mc&lt;sup&gt;2&lt;/sup&gt;">Copiar</button>
+<pre><code class="language-html">H&lt;sub&gt;2&lt;/sub&gt;O · E = mc&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+            </div>
+            <div class="demo-render">H<sub>2</sub>O · E = mc<sup>2</sup></div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Resaltado</h3>
+            <div class="code">
+              <button class="copy" data-code="Recuerda &lt;mark&gt;guardar&lt;/mark&gt; tus cambios.">Copiar</button>
+<pre><code class="language-html">Recuerda &lt;mark&gt;guardar&lt;/mark&gt; tus cambios.</code></pre>
+            </div>
+            <div class="demo-render">Recuerda <mark>guardar</mark> tus cambios.</div>
+          </section>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Prefiere las etiquetas <strong>semánticas</strong> (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>) cuando el énfasis tenga significado.</li>
+          <li>Usa <code>&lt;mark&gt;</code> para resaltar coincidencias o atención temporal del lector.</li>
+          <li>Evita abusar de formato visual; para diseño general, usa <strong>CSS</strong>.</li>
+          <li>Para cambios de precio o versiones, combina <code>&lt;del&gt;</code> y <code>&lt;ins&gt;</code>.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_formato" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta comunica “importancia” a nivel semántico?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="1"> <code>&lt;strong&gt;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f1" data-correct="0"> <code>&lt;b&gt;</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál resalta texto como marcado?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="1"> <code>&lt;mark&gt;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f2" data-correct="0"> <code>&lt;small&gt;</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué par indica contenido eliminado/insertado?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="1"> <code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f3" data-correct="0"> <code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué etiqueta usarías para E = mc²?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f4" data-correct="1"> <code>&lt;sup&gt;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f4" data-correct="0"> <code>&lt;mark&gt;</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>5) ¿Cuál es solo visual (no semántica)?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f5" data-correct="1"> <code>&lt;b&gt;</code> / <code>&lt;i&gt;</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="f5" data-correct="0"> <code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code></label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager" aria-label="Navegación de página">
+        <a href="estilos.html" aria-label="Anterior">← Estilos HTML</a>
+        <a href="citas.html" aria-label="Siguiente">Citas HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>
+
+<style>
+/* --- Visibilidad de ejemplos (evita “bloque negro”) --- */
+.page-formato .demo-render{
+  background: #ffffff;              /* fondo claro en modo claro */
+  color: #0f172a;                   /* texto oscuro con buen contraste */
+  border: 1px dashed var(--border);
+  border-radius: .6rem;
+  padding: .6rem .8rem;
+}
+
+/* Si usas triángulos con bordes (▶), que hereden el color del texto */
+.page-formato .demo-render .triangle,
+.page-formato .demo-render [data-triangle]{
+  /* ejemplo de triángulo con CSS */
+  width: 0; height: 0; display: inline-block; vertical-align: middle;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid currentColor;   /* usa el color del texto */
+  margin-inline: .25rem;
+}
+
+/* Modo oscuro: mismo contraste, sin “barra” negra */
+@media (prefers-color-scheme: dark){
+  .page-formato .demo-render{
+    background: #0b1220;   /* gris azulado oscuro (no negro puro) */
+    color: #e6edf7;        /* texto claro */
+    border-color: #22304a; /* borde visible en oscuro */
+  }
+}
+</style>

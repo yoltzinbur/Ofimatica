@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rutas de archivos HTML · Guía HTML</title>
+  <meta name="description" content="Cómo escribir rutas de archivos en HTML: relativas, absolutas, relativas a la raíz, subcarpetas, ../ y ./, y buenas prácticas.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo{border:1px dashed #cbd5e1;border-radius:.6rem;padding:.75rem;background:#fbfdff}
+    .muted{color:#475569}
+    .tree{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.95rem;line-height:1.2}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html" class="active">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/rutas.html</p>
+        <h1>Rutas de archivos HTML</h1>
+        <p>Una <strong>ruta de archivo</strong> indica dónde está un recurso (imágenes, CSS, JS, páginas) respecto al documento actual o al sitio.</p>
+
+        <h2>Estructura de ejemplo del proyecto</h2>
+        <pre class="tree">
+/ (raíz del sitio)
+├─ index.html
+├─ rutas.html   ← (página actual)
+├─ assets/
+│  ├─ style.css
+│  ├─ app.js
+│  └─ img/
+│     ├─ logo.png
+│     ├─ fotos/
+│     │  └─ playa.jpg
+│     └─ ui/
+│        └─ icon-info.svg
+└─ pages/
+   └─ acerca.html
+        </pre>
+
+        <h2>Relativa al documento (misma carpeta)</h2>
+        <p>Cuando el recurso está en la <em>misma carpeta</em> que el HTML.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;!-- rutas.html → app.js (misma carpeta no, está en assets, es ejemplo si fuera mismo nivel) --&gt;
+&lt;a href="index.html"&gt;Volver al inicio&lt;/a&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;a href="index.html"&gt;Volver al inicio&lt;/a&gt;</code></pre>
+        </div>
+
+        <h2>Subcarpetas</h2>
+        <p>Cuando el recurso está por debajo del documento actual.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;img src="assets/img/logo.png" alt="Logo" width="120" height="120"&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;img src="assets/img/logo.png" alt="Logo" width="120" height="120"&gt;</code></pre>
+        </div>
+
+        <h2>Sub-subcarpetas</h2>
+        <p>Profundizando más niveles.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;img src="assets/img/fotos/playa.jpg" alt="Playa" width="320" height="200"&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;img src="assets/img/fotos/playa.jpg" alt="Playa" width="320" height="200"&gt;</code></pre>
+        </div>
+
+        <h2>Volver al nivel superior: <code>../</code></h2>
+        <p><code>../</code> sube un nivel desde la carpeta actual. Útil cuando tu HTML está dentro de carpetas.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;!-- Ejemplo desde pages/acerca.html hacia assets/style.css --&gt;
+&lt;link rel="stylesheet" href="../assets/style.css"&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;!-- Desde pages/acerca.html --&gt;
+&lt;link rel="stylesheet" href="../assets/style.css"&gt;</code></pre>
+        </div>
+
+        <h2>Directorio actual: <code>./</code></h2>
+        <p><code>./</code> apunta al <em>directorio actual</em>. Es opcional, pero hace explícita la intención.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;a href="./rutas.html"&gt;Esta página&lt;/a&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;a href="./rutas.html"&gt;Esta página&lt;/a&gt;</code></pre>
+        </div>
+
+        <h2>Ruta relativa a la raíz del sitio</h2>
+        <p>Empieza con <code>/</code> (requiere servidor que tenga claro el “document root”).</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;!-- Desde cualquier lugar del sitio --&gt;
+&lt;link rel="icon" href="/assets/img/ui/icon-info.svg" type="image/svg+xml"&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;!-- Desde cualquier lugar del sitio --&gt;
+&lt;link rel="icon" href="/assets/img/ui/icon-info.svg" type="image/svg+xml"&gt;</code></pre>
+        </div>
+        <p class="muted">En entornos estáticos (abrir archivos con <code>file://</code>) estas rutas pueden no resolver como esperas. Para pruebas locales usa un servidor simple (por ejemplo <code>npx serve</code> o la extensión “Live Server”).</p>
+
+        <h2>Rutas absolutas (URL completas)</h2>
+        <p>Incluyen protocolo y dominio. Úsalas para recursos externos. Para recursos internos, prefiere rutas relativas o relativas a la raíz.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;'>
+            Copiar
+          </button>
+<pre><code class="language-html">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</code></pre>
+        </div>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa rutas <strong>cortas y coherentes</strong> con la estructura de carpetas.</li>
+          <li>Para recursos del sitio, prefiere <strong>relativas</strong> o <strong>relativas a la raíz</strong>.</li>
+          <li>Evita <code>..\</code> (barra invertida de Windows) en HTML: usa <code>/</code>.</li>
+          <li>Verifica mayúsculas/minúsculas: en servidores Linux, <code>Logo.png</code> ≠ <code>logo.png</code>.</li>
+          <li>Si mueves archivos, actualiza las rutas o considera una estructura más estable.</li>
+        </ul>
+
+        <div class="grid-2" style="margin-top:.5rem">
+          <section class="card card--soft">
+            <h3>Ejemplo CSS y JS</h3>
+            <div class="code">
+              <button class="copy" data-code='&lt;link rel="stylesheet" href="assets/style.css"&gt;
+&lt;script src="assets/app.js" defer&gt;&lt;/script&gt;'>
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;link rel="stylesheet" href="assets/style.css"&gt;
+&lt;script src="assets/app.js" defer&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h3>Imágenes en subcarpetas</h3>
+            <div class="code">
+              <button class="copy" data-code='&lt;img src="assets/img/ui/icon-info.svg" alt="Info" width="24" height="24"&gt;'>
+                Copiar
+              </button>
+<pre><code class="language-html">&lt;img src="assets/img/ui/icon-info.svg" alt="Info" width="24" height="24"&gt;</code></pre>
+            </div>
+          </section>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_rutas" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué hace <code>../</code> en una ruta?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="1"> Sube un nivel en la jerarquía de carpetas.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> Baja un nivel a una subcarpeta.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p1" data-correct="0"> Hace la ruta absoluta.</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál es una ruta relativa a la raíz?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="1"> <code>/assets/img/logo.png</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> <code>assets/img/logo.png</code></label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p2" data-correct="0"> <code>../assets/img/logo.png</code></label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cuál es la recomendación para recursos internos?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="1"> Usar rutas relativas o relativas a la raíz.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Usar siempre URLs absolutas con dominio.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p3" data-correct="0"> Usar rutas con barras invertidas.</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué separador es correcto en rutas HTML?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="1"> La barra normal <code>/</code>.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> La barra invertida <code>\</code>.</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="p4" data-correct="0"> Cualquiera, ambos son iguales.</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="html_js.html" aria-label="Anterior">← HTML JavaScript</a>
+        <a href="cabecera.html" aria-label="Siguiente">Encabezado HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

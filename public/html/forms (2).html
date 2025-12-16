@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Completo de HTML</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --sidebar-width: 280px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+        }
+        
+        /* Panel de Navegación */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--dark);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            text-align: center;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-section-title {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-section-title:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-items {
+            list-style: none;
+        }
+        
+        .nav-items li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-items a {
+            display: block;
+            padding: 0.8rem 1.5rem 0.8rem 2.5rem;
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-items a:hover, .nav-items a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left: 4px solid var(--primary);
+        }
+        
+        /* Contenido Principal */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .example-form {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: #27ae60;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--light);
+        }
+        
+        .tip {
+            background: #fff9e6;
+            border-left: 4px solid #f1c40f;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .demo-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-explanation {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .attribute-highlight {
+            background-color: #e8f4fc;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            margin-top: 2rem;
+            border-radius: 8px;
+        }
+        
+        /* Estilos para el cuestionario */
+        .quiz-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .quiz-options {
+            margin-top: 0.5rem;
+        }
+        
+        .quiz-option {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quiz-option input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        
+        .quiz-option label {
+            display: inline;
+            font-weight: normal;
+        }
+        
+        .quiz-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .quiz-result.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .quiz-result.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .demo-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Panel de Navegación -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>TUTORIAL HTML</h2>
+            <input type="text" class="search-box" placeholder="Filtrar...">
+        </div>
+        
+        <div class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    INICIO HTML
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Introducción a HTML</a></li>
+                    <li><a href="#">Editores HTML</a></li>
+                    <li><a href="#">HTML básico</a></li>
+                    <li><a href="#">Elementos HTML</a></li>
+                    <li><a href="#">Atributos HTML</a></li>
+                    <li><a href="#">Encabezados HTML</a></li>
+                    <li><a href="#">Párrafos HTML</a></li>
+                    <li><a href="#">Estilos HTML</a></li>
+                    <li><a href="#">Formato HTML</a></li>
+                    <li><a href="#">Citas HTML</a></li>
+                    <li><a href="#">Comentarios HTML</a></li>
+                    <li><a href="#">Colores HTML</a></li>
+                    <li><a href="#">HTML CSS</a></li>
+                    <li><a href="#">Enlaces HTML</a></li>
+                    <li><a href="#">Imágenes HTML</a></li>
+                    <li><a href="#">Favicon HTML</a></li>
+                    <li><a href="#">Título de la página HTML</a></li>
+                    <li><a href="#">Tablas HTML</a></li>
+                    <li><a href="#">Listas HTML</a></li>
+                    <li><a href="#">Bloque e Inline</a></li>
+                    <li><a href="#">División HTML</a></li>
+                    <li><a href="#">Clases HTML</a></li>
+                    <li><a href="#">Identificación HTML</a></li>
+                    <li><a href="#">Iframes HTML</a></li>
+                    <li><a href="#">HTML JavaScript</a></li>
+                    <li><a href="#">Rutas de archivos HTML</a></li>
+                    <li><a href="#">Encabezado HTML</a></li>
+                    <li><a href="#">Diseño HTML</a></li>
+                    <li><a href="#">HTML adaptable</a></li>
+                    <li><a href="#">Código de computadora HTML</a></li>
+                    <li><a href="#">Semántica HTML</a></li>
+                    <li><a href="#">Guía de estilo HTML</a></li>
+                    <li><a href="#">Entidades HTML</a></li>
+                    <li><a href="#">Símbolos HTML</a></li>
+                    <li><a href="#">Emojis HTML</a></li>
+                    <li><a href="#">Conjuntos de caracteres</a></li>
+                    <li><a href="#">Codificación de URL</a></li>
+                    <li><a href="#">HTML vs XHTML</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    FORMULARIOS HTML
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">Formularios HTML</a></li>
+                    <li><a href="#">Atributos de formulario</a></li>
+                    <li><a href="#">Elementos de formulario</a></li>
+                    <li><a href="#">Tipos de entrada</a></li>
+                    <li><a href="#">Atributos de entrada</a></li>
+                    <li><a href="#">Validación de entrada</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    GRÁFICOS HTML
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">Lienzo HTML</a></li>
+                    <li><a href="#">HTML SVG</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    MEDIOS HTML
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">Medios HTML</a></li>
+                    <li><a href="#">Vídeo HTML</a></li>
+                    <li><a href="#">Audio HTML</a></li>
+                    <li><a href="#">HTML YouTube</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    API HTML
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">API web HTML (resumen)</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    EJEMPLOS
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">Ejemplos de HTML</a></li>
+                    <li><a href="#">Editor HTML (tips)</a></li>
+                    <li><a href="#">Cuestionario HTML</a></li>
+                    <li><a href="#">Ejercicios interactivos</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    REFERENCIAS
+                    <span>▼</span>
+                </div>
+                <ul class="nav-items">
+                    <li><a href="#">Referencias HTML</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <header>
+            <h1>Formularios HTML</h1>
+            <p>Aprende a crear formularios interactivos con HTML5</p>
+        </header>
+        
+        <section class="content-section">
+            <h2>Introducción a los Formularios HTML</h2>
+            <p>Los formularios HTML son una parte esencial de la web que permiten a los usuarios interactuar con sitios web. Se utilizan para recopilar información, realizar búsquedas, enviar comentarios y mucho más.</p>
+            
+            <p>Un formulario HTML está compuesto por elementos de formulario como campos de texto, casillas de verificación, botones de opción, menús desplegables y botones de envío.</p>
+            
+            <div class="example-form">
+                <h3>Ejemplo Básico de Formulario</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí"></textarea>
+                    </div>
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            
+            <div class="code-example">
+                &lt;form&gt;<br>
+                &nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" id="nombre" name="nombre"&gt;<br>
+                &nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+                &nbsp;&nbsp;&lt;input type="email" id="email" name="email"&gt;<br>
+                &nbsp;&nbsp;&lt;button type="submit"&gt;Enviar&lt;/button&gt;<br>
+                &lt;/form&gt;
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Atributos de Formulario</h2>
+            <p>Los formularios HTML tienen varios atributos que controlan su comportamiento y cómo se envían los datos.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>action</td>
+                        <td>Especifica dónde enviar los datos del formulario</td>
+                        <td>&lt;form action="/procesar.php"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>method</td>
+                        <td>Especifica el método HTTP para enviar los datos (GET o POST)</td>
+                        <td>&lt;form method="post"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>target</td>
+                        <td>Especifica dónde mostrar la respuesta (_blank, _self, _parent, _top)</td>
+                        <td>&lt;form target="_blank"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>autocomplete</td>
+                        <td>Habilita o deshabilita el autocompletado (on/off)</td>
+                        <td>&lt;form autocomplete="off"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>novalidate</td>
+                        <td>Especifica que el formulario no debe validarse al enviarse</td>
+                        <td>&lt;form novalidate&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip">
+                <p><strong>Consejo:</strong> Utiliza el método POST para enviar datos sensibles como contraseñas, ya que no se muestran en la URL como con GET.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Elementos de Formulario</h2>
+            <p>Los formularios HTML contienen varios elementos que permiten diferentes tipos de interacción con el usuario.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;input&gt;</td>
+                        <td>Campo de entrada de datos (texto, contraseña, etc.)</td>
+                        <td>&lt;input type="text"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;textarea&gt;</td>
+                        <td>Área de texto multilínea</td>
+                        <td>&lt;textarea rows="4"&gt;&lt;/textarea&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;select&gt;</td>
+                        <td>Lista desplegable de opciones</td>
+                        <td>&lt;select&gt;&lt;option&gt;Opción 1&lt;/option&gt;&lt;/select&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;button&gt;</td>
+                        <td>Botón que puede enviar el formulario o realizar otras acciones</td>
+                        <td>&lt;button type="submit"&gt;Enviar&lt;/button&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;label&gt;</td>
+                        <td>Etiqueta para elementos de formulario</td>
+                        <td>&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Cuestionario de Evaluación -->
+        <section class="quiz-container">
+            <h2>Cuestionario: Formularios HTML</h2>
+            <p>Responde las siguientes 5 preguntas para evaluar tu conocimiento sobre formularios HTML.</p>
+            
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h3>Pregunta 1: ¿Qué atributo especifica a dónde se envían los datos del formulario?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q1a" name="q1" value="a">
+                            <label for="q1a">method</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1b" name="q1" value="b">
+                            <label for="q1b">action</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1c" name="q1" value="c">
+                            <label for="q1c">target</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1d" name="q1" value="d">
+                            <label for="q1d">name</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 2: ¿Cuál es el método HTTP recomendado para enviar datos sensibles como contraseñas?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q2a" name="q2" value="a">
+                            <label for="q2a">GET</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2b" name="q2" value="b">
+                            <label for="q2b">PUT</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2c" name="q2" value="c">
+                            <label for="q2c">POST</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2d" name="q2" value="d">
+                            <label for="q2d">DELETE</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 3: ¿Qué elemento se utiliza para crear un área de texto multilínea?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q3a" name="q3" value="a">
+                            <label for="q3a">&lt;input&gt;</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3b" name="q3" value="b">
+                            <label for="q3b">&lt;textarea&gt;</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3c" name="q3" value="c">
+                            <label for="q3c">&lt;text&gt;</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3d" name="q3" value="d">
+                            <label for="q3d">&lt;multiline&gt;</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 4: ¿Qué atributo se utiliza para asociar una etiqueta con un elemento de formulario?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q4a" name="q4" value="a">
+                            <label for="q4a">for</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4b" name="q4" value="b">
+                            <label for="q4b">id</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4c" name="q4" value="c">
+                            <label for="q4c">name</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4d" name="q4" value="d">
+                            <label for="q4d">link</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 5: ¿Qué valor del atributo target abre la respuesta en una nueva pestaña/ventana?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" id="q5a" name="q5" value="a">
+                            <label for="q5a">_self</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q5b" name="q5" value="b">
+                            <label for="q5b">_new</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q5c" name="q5" value="c">
+                            <label for="q5c">_blank</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q5d" name="q5" value="d">
+                            <label for="q5d">_window</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="submitQuiz">Calificar Cuestionario</button>
+            </form>
+            
+            <div id="quizResult" class="quiz-result">
+                <h3>Resultado del Cuestionario</h3>
+                <div class="score-display">Puntuación: <span id="score">0</span>/5</div>
+                <p id="resultMessage"></p>
+                <button type="button" id="retryQuiz" style="margin-top: 1rem;">Intentar de Nuevo</button>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Tutorial Completo de HTML &copy; 2023</p>
+        </footer>
+    </main>
+    
+    <script>
+        // Lógica del cuestionario
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            // Respuestas correctas
+            const correctAnswers = {
+                q1: 'b', // action
+                q2: 'c', // POST
+                q3: 'b', // textarea
+                q4: 'a', // for
+                q5: 'c'  // _blank
+            };
+            
+            // Obtener respuestas del usuario
+            const userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked')?.value,
+                q2: document.querySelector('input[name="q2"]:checked')?.value,
+                q3: document.querySelector('input[name="q3"]:checked')?.value,
+                q4: document.querySelector('input[name="q4"]:checked')?.value,
+                q5: document.querySelector('input[name="q5"]:checked')?.value
+            };
+            
+            // Verificar si todas las preguntas fueron respondidas
+            let allAnswered = true;
+            for (let key in userAnswers) {
+                if (!userAnswers[key]) {
+                    allAnswered = false;
+                    break;
+                }
+            }
+            
+            if (!allAnswered) {
+                alert('Por favor, responde todas las preguntas antes de calificar el cuestionario.');
+                return;
+            }
+            
+            // Calificar respuestas
+            let score = 0;
+            for (let key in correctAnswers) {
+                if (userAnswers[key] === correctAnswers[key]) {
+                    score++;
+                }
+            }
+            
+            // Mostrar resultado
+            const resultElement = document.getElementById('quizResult');
+            const scoreElement = document.getElementById('score');
+            const messageElement = document.getElementById('resultMessage');
+            
+            scoreElement.textContent = score;
+            
+            if (score >= 4) {
+                resultElement.className = 'quiz-result success';
+                messageElement.textContent = '¡Excelente! Tienes un gran conocimiento de los formularios HTML.';
+            } else if (score >= 3) {
+                resultElement.className = 'quiz-result success';
+                messageElement.textContent = '¡Buen trabajo! Has comprendido la mayoría de los conceptos.';
+            } else {
+                resultElement.className = 'quiz-result error';
+                messageElement.textContent = 'Necesitas repasar los formularios HTML. ¡Sigue estudiando!';
+            }
+            
+            resultElement.style.display = 'block';
+            
+            // Desplazarse al resultado
+            resultElement.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Botón para intentar de nuevo
+        document.getElementById('retryQuiz').addEventListener('click', function() {
+            // Limpiar selecciones
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Ocultar resultado
+            document.getElementById('quizResult').style.display = 'none';
+            
+            // Desplazarse al inicio del cuestionario
+            document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Funcionalidad del panel de navegación
+        document.querySelectorAll('.nav-section-title').forEach(title => {
+            title.addEventListener('click', function() {
+                const items = this.nextElementSibling;
+                items.style.display = items.style.display === 'none' ? 'block' : 'none';
+                this.querySelector('span').textContent = items.style.display === 'none' ? '►' : '▼';
+            });
+        });
+        
+        // Inicializar con algunas secciones cerradas
+        document.querySelectorAll('.nav-section-title').forEach((title, index) => {
+            if (index > 0) { // Mantener solo la primera sección abierta
+                const items = title.nextElementSibling;
+                items.style.display = 'none';
+                title.querySelector('span').textContent = '►';
+            }
+        });
+    </script>
+</body>
+</html>

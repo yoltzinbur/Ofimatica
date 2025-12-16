@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tablas HTML · Guía HTML</title>
+  <meta name="description" content="Tablas HTML: estructura básica, thead/tbody/tfoot, th y scope, bordes, colapsado, padding, caption, colspan/rowspan, zebra stripes y tabla responsiva.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Ajustes locales: evitar desbordes y mantener estética */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .table-demo{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--muted,#e5e7eb);border-radius:.5rem;overflow:hidden}
+    .table-demo th,.table-demo td{padding:.6rem .8rem;border-bottom:1px solid var(--muted,#e5e7eb)}
+    .table-demo thead th{background:var(--soft,#f8fafc);text-align:left}
+    .table-demo tr:last-child td{border-bottom:0}
+    .table-striped tbody tr:nth-child(odd){background:rgba(0,0,0,.03)}
+    .table-bordered{border-collapse:collapse}
+    .table-bordered th,.table-bordered td{border:1px solid var(--muted,#e5e7eb)}
+    .table-wrap{overflow-x:auto}
+    .caption-top{caption-side:top;text-align:left;padding:.25rem 0;font-weight:600}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li><li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li><li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li><li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li><li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li><li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li><li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li><li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li><li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li><li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" class="active">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li><li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li><li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li><li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li><li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li><li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li><li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li><li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li><li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li><li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li><li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/tablas.html</p>
+        <h1>Tablas HTML</h1>
+        <p>Una <code>&lt;table&gt;</code> organiza datos en filas (<code>&lt;tr&gt;</code>) y celdas de encabezado <code>&lt;th&gt;</code> o datos <code>&lt;td&gt;</code>. Usa <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> y <code>&lt;tfoot&gt;</code> para estructura, y el atributo <code>scope</code> en <code>&lt;th&gt;</code> para accesibilidad.</p>
+
+        <h2>Tabla básica</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ana&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Luis&lt;/td&gt;&lt;td&gt;31&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;">Copiar</button>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ana&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Luis&lt;/td&gt;&lt;td&gt;31&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+        <div class="render">
+          <table class="table-demo">
+            <thead><tr><th>Nombre</th><th>Edad</th></tr></thead>
+            <tbody><tr><td>Ana</td><td>28</td></tr><tr><td>Luis</td><td>31</td></tr></tbody>
+          </table>
+        </div>
+
+        <h2>Secciones: thead / tbody / tfoot</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Producto&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Precio&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Libro&lt;/td&gt;&lt;td&gt;12.00&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cuaderno&lt;/td&gt;&lt;td&gt;3.50&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;&lt;tr&gt;&lt;th scope=&quot;row&quot; colspan=&quot;2&quot;&gt;Precios en USD&lt;/th&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;">Copiar</button>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Producto&lt;/th&gt;&lt;th scope="col"&gt;Precio&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Libro&lt;/td&gt;&lt;td&gt;12.00&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cuaderno&lt;/td&gt;&lt;td&gt;3.50&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;&lt;tr&gt;&lt;th scope="row" colspan="2"&gt;Precios en USD&lt;/th&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+
+        <h2>Bordes, colapsado y padding</h2>
+        <div class="grid-3">
+          <div class="card card--soft">
+            <h3>Bordes sencillos</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;table class=&quot;bordered&quot;&gt;...&lt;/table&gt;
+&lt;style&gt;
+  table.bordered{border-collapse:collapse}
+  table.bordered th,table.bordered td{border:1px solid #ddd;padding:.5rem}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;table class="bordered"&gt;...&lt;/table&gt;
+&lt;style&gt;
+  table.bordered{border-collapse:collapse}
+  table.bordered th,table.bordered td{border:1px solid #ddd;padding:.5rem}
+&lt;/style&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Colapsar bordes</h3>
+            <p>Usa <code>border-collapse:collapse</code> para evitar bordes dobles.</p>
+          </div>
+          <div class="card card--soft">
+            <h3>Espaciado interno</h3>
+            <p>Controla con <code>padding</code> en <code>th/td</code>.</p>
+          </div>
+        </div>
+
+        <h2>Caption (título de la tabla)</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;table&gt;
+  &lt;caption&gt;Ventas trimestrales&lt;/caption&gt;
+  &lt;tr&gt;&lt;th&gt;Q1&lt;/th&gt;&lt;th&gt;Q2&lt;/th&gt;&lt;th&gt;Q3&lt;/th&gt;&lt;th&gt;Q4&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;">Copiar</button>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Ventas trimestrales&lt;/caption&gt;
+  &lt;tr&gt;&lt;th&gt;Q1&lt;/th&gt;&lt;th&gt;Q2&lt;/th&gt;&lt;th&gt;Q3&lt;/th&gt;&lt;th&gt;Q4&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+        <div class="render">
+          <table class="table-demo table-striped">
+            <caption class="caption-top">Ventas trimestrales</caption>
+            <thead><tr><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
+            <tbody><tr><td>12</td><td>15</td><td>9</td><td>20</td></tr></tbody>
+          </table>
+        </div>
+
+        <h2>Combinar celdas: <code>colspan</code> y <code>rowspan</code></h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th colspan=&quot;2&quot;&gt;Contacto&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&quot;2&quot;&gt;Ana&lt;/td&gt;&lt;td&gt;Email&lt;/td&gt;&lt;td&gt;ana@ej.com&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Tel.&lt;/td&gt;&lt;td&gt;555-123&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;">Copiar</button>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th colspan="2"&gt;Contacto&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan="2"&gt;Ana&lt;/td&gt;&lt;td&gt;Email&lt;/td&gt;&lt;td&gt;ana@ej.com&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Tel.&lt;/td&gt;&lt;td&gt;555-123&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+
+        <h2>Filas “cebra” (zebra stripes)</h2>
+        <p>Alterna el fondo de filas con CSS para legibilidad.</p>
+        <div class="code">
+          <button class="copy" data-code="table.zebra tbody tr:nth-child(odd){background:#f7f7f7}">Copiar</button>
+<pre><code class="language-css">table.zebra tbody tr:nth-child(odd){background:#f7f7f7}</code></pre>
+        </div>
+        <div class="render">
+          <table class="table-demo zebra">
+            <thead><tr><th>País</th><th>Capital</th></tr></thead>
+            <tbody>
+              <tr><td>Perú</td><td>Lima</td></tr>
+              <tr><td>México</td><td>Ciudad de México</td></tr>
+              <tr><td>Chile</td><td>Santiago</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Tabla responsiva (scroll horizontal)</h2>
+        <p>Cuando hay muchas columnas, envuelve la tabla en un contenedor con <code>overflow-x:auto</code>.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;div style=&quot;overflow-x:auto&quot;&gt;
+  &lt;table&gt;...&lt;/table&gt;
+&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div style="overflow-x:auto"&gt;
+  &lt;table&gt;...&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="render table-wrap">
+          <table class="table-demo table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th>
+                <th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">1</th><td>α</td><td>β</td><td>γ</td><td>δ</td><td>ε</td><td>ζ</td><td>η</td></tr>
+              <tr><th scope="row">2</th><td>θ</td><td>ι</td><td>κ</td><td>λ</td><td>μ</td><td>ν</td><td>ξ</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Accesibilidad</h2>
+        <ul class="check">
+          <li>Usa <code>&lt;th&gt;</code> para encabezados y añade <code>scope="col"</code> / <code>scope="row"</code>.</li>
+          <li>Para tablas complejas, considera <code>id</code> en <code>&lt;th&gt;</code> y el atributo <code>headers</code> en <code>&lt;td&gt;</code>.</li>
+          <li>Incluye <code>&lt;caption&gt;</code> descriptivo.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_tablas" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué atributo en &lt;th&gt; ayuda a los lectores de pantalla?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t1" data-correct="1"> scope</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t1" data-correct="0"> colspan</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t1" data-correct="0"> style</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué propiedad CSS evita bordes dobles?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t2" data-correct="1"> border-collapse: collapse</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t2" data-correct="0"> overflow: hidden</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t2" data-correct="0"> display: grid</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cómo haces una tabla responsiva sin romper el diseño?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t3" data-correct="1"> Envolviéndola en un contenedor con overflow-x:auto</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t3" data-correct="0"> Poniendo width:200%</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="t3" data-correct="0"> Quitando columnas</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="titulo.html" aria-label="Anterior">← Título de la página HTML</a>
+        <a href="listas.html" aria-label="Siguiente">Listas HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

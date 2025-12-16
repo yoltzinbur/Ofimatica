@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colores HTML · Guía HTML</title>
+  <meta name="description" content="Colores en HTML/CSS: nombres, HEX, RGB, HSL, RGBA/HSLA, propiedades color, background-color y border-color, con ejemplos y cuestionario.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    /* Evitar desbordes en código */
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    /* Mosaico de muestras de color */
+    .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem}
+    .swatch{border-radius:.6rem;padding:.75rem;border:1px solid var(--border, #e5e7eb);display:flex;align-items:center;gap:.6rem;background:#fff}
+    .swatch__box{width:36px;height:24px;border-radius:.4rem;border:1px solid rgba(0,0,0,.1);flex:0 0 auto}
+    .swatch small{display:block;line-height:1.1}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html" class="active">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/colores.html</p>
+        <h1>Colores HTML</h1>
+        <p>En HTML/CSS defines color con propiedades como <code>color</code> (texto), <code>background-color</code> (fondo) y <code>border-color</code> (bordes). Los valores más comunes son <em>nombres</em>, <em>HEX</em>, <em>RGB</em> y <em>HSL</em>; para transparencia usa <em>RGBA</em>/<em>HSLA</em>.</p>
+
+        <h2>Formas de definir color</h2>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Nombres (140 estandarizados)</h3>
+            <p>Ej.: <code>red</code>, <code>tomato</code>, <code>lightseagreen</code>.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;p style=&quot;color:tomato&quot;&gt;Texto en tomato&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color:tomato"&gt;Texto en tomato&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>HEX, RGB y HSL</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;div style=&quot;background:#1e90ff;color:#fff&quot;&gt;HEX #1e90ff&lt;/div&gt;&#10;&lt;div style=&quot;background:rgb(34,197,94);color:white&quot;&gt;RGB(34,197,94)&lt;/div&gt;&#10;&lt;div style=&quot;background:hsl(280,100%,60%);color:white&quot;&gt;HSL(280,100%,60%)&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div style="background:#1e90ff;color:#fff"&gt;HEX #1e90ff&lt;/div&gt;
+&lt;div style="background:rgb(34,197,94);color:white"&gt;RGB(34,197,94)&lt;/div&gt;
+&lt;div style="background:hsl(280,100%,60%);color:white"&gt;HSL(280,100%,60%)&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Transparencia (canal alfa)</h2>
+        <p>Usa <strong>RGBA</strong> o <strong>HSLA</strong> donde el cuarto valor (alfa) va de <code>0</code> (transparente) a <code>1</code> (opaco).</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;div style=&quot;background:rgba(255,99,71,.4);padding:.5rem&quot;&gt;RGBA 0.4&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div style="background:rgba(255,99,71,.4);padding:.5rem"&gt;RGBA 0.4&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <div class="code">
+              <button class="copy" data-code="&lt;div style=&quot;background:hsla(200,100%,50%,.3);padding:.5rem&quot;&gt;HSLA 0.3&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div style="background:hsla(200,100%,50%,.3);padding:.5rem"&gt;HSLA 0.3&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h2>Propiedades típicas</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;p style=&quot;color:#0f172a&quot;&gt;Texto&lt;/p&gt;&#10;&lt;div style=&quot;background-color:rgb(245,245,244);padding:8px&quot;&gt;Fondo&lt;/div&gt;&#10;&lt;div style=&quot;border:3px solid hsl(150,60%,40%);padding:8px&quot;&gt;Borde&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p style="color:#0f172a"&gt;Texto&lt;/p&gt;
+&lt;div style="background-color:rgb(245,245,244);padding:8px"&gt;Fondo&lt;/div&gt;
+&lt;div style="border:3px solid hsl(150,60%,40%);padding:8px"&gt;Borde&lt;/div&gt;</code></pre>
+        </div>
+
+        <h2>Paleta rápida (nombre + valor)</h2>
+        <div class="swatches">
+          <div class="swatch"><span class="swatch__box" style="background:tomato"></span><div><strong>tomato</strong><small>#FF6347</small></div></div>
+          <div class="swatch"><span class="swatch__box" style="background:dodgerblue"></span><div><strong>dodgerblue</strong><small>#1E90FF</small></div></div>
+          <div class="swatch"><span class="swatch__box" style="background:seagreen"></span><div><strong>seagreen</strong><small>#2E8B57</small></div></div>
+          <div class="swatch"><span class="swatch__box" style="background:gold"></span><div><strong>gold</strong><small>#FFD700</small></div></div>
+          <div class="swatch"><span class="swatch__box" style="background:slategray"></span><div><strong>slategray</strong><small>#708090</small></div></div>
+          <div class="swatch"><span class="swatch__box" style="background:rebeccapurple"></span><div><strong>rebeccapurple</strong><small>#663399</small></div></div>
+        </div>
+
+        <h2>Consejos rápidos</h2>
+        <ul class="check">
+          <li>Prefiere <strong>HSL</strong> cuando necesites variar tono, saturación o luminosidad fácilmente.</li>
+          <li>Usa <strong>contraste suficiente</strong> (texto vs. fondo) para accesibilidad.</li>
+          <li>Evita definir colores críticos en <code>style</code> inline en proyectos grandes; centraliza en CSS.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_colores" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué propiedad cambia el color del <em>texto</em>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="1"> color</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> background-color</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c1" data-correct="0"> border-color</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál es un valor HEX válido?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="1"> #1e90ff</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> hex(30,30,30)</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c2" data-correct="0"> rgb#(255,0,0)</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) En <code>rgba(255,0,0,0.25)</code>, ¿qué representa <code>0.25</code>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="1"> El nivel de transparencia (alfa)</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> El brillo del rojo</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c3" data-correct="0"> El tono en grados</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Qué formato facilita aclarar/oscurecer un color cambiando solo un valor?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> RGB</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="1"> HSL</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="c4" data-correct="0"> HEX corto</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="comentarios.html" aria-label="Anterior">← Comentarios HTML</a>
+        <a href="html_css.html" aria-label="Siguiente">HTML CSS →</a>
+      </nav>
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

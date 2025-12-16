@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML adaptable · Guía HTML</title>
+  <meta name="description" content="Buenas prácticas para diseño adaptable: meta viewport, imágenes fluidas, media queries y srcset/sizes.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo-img{max-width:100%;height:auto;border-radius:.6rem;display:block}
+    .demo-box{padding:.6rem;border:1px solid var(--card-soft-bd,#e2e8f0);border-radius:.6rem;background:var(--card-soft-bg,#f8fafc)}
+    .cols{display:grid;gap:1rem}
+    @media (min-width:800px){.cols{grid-template-columns:2fr 1fr}}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html" data-title="inicio">Inicio</a></li>
+        <li><a href="intro.html" data-title="introducción a html">Introducción a HTML</a></li>
+        <li><a href="editores.html" data-title="editores html">Editores HTML</a></li>
+        <li><a href="basico.html" data-title="html básico">HTML básico</a></li>
+        <li><a href="elementos.html" data-title="elementos html">Elementos HTML</a></li>
+        <li><a href="atributos.html" data-title="atributos html">Atributos HTML</a></li>
+        <li><a href="encabezados.html" data-title="encabezados html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html" data-title="párrafos html">Párrafos HTML</a></li>
+        <li><a href="estilos.html" data-title="estilos html">Estilos HTML</a></li>
+        <li><a href="formato.html" data-title="formato html">Formato HTML</a></li>
+        <li><a href="citas.html" data-title="citas html">Citas HTML</a></li>
+        <li><a href="comentarios.html" data-title="comentarios html">Comentarios HTML</a></li>
+        <li><a href="colores.html" data-title="colores html">Colores HTML</a></li>
+        <li><a href="html_css.html" data-title="html css">HTML CSS</a></li>
+        <li><a href="enlaces.html" data-title="enlaces html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html" data-title="imágenes html">Imágenes HTML</a></li>
+        <li><a href="favicon.html" data-title="favicon html">Favicon HTML</a></li>
+        <li><a href="titulo.html" data-title="título de la página html">Título de la página HTML</a></li>
+        <li><a href="tablas.html" data-title="tablas html">Tablas HTML</a></li>
+        <li><a href="listas.html" data-title="listas html">Listas HTML</a></li>
+        <li><a href="bloques.html" data-title="bloque e inline">Bloque e Inline</a></li>
+        <li><a href="division.html" data-title="división html">División HTML</a></li>
+        <li><a href="clases.html" data-title="clases html">Clases HTML</a></li>
+        <li><a href="identificacion.html" data-title="identificación html">Identificación HTML</a></li>
+        <li><a href="iframes.html" data-title="iframes html">Iframes HTML</a></li>
+        <li><a href="html_js.html" data-title="html javascript">HTML JavaScript</a></li>
+        <li><a href="rutas.html" data-title="rutas de archivos html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html" data-title="encabezado html">Encabezado HTML</a></li>
+        <li><a href="diseno.html" data-title="diseño html">Diseño HTML</a></li>
+        <li><a href="adaptable.html" class="active" data-title="html adaptable">HTML adaptable</a></li>
+        <li><a href="codigo.html" data-title="código de computadora html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html" data-title="semántica html">Semántica HTML</a></li>
+        <li><a href="estilo.html" data-title="guía de estilo html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html" data-title="entidades html">Entidades HTML</a></li>
+        <li><a href="simbolos.html" data-title="símbolos html">Símbolos HTML</a></li>
+        <li><a href="emojis.html" data-title="emojis html">Emojis HTML</a></li>
+        <li><a href="charset.html" data-title="conjuntos de caracteres">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html" data-title="codificación de url">Codificación de URL</a></li>
+        <li><a href="xhtml.html" data-title="html vs xhtml">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/adaptable.html</p>
+        <h1>HTML adaptable</h1>
+
+        <div class="grid-2">
+          <div>
+            <p>Un sitio <em>adaptable</em> (responsive) se ve bien en móviles, tabletas y escritorios. Las claves:</p>
+            <ul class="check">
+              <li><strong>Viewport</strong> correcto para que la página escale en móviles.</li>
+              <li><strong>Imágenes fluidas</strong>: no deben desbordar el ancho del contenedor.</li>
+              <li><strong>Media queries</strong> para ajustar el layout según el ancho de pantalla.</li>
+              <li><strong>Imágenes responsivas</strong> con <code>srcset</code> y <code>sizes</code>.</li>
+            </ul>
+          </div>
+          <div class="demo-box">
+            <img class="demo-img" src="img/adaptable.png" alt="Vista de sitio en varias pantallas: móvil, tablet, laptop y desktop">
+          </div>
+        </div>
+
+        <h2>1) Meta viewport</h2>
+        <p>Inclúyelo en el <code>&lt;head&gt;</code> para decirle al navegador cómo escalar la página en móviles.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+        </div>
+
+        <h2>2) Imágenes fluidas</h2>
+        <p>Evitan barras horizontales en pantallas pequeñas.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;img src="img/foto.jpg" alt="Descripción" style="max-width:100%;height:auto"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;img src="img/foto.jpg" alt="Descripción" style="max-width:100%;height:auto"&gt;</code></pre>
+        </div>
+
+        <h2>3) Media queries</h2>
+        <p>Aplica estilos según el ancho de la ventana.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;style&gt;
+.container{max-width:1100px;margin:auto;padding:1rem}
+.cards{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:600px){.cards{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.cards{grid-template-columns:1fr 1fr 1fr}}
+&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;style&gt;
+.container{max-width:1100px;margin:auto;padding:1rem}
+.cards{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:600px){.cards{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.cards{grid-template-columns:1fr 1fr 1fr}}
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <h2>4) Imágenes responsivas con <code>srcset</code> y <code>sizes</code></h2>
+        <p>El navegador elige la mejor resolución según el dispositivo.</p>
+        <div class="code">
+          <button class="copy" data-code='&lt;img
+  src="img/banner-640.jpg"
+  srcset="img/banner-640.jpg 640w, img/banner-960.jpg 960w, img/banner-1280.jpg 1280w"
+  sizes="(max-width:700px) 100vw, 700px"
+  alt="Banner de ejemplo" style="max-width:100%;height:auto"&gt;'>Copiar</button>
+<pre><code class="language-html">&lt;img
+  src="img/banner-640.jpg"
+  srcset="img/banner-640.jpg 640w, img/banner-960.jpg 960w, img/banner-1280.jpg 1280w"
+  sizes="(max-width:700px) 100vw, 700px"
+  alt="Banner de ejemplo" style="max-width:100%;height:auto"&gt;</code></pre>
+        </div>
+
+        <h2>Ejemplo completo</h2>
+        <div class="code">
+          <button class="copy" data-code="&lt;style&gt;
+.header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav{display:flex;gap:.8rem;flex-wrap:wrap}
+.cols{display:grid;gap:1rem}
+@media (min-width:800px){.cols{grid-template-columns:2fr 1fr}}
+img{max-width:100%;height:auto}
+&lt;/style&gt;
+
+&lt;header class=&quot;header&quot;&gt;
+  &lt;h1&gt;Mi sitio&lt;/h1&gt;
+  &lt;nav class=&quot;nav&quot;&gt;&lt;a href=&quot;#&quot;&gt;Inicio&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Contacto&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;div class=&quot;cols&quot;&gt;
+  &lt;main&gt;
+    &lt;h2&gt;Artículo&lt;/h2&gt;
+    &lt;p&gt;Contenido responsivo...&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;style&gt;
+.header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav{display:flex;gap:.8rem;flex-wrap:wrap}
+.cols{display:grid;gap:1rem}
+@media (min-width:800px){.cols{grid-template-columns:2fr 1fr}}
+img{max-width:100%;height:auto}
+&lt;/style&gt;
+
+&lt;header class="header"&gt;
+  &lt;h1&gt;Mi sitio&lt;/h1&gt;
+  &lt;nav class="nav"&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;a href="#"&gt;Blog&lt;/a&gt;&lt;a href="#"&gt;Contacto&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;div class="cols"&gt;
+  &lt;main&gt;
+    &lt;h2&gt;Artículo&lt;/h2&gt;
+    &lt;p&gt;Contenido responsivo...&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_adaptable" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta debes incluir para que el sitio escale en móviles?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="1"> &lt;meta name="viewport" ...&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="0"> &lt;mobile&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a1" data-correct="0"> &lt;scale&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) Para que una imagen no desborde en móviles, una regla útil es…</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="1"> max-width:100%; height:auto</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="0"> width:100vw; height:100vh</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a2" data-correct="0"> position:fixed</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué atributo permite ofrecer varias resoluciones de una misma imagen?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="1"> srcset</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="0"> preload</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="a3" data-correct="0"> crossorigin</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="diseno.html" aria-label="Anterior">← Diseño HTML</a>
+        <a href="codigo.html" aria-label="Siguiente">Código de computadora HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

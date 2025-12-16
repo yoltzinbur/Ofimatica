@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bloque e Inline · Guía HTML</title>
+  <meta name="description" content="Diferencias entre elementos de bloque e inline en HTML: comportamiento por defecto, ejemplos comunes y cómo cambiar la visualización con CSS.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+  <style>
+    .code pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .demo-box{border:1px dashed var(--border,#d9d9df);padding:.5rem;border-radius:.5rem;background:#fafafe}
+    .inline-demo span,
+    .inline-demo a{display:inline;background:#eef2ff;border:1px solid #c7d2fe;border-radius:.35rem;padding:.15rem .35rem;margin:.15rem}
+    .block-demo div{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:.5rem;padding:.4rem .6rem;margin:.35rem 0}
+    .note{display:inline-block;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:.4rem;padding:.15rem .45rem;font-size:.85em}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="badge">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class='side'>
+      <div class='search'><input id='filter' type='search' placeholder='Filtrar...'></div>
+      <h4>INICIO HTML</h4>
+      <ul class='menu'>
+        <li><a href="index.html">Inicio</a></li><li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li><li><a href="basico.html">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li><li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li><li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li><li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li><li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li><li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li><li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li><li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li><li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html" class="active">Bloque e Inline</a></li><li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li><li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li><li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li><li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li><li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li><li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li><li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li><li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li><li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/bloques.html</p>
+        <h1>Bloque e Inline</h1>
+        <p>En HTML, los elementos tienen un comportamiento de visualización por defecto: <strong>de bloque</strong> (<span class="note">ocupan todo el ancho y empiezan en línea nueva</span>) o <strong>en línea</strong> (<span class="note">solo ocupan su contenido y no fuerzan salto de línea</span>).</p>
+
+        <div class="grid-2">
+          <section class="card card--soft">
+            <h2>Elementos de bloque</h2>
+            <p>Ejemplos: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1..h6&gt;</code>, <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;form&gt;</code>.</p>
+            <div class="code">
+              <button class="copy" data-code="&lt;div&gt;Caja A&lt;/div&gt;
+&lt;div&gt;Caja B&lt;/div&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div&gt;Caja A&lt;/div&gt;
+&lt;div&gt;Caja B&lt;/div&gt;</code></pre>
+            </div>
+            <div class="render block-demo">
+              <div>Caja A (bloque)</div>
+              <div>Caja B (bloque)</div>
+            </div>
+          </section>
+
+          <section class="card card--soft">
+            <h2>Elementos en línea</h2>
+            <p>Ejemplos: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code>.</p>
+            <div class="code">
+              <button class="copy" data-code="Texto &lt;span&gt;uno&lt;/span&gt; y &lt;span&gt;dos&lt;/span&gt; en la misma línea.">Copiar</button>
+<pre><code class="language-html">Texto &lt;span&gt;uno&lt;/span&gt; y &lt;span&gt;dos&lt;/span&gt; en la misma línea.</code></pre>
+            </div>
+            <div class="render inline-demo">
+              Texto <span>uno</span> y <span>dos</span> en la misma línea. <a href="#">enlace</a>
+            </div>
+          </section>
+        </div>
+
+        <h2>Cambiar el flujo con CSS</h2>
+        <p>Cualquier elemento puede cambiarse con la propiedad <code>display</code> (por ejemplo, para crear botones en línea o bloques clicables).</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Inline → Block</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;a href=&quot;#&quot; class=&quot;btn-block&quot;&gt;Abrir&lt;/a&gt;
+&lt;style&gt;.btn-block{display:block;padding:.5rem 1rem;background:#2563eb;color:#fff;text-decoration:none;border-radius:.4rem}&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="#" class="btn-block"&gt;Abrir&lt;/a&gt;
+&lt;style&gt;.btn-block{display:block;padding:.5rem 1rem;background:#2563eb;color:#fff;text-decoration:none;border-radius:.4rem}&lt;/style&gt;</code></pre>
+            </div>
+            <div class="render">
+              <a href="#" style="display:block;padding:.5rem 1rem;background:#2563eb;color:#fff;text-decoration:none;border-radius:.4rem;width:max-content">Abrir</a>
+            </div>
+          </div>
+
+          <div class="card card--soft">
+            <h3>Block → Inline</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;div class=&quot;chip&quot;&gt;Etiqueta&lt;/div&gt;
+&lt;style&gt;.chip{display:inline;padding:.2rem .5rem;border:1px solid #94a3b8;border-radius:999px;background:#f8fafc}&lt;/style&gt;">Copiar</button>
+<pre><code class="language-html">&lt;div class="chip"&gt;Etiqueta&lt;/div&gt;
+&lt;style&gt;.chip{display:inline;padding:.2rem .5rem;border:1px solid #94a3b8;border-radius:999px;background:#f8fafc}&lt;/style&gt;</code></pre>
+            </div>
+            <div class="render">
+              <div style="display:inline;padding:.2rem .5rem;border:1px solid #94a3b8;border-radius:999px;background:#f8fafc">Etiqueta</div>
+              <div style="display:inline;padding:.2rem .5rem;border:1px solid #94a3b8;border-radius:999px;background:#f8fafc">UI</div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Elementos en línea pero “reemplazados”</h2>
+        <p><code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code> son <em>inline</em> pero su caja proviene de un recurso/controles (se comportan distinto al texto).</p>
+
+        <h2>Buenas prácticas</h2>
+        <ul class="check">
+          <li>Usa <code>div</code> para agrupar bloques y <code>span</code> para marcar texto en línea sin significado semántico.</li>
+          <li>Prefiere elementos semánticos (<code>header</code>, <code>nav</code>, <code>section</code>, <code>article</code>, <code>footer</code>) cuando correspondan.</li>
+          <li>No abuses de cambiar <code>display</code> si existe un elemento más adecuado.</li>
+        </ul>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_bloques" autocomplete="off" style="margin-top:1rem">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué hace un elemento de bloque por defecto?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="1"> Ocupa todo el ancho y comienza en línea nueva</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="0"> Se coloca junto al texto sin saltos</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="0"> Se oculta automáticamente</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Cuál de estos es <em>inline</em>?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="1"> span</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="0"> section</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="0"> table</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Cómo vuelves un enlace en bloque con CSS?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="1"> display: block</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="0"> position: absolute</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="0"> float: right</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="listas.html" aria-label="Anterior">← Listas HTML</a>
+        <a href="division.html" aria-label="Siguiente">División HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>

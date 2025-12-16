@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML básico · Guía HTML</title>
+  <meta name="description" content="Encabezados, párrafos, enlaces, imágenes, listas, saltos de línea, reglas horizontales y comentarios en HTML con ejemplos.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="header"><div class="header__inner">
+    <div class="brand">📘 <span>Guía HTML</span></div>
+    <nav class="top-actions">
+      <a class="link-muted" href="index.html">Inicio</a>
+      <a class="link-muted" href="referencias.html">Referencias</a>
+    </nav>
+    <div style="flex:1"></div>
+    <a href="cuestionario.html" class="btn btn--primary">Cuestionario</a>
+  </div></header>
+
+  <div class="container">
+    <aside class="side">
+      <div class="search"><input id="filter" type="search" placeholder="Filtrar..."></div>
+
+      <h4>INICIO HTML</h4>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="intro.html">Introducción a HTML</a></li>
+        <li><a href="editores.html">Editores HTML</a></li>
+        <li><a href="basico.html" class="active">HTML básico</a></li>
+        <li><a href="elementos.html">Elementos HTML</a></li>
+        <li><a href="atributos.html">Atributos HTML</a></li>
+        <li><a href="encabezados.html">Encabezados HTML</a></li>
+        <li><a href="parrafos.html">Párrafos HTML</a></li>
+        <li><a href="estilos.html">Estilos HTML</a></li>
+        <li><a href="formato.html">Formato HTML</a></li>
+        <li><a href="citas.html">Citas HTML</a></li>
+        <li><a href="comentarios.html">Comentarios HTML</a></li>
+        <li><a href="colores.html">Colores HTML</a></li>
+        <li><a href="html_css.html">HTML CSS</a></li>
+        <li><a href="enlaces.html">Enlaces HTML</a></li>
+        <li><a href="imagenes.html">Imágenes HTML</a></li>
+        <li><a href="favicon.html">Favicon HTML</a></li>
+        <li><a href="titulo.html">Título de la página HTML</a></li>
+        <li><a href="tablas.html">Tablas HTML</a></li>
+        <li><a href="listas.html">Listas HTML</a></li>
+        <li><a href="bloques.html">Bloque e Inline</a></li>
+        <li><a href="division.html">División HTML</a></li>
+        <li><a href="clases.html">Clases HTML</a></li>
+        <li><a href="identificacion.html">Identificación HTML</a></li>
+        <li><a href="iframes.html">Iframes HTML</a></li>
+        <li><a href="html_js.html">HTML JavaScript</a></li>
+        <li><a href="rutas.html">Rutas de archivos HTML</a></li>
+        <li><a href="cabecera.html">Encabezado HTML</a></li>
+        <li><a href="diseno.html">Diseño HTML</a></li>
+        <li><a href="adaptable.html">HTML adaptable</a></li>
+        <li><a href="codigo.html">Código de computadora HTML</a></li>
+        <li><a href="semantica.html">Semántica HTML</a></li>
+        <li><a href="estilo.html">Guía de estilo HTML</a></li>
+        <li><a href="entidades.html">Entidades HTML</a></li>
+        <li><a href="simbolos.html">Símbolos HTML</a></li>
+        <li><a href="emojis.html">Emojis HTML</a></li>
+        <li><a href="charset.html">Conjuntos de caracteres</a></li>
+        <li><a href="urlencode.html">Codificación de URL</a></li>
+        <li><a href="xhtml.html">HTML vs XHTML</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <article class="card">
+        <p class="badge">/basico.html</p>
+        <h1>HTML básico</h1>
+        <p>Repasemos las etiquetas más usadas: <strong>encabezados</strong>, <strong>párrafos</strong>, <strong>enlaces</strong>, <strong>imágenes</strong>, <strong>listas</strong>, <strong>saltos de línea</strong> y <strong>reglas horizontales</strong>, además de <strong>comentarios</strong>.</p>
+
+        <!-- Encabezados -->
+        <h2>Encabezados</h2>
+        <p>Los títulos van de <code>&lt;h1&gt;</code> (más importante) a <code>&lt;h6&gt;</code> (menos importante).</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;h1&gt;Título principal&lt;/h1&gt;&#10;&lt;h2&gt;Subtítulo&lt;/h2&gt;&#10;&lt;h3&gt;Sección&lt;/h3&gt;">Copiar</button>
+<pre><code class="language-html">&lt;h1&gt;Título principal&lt;/h1&gt;
+&lt;h2&gt;Subtítulo&lt;/h2&gt;
+&lt;h3&gt;Sección&lt;/h3&gt;</code></pre>
+        </div>
+        <div class="render">
+          <h1 style="margin:.2rem 0">Título principal</h1>
+          <h2 style="margin:.2rem 0">Subtítulo</h2>
+          <h3 style="margin:.2rem 0">Sección</h3>
+        </div>
+
+        <!-- Párrafos -->
+        <h2>Párrafos</h2>
+        <p>Los párrafos se escriben con <code>&lt;p&gt;</code>. El navegador añade márgenes por defecto.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;p&gt;Este es un párrafo.&lt;/p&gt;&#10;&lt;p&gt;Este es otro párrafo.&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;p&gt;Este es un párrafo.&lt;/p&gt;
+&lt;p&gt;Este es otro párrafo.&lt;/p&gt;</code></pre>
+        </div>
+
+        <!-- Enlaces -->
+        <h2>Enlaces</h2>
+        <p>Un enlace usa <code>&lt;a&gt;</code> con el atributo <code>href</code>. Para abrir en nueva pestaña, añade <code>target="_blank"</code> y <code>rel="noopener"</code>.</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;a href=&quot;https://www.example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Visitar sitio&lt;/a&gt;">Copiar</button>
+<pre><code class="language-html">&lt;a href="https://www.example.com" target="_blank" rel="noopener"&gt;Visitar sitio&lt;/a&gt;</code></pre>
+        </div>
+        <div class="render">
+          <a href="#" onclick="return false;">Visitar sitio</a>
+          <p class="badge" style="display:inline-block;margin-left:.5rem">demo</p>
+        </div>
+
+        <!-- Imágenes -->
+        <h2>Imágenes</h2>
+        <p>Una imagen se inserta con <code>&lt;img&gt;</code>. El atributo <code>alt</code> describe el contenido (accesibilidad).</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;img src=&quot;img/foto.jpg&quot; alt=&quot;Descripción de la imagen&quot; width=&quot;300&quot;&gt;">Copiar</button>
+<pre><code class="language-html">&lt;img src="img/foto.jpg" alt="Descripción de la imagen" width="300"&gt;</code></pre>
+        </div>
+        <div class="render">
+          <p><em>(Sustituye <code>img/foto.jpg</code> por tu archivo real.)</em></p>
+        </div>
+
+        <!-- Listas -->
+        <h2>Listas</h2>
+        <p>Listas desordenadas (<code>&lt;ul&gt;</code>) y ordenadas (<code>&lt;ol&gt;</code>) usan <code>&lt;li&gt;</code> para cada ítem.</p>
+        <div class="grid-2">
+          <div class="card card--soft">
+            <h3>Lista desordenada</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;ul&gt;&#10;  &lt;li&gt;HTML&lt;/li&gt;&#10;  &lt;li&gt;CSS&lt;/li&gt;&#10;  &lt;li&gt;JavaScript&lt;/li&gt;&#10;&lt;/ul&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+          </div>
+          <div class="card card--soft">
+            <h3>Lista ordenada</h3>
+            <div class="code">
+              <button class="copy" data-code="&lt;ol&gt;&#10;  &lt;li&gt;Planear&lt;/li&gt;&#10;  &lt;li&gt;Desarrollar&lt;/li&gt;&#10;  &lt;li&gt;Publicar&lt;/li&gt;&#10;&lt;/ol&gt;">Copiar</button>
+<pre><code class="language-html">&lt;ol&gt;
+  &lt;li&gt;Planear&lt;/li&gt;
+  &lt;li&gt;Desarrollar&lt;/li&gt;
+  &lt;li&gt;Publicar&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saltos y regla -->
+        <h2>Saltos de línea y regla horizontal</h2>
+        <p><code>&lt;br&gt;</code> crea un salto de línea; <code>&lt;hr&gt;</code> inserta una línea divisoria temática.</p>
+        <div class="code">
+          <button class="copy" data-code="Línea 1&lt;br&gt;Línea 2&lt;hr&gt;Sección nueva">Copiar</button>
+<pre><code class="language-html">Línea 1&lt;br&gt;Línea 2&lt;hr&gt;Sección nueva</code></pre>
+        </div>
+        <div class="render">
+          Línea 1<br>Línea 2
+          <hr>
+          Sección nueva
+        </div>
+
+        <!-- Comentarios -->
+        <h2>Comentarios</h2>
+        <p>Los comentarios no se muestran en la página y ayudan a documentar el código:</p>
+        <div class="code">
+          <button class="copy" data-code="&lt;!-- Esto es un comentario --&gt;&#10;&lt;p&gt;Contenido visible&lt;/p&gt;">Copiar</button>
+<pre><code class="language-html">&lt;!-- Esto es un comentario --&gt;
+&lt;p&gt;Contenido visible&lt;/p&gt;</code></pre>
+        </div>
+
+        <!-- Mini cuestionario -->
+        <form class="quiz" id="q_basic" autocomplete="off">
+          <h3>Mini cuestionario</h3>
+
+          <fieldset class="q">
+            <legend>1) ¿Qué etiqueta define el título más importante?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="1"> &lt;h1&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="0"> &lt;title&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b1" data-correct="0"> &lt;h6&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>2) ¿Qué atributo es obligatorio en &lt;a&gt; para crear un enlace?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="1"> href</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="0"> alt</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b2" data-correct="0"> src</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>3) ¿Qué etiqueta muestra una imagen?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="1"> &lt;img&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="0"> &lt;image&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b3" data-correct="0"> &lt;picture&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>4) ¿Cuál de estas etiquetas NO necesita cierre?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b4" data-correct="1"> &lt;br&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b4" data-correct="0"> &lt;p&gt;</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b4" data-correct="0"> &lt;li&gt;</label>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend>5) ¿Para qué sirve el atributo <code>alt</code> en &lt;img&gt;?</legend>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b5" data-correct="1"> Descripción textual para accesibilidad y fallos de carga</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b5" data-correct="0"> Para alinear la imagen a la derecha</label>
+            <label style="display:block;margin:.2rem 0"><input type="radio" name="b5" data-correct="0"> Para aplicar un filtro de color</label>
+          </fieldset>
+
+          <button type="submit" class="btn">Comprobar</button>
+          <div class="result" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <nav class="pager">
+        <a href="editores.html" aria-label="Anterior">← Editores HTML</a>
+        <a href="elementos.html" aria-label="Siguiente">Elementos HTML →</a>
+      </nav>
+
+      <footer>Todo en HTML puro. Uso educativo.</footer>
+    </main>
+  </div>
+</body>
+</html>
