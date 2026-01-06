@@ -1,0 +1,3283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía Completa de LibreOffice - Manual Completo</title>
+  <link rel="stylesheet" href="libreoffice.css">
+  <link rel="icon" type="image/jpeg" href="IMG/libreofice.jpg">
+  <style>
+    /* Colores específicos para las aplicaciones */
+    .suite-icon.calc {
+      background-color: #2E7D32 !important;
+      color: white;
+    }
+    
+    .suite-icon.draw {
+      background-color: #EF6C00 !important;
+      color: white;
+    }
+    
+    .suite-icon.impress {
+      background-color: #7B1FA2 !important;
+      color: white;
+    }
+    
+    .suite-icon.writer {
+      background-color: #1976D2 !important;
+      color: white;
+    }
+    
+    /* Nuevo diseño para la sección Hero */
+    .hero {
+      background: linear-gradient(135deg, #238b4b 0%, #45a76e 100%);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    
+    .hero-visual {
+      margin: 3rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .app-icon-large {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .app-icon-large:hover {
+      transform: translateY(-5px);
+    }
+    
+    .app-icon-large.writer {
+      background-color: #1976D2;
+    }
+    
+    .app-icon-large.calc {
+      background-color: #2E7D32;
+    }
+    
+    .app-icon-large.impress {
+      background-color: #7B1FA2;
+    }
+    
+    .app-icon-large.draw {
+      background-color: #EF6C00;
+    }
+    
+    .hero-divider {
+      width: 100px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 2rem auto;
+    }
+    
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .app-icon-large {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+      }
+      
+      .hero-features {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+ 
+  <header class="header">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="#inicio" class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+          <path d="M14 2v6h6"/>
+        </svg>
+      </div>
+      <span class="logo-text">LibreOffice</span>
+      <span class="logo-badge">Guía</span>
+    </a>
+
+    <!-- Navegación Principal (Desktop) -->
+    <nav class="nav" id="mainNav">
+      <a href="#inicio" class="nav-item active">Inicio</a>
+      <a href="#introduccion" class="nav-item">Introducción</a>
+      <a href="../Index.php" class="nav-item active">Office</a>
+      <a href="#conociendo" class="nav-item">Conociendo</a>
+      <a href="#componentes" class="nav-item">Componentes</a>
+      <a href="#interfaz" class="nav-item">Interfaz</a>
+      <a href="#uso-basico" class="nav-item">Uso Básico</a>
+      <a href="#funciones-avanzadas" class="nav-item">Avanzadas</a>
+      <a href="#tutoriales" class="nav-item">Tutoriales</a>
+      <a href="#atajos" class="nav-item">Atajos</a>
+    </nav>
+
+    <!-- Botones de Acción -->
+    <div class="header-actions">
+      <!-- Botón Buscar -->
+      <button class="action-btn search-btn" type="button" title="Buscar (/)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <span class="btn-text">Buscar</span>
+      </button>
+
+      <!-- Botón TOC -->
+      <button class="action-btn toc-btn" type="button" title="Contenido (T)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <span class="btn-text">Contenido</span>
+      </button>
+
+      <!-- Aplicaciones Suite -->
+      <div class="suite-dropdown">
+        <button class="action-btn suite-toggle" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span class="btn-text">Apps</span>
+        </button>
+        
+        <div class="suite-menu">
+          <a href="Cal/calc-page.php" class="suite-link">
+            <div class="suite-icon calc">C</div>
+            <div class="suite-info">
+              <span class="suite-name">Calc</span>
+              <span class="suite-desc">Hojas de cálculo</span>
+            </div>
+          </a>
+         <a href="Draw/draw.php" class="suite-link">
+            <div class="suite-icon impress">D</div>
+            <div class="suite-info">
+              <span class="suite-name">Draw</span>
+              <span class="suite-desc">Dibujos y Diagramas</span>
+            </div>
+          </a>
+        
+          
+           <a href="Impress/impress.html" class="suite-link">
+            <div class="suite-icon draw">I</div>
+            <div class="suite-info">
+              <span class="suite-name">IMPRESS</span>
+              <span class="suite-desc">Presentaciones</span>
+            </div>
+          </a>
+           <a href="Writer/writer.php" class="suite-link">
+            <div class="suite-icon writer">W</div>
+            <div class="suite-info">
+              <span class="suite-name">Writer</span>
+              <span class="suite-desc">Procesador de texto</span>
+            </div>
+          </a>
+         
+        </div>
+      </div>
+
+      <!-- Menú Móvil -->
+      <button class="mobile-menu-btn" type="button" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Navegación Móvil -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-content">
+      <a href="#inicio" class="mobile-nav-item active">Inicio</a>
+      <a href="#introduccion" class="mobile-nav-item">Introducción</a>
+      <a href="#conociendo" class="mobile-nav-item">Conociendo</a>
+      <a href="#componentes" class="mobile-nav-item">Componentes</a>
+      <a href="#interfaz" class="mobile-nav-item">Interfaz</a>
+      <a href="#uso-basico" class="mobile-nav-item">Uso Básico</a>
+      <a href="#funciones-avanzadas" class="mobile-nav-item">Avanzadas</a>
+      <a href="#tutoriales" class="mobile-nav-item">Tutoriales</a>
+      <a href="#atajos" class="mobile-nav-item">Atajos</a>
+      <a href="#recomendaciones" class="mobile-nav-item">Recomendaciones</a>
+      <a href="#glosario" class="mobile-nav-item">Glosario</a>
+    </div>
+  </div>
+</header>
+<!-- Overlay del Buscador -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <!-- Header del Buscador -->
+    <div class="search-header">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input 
+          type="search" 
+          id="siteSearch" 
+          class="search-input"
+          placeholder="Buscar en la guía..." 
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="search-shortcut">
+          <kbd>/</kbd>
+        </div>
+      </div>
+      <button class="search-close" aria-label="Cerrar (Esc)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Estadísticas de búsqueda -->
+    <div class="search-stats" id="searchStats"></div>
+
+    <!-- Resultados -->
+    <div class="search-results-wrapper">
+      <div class="search-results" id="searchResults" role="listbox">
+        <!-- Los resultados se insertan dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Footer del buscador -->
+    <div class="search-footer">
+      <div class="search-shortcuts-hint">
+        <kbd>↑</kbd><kbd>↓</kbd> navegar
+        <kbd>↵</kbd> seleccionar
+        <kbd>esc</kbd> cerrar
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- SECCIÓN HERO REDISEÑADA -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Guía Completa de LibreOffice</h1>
+      <p>Domina la suite ofimática gratuita y de código abierto con nuestro manual completo</p>
+      
+    
+      <div class="hero-features">
+        <div class="hero-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Completamente gratuito</span>
+        </div>
+        <div class="hero-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Compatibilidad total con Microsoft Office</span>
+        </div>
+        <div class="hero-feature">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Multiplataforma</span>
+        </div>
+      </div>
+      
+      <a href="#introduccion" class="cta-button">
+        <span>Comenzar Aprendizaje</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INTRODUCCIÓN EXPANDIDA -->
+  <section class="section intro-section" id="introduccion">
+    <div class="container">
+      <div class="section-title">
+        <h2>Introducción a LibreOffice</h2>
+        <p>Descubre la suite ofimática gratuita más poderosa del mercado</p>
+      </div>
+
+      <div class="intro-content">
+        <div class="intro-image-section">
+          <img src="IMG/libreofice.jpg" alt="Características LibreOffice" class="intro-image">
+        </div>
+
+        <div class="intro-text">
+          <h3>¿Qué es LibreOffice?</h3>
+          <p><strong>LibreOffice</strong> es una suite ofimática de código abierto desarrollada por <strong>The Document Foundation</strong>. Surgió como una bifurcación de OpenOffice.org en 2010 y desde entonces ha crecido gracias a una comunidad global de desarrolladores.</p>
+
+          <h4>Objetivo de este manual</h4>
+          <p>"Aprender a utilizar las herramientas básicas y avanzadas de LibreOffice para crear documentos profesionales, hojas de cálculo, presentaciones y más, de manera eficiente y gratuita."</p>
+
+          <h4>¿A quién va dirigido?</h4>
+          <ul class="feature-list">
+            <li><strong>Estudiantes:</strong> Para trabajos, tesis y proyectos académicos</li>
+            <li><strong>Docentes:</strong> Para preparar material educativo y evaluaciones</li>
+            <li><strong>Usuarios domésticos:</strong> Para uso personal y familiar</li>
+            <li><strong>Profesionales:</strong> Para documentos empresariales e informes</li>
+            <li><strong>Organizaciones:</strong> Para reducir costos en licencias de software</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: CONOCIENDO LIBREOFFICE -->
+  <section class="section" id="conociendo">
+    <div class="container">
+      <div class="section-title">
+        <h2>Conociendo LibreOffice</h2>
+        <p>Todo lo que necesitas saber sobre esta suite ofimática</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-info"></i></div>
+          <h3>¿Qué es LibreOffice?</h3>
+          <p>Suite ofimática gratuita y de código abierto que incluye procesador de textos, hojas de cálculo, presentaciones, bases de datos y más. Es la alternativa perfecta a Microsoft Office.</p>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-features"></i></div>
+          <h3>Características Principales</h3>
+          <ul class="feature-list">
+            <li>Completamente gratuita</li>
+            <li>Código abierto y transparente</li>
+            <li>Compatible con formatos Microsoft Office</li>
+            <li>Multiplataforma (Windows, Linux, macOS)</li>
+            <li>Comunidad activa de desarrollo</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-comparison"></i></div>
+          <h3>Diferencias con Microsoft Office</h3>
+          <ul class="feature-list">
+            <li><strong>Precio:</strong> LibreOffice es completamente gratis</li>
+            <li><strong>Licencia:</strong> Software libre vs. software propietario</li>
+            <li><strong>Formatos:</strong> ODF (estándar abierto) vs. formatos propietarios</li>
+            <li><strong>Personalización:</strong> Mayor flexibilidad en LibreOffice</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-compatibility"></i></div>
+          <h3>Versiones y Compatibilidad</h3>
+          <p><strong>Windows:</strong> 7, 8, 10, 11 (32 y 64 bits)<br>
+          <strong>macOS:</strong> 10.10 o superior<br>
+          <strong>Linux:</strong> Todas las distribuciones principales<br>
+          <strong>Formatos soportados:</strong> ODT, DOC, DOCX, XLS, XLSX, PPT, PPTX, PDF y más</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: COMPONENTES -->
+  <section class="section" id="componentes">
+    <div class="container">
+      <div class="section-title">
+        <h2>Componentes de LibreOffice</h2>
+        <p>Conoce todas las herramientas que incluye la suite</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-writer"></i></div>
+          <h3>Writer - Procesador de Texto</h3>
+          <p>Herramienta completa para crear documentos, cartas, informes y libros. Incluye corrector ortográfico, auto-corrección, estilos y plantillas profesionales.</p>
+          <ul class="feature-list">
+            <li>Documentos maestros para proyectos largos</li>
+            <li>Tablas de contenido automáticas</li>
+            <li>Combinación de correspondencia</li>
+            <li>Exportación a PDF con marcadores</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-calc"></i></div>
+          <h3>Calc - Hojas de Cálculo</h3>
+          <p>Potente aplicación para análisis de datos, cálculos financieros y gestión de información. Compatible con fórmulas de Excel y funciones avanzadas.</p>
+          <ul class="feature-list">
+            <li>Más de 500 funciones disponibles</li>
+            <li>Tablas dinámicas para análisis de datos</li>
+            <li>Gráficos profesionales</li>
+            <li>Escenarios y solver para optimización</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-impress"></i></div>
+          <h3>Impress - Presentaciones</h3>
+          <p>Crea presentaciones impactantes con animaciones, transiciones y efectos multimedia. Ideal para clases, conferencias y reuniones empresariales.</p>
+          <ul class="feature-list">
+            <li>Plantillas profesionales</li>
+            <li>Animaciones y transiciones 3D</li>
+            <li>Modo presentador con notas</li>
+            <li>Exportación a PDF y video</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-draw"></i></div>
+          <h3>Draw - Dibujos y Diagramas</h3>
+          <p>Editor de gráficos vectoriales para crear diagramas, organigramas, planos y ilustraciones. Soporte para capas, estilos y conectores inteligentes.</p>
+          <ul class="feature-list">
+            <li>Herramientas de dibujo vectorial</li>
+            <li>Conectores para diagramas de flujo</li>
+            <li>Gestión de capas y estilos</li>
+            <li>Conversión 3D básica</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-base"></i></div>
+          <h3>Base - Bases de Datos</h3>
+          <p>Sistema de gestión de bases de datos con interfaz gráfica. Compatible con múltiples motores como MySQL, PostgreSQL, Access y más.</p>
+          <ul class="feature-list">
+            <li>Interfaz gráfica intuitiva</li>
+            <li>Asistentes para formularios e informes</li>
+            <li>Lenguaje SQL nativo</li>
+            <li>Integración con otros componentes</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-math"></i></div>
+          <h3>Math - Editor de Fórmulas</h3>
+          <p>Editor especializado para crear y editar fórmulas matemáticas y científicas. Integrable con Writer e Impress para documentos académicos.</p>
+          <ul class="feature-list">
+            <li>Editor visual de fórmulas</li>
+            <li>Soporte para notación científica</li>
+            <li>Biblioteca de símbolos matemáticos</li>
+            <li>Formatos de exportación variados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INTERFAZ EXPANDIDA -->
+  <section class="section" id="interfaz">
+    <div class="container">
+      <div class="section-title">
+        <h2>Interfaz de LibreOffice Writer</h2>
+        <p>Familiarízate con el entorno de trabajo principal</p>
+      </div>
+
+     
+        <div class="interface-elements">
+          <div class="interface-card">
+            <i class="icon-menubar"></i>
+            <h4>Barra de Menús</h4>
+            <p>Acceso a todas las funciones organizadas en menús desplegables: Archivo, Editar, Ver, Insertar, Formato, etc.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-toolbar"></i>
+            <h4>Barras de Herramientas</h4>
+            <p>Accesos directos a funciones comunes. Puedes personalizarlas añadiendo o quitando botones según tus necesidades.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-ruler"></i>
+            <h4>Reglas</h4>
+            <p>Muestran las dimensiones del documento y permiten ajustar márgenes, sangrías y tabuladores visualmente.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-workspace"></i>
+            <h4>Área de Trabajo</h4>
+            <p>Zona principal donde escribes y editas tu documento. Muestra el contenido tal como se imprimirá.</p>
+          </div>
+
+          <div class="interface-card">
+            <i class="icon-status"></i>
+            <h4>Barra de Estado</h4>
+            <p>Muestra información útil como número de página, idioma, modo de visualización y porcentaje de zoom.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid" >
+        <div class="card fade-in">
+          <h3>Crear, Guardar y Abrir Documentos</h3>
+          <ul class="feature-list">
+            <li><strong>Nuevo documento:</strong> Archivo → Nuevo o Ctrl+N</li>
+            <li><strong>Abrir documento:</strong> Archivo → Abrir o Ctrl+O</li>
+            <li><strong>Guardar:</strong> Archivo → Guardar o Ctrl+S</li>
+            <li><strong>Guardar como:</strong> Archivo → Guardar como o Ctrl+Mayús+S</li>
+            <li><strong>Cerrar documento:</strong> Archivo → Cerrar o Ctrl+W</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Personalizar la Interfaz</h3>
+          <ul class="feature-list">
+            <li><strong>Ver → Barras de herramientas:</strong> Activar/desactivar barras</li>
+            <li><strong>Herramientas → Personalizar:</strong> Modificar botones y menús</li>
+            <li><strong>Herramientas → Opciones:</strong> Configurar preferencias globales</li>
+            <li><strong>Ver → Diseño de pantalla:</strong> Cambiar aspecto visual</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: USO BÁSICO -->
+  <section class="section" id="uso-basico">
+    <div class="container">
+      <div class="section-title">
+        <h2>Uso Básico de LibreOffice</h2>
+        <p>Aprende las funciones esenciales de cada componente</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Writer - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Escribir y editar texto:</strong> Click y escribe, selecciona texto arrastrando</li>
+            <li><strong>Fuente y tamaño:</strong> Barra de formato o Formato → Carácter</li>
+            <li><strong>Alineación de párrafos:</strong> Izquierda, centrado, derecha, justificado</li>
+            <li><strong>Sangrías:</strong> Usa las reglas o Formato → Párrafo</li>
+            <li><strong>Insertar imágenes:</strong> Insertar → Imagen → Desde archivo</li>
+            <li><strong>Insertar tablas:</strong> Insertar → Tabla o Ctrl+F12</li>
+            <li><strong>Insertar símbolos:</strong> Insertar → Símbolos especiales</li>
+            <li><strong>Exportar a PDF:</strong> Archivo → Exportar a PDF</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Calc - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Ingresar datos:</strong> Click en celda y escribir</li>
+            <li><strong>Fórmulas básicas:</strong> =SUMA(A1:A10), =PROMEDIO(B1:B5)</li>
+            <li><strong>Insertar gráficos:</strong> Insertar → Gráfico</li>
+            <li><strong>Formato de celdas:</strong> Formato → Celdas o Ctrl+1</li>
+            <li><strong>Auto-relleno:</strong> Arrastrar esquina inferior derecha de celda</li>
+            <li><strong>Congelar paneles:</strong> Ver → Inmovilizar celdas</li>
+            <li><strong>Filtros:</strong> Datos → Filtro → Filtro automático</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Impress - Uso Básico</h3>
+          <ul class="feature-list">
+            <li><strong>Nueva presentación:</strong> Archivo → Nuevo → Presentación</li>
+            <li><strong>Insertar diapositivas:</strong> Insertar → Diapositiva o Ctrl+M</li>
+            <li><strong>Diseños:</strong> Formato → Diseño de diapositiva</li>
+            <li><strong>Animaciones:</strong> Diapositiva → Animación personalizada</li>
+            <li><strong>Transiciones:</strong> Diapositiva → Transición de diapositiva</li>
+            <li><strong>Modo presentador:</strong> Presentación → Presentación de diapositivas</li>
+            <li><strong>Notas del orador:</strong> Área de notas en la parte inferior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: FUNCIONES AVANZADAS -->
+  <section class="section" id="funciones-avanzadas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Funciones Avanzadas</h2>
+        <p>Técnicas y herramientas para usuarios experimentados</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>Estilos y Plantillas</h3>
+          <p><strong>Estilos de párrafo:</strong> Aplicar formatos consistentes (F11)</p>
+          <p><strong>Estilos de carácter:</strong> Formato para texto específico</p>
+          <p><strong>Plantillas de documento:</strong> Archivo → Plantillas → Guardar</p>
+          <p><strong>Organizador de plantillas:</strong> Gestión centralizada de plantillas</p>
+          <ul class="feature-list">
+            <li>Crea estilos para títulos, subtítulos y cuerpo</li>
+            <li>Modifica estilos existentes para personalizar</li>
+            <li>Usa plantillas para documentos recurrentes</li>
+            <li>Comparte plantillas con otros usuarios</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Tablas de Contenido e Índices</h3>
+          <p><strong>Tabla de contenido automática:</strong> Insertar → Índices y tablas → Índice y tablas</p>
+          <p><strong>Índice alfabético:</strong> Insertar → Índices y tablas → Índice alfabético</p>
+          <p><strong>Índice de ilustraciones:</strong> Insertar → Índices y tablas → Índice de ilustraciones</p>
+          <p><strong>Actualizar índices:</strong> Click derecho → Actualizar índice</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Macros y Automatización</h3>
+          <p><strong>Grabar macros:</strong> Herramientas → Macros → Grabar macro</p>
+          <p><strong>Ejecutar macros:</strong> Herramientas → Macros → Ejecutar macro</p>
+          <p><strong>Editor de macros:</strong> Herramientas → Macros → Organizar macros</p>
+          <p><strong>Lenguaje:</strong> LibreOffice Basic (similar a VBA)</p>
+          <ul class="feature-list">
+            <li>Automatiza tareas repetitivas</li>
+            <li>Personaliza funciones específicas</li>
+            <li>Crea interfaces personalizadas</li>
+            <li>Importa macros de otros usuarios</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Configuración de Impresión</h3>
+          <p><strong>Vista preliminar:</strong> Archivo → Vista preliminar</p>
+          <p><strong>Configurar página:</strong> Formato → Página</p>
+          <p><strong>Opciones de impresión:</strong> Archivo → Imprimir o Ctrl+P</p>
+          <p><strong>Imprimir rangos específicos:</strong> Selecciona antes de imprimir</p>
+          <ul class="feature-list">
+            <li>Ajusta márgenes y orientación</li>
+            <li>Configura encabezados y pies de página</li>
+            <li>Selecciona impresora y propiedades</li>
+            <li>Imprime a archivo PDF</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- SECCIÓN TUTORIALES MEJORADA CON MODAL FUNCIONAL -->
+<section class="section tutorials-section" id="tutoriales">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tutoriales Paso a Paso</h2>
+      <p>Domina LibreOffice con nuestra colección de guías estructuradas por nivel</p>
+    </div>
+
+    <!-- Filtros por categoría y nivel -->
+    <div class="tutorials-filters">
+      <div class="filter-group">
+        <span class="filter-label">Filtrar por aplicación:</span>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="writer">Writer</button>
+          <button class="filter-btn" data-filter="calc">Calc</button>
+          <button class="filter-btn" data-filter="impress">Impress</button>
+          <button class="filter-btn" data-filter="draw">Draw</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Filtrar por nivel:</span>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-level="all">Todos</button>
+          <button class="filter-btn" data-level="beginner">Principiante</button>
+          <button class="filter-btn" data-level="intermediate">Intermedio</button>
+          <button class="filter-btn" data-level="advanced">Avanzado</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tutorials-grid">
+      <!-- Tutorial 1 - Writer -->
+      <div class="tutorial-card fade-in" data-app="writer" data-level="beginner">
+        <div class="tutorial-header">
+          <div class="tutorial-app-badge app-writer">
+            <span>W</span>
+          </div>
+          <div class="tutorial-meta">
+            <div class="tutorial-duration">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>20-25 min</span>
+            </div>
+            <div class="difficulty-badge difficulty-beginner">
+              <span class="difficulty-dot"></span>
+              Principiante
+            </div>
+          </div>
+        </div>
+        
+        <div class="tutorial-image">
+          <div class="tutorial-image-placeholder writer-bg">
+            <div class="tutorial-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L3 21.5l-2 2 2-2L18.5 2.5z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tutorial-overlay">
+            <span class="btn-start" data-tutorial="writer-basico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Comenzar
+            </span>
+          </div>
+        </div>
+        
+        <div class="tutorial-content">
+          <h3>Formato y Estilos en Writer</h3>
+          <p>Aprende a utilizar estilos, plantillas y crear documentos profesionales desde cero.</p>
+          
+          <div class="tutorial-progress">
+            <div class="progress-info">
+              <span>Completado: <strong class="progress-percent">0%</strong></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="tutorial-stats">
+            <div class="stat">
+              <span class="stat-number">7</span>
+              <span class="stat-label">Lecciones</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Ejercicios</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1</span>
+              <span class="stat-label">Proyecto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutorial 2 - Calc -->
+      <div class="tutorial-card fade-in" data-app="calc" data-level="intermediate">
+        <div class="tutorial-header">
+          <div class="tutorial-app-badge app-calc">
+            <span>C</span>
+          </div>
+          <div class="tutorial-meta">
+            <div class="tutorial-duration">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>35-40 min</span>
+            </div>
+            <div class="difficulty-badge difficulty-intermediate">
+              <span class="difficulty-dot"></span>
+              Intermedio
+            </div>
+          </div>
+        </div>
+        
+        <div class="tutorial-image">
+          <div class="tutorial-image-placeholder calc-bg">
+            <div class="tutorial-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tutorial-overlay">
+            <span class="btn-start" data-tutorial="calc-funciones">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Comenzar
+            </span>
+          </div>
+        </div>
+        
+        <div class="tutorial-content">
+          <h3>Funciones y Gráficos en Calc</h3>
+          <p>Domina fórmulas, funciones avanzadas y creación de gráficos profesionales.</p>
+          
+          <div class="tutorial-progress">
+            <div class="progress-info">
+              <span>Completado: <strong class="progress-percent">0%</strong></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="tutorial-stats">
+            <div class="stat">
+              <span class="stat-number">9</span>
+              <span class="stat-label">Lecciones</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">5</span>
+              <span class="stat-label">Ejercicios</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Proyectos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutorial 3 - Impress -->
+      <div class="tutorial-card fade-in" data-app="impress" data-level="beginner">
+        <div class="tutorial-header">
+          <div class="tutorial-app-badge app-impress">
+            <span>I</span>
+          </div>
+          <div class="tutorial-meta">
+            <div class="tutorial-duration">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>25-30 min</span>
+            </div>
+            <div class="difficulty-badge difficulty-beginner">
+              <span class="difficulty-dot"></span>
+              Principiante
+            </div>
+          </div>
+        </div>
+        
+        <div class="tutorial-image">
+          <div class="tutorial-image-placeholder impress-bg">
+            <div class="tutorial-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tutorial-overlay">
+            <span class="btn-start" data-tutorial="impress-presentaciones">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Comenzar
+            </span>
+          </div>
+        </div>
+        
+        <div class="tutorial-content">
+          <h3>Presentaciones en Impress</h3>
+          <p>Crea presentaciones impactantes con animaciones, transiciones y diseños profesionales.</p>
+          
+          <div class="tutorial-progress">
+            <div class="progress-info">
+              <span>Completado: <strong class="progress-percent">0%</strong></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="tutorial-stats">
+            <div class="stat">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Lecciones</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Ejercicios</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1</span>
+              <span class="stat-label">Proyecto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutorial 4 - Automatización -->
+      <div class="tutorial-card fade-in" data-app="writer" data-level="advanced">
+        <div class="tutorial-header">
+          <div class="tutorial-app-badge app-writer">
+            <span>W</span>
+          </div>
+          <div class="tutorial-meta">
+            <div class="tutorial-duration">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>40-45 min</span>
+            </div>
+            <div class="difficulty-badge difficulty-advanced">
+              <span class="difficulty-dot"></span>
+              Avanzado
+            </div>
+          </div>
+        </div>
+        
+        <div class="tutorial-image">
+          <div class="tutorial-image-placeholder advanced-bg">
+            <div class="tutorial-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tutorial-overlay">
+            <span class="btn-start" data-tutorial="macros-automatizacion">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Comenzar
+            </span>
+          </div>
+        </div>
+        
+        <div class="tutorial-content">
+          <h3>Macros y Automatización</h3>
+          <p>Automatiza tareas repetitivas con LibreOffice Basic y mejora tu productividad.</p>
+          
+          <div class="tutorial-progress">
+            <div class="progress-info">
+              <span>Completado: <strong class="progress-percent">0%</strong></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="tutorial-stats">
+            <div class="stat">
+              <span class="stat-number">8</span>
+              <span class="stat-label">Lecciones</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Ejercicios</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Proyectos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para Tutoriales -->
+<div id="tutorialModal" class="tutorial-modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2 id="modalTutorialTitle">Formato y Estilos en Writer</h2>
+        <div class="modal-subtitle">
+          <span class="modal-app-badge app-writer">W</span>
+          <span id="modalTutorialDuration">20-25 min</span>
+          <span id="modalTutorialLevel" class="difficulty-badge difficulty-beginner">
+            <span class="difficulty-dot"></span>
+            Principiante
+          </span>
+        </div>
+      </div>
+      <button class="modal-close" id="modalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="tutorial-sidebar">
+        <div class="sidebar-section">
+          <h3>Lecciones <span id="lessonsCount">(0/7)</span></h3>
+          <ul id="lessonsList" class="sidebar-list">
+            <!-- Las lecciones se cargarán dinámicamente -->
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>Ejercicios <span id="exercisesCount">(0/3)</span></h3>
+          <ul id="exercisesList" class="sidebar-list">
+            <!-- Los ejercicios se cargarán dinámicamente -->
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>Proyectos <span id="projectsCount">(0/1)</span></h3>
+          <ul id="projectsList" class="sidebar-list">
+            <!-- Los proyectos se cargarán dinámicamente -->
+          </ul>
+        </div>
+      </div>
+      
+      <div class="tutorial-main">
+        <div class="content-header">
+          <h3 id="contentTitle">Selecciona una lección para comenzar</h3>
+          <div class="content-actions">
+            <button id="markComplete" class="btn-action" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              Marcar como completado
+            </button>
+          </div>
+        </div>
+        
+        <div class="content-body" id="contentBody">
+          <div class="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <h3>Selecciona una lección del menú lateral</h3>
+            <p>Elige una lección, ejercicio o proyecto para comenzar a aprender</p>
+          </div>
+        </div>
+        
+        <div class="content-footer">
+          <button id="prevContent" class="btn-nav" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+            Anterior
+          </button>
+          <div class="progress-info">
+            <span>Progreso general: <strong id="overallProgress">0%</strong></span>
+            <div class="progress-bar">
+              <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+            </div>
+          </div>
+          <button id="nextContent" class="btn-nav">
+            Siguiente
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Estilos para la sección de tutoriales mejorada */
+
+
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: #4a5568;
+  white-space: nowrap;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.filter-btn:hover {
+  border-color: #4299e1;
+  color: #4299e1;
+}
+
+.filter-btn.active {
+  background: #4299e1;
+  border-color: #4299e1;
+  color: white;
+}
+
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.tutorial-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 0;
+}
+
+.tutorial-app-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.app-writer { background-color: #1976D2; }
+.app-calc { background-color: #2E7D32; }
+.app-impress { background-color: #7B1FA2; }
+.app-draw { background-color: #EF6C00; }
+.app-base { background-color: #0288D1; }
+
+.tutorial-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tutorial-duration {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.difficulty-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.difficulty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.difficulty-beginner {
+  background: #f0fff4;
+  color: #38a169;
+  border: 1px solid #c6f6d5;
+}
+
+.difficulty-beginner .difficulty-dot {
+  background: #38a169;
+}
+
+.difficulty-intermediate {
+  background: #fffaf0;
+  color: #dd6b20;
+  border: 1px solid #fed7aa;
+}
+
+.difficulty-intermediate .difficulty-dot {
+  background: #dd6b20;
+}
+
+.difficulty-advanced {
+  background: #fff5f5;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+}
+
+.difficulty-advanced .difficulty-dot {
+  background: #e53e3e;
+}
+
+.tutorial-image {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.tutorial-image-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tutorial-image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.writer-bg { background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%); }
+.calc-bg { background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%); }
+.impress-bg { background: linear-gradient(135deg, #7B1FA2 0%, #6A1B9A 100%); }
+.draw-bg { background: linear-gradient(135deg, #EF6C00 0%, #E65100 100%); }
+.base-bg { background: linear-gradient(135deg, #0288D1 0%, #0277BD 100%); }
+.advanced-bg { background: linear-gradient(135deg, #7E57C2 0%, #5E35B1 100%); }
+
+.tutorial-icon {
+  position: relative;
+  z-index: 2;
+  color: white;
+  opacity: 0.9;
+}
+
+.tutorial-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.tutorial-card:hover .tutorial-overlay {
+  opacity: 1;
+}
+
+.btn-start {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #4299e1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+  background: #3182ce;
+  transform: translateY(-2px);
+}
+
+.tutorial-content {
+  padding: 20px;
+}
+
+.tutorial-content h3 {
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.tutorial-content p {
+  color: #718096;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.tutorial-progress {
+  margin-bottom: 20px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4299e1;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.tutorial-stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #718096;
+  margin-top: 2px;
+}
+
+/* Estilos para el Modal */
+.tutorial-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.tutorial-modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.3s ease;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.modal-title h2 {
+  margin: 0 0 8px 0;
+  color: #2d3748;
+  font-size: 1.5rem;
+}
+
+.modal-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-app-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #718096;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.modal-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.tutorial-sidebar {
+  width: 300px;
+  border-right: 1px solid #e2e8f0;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f8fafc;
+}
+
+.sidebar-section {
+  margin-bottom: 24px;
+}
+
+.sidebar-section h3 {
+  margin: 0 0 12px 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.sidebar-item:hover {
+  background: #edf2f7;
+}
+
+.sidebar-item.active {
+  background: white;
+  border-color: #4299e1;
+  box-shadow: 0 2px 4px rgba(66, 153, 225, 0.2);
+}
+
+.sidebar-item.completed {
+  background: #f0fff4;
+  border-color: #48bb78;
+}
+
+.sidebar-item.completed .item-checkbox {
+  background: #48bb78;
+  border-color: #48bb78;
+  color: white;
+}
+
+.item-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.item-checkbox svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-item.completed .item-checkbox svg {
+  opacity: 1;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-title {
+  display: block;
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 2px;
+}
+
+.item-duration {
+  display: block;
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.tutorial-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: white;
+}
+
+.content-header h3 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-action:hover:not(:disabled) {
+  background: #3182ce;
+}
+
+.btn-action:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.content-body {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background: #f8fafc;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #718096;
+}
+
+.empty-state svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px 0;
+  color: #4a5568;
+}
+
+.content-item {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content-item h4 {
+  margin: 0 0 16px 0;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.content-item p {
+  margin: 0 0 16px 0;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.content-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+
+.btn-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: #3182ce;
+}
+
+.btn-nav:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Estilos para ejercicios interactivos */
+.exercise-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.exercise-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.exercise-header h4 {
+  margin: 0 0 8px 0;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.exercise-instructions {
+  color: #4a5568;
+  margin-bottom: 16px;
+}
+
+.question-container {
+  margin-bottom: 32px;
+}
+
+.question-title {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-item:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.option-item.selected {
+  background: #ebf8ff;
+  border-color: #4299e1;
+}
+
+.option-item.correct {
+  background: #f0fff4;
+  border-color: #48bb78;
+}
+
+.option-item.incorrect {
+  background: #fff5f5;
+  border-color: #f56565;
+}
+
+.option-radio {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+}
+
+.exercise-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-submit {
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #3182ce;
+}
+
+.btn-submit:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.results-container {
+  margin-top: 32px;
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.results-score {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.score-excellent { color: #38a169; }
+.score-good { color: #4299e1; }
+.score-fair { color: #ed8936; }
+.score-poor { color: #e53e3e; }
+
+.results-message {
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+.results-details {
+  margin-bottom: 16px;
+}
+
+.results-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-retry {
+  background: #ed8936;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-retry:hover {
+  background: #dd6b20;
+}
+
+.btn-continue {
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-continue:hover {
+  background: #3182ce;
+}
+
+/* Estilos para proyectos */
+.project-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.project-header h4 {
+  margin: 0 0 8px 0;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.project-description {
+  color: #4a5568;
+  margin-bottom: 16px;
+}
+
+.project-requirements {
+  margin-bottom: 24px;
+}
+
+.project-requirements h5 {
+  margin: 0 0 12px 0;
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-complete-project {
+  background: #48bb78;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-complete-project:hover {
+  background: #38a169;
+}
+
+.btn-complete-project.completed {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .tutorial-card,
+  .modal-content,
+  .tutorial-sidebar,
+  .content-header,
+  .content-footer,
+  .content-item,
+  .exercise-container,
+  .project-container {
+    background: #1a202c;
+    color: #e2e8f0;
+  }
+  
+  .tutorial-content h3,
+  .modal-title h2,
+  .content-header h3,
+  .content-item h4,
+  .exercise-header h4,
+  .project-header h4,
+  .question-title {
+    color: #f7fafc;
+  }
+  
+  .tutorial-content p,
+  .item-duration,
+  .empty-state,
+  .exercise-instructions,
+  .project-description {
+    color: #a0aec0;
+  }
+  
+  .filter-btn,
+  .sidebar-item,
+  .option-item {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .filter-btn:hover,
+  .sidebar-item:hover,
+  .option-item:hover {
+    background: #4a5568;
+  }
+  
+  .sidebar-item.active {
+    background: #2d3748;
+    border-color: #4299e1;
+  }
+  
+  .sidebar-item.completed {
+    background: #22543d;
+    border-color: #48bb78;
+  }
+  
+  .progress-bar {
+    background: #4a5568;
+  }
+  
+  .tutorial-stats,
+  .exercise-actions,
+  .project-actions {
+    border-color: #4a5568;
+  }
+  
+  .results-container {
+    background: #2d3748;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tutorials-filters {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .tutorials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tutorial-modal {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    height: 95vh;
+  }
+  
+  .modal-body {
+    flex-direction: column;
+  }
+  
+  .tutorial-sidebar {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .content-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .content-footer .progress-info {
+    order: -1;
+    width: 100%;
+  }
+  
+  .exercise-actions,
+  .project-actions {
+    flex-direction: column;
+  }
+}
+</style>
+
+<script>
+// Datos de los tutoriales con ejercicios interactivos
+const tutorialData = {
+  'writer-basico': {
+    title: 'Formato y Estilos en Writer',
+    app: 'writer',
+    duration: '20-25 min',
+    level: 'beginner',
+    progress: 0,
+    content: {
+      lessons: [
+        {
+          id: 'l1',
+          title: 'Introducción a Writer',
+          duration: '3 min',
+          completed: false,
+          content: `
+            <h4>Bienvenido a Writer</h4>
+            <p>Writer es el procesador de textos de LibreOffice, una potente herramienta para crear documentos profesionales.</p>
+            <p>En esta lección aprenderás:</p>
+            <ul>
+              <li>La interfaz de Writer</li>
+              <li>Cómo crear y guardar documentos</li>
+              <li>Formato básico de texto</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l2',
+          title: 'Formato de texto básico',
+          duration: '5 min',
+          completed: false,
+          content: `
+            <h4>Formato de Texto</h4>
+            <p>Aprende a aplicar formato básico a tu texto:</p>
+            <ul>
+              <li><strong>Negrita:</strong> Ctrl+B</li>
+              <li><strong>Cursiva:</strong> Ctrl+I</li>
+              <li><strong>Subrayado:</strong> Ctrl+U</li>
+              <li><strong>Tamaño de fuente:</strong> Menú Formato → Carácter</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l3',
+          title: 'Estilos de párrafo',
+          duration: '4 min',
+          completed: false,
+          content: `
+            <h4>Estilos de Párrafo</h4>
+            <p>Los estilos te permiten mantener consistencia en tu documento:</p>
+            <ul>
+              <li>Presiona F11 para abrir el panel de estilos</li>
+              <li>Aplica estilos predefinidos a tus párrafos</li>
+              <li>Crea tus propios estilos personalizados</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l4',
+          title: 'Trabajar con tablas',
+          duration: '6 min',
+          completed: false,
+          content: `
+            <h4>Insertar y Formatear Tablas</h4>
+            <p>Las tablas organizan información de manera clara:</p>
+            <ul>
+              <li>Insertar → Tabla o Ctrl+F12</li>
+              <li>Personaliza bordes y fondos</li>
+              <li>Ajusta el tamaño de celdas</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l5',
+          title: 'Insertar imágenes',
+          duration: '3 min',
+          completed: false,
+          content: `
+            <h4>Imágenes en tus Documentos</h4>
+            <p>Mejora tus documentos con elementos visuales:</p>
+            <ul>
+              <li>Insertar → Imagen → Desde archivo</li>
+              <li>Ajusta el tamaño y posición</li>
+              <li>Configura el ajuste de texto</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l6',
+          title: 'Encabezados y pies de página',
+          duration: '4 min',
+          completed: false,
+          content: `
+            <h4>Encabezados y Pies de Página</h4>
+            <p>Agrega información profesional a tus documentos:</p>
+            <ul>
+              <li>Insertar → Encabezado/Pie de página</li>
+              <li>Incluye números de página automáticos</li>
+              <li>Personaliza para páginas pares e impares</li>
+            </ul>
+          `
+        },
+        {
+          id: 'l7',
+          title: 'Exportar a PDF',
+          duration: '2 min',
+          completed: false,
+          content: `
+            <h4>Exportar a PDF</h4>
+            <p>Comparte tus documentos en formato universal:</p>
+            <ul>
+              <li>Archivo → Exportar a PDF</li>
+              <li>Configura la calidad y seguridad</li>
+              <li>Incluye marcadores e hipervínculos</li>
+            </ul>
+          `
+        }
+      ],
+      exercises: [
+        {
+          id: 'e1',
+          title: 'Evaluación de conocimientos básicos',
+          duration: '8 min',
+          completed: false,
+          questions: [
+            {
+              id: 'q1',
+              question: '¿Cuál es el atajo de teclado para aplicar formato de negrita en Writer?',
+              options: [
+                'Ctrl + N',
+                'Ctrl + B',
+                'Ctrl + I',
+                'Ctrl + U'
+              ],
+              correct: 1
+            },
+            {
+              id: 'q2',
+              question: '¿Cómo se accede al panel de estilos en Writer?',
+              options: [
+                'Presionando F1',
+                'Presionando F11',
+                'Desde el menú Insertar',
+                'Desde el menú Herramientas'
+              ],
+              correct: 1
+            },
+            {
+              id: 'q3',
+              question: '¿Qué función permite crear una tabla de contenidos automática?',
+              options: [
+                'Insertar → Tabla',
+                'Insertar → Índices y tablas → Índice y tablas',
+                'Formato → Párrafo',
+                'Herramientas → Corrector ortográfico'
+              ],
+              correct: 1
+            },
+            {
+              id: 'q4',
+              question: '¿Cuál es la combinación de teclas para insertar una tabla?',
+              options: [
+                'Ctrl + T',
+                'Ctrl + F12',
+                'Ctrl + Shift + T',
+                'Alt + T'
+              ],
+              correct: 1
+            }
+          ],
+          passingScore: 3 // Necesita al menos 3 de 4 correctas
+        },
+        {
+          id: 'e2',
+          title: 'Práctica de formato y estilos',
+          duration: '10 min',
+          completed: false,
+          questions: [
+            {
+              id: 'q1',
+              question: '¿Qué elemento NO se puede incluir en un encabezado o pie de página?',
+              options: [
+                'Número de página',
+                'Fecha y hora',
+                'Imágenes',
+                'Hipervínculos a sitios web'
+              ],
+              correct: 3
+            },
+            {
+              id: 'q2',
+              question: '¿Cuál es la ventaja principal de usar estilos en lugar de formato manual?',
+              options: [
+                'Los estilos son más rápidos de aplicar',
+                'Los estilos permiten mantener consistencia en el documento',
+                'Los estilos ofrecen más opciones de formato',
+                'Los estilos son necesarios para exportar a PDF'
+              ],
+              correct: 1
+            },
+            {
+              id: 'q3',
+              question: 'Al exportar a PDF, ¿qué opción permite incluir marcadores para navegación?',
+              options: [
+                'Rango de exportación',
+                'Calidad de imagen',
+                'Marcadores',
+                'Seguridad con contraseña'
+              ],
+              correct: 2
+            },
+            {
+              id: 'q4',
+              question: '¿Qué función permite ver cómo se verá el documento impreso antes de imprimirlo?',
+              options: [
+                'Archivo → Propiedades',
+                'Archivo → Vista preliminar',
+                'Ver → Diseño de página',
+                'Herramientas → Opciones'
+              ],
+              correct: 1
+            }
+          ],
+          passingScore: 3
+        }
+      ],
+      projects: [
+        {
+          id: 'p1',
+          title: 'Crear un informe profesional',
+          duration: '15 min',
+          completed: false,
+          content: `
+            <h4>Proyecto: Informe Profesional</h4>
+            <p><strong>Objetivo:</strong> Crear un informe profesional utilizando todas las técnicas aprendidas.</p>
+            
+            <div class="project-requirements">
+              <h5>Requisitos:</h5>
+              <ul>
+                <li>Portada con título y autor</li>
+                <li>Tabla de contenidos automática</li>
+                <li>Encabezados y pies de página</li>
+                <li>Al menos 3 estilos personalizados</li>
+                <li>Incluir 2 tablas</li>
+                <li>Insertar al menos 1 imagen</li>
+                <li>Exportar a PDF</li>
+              </ul>
+            </div>
+            
+            <p><strong>Entrega:</strong> Guarda el documento en formato ODT y exporta a PDF.</p>
+            
+            <p>Una vez que hayas completado el proyecto, marca esta tarea como completada.</p>
+          `
+        }
+      ]
+    }
+  },
+  'calc-funciones': {
+    title: 'Funciones y Gráficos en Calc',
+    app: 'calc',
+    duration: '35-40 min',
+    level: 'intermediate',
+    progress: 0,
+    content: {
+      lessons: [
+        {
+          id: 'l1',
+          title: 'Introducción a Calc',
+          duration: '4 min',
+          completed: false,
+          content: `<h4>Bienvenido a Calc</h4><p>Calc es la hoja de cálculo de LibreOffice...</p>`
+        }
+      ],
+      exercises: [
+        {
+          id: 'e1',
+          title: 'Evaluación de funciones básicas',
+          duration: '10 min',
+          completed: false,
+          questions: [
+            {
+              id: 'q1',
+              question: '¿Cuál es la función para sumar un rango de celdas en Calc?',
+              options: [
+                '=SUMA()',
+                '=TOTAL()',
+                '=AGREGAR()',
+                '=SUMAR()'
+              ],
+              correct: 0
+            }
+          ],
+          passingScore: 1
+        }
+      ],
+      projects: [
+        {
+          id: 'p1',
+          title: 'Crear un presupuesto mensual',
+          duration: '20 min',
+          completed: false,
+          content: `<h4>Proyecto: Presupuesto Mensual</h4><p>Crea un presupuesto mensual con fórmulas y gráficos...</p>`
+        }
+      ]
+    }
+  }
+};
+
+// Estado global
+let currentTutorial = null;
+let currentContent = null;
+let currentType = null;
+let currentIndex = 0;
+let currentExerciseAnswers = {};
+
+// Elementos del DOM
+const modal = document.getElementById('tutorialModal');
+const modalTitle = document.getElementById('modalTutorialTitle');
+const modalDuration = document.getElementById('modalTutorialDuration');
+const modalLevel = document.getElementById('modalTutorialLevel');
+const modalClose = document.getElementById('modalClose');
+const lessonsList = document.getElementById('lessonsList');
+const exercisesList = document.getElementById('exercisesList');
+const projectsList = document.getElementById('projectsList');
+const contentTitle = document.getElementById('contentTitle');
+const contentBody = document.getElementById('contentBody');
+const markCompleteBtn = document.getElementById('markComplete');
+const prevContentBtn = document.getElementById('prevContent');
+const nextContentBtn = document.getElementById('nextContent');
+const overallProgress = document.getElementById('overallProgress');
+const overallProgressBar = document.getElementById('overallProgressBar');
+const lessonsCount = document.getElementById('lessonsCount');
+const exercisesCount = document.getElementById('exercisesCount');
+const projectsCount = document.getElementById('projectsCount');
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+  // Filtros de tutoriales
+  setupFilters();
+  
+  // Botones de inicio de tutorial
+  document.querySelectorAll('.btn-start').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const tutorialId = this.getAttribute('data-tutorial');
+      openTutorialModal(tutorialId);
+    });
+  });
+  
+  // Cerrar modal
+  modalClose.addEventListener('click', closeModal);
+  
+  // Navegación
+  prevContentBtn.addEventListener('click', showPreviousContent);
+  nextContentBtn.addEventListener('click', showNextContent);
+  
+  // Marcar como completado
+  markCompleteBtn.addEventListener('click', toggleComplete);
+});
+
+// Configurar filtros
+function setupFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const tutorialCards = document.querySelectorAll('.tutorial-card');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filterType = this.getAttribute('data-filter') || this.getAttribute('data-level');
+      const isAppFilter = this.hasAttribute('data-filter');
+      
+      // Actualizar botones activos
+      const parent = this.parentElement;
+      parent.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filtrar tutoriales
+      tutorialCards.forEach(card => {
+        const app = card.getAttribute('data-app');
+        const level = card.getAttribute('data-level');
+        
+        const appFilter = document.querySelector('.filter-btn[data-filter].active').getAttribute('data-filter');
+        const levelFilter = document.querySelector('.filter-btn[data-level].active').getAttribute('data-level');
+        
+        const showApp = appFilter === 'all' || appFilter === app;
+        const showLevel = levelFilter === 'all' || levelFilter === level;
+        
+        if (showApp && showLevel) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+// Abrir modal del tutorial
+function openTutorialModal(tutorialId) {
+  currentTutorial = tutorialData[tutorialId];
+  if (!currentTutorial) return;
+  
+  // Actualizar información del modal
+  modalTitle.textContent = currentTutorial.title;
+  modalDuration.textContent = currentTutorial.duration;
+  updateLevelBadge(currentTutorial.level);
+  
+  // Cargar contenido
+  loadTutorialContent();
+  
+  // Mostrar modal
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// Cerrar modal
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  // Guardar progreso si es necesario
+  saveProgress();
+}
+
+// Actualizar badge de nivel
+function updateLevelBadge(level) {
+  modalLevel.className = 'difficulty-badge';
+  modalLevel.classList.add(`difficulty-${level}`);
+  
+  const dot = document.createElement('span');
+  dot.className = 'difficulty-dot';
+  modalLevel.innerHTML = '';
+  modalLevel.appendChild(dot);
+  modalLevel.appendChild(document.createTextNode(
+    level === 'beginner' ? 'Principiante' : 
+    level === 'intermediate' ? 'Intermedio' : 'Avanzado'
+  ));
+}
+
+// Cargar contenido del tutorial
+function loadTutorialContent() {
+  if (!currentTutorial) return;
+  
+  const content = currentTutorial.content;
+  
+  // Actualizar contadores
+  const totalLessons = content.lessons.length;
+  const completedLessons = content.lessons.filter(l => l.completed).length;
+  lessonsCount.textContent = `(${completedLessons}/${totalLessons})`;
+  
+  const totalExercises = content.exercises.length;
+  const completedExercises = content.exercises.filter(e => e.completed).length;
+  exercisesCount.textContent = `(${completedExercises}/${totalExercises})`;
+  
+  const totalProjects = content.projects.length;
+  const completedProjects = content.projects.filter(p => p.completed).length;
+  projectsCount.textContent = `(${completedProjects}/${totalProjects})`;
+  
+  // Cargar lecciones
+  loadContentList(lessonsList, content.lessons, 'lesson');
+  
+  // Cargar ejercicios
+  loadContentList(exercisesList, content.exercises, 'exercise');
+  
+  // Cargar proyectos
+  loadContentList(projectsList, content.projects, 'project');
+  
+  // Calcular y mostrar progreso general
+  updateOverallProgress();
+  
+  // Resetear contenido actual
+  currentContent = null;
+  currentType = null;
+  currentIndex = 0;
+  currentExerciseAnswers = {};
+  showEmptyState();
+}
+
+// Cargar lista de contenido
+function loadContentList(container, items, type) {
+  container.innerHTML = '';
+  
+  items.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = `sidebar-item ${item.completed ? 'completed' : ''}`;
+    li.setAttribute('data-type', type);
+    li.setAttribute('data-index', index);
+    
+    li.innerHTML = `
+      <div class="item-checkbox">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <span class="item-title">${item.title}</span>
+        <span class="item-duration">${item.duration}</span>
+      </div>
+    `;
+    
+    li.addEventListener('click', () => showContent(type, index));
+    container.appendChild(li);
+  });
+}
+
+// Mostrar contenido específico
+function showContent(type, index) {
+  if (!currentTutorial) return;
+  
+  const content = currentTutorial.content[`${type}s`][index];
+  if (!content) return;
+  
+  // Actualizar estado actual
+  currentType = type;
+  currentIndex = index;
+  currentContent = content;
+  
+  // Actualizar UI
+  updateSidebarActiveState(type, index);
+  contentTitle.textContent = content.title;
+  
+  // Mostrar contenido según el tipo
+  if (type === 'exercise') {
+    renderExercise(content);
+    markCompleteBtn.disabled = true; // No se puede marcar manualmente un ejercicio
+  } else if (type === 'project') {
+    renderProject(content);
+    markCompleteBtn.disabled = false;
+    markCompleteBtn.innerHTML = content.completed ? 
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+      Marcar como incompleto` :
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </svg>
+      Marcar como completado`;
+  } else {
+    // Lección normal
+    contentBody.innerHTML = `<div class="content-item">${content.content}</div>`;
+    markCompleteBtn.disabled = false;
+    markCompleteBtn.innerHTML = content.completed ? 
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+      Marcar como incompleto` :
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </svg>
+      Marcar como completado`;
+  }
+  
+  // Actualizar navegación
+  updateNavigationButtons();
+}
+
+// Mostrar estado vacío
+function showEmptyState() {
+  contentTitle.textContent = 'Selecciona una lección para comenzar';
+  contentBody.innerHTML = `
+    <div class="empty-state">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      <h3>Selecciona una lección del menú lateral</h3>
+      <p>Elige una lección, ejercicio o proyecto para comenzar a aprender</p>
+    </div>
+  `;
+  markCompleteBtn.disabled = true;
+  prevContentBtn.disabled = true;
+  nextContentBtn.disabled = true;
+}
+
+// Actualizar estado activo en la barra lateral
+function updateSidebarActiveState(type, index) {
+  // Remover activo de todos los items
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // Activar el item seleccionado
+  const activeItem = document.querySelector(`.sidebar-item[data-type="${type}"][data-index="${index}"]`);
+  if (activeItem) {
+    activeItem.classList.add('active');
+  }
+}
+
+// Actualizar botones de navegación
+function updateNavigationButtons() {
+  if (!currentTutorial || !currentType) return;
+  
+  const items = currentTutorial.content[`${currentType}s`];
+  const totalItems = items.length;
+  
+  prevContentBtn.disabled = currentIndex === 0;
+  nextContentBtn.disabled = currentIndex === totalItems - 1;
+}
+
+// Mostrar contenido anterior
+function showPreviousContent() {
+  if (currentIndex > 0) {
+    showContent(currentType, currentIndex - 1);
+  }
+}
+
+// Mostrar siguiente contenido
+function showNextContent() {
+  const items = currentTutorial.content[`${currentType}s`];
+  if (currentIndex < items.length - 1) {
+    showContent(currentType, currentIndex + 1);
+  }
+}
+
+// Renderizar ejercicio interactivo
+function renderExercise(exercise) {
+  let html = `
+    <div class="exercise-container">
+      <div class="exercise-header">
+        <h4>${exercise.title}</h4>
+        <p class="exercise-instructions">Responde las siguientes preguntas. Necesitas al menos ${exercise.passingScore} de ${exercise.questions.length} respuestas correctas para aprobar.</p>
+      </div>
+      <div class="questions-container">
+  `;
+  
+  exercise.questions.forEach((question, qIndex) => {
+    html += `
+      <div class="question-container" data-question="${qIndex}">
+        <div class="question-title">${qIndex + 1}. ${question.question}</div>
+        <ul class="options-list">
+    `;
+    
+    question.options.forEach((option, oIndex) => {
+      const isSelected = currentExerciseAnswers[qIndex] === oIndex;
+      html += `
+        <li class="option-item ${isSelected ? 'selected' : ''}" data-question="${qIndex}" data-option="${oIndex}">
+          <div class="option-radio">
+            <input type="radio" name="question-${qIndex}" value="${oIndex}" ${isSelected ? 'checked' : ''}>
+          </div>
+          <div class="option-text">${option}</div>
+        </li>
+      `;
+    });
+    
+    html += `
+        </ul>
+      </div>
+    `;
+  });
+  
+  html += `
+      </div>
+      <div class="exercise-actions">
+        <button class="btn-submit" id="submitExercise">Enviar respuestas</button>
+      </div>
+    </div>
+  `;
+  
+  contentBody.innerHTML = html;
+  
+  // Agregar event listeners a las opciones
+  document.querySelectorAll('.option-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const questionIndex = parseInt(this.getAttribute('data-question'));
+      const optionIndex = parseInt(this.getAttribute('data-option'));
+      
+      // Deseleccionar otras opciones de la misma pregunta
+      document.querySelectorAll(`.option-item[data-question="${questionIndex}"]`).forEach(opt => {
+        opt.classList.remove('selected');
+        opt.querySelector('input[type="radio"]').checked = false;
+      });
+      
+      // Seleccionar esta opción
+      this.classList.add('selected');
+      this.querySelector('input[type="radio"]').checked = true;
+      
+      // Guardar respuesta
+      currentExerciseAnswers[questionIndex] = optionIndex;
+    });
+  });
+  
+  // Agregar event listener al botón de enviar
+  document.getElementById('submitExercise').addEventListener('click', submitExercise);
+}
+
+// Enviar ejercicio para evaluación
+function submitExercise() {
+  if (!currentContent || currentType !== 'exercise') return;
+  
+  const exercise = currentContent;
+  let score = 0;
+  const totalQuestions = exercise.questions.length;
+  
+  // Calcular puntaje
+  exercise.questions.forEach((question, index) => {
+    if (currentExerciseAnswers[index] === question.correct) {
+      score++;
+    }
+  });
+  
+  // Mostrar resultados
+  showExerciseResults(score, totalQuestions, exercise.passingScore);
+}
+
+// Mostrar resultados del ejercicio
+function showExerciseResults(score, totalQuestions, passingScore) {
+  const percentage = (score / totalQuestions) * 100;
+  let scoreClass = 'score-poor';
+  let message = '';
+  
+  if (percentage >= 90) {
+    scoreClass = 'score-excellent';
+    message = '¡Excelente! Has dominado este tema.';
+  } else if (percentage >= 75) {
+    scoreClass = 'score-good';
+    message = '¡Buen trabajo! Has comprendido la mayoría de los conceptos.';
+  } else if (percentage >= 60) {
+    scoreClass = 'score-fair';
+    message = 'Aprobado, pero podrías repasar algunos conceptos.';
+  } else {
+    message = 'No has alcanzado el puntaje mínimo. Te recomendamos repasar el material.';
+  }
+  
+  const passed = score >= passingScore;
+  
+  let html = `
+    <div class="exercise-container">
+      <div class="results-container">
+        <div class="results-header">
+          <h4>Resultados del ejercicio</h4>
+          <div class="results-score ${scoreClass}">${score}/${totalQuestions}</div>
+        </div>
+        <div class="results-message">${message}</div>
+        <div class="results-details">
+          <p>Puntaje mínimo para aprobar: ${passingScore}/${totalQuestions}</p>
+          <p>Tu puntaje: ${score}/${totalQuestions}</p>
+          <p>Estado: <strong>${passed ? 'APROBADO' : 'NO APROBADO'}</strong></p>
+        </div>
+        <div class="results-actions">
+  `;
+  
+  if (passed) {
+    html += `
+      <button class="btn-continue" id="continueAfterExercise">Continuar</button>
+    `;
+  } else {
+    html += `
+      <button class="btn-retry" id="retryExercise">Reintentar</button>
+    `;
+  }
+  
+  html += `
+        </div>
+      </div>
+    </div>
+  `;
+  
+  contentBody.innerHTML = html;
+  
+  // Agregar event listeners a los botones
+  if (passed) {
+    document.getElementById('continueAfterExercise').addEventListener('click', function() {
+      // Marcar ejercicio como completado
+      currentContent.completed = true;
+      loadTutorialContent();
+      showContent('exercise', currentIndex);
+    });
+  } else {
+    document.getElementById('retryExercise').addEventListener('click', function() {
+      // Reiniciar respuestas y mostrar el ejercicio nuevamente
+      currentExerciseAnswers = {};
+      renderExercise(currentContent);
+    });
+  }
+}
+
+// Renderizar proyecto
+function renderProject(project) {
+  let html = `
+    <div class="project-container">
+      <div class="project-header">
+        <h4>${project.title}</h4>
+        <p class="project-duration">Duración estimada: ${project.duration}</p>
+      </div>
+      <div class="project-description">
+        ${project.content}
+      </div>
+      <div class="project-actions">
+        <button class="btn-complete-project ${project.completed ? 'completed' : ''}" id="completeProject">
+          ${project.completed ? 'Proyecto Completado' : 'Marcar como Completado'}
+        </button>
+      </div>
+    </div>
+  `;
+  
+  contentBody.innerHTML = html;
+  
+  // Agregar event listener al botón de completar proyecto
+  document.getElementById('completeProject').addEventListener('click', function() {
+    currentContent.completed = !currentContent.completed;
+    loadTutorialContent();
+    showContent('project', currentIndex);
+  });
+}
+
+// Alternar estado de completado
+function toggleComplete() {
+  if (!currentTutorial || !currentType || !currentContent) return;
+  
+  // No permitir marcar ejercicios manualmente
+  if (currentType === 'exercise') return;
+  
+  currentContent.completed = !currentContent.completed;
+  
+  // Actualizar UI
+  const activeItem = document.querySelector(`.sidebar-item[data-type="${currentType}"][data-index="${currentIndex}"]`);
+  if (activeItem) {
+    activeItem.classList.toggle('completed', currentContent.completed);
+  }
+  
+  // Actualizar botón
+  markCompleteBtn.innerHTML = currentContent.completed ? 
+    `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+    </svg>
+    Marcar como incompleto` :
+    `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+    Marcar como completado`;
+  
+  // Actualizar contadores y progreso
+  loadTutorialContent();
+  
+  // Actualizar progreso en la tarjeta del tutorial
+  updateTutorialCardProgress();
+}
+
+// Actualizar progreso general
+function updateOverallProgress() {
+  if (!currentTutorial) return;
+  
+  const content = currentTutorial.content;
+  const totalItems = 
+    content.lessons.length + 
+    content.exercises.length + 
+    content.projects.length;
+  
+  const completedItems = 
+    content.lessons.filter(l => l.completed).length +
+    content.exercises.filter(e => e.completed).length +
+    content.projects.filter(p => p.completed).length;
+  
+  const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+  
+  overallProgress.textContent = `${progress}%`;
+  overallProgressBar.style.width = `${progress}%`;
+  
+  // Actualizar el progreso en el objeto del tutorial
+  currentTutorial.progress = progress;
+}
+
+// Actualizar progreso en la tarjeta del tutorial
+function updateTutorialCardProgress() {
+  if (!currentTutorial) return;
+  
+  // En una implementación real, aquí actualizarías la tarjeta específica
+  // Por ahora, solo mostramos un mensaje en consola
+  console.log(`Progreso actualizado: ${currentTutorial.progress}%`);
+}
+
+// Guardar progreso (en una implementación real, esto se guardaría en localStorage o base de datos)
+function saveProgress() {
+  // Aquí iría la lógica para guardar el progreso
+  console.log('Progreso guardado');
+}
+
+// Cerrar modal con ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
+    closeModal();
+  }
+});
+</script>
+
+  <!-- SECCIÓN ATAJOS EXPANDIDA -->
+  <section class="section shortcuts-section" id="atajos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Atajos de Teclado Completos</h2>
+        <p>Acelera tu trabajo con estos comandos esenciales</p>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Atajos universales</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-file"></i><h4>Gestión de archivos</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Nuevo documento</span><span class="shortcut-keys">Ctrl + N</span></div>
+              <div class="shortcut-item"><span>Abrir documento</span><span class="shortcut-keys">Ctrl + O</span></div>
+              <div class="shortcut-item"><span>Guardar</span><span class="shortcut-keys">Ctrl + S</span></div>
+              <div class="shortcut-item"><span>Guardar como</span><span class="shortcut-keys">Ctrl + Shift + S</span></div>
+              <div class="shortcut-item"><span>Imprimir</span><span class="shortcut-keys">Ctrl + P</span></div>
+              <div class="shortcut-item"><span>Cerrar documento</span><span class="shortcut-keys">Ctrl + W</span></div>
+              <div class="shortcut-item"><span>Salir de la aplicación</span><span class="shortcut-keys">Ctrl + Q</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-edit"></i><h4>Edición básica</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Deshacer</span><span class="shortcut-keys">Ctrl + Z</span></div>
+              <div class="shortcut-item"><span>Rehacer</span><span class="shortcut-keys">Ctrl + Y</span></div>
+              <div class="shortcut-item"><span>Copiar</span><span class="shortcut-keys">Ctrl + C</span></div>
+              <div class="shortcut-item"><span>Cortar</span><span class="shortcut-keys">Ctrl + X</span></div>
+              <div class="shortcut-item"><span>Pegar</span><span class="shortcut-keys">Ctrl + V</span></div>
+              <div class="shortcut-item"><span>Pegado especial</span><span class="shortcut-keys">Ctrl + Shift + V</span></div>
+              <div class="shortcut-item"><span>Seleccionar todo</span><span class="shortcut-keys">Ctrl + A</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Navegación y formato</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-format"></i><h4>Formato de texto</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Negrita</span><span class="shortcut-keys">Ctrl + B</span></div>
+              <div class="shortcut-item"><span>Cursiva</span><span class="shortcut-keys">Ctrl + I</span></div>
+              <div class="shortcut-item"><span>Subrayado</span><span class="shortcut-keys">Ctrl + U</span></div>
+              <div class="shortcut-item"><span>Aumentar tamaño fuente</span><span class="shortcut-keys">Ctrl + ]</span></div>
+              <div class="shortcut-item"><span>Disminuir tamaño fuente</span><span class="shortcut-keys">Ctrl + [</span></div>
+              <div class="shortcut-item"><span>Alinear izquierda</span><span class="shortcut-keys">Ctrl + L</span></div>
+              <div class="shortcut-item"><span>Alinear centro</span><span class="shortcut-keys">Ctrl + E</span></div>
+              <div class="shortcut-item"><span>Alinear derecha</span><span class="shortcut-keys">Ctrl + R</span></div>
+              <div class="shortcut-item"><span>Justificar</span><span class="shortcut-keys">Ctrl + J</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-navigation"></i><h4>Navegación</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Buscar</span><span class="shortcut-keys">Ctrl + F</span></div>
+              <div class="shortcut-item"><span>Buscar y reemplazar</span><span class="shortcut-keys">Ctrl + H</span></div>
+              <div class="shortcut-item"><span>Ir a</span><span class="shortcut-keys">Ctrl + G</span></div>
+              <div class="shortcut-item"><span>Panel Navigator</span><span class="shortcut-keys">F5</span></div>
+              <div class="shortcut-item"><span>Insertar salto de página</span><span class="shortcut-keys">Ctrl + Enter</span></div>
+              <div class="shortcut-item"><span>Insertar salto de línea</span><span class="shortcut-keys">Shift + Enter</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shortcuts-category">
+        <h3>Funciones avanzadas</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-styles"></i><h4>Estilos y plantillas</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Estilos y formato</span><span class="shortcut-keys">F11</span></div>
+              <div class="shortcut-item"><span>Actualizar estilo</span><span class="shortcut-keys">F11 + Actualizar</span></div>
+              <div class="shortcut-item"><span>Nuevo estilo</span><span class="shortcut-keys">F11 + Nuevo</span></div>
+              <div class="shortcut-item"><span>Plantillas de documento</span><span class="shortcut-keys">Ctrl + Shift + N</span></div>
+            </div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="shortcut-header"><i class="icon-tools"></i><h4>Herramientas</h4></div>
+            <div class="shortcuts-list">
+              <div class="shortcut-item"><span>Corrector ortográfico</span><span class="shortcut-keys">F7</span></div>
+              <div class="shortcut-item"><span>Insertar hipervínculo</span><span class="shortcut-keys">Ctrl + K</span></div>
+              <div class="shortcut-item"><span>Insertar tabla</span><span class="shortcut-keys">Ctrl + F12</span></div>
+              <div class="shortcut-item"><span>Insertar comentario</span><span class="shortcut-keys">Ctrl + Alt + C</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: RECOMENDACIONES -->
+  <section class="section" id="recomendaciones">
+    <div class="container">
+      <div class="section-title">
+        <h2>Recomendaciones y Buenas Prácticas</h2>
+        <p>Consejos para un uso eficiente y seguro de LibreOffice</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-save"></i></div>
+          <h3>Guardar Frecuentemente</h3>
+          <ul class="feature-list">
+            <li>Usa Ctrl+S regularmente durante tu trabajo</li>
+            <li>Activa el guardado automático en Herramientas → Opciones → Cargar/Guardar → General</li>
+            <li>Guarda versiones intermedias en proyectos largos</li>
+            <li>Usa "Guardar como" para crear copias de respaldo</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-naming"></i></div>
+          <h3>Nomenclatura de Archivos</h3>
+          <ul class="feature-list">
+            <li>Usa nombres descriptivos y claros</li>
+            <li>Incluye fechas en formato YYYY-MM-DD</li>
+            <li>Usa guiones bajos en lugar de espacios</li>
+            <li>Incluye versiones en nombres de archivos importantes</li>
+            <li>Ejemplo: "Informe_Mensual_2024-03_v2.odt"</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-backup"></i></div>
+          <h3>Copias de Seguridad</h3>
+          <ul class="feature-list">
+            <li>Guarda copias en diferentes ubicaciones</li>
+            <li>Usa servicios en la nube (Nextcloud, Dropbox)</li>
+            <li>Realiza copias de seguridad periódicas</li>
+            <li>Configura la recuperación de versiones anteriores</li>
+            <li>Mantén copias fuera del sitio (backup remoto)</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon"><i class="icon-update"></i></div>
+          <h3>Mantenimiento y Actualizaciones</h3>
+          <ul class="feature-list">
+            <li>Mantén LibreOffice actualizado</li>
+            <li>Habilita actualizaciones automáticas</li>
+            <li>Actualiza extensiones regularmente</li>
+            <li>Revisa los logs de actualización</li>
+            <li>Consulta la documentación oficial</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: GLOSARIO -->
+  <section class="section" id="glosario">
+    <div class="container">
+      <div class="section-title">
+        <h2>Glosario de Términos</h2>
+        <p>Diccionario con los conceptos básicos de LibreOffice</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <h3>A - C</h3>
+          <dl class="glossary-list">
+            <dt>Barra de herramientas</dt>
+            <dd>Conjunto de botones que proporcionan acceso rápido a funciones comunes.</dd>
+            
+            <dt>Calc</dt>
+            <dd>Componente de LibreOffice para hojas de cálculo, similar a Excel.</dd>
+            
+            <dt>Celda</dt>
+            <dd>Intersección de una fila y una columna en una hoja de cálculo.</dd>
+            
+            <dt>Compatibilidad</dt>
+            <dd>Capacidad de LibreOffice para trabajar con formatos de otros programas.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>D - F</h3>
+          <dl class="glossary-list">
+            <dt>Documento maestro</dt>
+            <dd>Documento que contiene y controla un conjunto de subdocumentos.</dd>
+            
+            <dt>Estilo</dt>
+            <dd>Conjunto de formatos que se pueden aplicar a texto, párrafos o páginas.</dd>
+            
+            <dt>Exportar</dt>
+            <dd>Guardar un documento en un formato diferente al nativo.</dd>
+            
+            <dt>Formato</dt>
+            <dd>Apariencia y disposición del contenido en un documento.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>G - M</h3>
+          <dl class="glossary-list">
+            <dt>Hoja de cálculo</dt>
+            <dd>Documento de Calc organizado en filas y columnas para cálculos.</dd>
+            
+            <dt>Impress</dt>
+            <dd>Componente de LibreOffice para crear presentaciones.</dd>
+            
+            <dt>Macro</dt>
+            <dd>Secuencia de comandos que automatiza tareas repetitivas.</dd>
+            
+            <dt>Math</dt>
+            <dd>Editor de ecuaciones y fórmulas matemáticas de LibreOffice.</dd>
+          </dl>
+        </div>
+
+        <div class="card fade-in">
+          <h3>N - Z</h3>
+          <dl class="glossary-list">
+            <dt>ODF (Open Document Format)</dt>
+            <dd>Formato estándar abierto utilizado por defecto en LibreOffice.</dd>
+            
+            <dt>Plantilla</dt>
+            <dd>Documento base que define estilos y formato para nuevos documentos.</dd>
+            
+            <dt>Writer</dt>
+            <dd>Procesador de textos de LibreOffice, similar a Word.</dd>
+            
+            <dt>Zoom</dt>
+            <dd>Control del nivel de ampliación o reducción de la vista del documento.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>LibreOffice</h4>
+          <ul>
+            <li>Suite ofimática gratuita</li>
+            <li>Writer, Calc, Impress, Draw, Base, Math</li>
+            <li>Compatible con ODF y formatos MS Office</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#">Descargas</a></li>
+            <li><a href="#">Extensiones</a></li>
+            <li><a href="#">Documentación</a></li>
+            <li><a href="#">Foros de ayuda</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">Foros</a></li>
+            <li><a href="#">Contribuir</a></li>
+            <li><a href="#">Reportar errores</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Manual</h4>
+          <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#componentes">Componentes</a></li>
+            <li><a href="#uso-basico">Uso básico</a></li>
+            <li><a href="#atajos">Atajos de teclado</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© LibreOffice • Manual Completo 2024 • The Document Foundation</div>
+        <div class="footer-badges">
+          <span class="badge">Open Source</span>
+          <span class="badge">100% Gratuito</span>
+          <span class="badge">Multiplataforma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="libreoffice.js "></script>
+</body>
+</html>

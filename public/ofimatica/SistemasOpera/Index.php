@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Operativo Windows - Versión extendida</title>
+
+  <style>
+    :root {
+      --text:#000000;
+      --accent:#0056d6;
+      --shadow:0 8px 25px rgba(0,0,0,.10);
+      --glass:#ffffff;
+      --glass-2:#f2f2f2;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+      color:var(--text);
+      background:white;      /* ← FONDO BLANCO */
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%;
+      background: #ffffffd9;
+      backdrop-filter: blur(9px);
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 12px 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    .navbar a {
+      color: #333; 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 0.9rem;
+      transition: all 0.25s ease; 
+      padding: 6px 10px; 
+      border-radius: 6px;
+    }
+    .navbar a:hover { 
+      color: white; 
+      background: var(--accent); 
+      transform: scale(1.05); 
+    }
+
+    /* HEADER */
+    header {
+      text-align:center; 
+      padding:120px 20px 50px;
+      background:white;
+    }
+    header h1{
+      font-size:clamp(2rem,4vw,3.2rem);
+      margin:0 0 10px;
+    }
+    header p{opacity:.9;font-size:1.1rem}
+
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      background:var(--glass-2);
+      border-radius:999px;
+      font-size:.85rem;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px
+    }
+
+    section{
+      margin:35px auto;
+      background:white;
+      border:1px solid #e1e1e1;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:28px
+    }
+
+    h2{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:1.6rem;
+      margin:0 0 12px
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      background:var(--accent);
+      border-radius:50%
+    }
+
+    p,li{line-height:1.8}
+
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{
+      background:#f3f6ff;
+      padding:18px;
+      border-radius:12px;
+      transition:transform .25s ease;
+      border:1px solid #dce3ff;
+    }
+    .card:hover{transform:translateY(-4px)}
+
+    img{
+      width:100%;
+      border-radius:14px;
+      margin:14px 0;
+      box-shadow:var(--shadow);
+    }
+
+    details{
+      background:#f4f4f4;
+      border-radius:12px;
+      padding:10px 14px;
+      margin:10px 0;
+      border:1px solid #ddd;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700
+    }
+
+    .footer{
+      text-align:center;
+      color:#666;
+      padding:40px 20px
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="navbar">
+    <a href="#intro">Introducción</a>
+    <a href="../Index.php">Office</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#evolucion">Evolución</a>
+    <a href="#arquitectura">Cómo funciona</a>
+    <a href="#seguridad">Seguridad</a>
+    <a href="#redes">Internet</a>
+    <a href="#almacenamiento">Archivos</a>
+    <a href="#accesibilidad">Accesibilidad</a>
+    <a href="#ediciones">Versiones</a>
+    <a href="#faq">Preguntas</a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <span class="badge">Guía completa • Windows para estudiantes</span>
+    <h1>💻 Sistema Operativo Windows</h1>
+    <p>Todo lo esencial de Windows explicado fácil, con contenido ampliado y conceptos clave.</p>
+
+    <!-- Imagen principal -->
+    <img src="">
+  </header>
+
+  <div class="container">
+
+    <!-- INTRO -->
+    <section id="intro">
+      <h2><span class="dot"></span>Introducción</h2>
+      <img src="https://universodigital.org/wp-content/uploads/Introduccion-a-Microsoft-Windows.jpg">
+
+      <p><strong>Windows</strong> es el sistema operativo más usado del planeta. Administra el hardware, ejecuta programas y ofrece una interfaz gráfica intuitiva que permite que cualquier persona use una computadora sin complicaciones.</p>
+
+      <p>Su diseño, compatibilidad con miles de aplicaciones, actualizaciones de seguridad constantes y funciones avanzadas como escritorios virtuales, sincronización con la nube y accesibilidad lo convierten en la opción ideal para estudiantes, trabajadores y gamers.</p>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas">
+      <h2><span class="dot"></span>Características</h2>
+      <img src="https://cultura-informatica.com/wp-content/uploads/2021/10/Microsoft-Windows-11.jpg">
+
+      <ul>
+        <li><strong>Interfaz gráfica moderna:</strong> ventanas, iconos, barra de tareas, escritorios virtuales y widgets.</li>
+        <li><strong>Multitarea real:</strong> permite trabajar con varios programas simultáneos sin perder rendimiento.</li>
+        <li><strong>Compatibilidad masiva:</strong> funciona con miles de programas, desde videojuegos hasta software profesional.</li>
+        <li><strong>Actualizaciones continuas:</strong> mejoras de seguridad, rendimiento y funciones.</li>
+        <li><strong>Integración con la nube:</strong> sincroniza archivos con OneDrive y permite restauración automática.</li>
+      </ul>
+    </section>
+
+    <!-- EVOLUCIÓN -->
+    <section id="evolucion">
+      <h2><span class="dot"></span>Evolución</h2>
+      <img src="https://s3.amazonaws.com/s3.timetoast.com/public/uploads/photo/19797044/image/medium-ed97673d578f2c66fe1f5dbed08a784c.jpg">
+
+      <p>Windows ha evolucionado durante más de 35 años:</p>
+      <ul>
+        <li><strong>Windows 95:</strong> introdujo el botón de inicio y la barra de tareas.</li>
+        <li><strong>Windows XP:</strong> estable, rápido y uno de los más queridos por su simplicidad.</li>
+        <li><strong>Windows 7:</strong> excelente rendimiento y compatibilidad.</li>
+        <li><strong>Windows 10:</strong> sistema híbrido con actualizaciones constantes.</li>
+        <li><strong>Windows 11:</strong> diseño moderno, mejor organización y optimizado para gaming.</li>
+      </ul>
+    </section>
+
+    <!-- ARQUITECTURA -->
+    <section id="arquitectura">
+      <h2><span class="dot"></span>Cómo funciona Windows</h2>
+      <img src="https://aprendelibvrefiles.blob.core.windows.net/aprendelibvre-container/course/como_usar_windows_10/image/lecc2_pag_2_2_xl.jpg">
+
+      <p>Windows está formado por diferentes componentes internos:</p>
+      <ul>
+        <li><strong>Kernel:</strong> controla el hardware y los procesos.</li>
+        <li><strong>Drivers:</strong> permiten usar dispositivos como impresoras, mouse o tarjetas gráficas.</li>
+        <li><strong>Explorador de Windows:</strong> interfaz para administrar carpetas y archivos.</li>
+        <li><strong>Administrador de tareas:</strong> permite ver el rendimiento del sistema.</li>
+        <li><strong>Servicios del sistema:</strong> procesos que manejan audio, red, Bluetooth, actualizaciones y más.</li>
+      </ul>
+    </section>
+
+    <!-- SEGURIDAD -->
+    <section id="seguridad">
+      <h2><span class="dot"></span>Seguridad</h2>
+
+      <img src="https://tse4.mm.bing.net/th/id/OIP.mPWA5l_BvC7OwW4iVWci0gHaCd?w=1000&h=333&rs=1&pid=ImgDetMain&o=7&rm=3" style="width:180px">
+
+      <ul>
+        <li><strong>Windows Defender:</strong> antivirus integrado.</li>
+        <li><strong>Firewall:</strong> controla conexiones peligrosas.</li>
+        <li><strong>BitLocker:</strong> cifra discos completos.</li>
+        <li><strong>Control parental:</strong> administra cuentas y contenido.</li>
+        <li><strong>Actualizaciones automáticas:</strong> protección constante contra amenazas.</li>
+      </ul>
+    </section>
+
+    <!-- REDES -->
+    <section id="redes">
+      <h2><span class="dot"></span>Internet y Conexiones</h2>
+      <img src="https://escoladaprogramacao.com.br/wp-content/uploads/2023/11/guia-completo-sobre-wi-fi-entenda-as-redes-sem-fio-e-suas-tecnologias-750x430.jpg>
+
+      <ul>
+        <li>Wi-Fi, Ethernet y Bluetooth incluidos.</li>
+        <li>Compartición de archivos e impresoras.</li>
+        <li>Solución de problemas de red integrada.</li>
+        <li>Configuraciones para VPN, DNS y Proxy.</li>
+      </ul>
+    </section>
+
+    <!-- ALMACENAMIENTO -->
+    <section id="almacenamiento">
+      <h2><span class="dot"></span>Archivos y Almacenamiento</h2>
+
+      <img src="https://archivocaribe.com/wp-content/uploads/Gestion-Documental-270.jpeg">
+
+      <ul>
+        <li><strong>Explorador de archivos:</strong> organiza fotos, videos y tareas.</li>
+        <li><strong>OneDrive:</strong> respaldo automático en la nube.</li>
+        <li><strong>Historial de archivos:</strong> permite recuperar versiones anteriores.</li>
+        <li><strong>Limpieza de disco:</strong> elimina archivos innecesarios.</li>
+      </ul>
+    </section>
+
+    <!-- ACCESIBILIDAD -->
+    <section id="accesibilidad">
+      <h2><span class="dot"></span>Accesibilidad</h2>
+
+      <img src="https://www.adslzone.net/app/uploads-adslzone.net/2025/04/Captura-de-pantalla-2025-04-01-181156.jpg">
+
+      <ul>
+        <li>Narrador y lectura en voz alta</li>
+        <li>Modo de alto contraste</li>
+        <li>Subtítulos automáticos</li>
+        <li>Control por voz</li>
+        <li>Lupa de pantalla</li>
+      </ul>
+    </section>
+
+    <!-- VERSIONES -->
+    <section id="ediciones">
+      <h2><span class="dot"></span>Versiones de Windows</h2>
+
+      <div class="grid">
+        <div class="card"><strong>Home</strong><br>Para uso personal y entretenimiento.</div>
+        <div class="card"><strong>Pro</strong><br>Cifrado, escritorio remoto, virtualización y más.</div>
+        <div class="card"><strong>Education</strong><br>Optimizado para escuelas y universidades.</div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2><span class="dot"></span>Preguntas Frecuentes</h2>
+
+      <details><summary>¿Qué hago si la computadora se traba?</summary>
+        <p>Presiona <strong>Ctrl + Alt + Supr</strong> y abre el Administrador de tareas para cerrar lo que no responda.</p>
+      </details>
+
+      <details><summary>¿Cómo hago una captura de pantalla?</summary>
+        <p>Presiona <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>.</p>
+      </details>
+
+      <details><summary>¿Qué hago si no tengo internet?</summary>
+        <p>Reinicia el módem, prueba otra red o usa el solucionador de problemas.</p>
+      </details>
+
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>© 2025 Guía extendida de Windows — Hecho para estudiantes.</p>
+    </div>
+
+  </div>
+</body>
+</html>
