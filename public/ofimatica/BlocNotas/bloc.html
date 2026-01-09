@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ofimática | Bloc de Notas</title>
+    <link rel="stylesheet" href="aurora.css">
+    <style>
+        /* Header: transparencia + blur + sombra en scroll */
+        .header {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: saturate(120%) blur(8px);
+            -webkit-backdrop-filter: saturate(120%) blur(8px);
+            border-bottom: 1px solid rgba(24, 90, 189, .08);
+            transition: background .2s ease, box-shadow .2s ease;
+        }
+
+        body.theme-dark .header {
+            background: rgba(18, 18, 18, .72);
+            border-bottom-color: rgba(255, 255, 255, .06);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+        }
+
+        /* Iconos de sistemas operativos (alineados a la derecha como en editores.html, forzados con flex-end) */
+        .os-icons {
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            /* Asegura la alineación total a la esquina */
+            gap: 28px !important;
+            padding-left: 16px;
+        }
+
+        .os-icons .os-link {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 8px;
+            padding: 6px;
+            transition: transform .15s ease, background-color .15s ease;
+        }
+
+        .os-icons .os-link:hover {
+            transform: translateY(-1px);
+            background: rgba(24, 90, 189, .08);
+        }
+
+        .os-icons img {
+            width: 30px;
+            height: 30px;
+            display: block;
+            filter: drop-shadow(0 0 1px rgba(0, 0, 0, .18));
+        }
+
+        @media (max-width: 600px) {
+            .os-icons {
+                gap: 16px;
+                padding-left: 8px;
+            }
+
+            .os-icons img {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        /* Contenedor del header y navegación como en editores.html */
+        .header .header-container {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            width: 100%;
+        }
+
+        .header .header-container .nav {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            flex: 1 1 auto !important;
+            gap: 14px !important;
+            min-width: 0;
+        }
+
+        /* Encabezado solo para impresión */
+        .print-header {
+            display: none;
+        }
+
+        @media print {
+            .print-header {
+                display: block !important;
+                margin-bottom: 8mm;
+                padding-bottom: 6mm;
+                border-bottom: 2px solid #185ABD;
+            }
+
+            .print-header h2 {
+                margin: 0 0 2mm 0;
+                font-size: 18pt;
+            }
+
+            .print-header .meta {
+                font-size: 10pt;
+                color: #333;
+            }
+        }
+
+        /* ---- Impresión a PDF ---- */
+        .no-print {
+            display: inline-block;
+        }
+
+        @media print {
+            @page {
+                margin: 12mm;
+                size: A4;
+            }
+
+            body,
+            html {
+                background: #fff !important;
+                color: #000 !important;
+            }
+
+            body.theme-dark {
+                background: #fff !important;
+                color: #000 !important;
+            }
+
+            /* Ocultar elementos de navegación/UX */
+            .header,
+            .breadcrumb,
+            .footer,
+            #progressBar,
+            .search-overlay,
+            .office-suite-nav,
+            .nav,
+            .toc-btn,
+            #openSearch,
+            #themeToggle,
+            #printBtn,
+            .scroll-top {
+                display: none !important;
+            }
+
+            /* Quitar sombras y fondos para texto limpio */
+            .section,
+            .card,
+            .interface-card,
+            .search-modal {
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
+            img,
+            .card-img {
+                box-shadow: none !important;
+            }
+
+            /* Mostrar URL de enlaces en impresión */
+            a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: .8em;
+                color: #555;
+            }
+        }
+
+        .shortcuts-list {
+            display: grid;
+            gap: 8px 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .shortcuts-list li {
+            padding: 6px 8px;
+            border: 1px solid var(--line, #223);
+            border-radius: 8px;
+        }
+
+        .img-caption {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #556;
+            margin-top: 8px;
+        }
+
+        /* Timeline / Historia */
+        .timeline {
+            position: relative;
+            margin: 24px 0;
+            padding-left: 16px;
+        }
+
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(#185ABD, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 12px 0 12px 12px;
+            padding-left: 16px
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -11px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: #185ABD;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #e8eefc
+        }
+
+        .timeline-item h4 {
+            margin: 0 0 4px;
+            font-weight: 700
+        }
+
+        /* Comparativa Notepad vs TextEdit */
+        .comparison-nt {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px
+        }
+
+        .comparison-nt th,
+        .comparison-nt td {
+            border: 1px solid #cfd8ea;
+            padding: 8px 12px;
+            text-align: left
+        }
+
+        .comparison-nt th {
+            background: #185ABD;
+            color: #fff
+        }
+
+        .comparison-nt td:nth-child(2) {
+            background: #f6faff
+        }
+
+        .comparison-nt td:nth-child(3) {
+            background: #f9fbff
+        }
+
+        /* Callout info */
+        .info-callout {
+            border: 1px solid #cfd8ea;
+            background: #f6faff;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start
+        }
+
+        .info-callout .icon {
+            font-weight: 700;
+            color: #185ABD
+        }
+
+        /* Lista de usos prácticos */
+        .use-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            padding-left: 0;
+            list-style: none
+        }
+
+        .use-list li {
+            border: 1px solid var(--line, #223);
+            border-radius: 10px;
+            padding: 10px 12px
+        }
+
+        /* Pequeñas transiciones */
+        .card-img,
+        .cta-button {
+            transition: transform .15s ease, box-shadow .15s ease
+        }
+
+        .card-img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .18)
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: linear-gradient(90deg, #f7f9ff, #fff);
+            border-bottom: 1px solid #e5e9f5;
+        }
+
+        .breadcrumb .container {
+            padding: 8px 16px;
+            font-size: .95rem;
+            color: #445;
+        }
+
+        .breadcrumb a {
+            color: #185ABD;
+            text-decoration: none
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline
+        }
+
+        .breadcrumb .sep {
+            margin: 0 .5rem;
+            color: #99a
+        }
+
+        /* Tema oscuro manual */
+        body.theme-dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        body.theme-dark .section,
+        body.theme-dark .card,
+        body.theme-dark .interface-card,
+        body.theme-dark .search-modal {
+            background: #1e1e1e;
+        }
+
+        body.theme-dark .comparison-nt th {
+            background: #0d47a1;
+        }
+
+        body.theme-dark .footer {
+            background: #0f0f0f;
+        }
+
+        body.theme-dark .breadcrumb {
+            background: linear-gradient(90deg, #151823, #111);
+            border-bottom-color: #222;
+        }
+
+        body.theme-dark .breadcrumb .container {
+            color: #c8cbd4;
+        }
+
+        body.theme-dark .breadcrumb a {
+            color: #8ab4ff;
+        }
+
+        /* Tips desplegables y animación */
+        .tip-details summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #185ABD;
+            margin: 8px 0;
+        }
+
+        .tip-details[open] p {
+            animation: fadeIn .3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-3px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Simulador y alternativas */
+        #editor-simulador {
+            font-family: monospace;
+            font-size: 1rem;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            resize: vertical;
+            background: #fdfdfd;
+            color: #333;
+        }
+
+        #contador-caracteres {
+            font-size: 0.95rem;
+            color: #185ABD;
+            margin-top: 4px;
+        }
+
+        .alt-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .alt-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #ccd;
+            border-radius: 8px;
+            padding: 8px 12px;
+            background: #f9fbff;
+        }
+
+        .alt-list img {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+        }
+
+        /* ===== Mejoras de UX: botón subir, sección activa y flash ===== */
+        /* --- Atajos avanzados con “Mostrar más” --- */
+        .more-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .more-card {
+            border: 1px solid #cfd8ea;
+            border-radius: 12px;
+            padding: 14px;
+            background: #f9fbff
+        }
+
+        body.theme-dark .more-card {
+            background: #1e1e1e;
+            border-color: #222
+        }
+
+        .more-title {
+            margin: 0 0 8px;
+            font-weight: 700;
+        }
+
+        .more-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px
+        }
+
+        .more-item {
+            border: 1px dashed #dbe4f3;
+            border-radius: 8px;
+            padding: 8px 10px;
+            background: #fff
+        }
+
+        body.theme-dark .more-item {
+            background: #121212;
+            border-color: #2a2a2a
+        }
+
+        .more-item kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            padding: .1rem .4rem;
+            border: 1px solid #ccd;
+            border-bottom-width: 2px;
+            border-radius: 6px;
+            background: #f7f9ff
+        }
+
+        body.theme-dark .more-item kbd {
+            background: #10131a;
+            border-color: #263248
+        }
+
+        .hidden-more {
+            display: none !important;
+        }
+
+        .more-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap
+        }
+
+        .more-actions .btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #cfd8ea;
+            background: #fff;
+            cursor: pointer
+        }
+
+        body.theme-dark .more-actions .btn {
+            background: #181818;
+            border-color: #2a2a2a
+        }
+
+        .more-actions .btn[disabled] {
+            opacity: .5;
+            cursor: not-allowed
+        }
+
+        .scroll-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity .18s ease, transform .18s ease;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-weight: 600;
+            background: #185ABD;
+            color: #fff;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .22);
+            cursor: pointer;
+        }
+
+        .scroll-top.show {
+            display: inline-flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estado activo en navegación (enlace actual) */
+        .nav .nav-item.active {
+            color: #185ABD !important;
+            border-bottom: 2px solid #185ABD;
+        }
+
+        /* Resaltado suave al llegar a una sección */
+        .section-flash {
+            animation: sectionFlash .8s ease-out;
+        }
+
+        @keyframes sectionFlash {
+            0% {
+                box-shadow: 0 0 0 0 rgba(24, 90, 189, .28) inset;
+                background: linear-gradient(0deg, rgba(24, 90, 189, .06), transparent);
+            }
+
+            100% {
+                box-shadow: none;
+                background: none;
+            }
+        }
+        /* ===== Quick Nav (Windows / macOS / Atajos / Tips) ===== */
+        .quick-nav{position:fixed;left:18px;top:180px;z-index:30;background:#fff;border:1px solid #e5e9f5;border-radius:18px;box-shadow:0 10px 30px rgba(24,90,189,.08);padding:10px 0;backdrop-filter:saturate(120%) blur(4px)}
+        .quick-nav ul{list-style:none;margin:0;padding:0;min-width:170px}
+        .quick-nav a{display:block;padding:16px 20px;font-weight:700;color:#14203b;text-decoration:none;border-left:4px solid transparent;transition:background .15s ease, color .15s ease, border-color .15s ease}
+        .quick-nav a:hover{background:linear-gradient(90deg,#f7f9ff,#fff)}
+        .quick-nav a.active{color:#185ABD;border-left-color:#185ABD}
+        /* soft rounded container edge (like screenshot) */
+        .quick-nav::after{content:'';position:absolute;right:-8px;top:0;bottom:0;width:8px;background:linear-gradient(180deg,rgba(24,90,189,.05),transparent 60%);border-top-right-radius:18px;border-bottom-right-radius:18px}
+        /* Responsive: hide on small widths */
+        @media (max-width: 980px){.quick-nav{display:none}}
+    </style>
+</head>
+
+<body>
+    <h1 id="smoke" style="margin:16px;padding:12px;background:#fff;border:2px dashed #185ABD;border-radius:10px">
+        🔎 Cargando… si esto nunca desaparece, el JS no se ejecutó.
+    </h1>
+
+    <div id="progressBar" class="progress-bar"></div>
+    <header class="header" id="topHeader">
+        <div class="header-container">
+            <a class="logo" href="bloc.html"><span class="logo-icon" aria-hidden="true"
+                    style="background-image:url('https://cdn-icons-png.flaticon.com/512/1794/1794635.png');background-size:70% auto;background-position:center;background-repeat:no-repeat;"></span><span>Ofimática</span></a>
+            <nav class="nav">
+                <a class="nav-item active" href="../Index.php">Office</a>
+                <a class="nav-item active" href="bloc.html">Bloc de Notas</a>
+                <a class="nav-item" href="editores.html">Editores de imagen</a>
+                <button id="openSearch" class="toc-btn" type="button"><span class="toc-dot"></span> Buscar (Ctrl/Cmd +
+                    K)</button>
+                <button id="themeToggle" class="toc-btn" type="button" aria-pressed="false">🌙 Tema</button>
+                <button id="printBtn" class="toc-btn" type="button" title="Descargar versión PDF">🖨️ PDF</button>
+                <div class="os-icons">
+                    <a href="https://www.apple.com/macos/" target="_blank" title="Ir al sitio oficial de macOS"
+                        class="os-link">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                            alt="Logo macOS">
+                    </a>
+                    <a href="https://www.microsoft.com/windows" target="_blank" title="Ir al sitio oficial de Windows"
+                        class="os-link">
+                        <img src="https://images.seeklogo.com/logo-png/40/2/windows-11-icon-logo-png_seeklogo-406208.png"
+                            alt="Logo Windows">
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Encabezado visible solo al imprimir -->
+    <nav class="quick-nav" aria-label="Navegación rápida">
+      <ul>
+        <li><a class="qnav-link" href="#win">Windows</a></li>
+        <li><a class="qnav-link" href="#mac">macOS</a></li>
+        <li><a class="qnav-link" href="#atajos">Atajos</a></li>
+        <li><a class="qnav-link" href="#tips">Tips</a></li>
+      </ul>
+    </nav>
+    <div id="printHeader" class="print-header">
+        <h2>Ofimática — Bloc de Notas</h2>
+        <div class="meta">Generado el <span id="printDate">—</span></div>
+    </div>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bloc de Notas en Windows y macOS</h1>
+            <h3 style="font-weight:500;color:#ffffff;">Comparación completa y usos reales de Notepad y TextEdit</h3>
+            <p>Notepad (Windows) y TextEdit (macOS) — funciones, atajos y usos.</p>
+            <a href="#win" class="cta-button"><span class="icon-arrow-right"></span> Ir a Windows</a>
+            <a href="#mac" class="cta-button"><span class="icon-arrow-right"></span> Ir a macOS</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><span>¿Qué es un Bloc de Notas?</span></h2>
+            <p>Un <strong>bloc de notas</strong> es una aplicación básica de edición de texto diseñada para crear, leer
+                y modificar archivos de texto plano (.txt). A diferencia de los procesadores de texto como Word o Pages,
+                no aplica formato visual (negritas, colores o alineaciones). Estas herramientas son fundamentales en la
+                ofimática y la programación, ya que permiten escribir notas rápidas, editar configuraciones, crear
+                scripts o visualizar datos sin distracciones. Su simplicidad garantiza compatibilidad entre sistemas
+                operativos y un rendimiento ligero, ideal para tareas administrativas, técnicas y académicas.</p>
+        </div>
+    </section>
+
+    <!-- Historia / Evolución -->
+    <section id="historia" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Evolución del Bloc de Notas</h2>
+                <p>Hitos principales desde las primeras versiones hasta hoy.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Windows 95</h4>
+                    <p>Interfaz clásica y edición de texto plano básica.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Windows XP</h4>
+                    <p>Mejoras de rendimiento y estabilidad; uso masivo en entornos educativos y de soporte.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Windows 10</h4>
+                    <p>Codificación UTF-8 por defecto, búsqueda mejorada y ajustes de accesibilidad.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Windows 11</h4>
+                    <p>Soporte de pestañas, modo oscuro y nuevas opciones de personalización.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Versiones modernas (galería) -->
+    <section id="modernos" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Versiones modernas del Bloc de notas</h2>
+                <p>Aspecto actual de Notepad y TextEdit en sus sistemas.</p>
+            </div>
+            <div class="workspace-img">
+                <figure class="screenshot">
+                    <a href="https://hipertextual.com/2023/01/bloc-de-notas-pestanas-windows-11" target="_blank"
+                        rel="noopener">
+                        <img src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2023/01/bloc_de_notas_tabs-1500x874.jpg?resize=1500%2C874&quality=70&strip=all&ssl=1"
+                            alt="Notepad moderno en Windows 11" class="card-img" loading="lazy" decoding="async"
+                            style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);max-width:100%;height:auto;">
+                    </a>
+                    <figcaption class="img-caption">Notepad moderno en Windows 11.</figcaption>
+                </figure>
+                <figure class="screenshot">
+                    <a href="https://osxdaily.com/2016/12/06/using-textedit-tabs-mac/" target="_blank" rel="noopener">
+                        <img src="https://cdn.osxdaily.com/wp-content/uploads/2016/12/textedit-tabs-mac-3.jpg"
+                            alt="TextEdit en macOS" class="card-img" loading="lazy" decoding="async"
+                            style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);max-width:100%;height:auto;">
+                    </a>
+                    <figcaption class="img-caption">TextEdit en macOS.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Windows (Notepad) -->
+    <section id="win" class="section">
+        <div class="container">
+            <div class="interface-content">
+                <div>
+                    <h2>Windows — Notepad</h2>
+                    <p>El <strong>Bloc de notas (Notepad)</strong> de Windows es una herramienta clásica para editar
+                        texto sin formato. En versiones modernas admite pestañas, ajuste de línea, temas y detección de
+                        codificación.</p>
+                    <p>El Bloc de notas fue incluido desde las primeras versiones de Windows y ha evolucionado con
+                        nuevas características como soporte de múltiples pestañas, tema oscuro y reconocimiento
+                        automático de codificación de texto. Es muy utilizado por estudiantes, técnicos y programadores
+                        para editar archivos de configuración (.ini, .bat, .json) o para redactar rápidamente ideas sin
+                        distracciones. Su interfaz minimalista lo convierte en una herramienta esencial en el entorno
+                        ofimático y educativo.</p>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="shortcut-header"><strong>Atajos útiles</strong></div>
+                            <div class="shortcuts-list">
+                                <div class="shortcut-item"><span style="color:#0078D4">Nuevo documento</span><span
+                                        class="shortcut-keys">Ctrl + N</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Guardar</span><span
+                                        class="shortcut-keys">Ctrl + S</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Buscar</span><span
+                                        class="shortcut-keys">Ctrl + F</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Reemplazar</span><span
+                                        class="shortcut-keys">Ctrl + H</span></div>
+                            </div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="shortcut-header"><strong>Funciones</strong></div>
+                            <ul class="feature-list">
+                                <li>Pestañas (Windows 11).</li>
+                                <li>Ajuste de línea y recuento de caracteres.</li>
+                                <li>Codificación: UTF-8 por defecto.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="interface-image">
+                    <div class="interface-card">
+                        <h4>Interfaz simplificada</h4>
+                        <div class="workspace-img">
+                            <figure class="screenshot">
+                                <a href="https://hipertextual.com/2023/01/bloc-de-notas-pestanas-windows-11"
+                                    target="_blank" rel="noopener">
+                                    <img src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2023/01/bloc_de_notas_tabs-1500x874.jpg?resize=1500%2C874&quality=70&strip=all&ssl=1"
+                                        alt="Bloc de Notas de Windows 11 con pestañas (modo oscuro)" class="card-img"
+                                        loading="lazy" decoding="async" width="1500" height="874"
+                                        sizes="(max-width: 768px) 100vw, 720px"
+                                        style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-width:100%;height:auto;">
+                                </a>
+                                <figcaption class="img-caption">Interfaz de Notepad en Windows 11 con pestañas.
+                                    <em>Fuente: Hipertextual</em>.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curiosidades y datos técnicos -->
+    <section id="curiosidades" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Curiosidades y datos técnicos</h2>
+                <p>Detalles que pocos usuarios conocen sobre Notepad y TextEdit.</p>
+            </div>
+            <ul class="use-list">
+                <li><strong>Notepad</strong> puede abrir archivos muy grandes en Windows 11 (mejoras de rendimiento y
+                    memoria).</li>
+                <li><strong>TextEdit</strong> usa RTF/RTFD para insertar imágenes y enlaces en el documento.</li>
+                <li>Ambos permiten arrastrar un archivo a la ventana para abrirlo al instante.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- macOS (TextEdit) -->
+    <section id="mac" class="section">
+        <div class="container">
+            <div class="interface-content">
+                <div class="interface-image">
+                    <div class="interface-card">
+                        <h4>TextEdit (modo texto plano)</h4>
+                        <div class="workspace-img">
+                            <figure class="screenshot">
+                                <a href="https://osxdaily.com/2016/12/06/using-textedit-tabs-mac/" target="_blank"
+                                    rel="noopener">
+                                    <img src="https://cdn.osxdaily.com/wp-content/uploads/2016/12/textedit-tabs-mac-3.jpg"
+                                        alt="TextEdit en macOS con pestañas (modo texto plano)" class="card-img"
+                                        loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 720px"
+                                        style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-width:100%;height:auto;">
+                                </a>
+                                <figcaption class="img-caption">TextEdit en macOS con pestañas. <em>Fuente:
+                                        OSXDaily</em>.</figcaption>
+                            </figure>
+                            <h5 class="image-subtitle">Modo pestañas y modo oscuro</h5>
+                            <figure class="screenshot">
+                                <a href="https://9to5mac.com/2023/03/06/macos-textedit-dark-mode/" target="_blank"
+                                    rel="noopener">
+                                    <img src="https://cdn.osxdaily.com/wp-content/uploads/2018/12/dark-mode-textedit-mac-1.jpg"
+                                        alt="TextEdit en modo oscuro en macOS" class="card-img" loading="lazy"
+                                        decoding="async" sizes="(max-width: 768px) 100vw, 720px"
+                                        style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.18);max-width:100%;height:auto;">
+                                </a>
+                                <figcaption class="img-caption">TextEdit en macOS — modo oscuro. <em>Fuente:
+                                        9to5Mac</em>.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>macOS — TextEdit</h2>
+                    <p><strong>TextEdit</strong> puede trabajar en modo texto enriquecido (RTF) y <em>texto plano</em>.
+                        Para uso tipo “bloc de notas”, usa <strong>Formato → Convertir a texto sin formato</strong>
+                        (Shift + Cmd + T).</p>
+                    <p>TextEdit es el equivalente al Bloc de notas en macOS, pero con funciones más avanzadas como la
+                        compatibilidad con texto enriquecido, HTML y documentos de Microsoft Word. Sin embargo, cuando
+                        se usa en modo texto plano, es ideal para programación, edición de archivos simples o creación
+                        de notas rápidas. Permite exportar documentos en distintos formatos y se integra con iCloud, lo
+                        que facilita guardar y continuar el trabajo desde diferentes dispositivos Apple.</p>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="shortcut-header"><strong>Atajos útiles</strong></div>
+                            <div class="shortcuts-list">
+                                <div class="shortcut-item"><span style="color:#0078D4">Nuevo documento</span><span
+                                        class="shortcut-keys">Cmd + N</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Guardar</span><span
+                                        class="shortcut-keys">Cmd + S</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Buscar</span><span
+                                        class="shortcut-keys">Cmd + F</span></div>
+                                <div class="shortcut-item"><span style="color:#0078D4">Modo texto plano</span><span
+                                        class="shortcut-keys">Shift + Cmd + T</span></div>
+                            </div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="shortcut-header"><strong>Funciones</strong></div>
+                            <ul class="feature-list">
+                                <li>RTF y texto plano.</li>
+                                <li>Soporte de Unicode (UTF-8, UTF-16).</li>
+                                <li>Comillas tipográficas y reemplazos inteligentes (desactivables).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 id="ventajas-mac">Ventajas de TextEdit</h3>
+                    <ul class="feature-list">
+                        <li>Trabaja con <strong>texto plano</strong> y <strong>RTF</strong> en el mismo editor.</li>
+                        <li>Integración con <strong>iCloud</strong> para sincronizar documentos.</li>
+                        <li>Compatibilidad básica con <strong>HTML</strong> y documentos de Word.</li>
+                        <li>Permite <strong>imágenes y enlaces</strong> en modo RTF.</li>
+                    </ul>
+
+                    <div class="info-callout" id="tip-mac" style="margin-top:10px">
+                        <div class="icon">💡</div>
+                        <div>
+                            <h3 style="margin:0 0 6px">Consejo</h3>
+                            <p style="margin:0">Para escribir código o texto sin distracciones, activa <em>Formato →
+                                    Convertir a texto sin formato</em> (<strong>Shift + Cmd + T</strong>) y usa fuentes
+                                monoespaciadas como <strong>Menlo</strong> o <strong>Monaco</strong>.</p>
+                        </div>
+                    </div>
+
+                    <p class="img-caption" style="text-align:left;font-style:italic;margin-top:10px">
+                        🕰️ Curiosidad: TextEdit llegó en 2001 con Mac&nbsp;OS&nbsp;X, sustituyendo a
+                        <em>SimpleText</em> del sistema clásico.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparativa Notepad vs TextEdit -->
+    <section id="comparativa-nt" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notepad (Windows) vs TextEdit (macOS)</h2>
+                <p>Similares en espíritu, distintas capacidades por plataforma.</p>
+            </div>
+            <table class="comparison-nt">
+                <thead>
+                    <tr>
+                        <th>Función</th>
+                        <th>Notepad (Windows)</th>
+                        <th>TextEdit (macOS)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Texto plano</td>
+                        <td>✅ Sí</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                    <tr>
+                        <td>Texto enriquecido (RTF)</td>
+                        <td>❌ No</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                    <tr>
+                        <td>Modo oscuro</td>
+                        <td>✅ Sí</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                    <tr>
+                        <td>Pestañas</td>
+                        <td>✅ Sí (Windows 11)</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                    <tr>
+                        <td>Codificación por defecto</td>
+                        <td>UTF-8</td>
+                        <td>Unicode (UTF‑8/UTF‑16)</td>
+                    </tr>
+                    <tr>
+                        <td>Soporte HTML</td>
+                        <td>Limitado (texto plano)</td>
+                        <td>Puede abrir/guardar básico</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Usos prácticos -->
+    <section id="usos" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Usos prácticos</h2>
+                <p>Casos reales donde el bloc de notas es la herramienta ideal.</p>
+            </div>
+            <ul class="use-list">
+                <li><strong>Configuración:</strong> editar <code>.ini</code>, <code>.env</code>, <code>.json</code>.
+                </li>
+                <li><strong>Scripts rápidos:</strong> <code>.bat</code>, <code>.ps1</code>, <code>.sh</code>.</li>
+                <li><strong>Notas y listas:</strong> ideas, pendientes, recordatorios.</li>
+                <li><strong>Logs y datos:</strong> abrir <code>.log</code> o CSV ligeros.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sabías que... -->
+    <section id="sabias" class="section">
+        <div class="container">
+            <div class="info-callout">
+                <div class="icon">💬</div>
+                <div>
+                    <h3 style="margin:0 0 6px">¿Sabías que…?</h3>
+                    <p style="margin:0">El Bloc de Notas se remonta a los prototipos de Windows 1.0 (años 80) y ha
+                        permanecido como una de las utilidades más longevas del sistema operativo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enlaces útiles -->
+    <section id="enlaces" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enlaces útiles</h2>
+                <p>Recursos para complementar tu flujo de trabajo.</p>
+            </div>
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Notepad++</h3>
+                    <p><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">Sitio oficial</a></p>
+                </article>
+                <article class="card">
+                    <h3>Sublime Text</h3>
+                    <p><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">Descargar</a></p>
+                </article>
+                <article class="card">
+                    <h3>Guía de Notepad</h3>
+                    <p><a href="https://support.microsoft.com/" target="_blank" rel="noopener">Soporte Microsoft</a></p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consejos -->
+    <section id="tips" class="section features-advanced">
+        <div class="container">
+            <div class="section-title">
+                <h2>Buenas prácticas</h2>
+                <p>Evita errores de formato y problemas de codificación.</p>
+            </div>
+            <div class="tips-container">
+                <article class="tip-card">
+                    <div class="tip-header"><span class="tip-icon">✓</span><strong>Usa UTF-8</strong></div>
+                    <p>El estándar moderno para compartir archivos entre plataformas.</p>
+                </article>
+                <article class="tip-card">
+                    <div class="tip-header"><span class="tip-icon">✓</span><strong>Texto plano para config</strong>
+                    </div>
+                    <p>Archivos .env, .ini, .json y logs deben editarse en texto plano.</p>
+                </article>
+                <article class="tip-card">
+                    <div class="tip-header"><span class="tip-icon">✓</span><strong>No mezcles RTF</strong></div>
+                    <p>Si usas TextEdit, conviértelo a texto sin formato antes de guardar scripts.</p>
+                </article>
+                <article class="tip-card">
+                    <div class="tip-header"><span class="tip-icon">✓</span><strong>Guarda copias de seguridad</strong>
+                    </div>
+                    <p>Cuando trabajes con archivos de configuración o textos largos, crea una copia de respaldo para
+                        evitar la pérdida de información por cierres inesperados o errores.</p>
+                </article>
+            </div>
+            <details id="protips" class="tip-details">
+                <summary>Consejo pro: optimiza tu flujo de trabajo</summary>
+                <p>En Windows, cambia idioma de teclado con <strong>Alt + Shift</strong>. En macOS, activa el modo texto
+                    plano con <strong>Shift + Cmd + T</strong> y usa <strong>Menlo</strong>/<strong>Monaco</strong> para
+                    programar.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Funciones del Bloc de Notas -->
+    <section id="funciones" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Funciones del Bloc de Notas</h2>
+                <p>El Bloc de notas es una herramienta ligera y rápida para editar texto sin formato, ideal para
+                    programadores, notas y configuraciones del sistema.</p>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Edición simple</h3>
+                    <p>Escribe, copia, pega y busca texto sin formato. Perfecto para notas rápidas y archivos .txt.</p>
+                </article>
+                <article class="card">
+                    <h3>Compatibilidad</h3>
+                    <p>Abre y guarda .txt, .bat, .log y otros formatos de texto plano comunes en Windows.</p>
+                </article>
+                <article class="card">
+                    <h3>Programación básica</h3>
+                    <p>Útil para pequeños scripts o pruebas rápidas en HTML, CSS o JavaScript sin sobrecarga.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz simple -->
+    <section id="quiz" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Cuánto sabes del Bloc de notas?</h2>
+                <p>Selecciona la opción correcta:</p>
+            </div>
+            <form id="quiz-form">
+                <label style="display:block;margin:.4rem 0"><input type="radio" name="q1"> El Bloc de notas permite
+                    imágenes en sus documentos.</label>
+                <label style="display:block;margin:.4rem 0"><input type="radio" name="q1" id="correct"> Trabaja solo con
+                    texto plano.</label>
+                <button type="button" class="cta-button"
+                    onclick="alert(document.getElementById('correct').checked ? '✅ Correcto' : '❌ Intenta otra vez')">Comprobar</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="alternativas" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Alternativas Modernas</h2>
+                <p>Existen alternativas que ofrecen funciones avanzadas, extensiones y soporte para múltiples lenguajes.
+                </p>
+            </div>
+            <ul class="alt-list">
+                <li><img src="https://code.visualstudio.com/assets/favicon.ico" alt="VS Code"><a
+                        href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></li>
+                <li><img src="https://images.seeklogo.com/logo-png/43/1/notepad-logo-png_seeklogo-431739.png"
+                        alt="Notepad++"><a href="https://notepad-plus-plus.org/" target="_blank"
+                        rel="noopener">Notepad++</a></li>
+                <li><img src="https://flight-manual.atom.io/assets/favicon.ico" alt="Atom"><a href="https://atom.io/"
+                        target="_blank" rel="noopener">Atom</a></li>
+                <li><img src="https://www.sublimetext.com/favicon.ico" alt="Sublime Text"><a
+                        href="https://www.sublimetext.com/" target="_blank" rel="noopener">Sublime Text</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Disponibilidad por sistema -->
+    <section id="sistemas" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Disponibilidad por sistema</h2>
+                <p>El Bloc de Notas es nativo en Windows; en macOS puedes usar TextEdit (como texto plano) u otros
+                    editores.</p>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Windows</h3>
+                    <p>Incluido por defecto, con pestañas (versiones recientes), guardado automático y modo oscuro.</p>
+                </article>
+                <article class="card">
+                    <h3>macOS</h3>
+                    <p>Alternativas: TextEdit en modo texto plano, o editores como Sublime Text / VS Code para tareas
+                        rápidas.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atajos de teclado -->
+    <section id="atajos" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Atajos de teclado comunes</h2>
+                <p>Incrementa tu velocidad con los atajos más usados.</p>
+            </div>
+            <ul class="shortcuts-list">
+                <li><strong>Ctrl + N</strong> — Nuevo archivo</li>
+                <li><strong>Ctrl + O</strong> — Abrir</li>
+                <li><strong>Ctrl + S</strong> — Guardar</li>
+                <li><strong>Ctrl + F</strong> — Buscar</li>
+                <li><strong>Ctrl + H</strong> — Reemplazar</li>
+                <li><strong>Ctrl + Z / Y</strong> — Deshacer / Rehacer</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="atajos-avanzados" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Atajos avanzados</h2>
+                <p>Más comandos útiles de Notepad (Windows) y TextEdit (macOS). Usa “Mostrar más” para ver tandas
+                    adicionales.</p>
+            </div>
+
+            <div class="more-grid">
+                <!-- Columna Windows -->
+                <article class="more-card">
+                    <h3 class="more-title">Windows — Notepad</h3>
+                    <ul class="more-list" id="list-win">
+                        <li class="more-item"><strong>Imprimir</strong> — <kbd>Ctrl</kbd> + <kbd>P</kbd></li>
+                        <li class="more-item"><strong>Deshacer / Rehacer</strong> — <kbd>Ctrl</kbd> + <kbd>Z</kbd> /
+                            <kbd>Ctrl</kbd> + <kbd>Y</kbd></li>
+                        <li class="more-item"><strong>Seleccionar todo</strong> — <kbd>Ctrl</kbd> + <kbd>A</kbd></li>
+                        <li class="more-item"><strong>Buscar siguiente</strong> — <kbd>F3</kbd></li>
+                        <li class="more-item"><strong>Buscar anterior</strong> — <kbd>Shift</kbd> + <kbd>F3</kbd></li>
+                        <li class="more-item"><strong>Ir a línea…</strong> (desactivar Wrap) — <kbd>Ctrl</kbd> +
+                            <kbd>G</kbd></li>
+
+                        <li class="more-item hidden-more"><strong>Marca de tiempo</strong> — <kbd>F5</kbd></li>
+                        <li class="more-item hidden-more"><strong>Cerrar pestaña</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>W</kbd></li>
+                        <li class="more-item hidden-more"><strong>Pestaña sig./ant.</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>Tab</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd></li>
+                        <li class="more-item hidden-more"><strong>Zoom + / – / 100%</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>+</kbd> / <kbd>Ctrl</kbd> + <kbd>-</kbd> / <kbd>Ctrl</kbd> + <kbd>0</kbd></li>
+                        <li class="more-item hidden-more"><strong>Nueva ventana</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>Shift</kbd> + <kbd>N</kbd></li>
+                        <li class="more-item hidden-more"><strong>Reemplazar todo</strong> — en diálogo de Reemplazar
+                        </li>
+                        <li class="more-item hidden-more"><strong>Guardar como…</strong> — menú Archivo</li>
+                        <li class="more-item hidden-more"><strong>Abrir…</strong> — <kbd>Ctrl</kbd> + <kbd>O</kbd></li>
+                        <li class="more-item hidden-more"><strong>Guardar como…</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>Shift</kbd> + <kbd>S</kbd></li>
+                        <li class="more-item hidden-more"><strong>Nuevo</strong> — <kbd>Ctrl</kbd> + <kbd>N</kbd></li>
+                        <li class="more-item hidden-more"><strong>Salir</strong> — <kbd>Alt</kbd> + <kbd>F4</kbd></li>
+                        <li class="more-item hidden-more"><strong>Zoom + / – / 100%</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>+</kbd> / <kbd>Ctrl</kbd> + <kbd>-</kbd> / <kbd>Ctrl</kbd> + <kbd>0</kbd></li>
+                        <li class="more-item hidden-more"><strong>Buscar en selección</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>F</kbd> (con texto seleccionado)</li>
+                        <li class="more-item hidden-more"><strong>Ir a inicio/fin del documento</strong> —
+                            <kbd>Ctrl</kbd> + <kbd>Inicio</kbd> / <kbd>Ctrl</kbd> + <kbd>Fin</kbd></li>
+                        <li class="more-item hidden-more"><strong>Seleccionar línea</strong> — <kbd>Shift</kbd> +
+                            <kbd>Fin</kbd> / <kbd>Shift</kbd> + <kbd>Inicio</kbd></li>
+                        <li class="more-item hidden-more"><strong>Insertar fecha/hora</strong> — <kbd>F5</kbd></li>
+                        <li class="more-item hidden-more"><strong>Nueva ventana</strong> — <kbd>Ctrl</kbd> +
+                            <kbd>Shift</kbd> + <kbd>N</kbd></li>
+                        <li class="more-item hidden-more"><strong>Cambiar codificación a UTF-8</strong> — Archivo →
+                            Guardar como… → <em>UTF-8</em></li>
+                        <li class="more-item hidden-more"><strong>Ir a línea…</strong> — <kbd>Ctrl</kbd> + <kbd>G</kbd>
+                            (requiere Wrap OFF)</li>
+                    </ul>
+                    <div class="more-actions">
+                        <button id="moreWin" class="btn">Mostrar más</button>
+                        <button id="lessWin" class="btn" style="display:none">Mostrar menos</button>
+                    </div>
+                </article>
+
+                <!-- Columna macOS -->
+                <article class="more-card">
+                    <h3 class="more-title">macOS — TextEdit</h3>
+                    <ul class="more-list" id="list-mac">
+                        <li class="more-item"><strong>Imprimir</strong> — <kbd>⌘</kbd> + <kbd>P</kbd></li>
+                        <li class="more-item"><strong>Deshacer / Rehacer</strong> — <kbd>⌘</kbd> + <kbd>Z</kbd> /
+                            <kbd>⇧⌘</kbd> + <kbd>Z</kbd></li>
+                        <li class="more-item"><strong>Seleccionar todo</strong> — <kbd>⌘</kbd> + <kbd>A</kbd></li>
+                        <li class="more-item"><strong>Buscar</strong> — <kbd>⌘</kbd> + <kbd>F</kbd></li>
+                        <li class="more-item"><strong>Buscar sig./ant.</strong> — <kbd>⌘</kbd> + <kbd>G</kbd> /
+                            <kbd>⇧⌘</kbd> + <kbd>G</kbd></li>
+                        <li class="more-item"><strong>Texto sin formato</strong> — <kbd>⇧⌘</kbd> + <kbd>T</kbd></li>
+
+                        <li class="more-item hidden-more"><strong>Duplicar / Guardar como…</strong> — <kbd>⇧⌘</kbd> +
+                            <kbd>S</kbd></li>
+                        <li class="more-item hidden-more"><strong>Mostrar Fuentes</strong> — <kbd>⌘</kbd> + <kbd>T</kbd>
+                        </li>
+                        <li class="more-item hidden-more"><strong>Negrita / Cursiva / Subrayado</strong> — <kbd>⌘</kbd>
+                            + <kbd>B</kbd> / <kbd>⌘</kbd> + <kbd>I</kbd> / <kbd>⌘</kbd> + <kbd>U</kbd></li>
+                        <li class="more-item hidden-more"><strong>Pestaña sig./ant.</strong> — <kbd>⌃</kbd> +
+                            <kbd>Tab</kbd> / <kbd>⌃</kbd> + <kbd>⇧</kbd> + <kbd>Tab</kbd></li>
+                        <li class="more-item hidden-more"><strong>Reemplazar</strong> — <kbd>⌥⌘</kbd> + <kbd>F</kbd>
+                        </li>
+                        <li class="more-item hidden-more"><strong>Línea nueva sin salto</strong> — <kbd>⇧</kbd> +
+                            <kbd>Enter</kbd></li>
+                        <li class="more-item hidden-more"><strong>Exportar PDF</strong> — Archivo → Exportar como PDF…
+                        </li>
+                        <li class="more-item hidden-more"><strong>Abrir…</strong> — <kbd>⌘</kbd> + <kbd>O</kbd></li>
+                        <li class="more-item hidden-more"><strong>Guardar como… / Duplicar</strong> — <kbd>⇧⌘</kbd> +
+                            <kbd>S</kbd></li>
+                        <li class="more-item hidden-more"><strong>Nuevo</strong> — <kbd>⌘</kbd> + <kbd>N</kbd></li>
+                        <li class="more-item hidden-more"><strong>Cerrar ventana/pestaña</strong> — <kbd>⌘</kbd> +
+                            <kbd>W</kbd></li>
+                        <li class="more-item hidden-more"><strong>Zoom + / – / 100%</strong> — <kbd>⌘</kbd> +
+                            <kbd>+</kbd> / <kbd>⌘</kbd> + <kbd>-</kbd> / <kbd>⌘</kbd> + <kbd>0</kbd></li>
+                        <li class="more-item hidden-more"><strong>Mostrar Fuentes</strong> — <kbd>⌘</kbd> + <kbd>T</kbd>
+                        </li>
+                        <li class="more-item hidden-more"><strong>Negrita / Cursiva / Subrayado</strong> — <kbd>⌘</kbd>
+                            + <kbd>B</kbd> / <kbd>⌘</kbd> + <kbd>I</kbd> / <kbd>⌘</kbd> + <kbd>U</kbd></li>
+                        <li class="more-item hidden-more"><strong>Ir a inicio/fin</strong> — <kbd>⌘</kbd> + <kbd>↑</kbd>
+                            / <kbd>⌘</kbd> + <kbd>↓</kbd></li>
+                        <li class="more-item hidden-more"><strong>Seleccionar línea</strong> — <kbd>⇧⌘</kbd> +
+                            <kbd>←</kbd> / <kbd>⇧⌘</kbd> + <kbd>→</kbd></li>
+                        <li class="more-item hidden-more"><strong>Reemplazar</strong> — <kbd>⌥⌘</kbd> + <kbd>F</kbd>
+                        </li>
+                        <li class="more-item hidden-more"><strong>Exportar PDF</strong> — Archivo → Exportar como PDF…
+                        </li>
+                        <li class="more-item hidden-more"><strong>Preferencias</strong> — <kbd>⌘</kbd> + <kbd>,</kbd>
+                        </li>
+                    </ul>
+                    <div class="more-actions">
+                        <button id="moreMac" class="btn">Mostrar más</button>
+                        <button id="lessMac" class="btn" style="display:none">Mostrar menos</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simulador de Bloc de Notas</h2>
+                <p>Escribe en el cuadro para simular un bloc de notas y ver el conteo de caracteres en tiempo real.</p>
+            </div>
+            <textarea id="editor-simulador" aria-label="Simulador de bloc de notas"
+                placeholder="Escribe algo aquí..."></textarea>
+            <div class="editor-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+                <button id="btnCopy" class="cta-button" type="button">Copiar</button>
+                <button id="btnClear" class="btn-secondary" type="button">Limpiar</button>
+                <label class="btn-secondary" style="cursor:pointer;margin:0">
+                    Importar .txt
+                    <input id="fileImport" type="file" accept=".txt" style="display:none">
+                </label>
+                <button id="btnWrap" class="btn-secondary" type="button" aria-pressed="true">Wrap: ON</button>
+                <div class="font-ctrl" style="display:flex;gap:6px;align-items:center">
+                    <button id="fontDec" class="btn-secondary" type="button" title="Disminuir tamaño">A-</button>
+                    <button id="fontInc" class="btn-secondary" type="button" title="Aumentar tamaño">A+</button>
+                </div>
+            </div>
+
+            <div class="stats-row" aria-live="polite" style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+                <span class="stat-badge">Caracteres: <strong id="statChars">0</strong></span>
+                <span class="stat-badge">Palabras: <strong id="statWords">0</strong></span>
+                <span class="stat-badge">Líneas: <strong id="statLines">0</strong></span>
+                <span class="stat-badge">Lectura: <strong id="statRead">0.0 min</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>Contenido</h4>
+                <ul>
+                    <li><a href="#historia">Historia</a></li>
+                    <li><a href="#funciones">Funciones</a></li>
+                    <li><a href="#sistemas">Disponibilidad</a></li>
+                    <li><a href="#comparativa-nt">Comparativa Notepad vs TextEdit</a></li>
+                    <li><a href="#modernos">Versiones modernas</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
+                    <li><a href="#usos">Usos prácticos</a></li>
+                    <li><a href="#win">Notepad (Windows)</a></li>
+                    <li><a href="#mac">TextEdit (macOS)</a></li>
+                    <li><a href="#tips">Buenas prácticas</a></li>
+                    <li><a href="#enlaces">Enlaces útiles</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#alternativas">Alternativas</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Páginas</h4>
+                <ul>
+                    <li><a href="bloc.html">Bloc de notas</a></li>
+                    <li><a href="editores.html">Editores de imagen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Atajos rápidos</h4>
+                <ul>
+                    <li>Ctrl/Cmd + K — Abrir buscador</li>
+                    <li>Esc — Cerrar buscador</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <span>© 2025 Ofimática</span>
+            <div class="footer-badges">
+                <span class="badge">Windows</span>
+                <span class="badge">macOS</span>
+                <span class="badge">Texto plano</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay búsqueda -->
+    <div id="searchOverlay" class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+        <div class="search-modal">
+            <div class="search-head">
+                <span id="searchTitle">Buscar en esta página</span>
+                <button class="search-close" id="closeSearch" type="button">Cerrar</button>
+            </div>
+            <div class="search-field">
+                <input id="searchInput" type="search" placeholder="Escribe para buscar…" autocomplete="off" />
+                <span class="search-stats" id="searchStats">0 resultados</span>
+            </div>
+            <div class="search-results" id="searchResults" role="listbox" aria-label="Resultados"></div>
+        </div>
+    </div>
+
+    <script>
+        // Si el JS corre, quitamos el h1 de diagnóstico:
+        const smoke = document.getElementById('smoke'); if (smoke) smoke.remove();
+
+        // Evitar que al recargar te lleve a #mac o #win (limpia hash y controla scroll)
+        try {
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+            const navEntry = performance.getEntriesByType('navigation')[0];
+            const reloaded = navEntry && navEntry.type === 'reload';
+            if (reloaded && location.hash) {
+                // Si recargaste con #hash, lo limpiamos y subimos al inicio
+                history.replaceState(null, '', location.pathname + location.search);
+                window.scrollTo(0, 0);
+            }
+            // Para clicks en enlaces internos, hacemos scroll suave y limpiamos el hash
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    const href = a.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Quitamos el hash para que al recargar no salte a la sección
+                        history.replaceState(null, '', location.pathname + location.search);
+                        // Resalta suavemente la sección a la que llegamos
+                        try { flashSection(target); } catch (_) { }
+                    }
+                });
+            });
+        } catch (_) { }
+
+        // ---- Resaltado de sección y navegación activa al hacer scroll / observar intersecciones
+        function flashSection(el) {
+            if (!el) return;
+            el.classList.remove('section-flash'); // reinicia si ya estaba
+            // fuerza reflow para reiniciar la animación
+            void el.offsetWidth;
+            el.classList.add('section-flash');
+            // quitar la clase después de la animación
+            setTimeout(() => el.classList.remove('section-flash'), 900);
+        }
+
+        // Mapa de secciones observables -> enlace correspondiente
+        const SECTION_IDS = ['historia', 'modernos', 'win', 'curiosidades', 'mac', 'comparativa-nt', 'usos', 'sabias', 'enlaces', 'tips', 'funciones', 'quiz', 'alternativas', 'sistemas', 'atajos', 'simulador'];
+        const idToNav = {};
+        document.querySelectorAll('.nav .nav-item').forEach(a => {
+            const href = a.getAttribute('href') || '';
+            if (href.startsWith('#')) {
+                idToNav[href.slice(1)] = a;
+            } else {
+                // Mapea enlaces de la barra superior a secciones si aplican
+                const hash = href.split('#')[1];
+                if (hash) idToNav[hash] = a;
+            }
+        });
+        // Quick-Nav mapping (left vertical menu)
+        const idToQuick = {};
+        Array.from(document.querySelectorAll('.qnav-link')).forEach(a=>{
+          const href=a.getAttribute('href')||'';
+          if(href.startsWith('#')) idToQuick[href.slice(1)] = a;
+        });
+
+        // IntersectionObserver para activar enlace actual y permitir flash al entrar por scroll
+        try {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const link = idToNav[id];
+                    if (!id || !link) return;
+                    if (entry.isIntersecting) {
+                        // activar en nav principal
+                        document.querySelectorAll('.nav .nav-item.active').forEach(n => n.classList.remove('active'));
+                        link.classList.add('active');
+                        // activar en quick-nav
+                        const q = idToQuick[id];
+                        if(q){
+                          document.querySelectorAll('.quick-nav a.active').forEach(n=>n.classList.remove('active'));
+                          q.classList.add('active');
+                        }
+                        // si la visibilidad es sustancial, hacemos un flash suave
+                        if (entry.intersectionRatio > 0.5) {
+                            flashSection(entry.target);
+                        }
+                    }
+                });
+            }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .5, 1] });
+
+            SECTION_IDS.forEach(id => {
+                const sec = document.getElementById(id);
+                if (sec) io.observe(sec);
+            });
+        } catch (_) { }
+
+        // Header shrink + progress
+        const header = document.getElementById('topHeader');
+        const progressBar = document.getElementById('progressBar');
+        window.addEventListener('scroll', () => {
+            header?.classList.toggle('scrolled', window.scrollY > 6);
+            const h = document.documentElement;
+            const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+            if (progressBar) progressBar.style.width = scrolled + '%';
+            // Toggle del botón Volver arriba
+            const up = document.getElementById('scrollTopBtn');
+            if (up) {
+                if (window.scrollY > 400) up.classList.add('show');
+                else up.classList.remove('show');
+            }
+        });
+
+        // Búsqueda mínima para probar
+        const SEARCH_INDEX = [
+            { id: 'historia', title: 'Evolución del Bloc de Notas', snippet: 'De Windows 95 a Windows 11: hitos clave.', badge: 'Historia', href: '#historia' },
+            { id: 'funciones', title: 'Funciones del Bloc de Notas', snippet: 'Edición simple, compatibilidad y uso para scripts.', badge: 'Funciones', href: '#funciones' },
+            { id: 'sistemas', title: 'Disponibilidad por sistema', snippet: 'Windows (nativo) y alternativas en macOS.', badge: 'Sistemas', href: '#sistemas' },
+            { id: 'comparativa-nt', title: 'Notepad vs TextEdit', snippet: 'Diferencias de formato, pestañas y codificación.', badge: 'Comparativa', href: '#comparativa-nt' },
+            { id: 'modernos', title: 'Versiones modernas', snippet: 'Notepad en Windows 11 y TextEdit en macOS.', badge: 'Galería', href: '#modernos' },
+            { id: 'curiosidades', title: 'Curiosidades y datos técnicos', snippet: 'RTFD en TextEdit, archivos grandes en Notepad.', badge: 'Curiosidades', href: '#curiosidades' },
+            { id: 'usos', title: 'Usos prácticos', snippet: 'Config, scripts, notas y logs.', badge: 'Casos de uso', href: '#usos' },
+            { id: 'win', title: 'Windows — Notepad', snippet: 'Atajos: Ctrl+N, Ctrl+S, Ctrl+F, Ctrl+H. Pestañas y UTF-8.', badge: 'Windows', href: '#win' },
+            { id: 'mac', title: 'macOS — TextEdit', snippet: 'RTF y texto plano. Shift+Cmd+T para texto sin formato.', badge: 'macOS', href: '#mac' },
+            { id: 'ventajas-mac', title: 'Ventajas de TextEdit', snippet: 'RTF y texto plano, iCloud, HTML y compatibilidad con Word.', badge: 'macOS', href: '#ventajas-mac' },
+            { id: 'tip-mac', title: 'Consejo para TextEdit', snippet: 'Shift+Cmd+T para texto plano; usa Menlo/Monaco.', badge: 'Atajo', href: '#tip-mac' },
+            { id: 'tips', title: 'Buenas prácticas', snippet: 'Usa UTF-8; edita configs en texto plano; evita RTF.', badge: 'Consejos', href: '#tips' },
+            { id: 'protips', title: 'Consejos Pro', snippet: 'Atajos y flujos rápidos para Windows/macOS.', badge: 'Tips', href: '#protips' },
+            { id: 'enlaces', title: 'Enlaces útiles', snippet: 'Notepad++, Sublime Text y soporte oficial.', badge: 'Recursos', href: '#enlaces' },
+            { id: 'quiz', title: 'Quiz: Bloc de notas', snippet: 'Pregunta simple para verificar conocimientos.', badge: 'Quiz', href: '#quiz' },
+            { id: 'alternativas', title: 'Alternativas Modernas', snippet: 'VS Code, Notepad++, Atom y Sublime Text.', badge: 'Herramientas', href: '#alternativas' },
+            { id: 'simulador', title: 'Simulador de Bloc de Notas', snippet: 'Textarea con contador de caracteres en vivo.', badge: 'Demo', href: '#simulador' }
+        ];
+        const overlay = document.getElementById('searchOverlay');
+        const openBtn = document.getElementById('openSearch');
+        const closeBtn = document.getElementById('closeSearch');
+        const input = document.getElementById('searchInput');
+        const results = document.getElementById('searchResults');
+        const stats = document.getElementById('searchStats');
+
+        function openSearch() { overlay.classList.add('open'); document.body.classList.add('noscroll'); setTimeout(() => input.focus(), 50); renderResults(''); }
+        function closeSearch() { overlay.classList.remove('open'); document.body.classList.remove('noscroll'); input.value = ''; results.innerHTML = ''; stats.textContent = '0 resultados'; }
+        openBtn?.addEventListener('click', openSearch);
+        closeBtn?.addEventListener('click', closeSearch);
+        // Buscar mientras escribe
+        input?.addEventListener('input', (e) => {
+            renderResults(e.target.value || '');
+        });
+        overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+        window.addEventListener('keydown', (e) => { const meta = navigator.platform.includes('Mac') ? e.metaKey : e.ctrlKey; if (meta && e.key.toLowerCase() === 'k') { e.preventDefault(); openSearch(); } if (e.key === 'Escape' && overlay.classList.contains('open')) closeSearch(); });
+        // Renderiza resultados filtrando por consulta
+        function renderResults(query) {
+            const q = (query || '').trim().toLowerCase();
+            results.innerHTML = '';
+            let list = SEARCH_INDEX;
+
+            if (q) {
+                list = SEARCH_INDEX.filter(o => {
+                    const t = (o.title || '').toLowerCase();
+                    const s = (o.snippet || '').toLowerCase();
+                    const b = (o.badge || '').toLowerCase();
+                    return t.includes(q) || s.includes(q) || b.includes(q);
+                });
+            }
+
+            stats.textContent = (list.length || 0) + ' resultados';
+
+            if (!list.length) {
+                const empty = document.createElement('div');
+                empty.className = 'result-empty';
+                empty.textContent = 'Sin resultados';
+                results.appendChild(empty);
+                return;
+            }
+
+            // Construir lista (máx 10)
+            list.slice(0, 10).forEach(item => {
+                const a = document.createElement('a');
+                a.className = 'result-item';
+                a.href = item.href;
+                a.innerHTML = `
+          <div class="result-ico">§</div>
+          <div>
+            <div class="result-title">${item.title}</div>
+            <div class="result-snippet">${item.snippet}</div>
+          </div>
+          <div class="result-badge">${item.badge}</div>
+        `;
+                a.addEventListener('click', () => closeSearch());
+                results.appendChild(a);
+            });
+        }
+        // Toggle de tema (claro/oscuro) con persistencia
+        try {
+            const themeBtn = document.getElementById('themeToggle');
+            const STORAGE_KEY = 'ofimatica-theme';
+            function applyTheme(t) { document.body.classList.toggle('theme-dark', t === 'dark'); themeBtn?.setAttribute('aria-pressed', String(t === 'dark')); themeBtn && (themeBtn.textContent = (t === 'dark' ? '☀️ Tema' : '🌙 Tema')); }
+            let saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) { saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+            applyTheme(saved);
+            themeBtn?.addEventListener('click', () => { const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark'; localStorage.setItem(STORAGE_KEY, next); applyTheme(next); });
+        } catch (_) { }
+        // Simulador mejorado: autoguardado, copiar/limpiar, importar .txt, wrap ON/OFF, tamaño de fuente, contadores avanzados
+        (function () {
+            const editor = document.getElementById('editor-simulador');
+            if (!editor) return;
+
+            const statChars = document.getElementById('statChars');
+            const statWords = document.getElementById('statWords');
+            const statLines = document.getElementById('statLines');
+            const statRead = document.getElementById('statRead');
+            const legacyCharsP = document.getElementById('contador-caracteres'); // por si quedó
+
+            const btnCopy = document.getElementById('btnCopy');
+            const btnClear = document.getElementById('btnClear');
+            const fileInput = document.getElementById('fileImport');
+            const btnWrap = document.getElementById('btnWrap');
+            const fontInc = document.getElementById('fontInc');
+            const fontDec = document.getElementById('fontDec');
+
+            const STORAGE_TEXT = 'ofimatica-editor-text';
+            const STORAGE_SIZE = 'ofimatica-editor-fontsize';
+            const STORAGE_WRAP = 'ofimatica-editor-wrap';
+
+            // Restaurar texto, tamaño y wrap
+            try {
+                const saved = localStorage.getItem(STORAGE_TEXT);
+                if (saved !== null) editor.value = saved;
+
+                const savedSize = parseFloat(localStorage.getItem(STORAGE_SIZE));
+                editor.style.fontSize = !isNaN(savedSize) ? (savedSize + 'px') : '16px';
+
+                const savedWrap = localStorage.getItem(STORAGE_WRAP);
+                const wrapOn = savedWrap === null ? true : (savedWrap === 'true');
+                applyWrap(wrapOn);
+            } catch (_) { }
+
+            // Pegar limpio (texto plano)
+            editor.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const text = (e.clipboardData || window.clipboardData).getData('text');
+                const start = editor.selectionStart, end = editor.selectionEnd;
+                const before = editor.value.slice(0, start);
+                const after = editor.value.slice(end);
+                editor.value = before + text + after;
+                editor.selectionStart = editor.selectionEnd = start + text.length;
+                updateStats();
+                queueSave();
+            });
+
+            // Autoguardado con debounce
+            let saveTimer;
+            function queueSave() {
+                clearTimeout(saveTimer);
+                saveTimer = setTimeout(() => {
+                    try { localStorage.setItem(STORAGE_TEXT, editor.value); } catch (_) { }
+                }, 500);
+            }
+
+            // Contadores
+            function countWords(t) {
+                return (t.trim().match(/\S+/g) || []).length;
+            }
+            function countLines(t) { return t.length ? t.split(/\r?\n/).length : 0; }
+
+            function updateStats() {
+                const t = editor.value;
+                const chars = t.length;
+                const words = countWords(t);
+                const lines = countLines(t);
+                const mins = words ? (words / 200).toFixed(1) : '0.0';
+
+                if (statChars) statChars.textContent = chars;
+                if (statWords) statWords.textContent = words;
+                if (statLines) statLines.textContent = lines;
+                if (statRead) statRead.textContent = mins + ' min';
+                if (legacyCharsP) legacyCharsP.textContent = 'Caracteres: ' + chars;
+            }
+
+            editor.addEventListener('input', () => { updateStats(); queueSave(); });
+            updateStats();
+
+            // Copiar
+            btnCopy?.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(editor.value);
+                    btnCopy.textContent = 'Copiado ✔';
+                    setTimeout(() => btnCopy.textContent = 'Copiar', 1000);
+                } catch (_) { alert('No se pudo copiar'); }
+            });
+
+            // Limpiar
+            btnClear?.addEventListener('click', () => {
+                if (!editor.value) return;
+                if (confirm('¿Vaciar el editor?')) {
+                    editor.value = '';
+                    updateStats();
+                    queueSave();
+                }
+            });
+
+            // Importar .txt
+            fileInput?.addEventListener('change', async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                const text = await file.text();
+                editor.value = text;
+                updateStats();
+                queueSave();
+                fileInput.value = '';
+            });
+
+            // Wrap ON/OFF
+            function applyWrap(on) {
+                editor.style.whiteSpace = on ? 'pre-wrap' : 'pre';
+                btnWrap?.setAttribute('aria-pressed', String(on));
+                if (btnWrap) btnWrap.textContent = 'Wrap: ' + (on ? 'ON' : 'OFF');
+                try { localStorage.setItem(STORAGE_WRAP, String(on)); } catch (_) { }
+            }
+            // === Listener actualizado: usa el estilo computado real ===
+            btnWrap?.addEventListener('click', () => {
+                const current = getComputedStyle(editor).whiteSpace; // lee el valor efectivo
+                const isOn = current !== 'pre';                      // si NO es 'pre', consideramos que está ON
+                applyWrap(!isOn);                                    // alternar
+            });
+
+            // Tamaño de fuente ± (mín 12, máx 24)
+            function currentSize() {
+                const v = parseFloat(getComputedStyle(editor).fontSize);
+                return isNaN(v) ? 16 : v;
+            }
+            function setSize(px) {
+                const clamped = Math.max(12, Math.min(24, px));
+                editor.style.fontSize = clamped + 'px';
+                try { localStorage.setItem(STORAGE_SIZE, String(clamped)); } catch (_) { }
+            }
+            fontInc?.addEventListener('click', () => setSize(currentSize() + 1));
+            fontDec?.addEventListener('click', () => setSize(currentSize() - 1));
+
+        })();
+        /* --- Mostrar más / menos (revelado progresivo) --- */
+        function setupShowMore(listId, moreBtnId, lessBtnId, step = 6) {
+            const list = document.getElementById(listId);
+            const moreBtn = document.getElementById(moreBtnId);
+            const lessBtn = document.getElementById(lessBtnId);
+            if (!list || !moreBtn || !lessBtn) return;
+
+            const items = Array.from(list.querySelectorAll('.more-item'));
+            const hidden = () => items.filter(li => li.classList.contains('hidden-more'));
+
+            function reveal(n) {
+                hidden().slice(0, n).forEach(li => li.classList.remove('hidden-more'));
+                const hasHidden = hidden().length > 0;
+                moreBtn.style.display = hasHidden ? 'inline-block' : 'none';
+                lessBtn.style.display = hasHidden ? 'none' : 'inline-block';
+                moreBtn.disabled = !hasHidden;
+            }
+
+            function collapseAll() {
+                items.forEach((li, idx) => { if (idx >= 6) li.classList.add('hidden-more'); });
+                moreBtn.disabled = false;
+                moreBtn.style.display = 'inline-block';
+                lessBtn.style.display = 'none';
+            }
+
+            moreBtn.addEventListener('click', () => reveal(step));
+            lessBtn.addEventListener('click', collapseAll);
+
+            collapseAll();
+        }
+        // Descargar página en PDF (imprimir)
+        document.addEventListener('DOMContentLoaded', () => {
+            const printBtn = document.getElementById('printBtn');
+            if (printBtn) {
+                printBtn.addEventListener('click', () => {
+                    window.print();
+                });
+            }
+            // Enganchar botón "Volver arriba" cuando el DOM ya está listo
+            const up = document.getElementById('scrollTopBtn');
+            if (up) {
+                up.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            // Inicializar "Mostrar más" para Atajos avanzados
+            setupShowMore('list-win', 'moreWin', 'lessWin', 6);
+            setupShowMore('list-mac', 'moreMac', 'lessMac', 6);
+            // Fecha automática en encabezado de impresión
+            try {
+                const printDateEl = document.getElementById('printDate');
+                function setPrintDate() {
+                    const now = new Date();
+                    const fmt = now.toLocaleString(undefined, {
+                        year: 'numeric', month: '2-digit', day: '2-digit',
+                        hour: '2-digit', minute: '2-digit'
+                    });
+                    if (printDateEl) printDateEl.textContent = fmt;
+                }
+                window.addEventListener('beforeprint', setPrintDate);
+            } catch (_) { }
+        });
+    </script>
+
+    <button id="scrollTopBtn" class="scroll-top no-print" type="button" aria-label="Volver arriba">↑</button>
+</body>
+
+</html>

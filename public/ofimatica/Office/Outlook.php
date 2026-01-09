@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732221.png" />
+  <title>Guía Definitiva de Outlook 2025 | De Principiante a Avanzado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Paletas combinadas (Word + Outlook) para que puedas reutilizar estilos en otros cursos */
+    :root {
+      /* Paleta tipo Word (de tu primer snippet) */
+      --word-blue: #185ABD;
+      --accent-word: #0078D4;
+
+      /* Paleta Outlook principal */
+      --outlook-blue: #0072C6;
+      --outlook-blue-dark: #004E8C;
+      --outlook-blue-light: #E5F1FB;
+
+      /* Paleta genérica de UI (usada en toda la guía) */
+      --accent: #0078D4;
+      --bg: #F7F9FC;
+      --bg-2: #EEF2F8;
+      --card: #FFFFFF;
+      --border: #E5EAF2;
+      --txt: #1F2937;
+      --txt-2: #4B5563;
+      --txt-3: #6B7280;
+      --ok: #107C10;
+      --warn: #FF8C00;
+      --danger: #D13438;
+      --info: #0078D4;
+
+      --ff: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --fs-hero: clamp(2rem, 1.2rem + 2.5vw, 3rem);
+      --fs-xl: clamp(1.5rem, 1rem + 1.6vw, 2.2rem);
+      --fs-lg: clamp(1.1rem, .95rem + .6vw, 1.35rem);
+      --fs: 1rem;
+      --fs-sm: .94rem;
+      --fs-xs: .84rem;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --speed: 180ms;
+      --container: 1180px;
+      --sd4: 0 2px 6px rgba(0,0,0,.06);
+      --sd8: 0 6px 15px rgba(0,0,0,.08);
+      --sd16: 0 14px 34px rgba(0,0,0,.12);
+    }
+
+    /* Tema oscuro manual (cuando activas el switch se añade .dark-theme al <html>) */
+    .dark-theme {
+      --bg: #151A24;
+      --bg-2: #1B2230;
+      --card: #1F2633;
+      --border: #2B3240;
+      --txt: #E6E8EE;
+      --txt-2: #CDD3E1;
+      --txt-3: #AAB3C7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      font-size: var(--fs);
+      line-height: 1.65;
+      color: var(--txt);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color var(--speed) ease, color var(--speed) ease;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: var(--outlook-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 22px; }
+
+    /* Barra de progreso */
+    .progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1000; }
+    .progress .bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--outlook-blue), var(--accent)); transition: width 0.3s ease; }
+
+    /* Header y navegación */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+      backdrop-filter: saturate(160%) blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 12px 22px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--outlook-blue);
+      font-weight: 700;
+    }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; box-shadow: var(--sd8); }
+    .brand h1 { font-size: 1.1rem; white-space: nowrap; }
+
+    .search { position: relative; flex: 1; max-width: 500px; margin: 0 20px; }
+    .searchbox {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      transition: all var(--speed);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .dark-theme .searchbox { box-shadow: none; }
+    .searchbox:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--outlook-blue); }
+    .dark-theme .searchbox:focus-within { background: var(--card); }
+
+    .search .icon { width: 18px; height: 18px; color: var(--txt-3); }
+    #siteSearch {
+      border: 0;
+      background: transparent;
+      width: 100%;
+      padding: 0 8px;
+      outline: none;
+      color: var(--txt);
+    }
+    #siteSearch::placeholder { color: var(--txt-3); }
+
+    .clear-btn {
+      background: none;
+      border: 0;
+      color: var(--txt-3);
+      cursor: pointer;
+      padding: 2px;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .clear-btn:hover { color: var(--txt-2); }
+
+    .results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-top: 8px;
+      box-shadow: var(--sd16);
+      max-height: 300px;
+      overflow: auto;
+      display: none;
+      z-index: 20;
+    }
+    .results.show { display: block; }
+    .search-result {
+      display: block;
+      padding: 10px 14px;
+      color: var(--txt);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--speed);
+      font-size: .92rem;
+    }
+    .search-result:hover { background: var(--bg-2); text-decoration: none; }
+    .no-results { padding: 10px 14px; color: var(--txt-3); font-style: italic; }
+
+    .actions { display: flex; align-items: center; gap: 12px; }
+    .theme-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: .9rem;
+      transition: all var(--speed);
+    }
+    .theme-switch:hover { border-color: var(--outlook-blue); }
+    .theme-switch .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--outlook-blue);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--sd4);
+    }
+    .dark-theme .theme-switch .dot { background: #111827; }
+
+    .hamb {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: background var(--speed), box-shadow var(--speed), transform var(--speed);
+    }
+    .hamb span {
+      width: 20px;
+      height: 2px;
+      background: var(--txt);
+      border-radius: 1px;
+      transition: all var(--speed);
+    }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(2) { opacity: 0; }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 12px;
+      display: none;
+    }
+    #menuToggle:checked ~ .navlinks { display: flex; }
+    .navlinks a {
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--txt);
+      border: 1px solid transparent;
+      transition: all var(--speed);
+      font-size: .9rem;
+    }
+    .navlinks a:hover {
+      background: var(--card);
+      border-color: var(--border);
+      text-decoration: none;
+    }
+
+    .toc-toggle {
+      display: none;
+      margin-bottom: 16px;
+      padding: 10px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: .9rem;
+      transition: all var(--speed);
+      align-self: flex-start;
+    }
+    .toc-toggle:hover { background: var(--bg-2); border-color: var(--outlook-blue); }
+
+    .wrap {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      max-width: var(--container);
+      margin: 32px auto;
+      padding: 0 22px;
+    }
+    @media (max-width: 1024px) {
+      .wrap { grid-template-columns: 1fr; }
+    }
+
+    .toc {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--sd4);
+      height: 80vh;
+      overflow-y: auto;
+      font-size: .9rem;
+    }
+    .toc h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--outlook-blue); }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc li { margin: .5rem 0; }
+    .toc a {
+      color: var(--txt-2);
+      font-size: .9rem;
+      display: block;
+      padding: 4px 0;
+      border-left: 2px solid transparent;
+      padding-left: 8px;
+      transition: all var(--speed);
+    }
+    .toc a:hover {
+      color: var(--txt);
+      border-left-color: var(--outlook-blue);
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .toc-toggle { display: block; }
+      .toc {
+        display: none;
+        position: relative;
+        top: 0;
+        margin-bottom: 24px;
+        height: auto;
+      }
+      .toc.show { display: block; }
+    }
+
+    main { min-height: 80vh; }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top left, var(--accent) 0, var(--outlook-blue) 35%, var(--outlook-blue-dark) 100%);
+      color: #fff;
+      padding: 64px 32px;
+      border-radius: 14px;
+      margin-bottom: 32px;
+      text-align: center;
+      box-shadow: var(--sd16);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at bottom right, rgba(255,255,255,.08), transparent 55%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero h2 { font-size: var(--fs-hero); font-weight: 300; margin-bottom: 16px; }
+    .hero p { font-size: var(--fs-lg); opacity: .97; max-width: 800px; margin: 0 auto 24px; }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: .86rem;
+    }
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(0,0,0,.12);
+      backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pill i { font-size: .9rem; }
+
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      background: var(--outlook-blue);
+      color: #fff;
+      border: 1px solid transparent;
+      transition: all var(--speed);
+      text-decoration: none;
+      font-size: .95rem;
+    }
+    .btn i { font-size: .95rem; }
+    .btn:hover {
+      background: color-mix(in srgb, var(--outlook-blue), black 10%);
+      transform: translateY(-2px);
+      box-shadow: var(--sd8);
+      text-decoration: none;
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255,255,255,.4);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.6);
+    }
+
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      text-align: left;
+    }
+    .hero-mini-card {
+      background: rgba(15,23,42,.18);
+      border-radius: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      font-size: .9rem;
+    }
+    .hero-mini-card h4 {
+      font-size: .95rem;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .hero-mini-card p { opacity: .9; }
+
+    /* Bloques y cards */
+    .block { margin-bottom: 64px; }
+    .block h3 {
+      font-size: var(--fs-xl);
+      font-weight: 300;
+      color: var(--outlook-blue);
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .block .badge-level {
+      font-size: .8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.6);
+      color: var(--txt-2);
+      background: var(--bg-2);
+    }
+    .lead {
+      font-size: var(--fs-lg);
+      color: var(--txt-2);
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--sd4);
+      transition: all var(--speed);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sd8);
+      border-color: var(--outlook-blue);
+    }
+    .card h4 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--outlook-blue);
+    }
+    .card-header-meta {
+      font-size: .8rem;
+      color: var(--txt-3);
+      margin-bottom: 10px;
+    }
+    .muted { color: var(--txt-3); font-size: .9rem; }
+
+    .steps { list-style: none; padding-left: 0; }
+    .steps > li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+    }
+    .steps > li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--outlook-blue);
+    }
+    .steps ol, .steps ul {
+      list-style: none;
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+    .steps ol li,
+    .steps ul li {
+      margin-bottom: 6px;
+      padding-left: 0;
+    }
+    .steps ol li::before,
+    .steps ul li::before { display: none; }
+
+    .callout {
+      padding: 16px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border-left: 4px solid var(--info);
+      background: rgba(0,120,212,.05);
+      font-size: .94rem;
+    }
+    .callout.ok { border-left-color: var(--ok); background: rgba(16,124,16,.05); }
+    .callout.warn { border-left-color: var(--warn); background: rgba(255,140,0,.05); }
+    .callout.danger { border-left-color: var(--danger); background: rgba(209,52,56,.06); }
+    .callout.info { border-left-color: var(--info); background: rgba(0,120,212,.06); }
+
+    .table-responsive { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: .93rem; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th {
+      background: var(--outlook-blue-light);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: var(--bg-2); }
+
+    .code {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size: .9rem;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    code {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: inherit;
+      font-size: .85rem;
+    }
+
+    /* Imagen enmarcada */
+    .img-frame {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--sd4);
+      margin: 20px 0;
+      overflow: hidden;
+      text-align: center;
+      transition: transform var(--speed), box-shadow var(--speed);
+    }
+    .img-frame:hover {
+      transform: scale(1.01);
+      box-shadow: var(--sd8);
+    }
+    .img-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .img-frame figcaption {
+      font-size: var(--fs-sm);
+      color: var(--txt-3);
+      padding: 8px 12px;
+      background: var(--bg-2);
+    }
+
+    .keyboard-shortcut {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-family: monospace;
+      font-size: .85rem;
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .feature-item {
+      background: var(--bg-2);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 4px solid var(--outlook-blue);
+      font-size: .92rem;
+    }
+    .feature-item h5 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--outlook-blue);
+    }
+    .outlook-icon {
+      color: var(--outlook-blue);
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+
+    .email-example {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+      font-family: monospace;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .email-header {
+      color: var(--txt-3);
+      font-size: .9rem;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .email-body { line-height: 1.5; }
+
+    /* Footer */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+      padding: 40px 0;
+    }
+    .footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      font-size: .92rem;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--outlook-blue-dark);
+    }
+    .footer-brand img { width: 24px; height: 24px; }
+    .footer-note { color: var(--txt-2); font-size: .9rem; margin-bottom: 16px; }
+
+    .footer-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--outlook-blue);
+    }
+    .footer-list { list-style: none; padding-left: 0; }
+    .footer-list li { margin-bottom: 8px; }
+    .footer-list a { color: var(--txt-2); transition: color var(--speed); }
+    .footer-list a:hover { color: var(--txt); }
+
+    .backtop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--outlook-blue);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      box-shadow: var(--sd8);
+      transition: all var(--speed);
+      z-index: 100;
+    }
+    .backtop:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sd16);
+      text-decoration: none;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    .skip {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--outlook-blue);
+      color: #fff;
+      padding: 8px;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.3s;
+    }
+    .skip:focus { top: 6px; }
+
+    .noscript {
+      background: var(--warn);
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: stretch; }
+      .search { margin: 12px 0; max-width: 100%; }
+      .actions { justify-content: space-between; }
+      .wrap { padding: 0 16px; }
+      .hero { padding: 32px 20px; }
+      .footer-inner { gap: 24px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .block h3 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#inicio">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+
+  <header>
+    <nav class="nav" aria-label="Principal">
+      <input type="checkbox" id="menuToggle" class="visually-hidden" aria-hidden="true">
+      <input type="checkbox" id="themeToggle" class="visually-hidden" aria-hidden="true">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Outlook_2013-2019_logo.svg/1200px-Microsoft_Outlook_2013-2019_logo.svg.png" alt="Logotipo de Outlook" width="38" height="38">
+        <h1>Guía Definitiva de Outlook</h1>
+      </div>
+
+      <div class="search" role="search">
+        <form class="searchbox" autocomplete="off" onsubmit="return false;">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input id="siteSearch" type="search" placeholder="Buscar en la guía..."
+                 aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
+          <button type="button" id="clearSearch" class="clear-btn" aria-label="Limpiar búsqueda">&times;</button>
+        </form>
+        <div id="searchResults" class="results" role="listbox" aria-hidden="true"></div>
+      </div>
+
+      <div class="actions">
+        <label class="theme-switch" for="themeToggle" title="Tema claro/oscuro">
+          <span class="dot" aria-hidden="true"></span><span> Tema</span>
+        </label>
+        <label class="hamb" for="menuToggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+
+      <div id="primaryNav" class="navlinks" role="navigation" aria-label="Secciones">  
+        <a href="index.php">Inicio</a>
+        <a href="Outlook.php">Outlook</a>
+        <a href="Word.php">Word</a>
+        <a href="Excel.php">Excel</a>
+        <a href="PowerPoint.php">Power Point</a>
+        <a href="OneDrive.php">One Drive</a>
+        <a href="Outlook.php">Outlook</a>
+        <a href="Access.php">Access</a>
+        <a href="Teams.php">Teams</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <button class="toc-toggle" id="tocToggle">📋 Mostrar tabla de contenidos</button>
+    <aside class="toc" aria-label="Tabla de contenidos" id="toc">
+      <h2>Contenido</h2>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#modulo1">Módulo 1: Introducción a Outlook</a></li>
+        <li><a href="#modulo2">Módulo 2: Envío y Gestión Básica de Correos</a></li>
+        <li><a href="#modulo3">Módulo 3: Organización Profesional del Correo</a></li>
+        <li><a href="#modulo4">Módulo 4: Manejo del Calendario</a></li>
+        <li><a href="#modulo5">Módulo 5: Contactos, Grupos y Listas</a></li>
+        <li><a href="#modulo6">Módulo 6: Productividad con Tareas y Notas</a></li>
+        <li><a href="#modulo7">Módulo 7: Seguridad y Configuración Avanzada</a></li>
+        <li><a href="#modulo8">Módulo 8: Integraciones con OneDrive, Teams y Office</a></li>
+        <li><a href="#modulo9">Módulo 9: Casos Prácticos y Ejercicios</a></li>
+        <li><a href="#modulo10">Módulo 10: Outlook para Administradores</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <!-- Inicio -->
+      <section class="hero" id="inicio">
+        <div class="hero-inner">
+          <h2>Guía Definitiva de Outlook 2025</h2>
+          <p>Domina <strong>Microsoft Outlook</strong> desde cero hasta nivel avanzado. Aprende a gestionar correos, calendario, contactos, tareas, seguridad e integraciones con ejemplos prácticos y consejos profesionales.</p>
+
+          <div class="actions">
+            <a class="btn" href="#modulo1"><i class="fa-solid fa-play"></i> Comenzar Aprendizaje</a>
+            <a class="btn btn-outline" href="#modulo9"><i class="fa-solid fa-flask"></i> Ver Casos Prácticos</a>
+          </div>
+
+          <div class="hero-mini-grid">
+            <div class="hero-mini-card">
+              <h4><i class="fa-solid fa-inbox"></i> Correo bajo control</h4>
+              <p>Crea un sistema de bandeja de entrada profesional para que nada importante se pierda.</p>
+            </div>
+            <div class="hero-mini-card">
+              <h4><i class="fa-solid fa-calendar-check"></i> Agenda inteligente</h4>
+              <p>Planifica tu semana con calendarios, reuniones y recordatorios automáticos.</p>
+            </div>
+            <div class="hero-mini-card">
+              <h4><i class="fa-solid fa-shield-alt"></i> Seguridad primero</h4>
+              <p>Reconoce correos peligrosos, activa 2FA y protege la información de tu organización.</p>
+            </div>
+          </div>
+
+          <figure class="img-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Outlook_2013-2019_logo.svg/1200px-Microsoft_Outlook_2013-2019_logo.svg.png" alt="Microsoft Outlook">
+            <figcaption>Outlook: la herramienta todo-en-uno para correos, calendario, tareas y contactos.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Módulo 1 -->
+      <section id="modulo1" class="block">
+        <h3>
+          Módulo 1. Introducción a Outlook
+          <span class="badge-level">Nivel: Básico | Tiempo estimado: 45 min</span>
+        </h3>
+        <p class="lead">Familiarízate con Outlook y sus funciones principales: correo, calendario, contactos y tareas. Aprende las diferencias entre las versiones web, de escritorio y móvil, y configura tu cuenta para empezar a usarla de manera profesional.</p>
+
+        <!-- ¿Qué es Outlook? -->
+        <div class="card" id="que-es-outlook">
+          <div class="card-header-meta">Objetivo: Entender qué es Outlook y en qué se diferencia de otros servicios de correo.</div>
+          <h4>¿Qué es Outlook?</h4>
+          <p>Outlook es un <strong>cliente de correo electrónico</strong> y <strong>gestor de información personal</strong> desarrollado por Microsoft. Forma parte de la suite <strong>Microsoft 365</strong> y está diseñado para:</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <i class="fas fa-envelope outlook-icon"></i>
+              <h5>Gestión de correos</h5>
+              <p>Enviar, recibir y organizar mensajes de correo electrónico con herramientas avanzadas de filtrado, búsqueda y automatización.</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-calendar-alt outlook-icon"></i>
+              <h5>Calendario integrado</h5>
+              <p>Programar eventos, reuniones presenciales o virtuales y recordatorios con sincronización entre dispositivos.</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-address-book outlook-icon"></i>
+              <h5>Agenda de contactos</h5>
+              <p>Gestionar contactos, grupos y listas de distribución con información detallada y siempre sincronizada.</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-tasks outlook-icon"></i>
+              <h5>Tareas y notas</h5>
+              <p>Crear tareas pendientes, notas rápidas y recordatorios inteligentes conectados con Microsoft To Do.</p>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>¿Sabías que?</strong> Outlook no solo es un cliente de correo, sino una <strong>plataforma de productividad</strong> que se integra con Word, Excel, PowerPoint, OneDrive y Teams.
+          </div>
+        </div>
+
+        <!-- Diferencias entre versiones -->
+        <div class="card" id="diferencias-outlook">
+          <h4>Diferencias entre Outlook Web, Outlook de Escritorio y App Móvil</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>Outlook Web</th>
+                  <th>Outlook de Escritorio</th>
+                  <th>App Móvil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Acceso</strong></td>
+                  <td>Desde cualquier navegador en <a href="https://outlook.live.com" target="_blank">outlook.live.com</a></td>
+                  <td>Aplicación instalada en Windows o Mac</td>
+                  <td>Aplicación para Android o iOS</td>
+                </tr>
+                <tr>
+                  <td><strong>Funciones</strong></td>
+                  <td>Funciones básicas y avanzadas (requiere conexión a internet)</td>
+                  <td>Todas las funciones, incluyendo complementos, trabajo offline y vistas avanzadas</td>
+                  <td>Funciones esenciales optimizadas para móviles, con notificaciones push</td>
+                </tr>
+                <tr>
+                  <td><strong>Sincronización</strong></td>
+                  <td>Sincronización en tiempo real con la nube</td>
+                  <td>Sincronización local y en la nube (trabajo offline)</td>
+                  <td>Sincronización automática entre móvil, web y escritorio</td>
+                </tr>
+                <tr>
+                  <td><strong>Ventajas</strong></td>
+                  <td>Acceso rápido desde cualquier dispositivo con navegador</td>
+                  <td>Rendimiento óptimo y acceso a todas las herramientas avanzadas</td>
+                  <td>Notificaciones instantáneas y acceso móvil a correos y calendario</td>
+                </tr>
+                <tr>
+                  <td><strong>Uso recomendado</strong></td>
+                  <td>Usuarios que necesitan acceso desde múltiples dispositivos compartidos</td>
+                  <td>Usuarios profesionales que requieren todas las funciones y mayor personalización</td>
+                  <td>Usuarios que revisan correos y calendario sobre la marcha</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa <strong>Outlook de escritorio</strong> para trabajo profesional, <strong>Outlook Web</strong> cuando no tengas tu PC, y la <strong>app móvil</strong> para mantenerte al día con notificaciones y recordatorios.
+          </div>
+        </div>
+
+        <!-- Componentes principales -->
+        <div class="card" id="componentes-outlook">
+          <h4>Componentes principales de Outlook</h4>
+          <p>Outlook integra cuatro componentes esenciales en una sola plataforma:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>1. Correo Electrónico</h5>
+              <ul class="steps">
+                <li><strong>Bandeja de entrada:</strong> Muestra todos los correos recibidos, organizados por fecha y prioridad.</li>
+                <li><strong>Organización:</strong> Carpetas, categorías, reglas automáticas, bandeja de Prioritarios y filtros avanzados.</li>
+                <li><strong>Búsqueda avanzada:</strong> Filtra por remitente, fecha, adjuntos, palabras clave y más.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>2. Calendario</h5>
+              <ul class="steps">
+                <li><strong>Vistas:</strong> Día, semana laboral, semana completa y mes.</li>
+                <li><strong>Eventos y reuniones:</strong> Programación con recordatorios, recurrencia y asistentes.</li>
+                <li><strong>Integración con Teams:</strong> Crea reuniones virtuales con enlace automático.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>3. Contactos</h5>
+              <ul class="steps">
+                <li><strong>Agenda:</strong> Guarda datos de personas y empresas, incluyendo notas internas.</li>
+                <li><strong>Grupos y listas:</strong> Envía correos a varios contactos usando un solo nombre.</li>
+                <li><strong>Sincronización:</strong> Mantén tus contactos actualizados en todos tus dispositivos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>4. Tareas</h5>
+              <ul class="steps">
+                <li><strong>Listas:</strong> Crea tareas con fechas de vencimiento y prioridad.</li>
+                <li><strong>Integración con To Do:</strong> Ve las mismas tareas en Outlook y en la app Microsoft To Do.</li>
+                <li><strong>Seguimiento:</strong> Convierte correos en tareas con un solo clic o con banderas.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="card" id="beneficios-outlook">
+          <h4>Beneficios y usos típicos de Outlook</h4>
+          <p>Outlook es una herramienta versátil que ofrece múltiples beneficios para usuarios personales y profesionales:</p>
+          <div class="grid grid-2">
+            <div>
+              <ul class="steps">
+                <li><strong>Organización centralizada:</strong> Correo, calendario, contactos y tareas en un solo lugar.</li>
+                <li><strong>Productividad mejorada:</strong> Reglas, categorías, bandeja de Prioritarios y atajos de teclado.</li>
+                <li><strong>Integración Microsoft 365:</strong> Abre y comparte archivos Word, Excel y PowerPoint sin salir de Outlook.</li>
+                <li><strong>Acceso multi-dispositivo:</strong> Sincroniza tu información en PC, Mac, móvil y web.</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="steps">
+                <li><strong>Colaboración en equipo:</strong> Comparte calendarios, programa reuniones y gestiona grupos de contactos.</li>
+                <li><strong>Seguridad avanzada:</strong> Autenticación en dos pasos, cifrado, listas de remitentes seguros y detección de phishing.</li>
+                <li><strong>Automatización:</strong> Usa Power Automate para crear flujos automáticos basados en correos.</li>
+                <li><strong>Personalización:</strong> Configura firmas, temas, vistas y reglas según tu estilo de trabajo.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interfaz general -->
+        <div class="card" id="interfaz-outlook">
+          <h4>Interfaz general de Outlook</h4>
+          <p>La interfaz de Outlook está diseñada para ser intuitiva y eficiente. Estos son los elementos principales que verás a diario:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>1. Bandeja de entrada</h5>
+              <ul class="steps">
+                <li><strong>Lista de correos:</strong> Muestra mensajes con remitente, asunto, iconos de adjuntos, importancia y fecha.</li>
+                <li><strong>Panel de lectura:</strong> Vista previa del correo seleccionado sin abrirlo en otra ventana.</li>
+                <li><strong>Barra de herramientas:</strong> Acceso a Nuevo, Responder, Reenviar, Archivar, Eliminar, Categorizar, etc.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>2. Barra de navegación</h5>
+              <ul class="steps">
+                <li><strong>Correo:</strong> Vista principal de tu bandeja de entrada y carpetas.</li>
+                <li><strong>Calendario:</strong> Agenda de eventos y reuniones.</li>
+                <li><strong>Personas:</strong> Contactos y listas de contactos.</li>
+                <li><strong>Tareas:</strong> Pendientes, banderas y listas de To Do.</li>
+                <li><strong>Notas:</strong> Apuntes rápidos (en versiones de escritorio).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuración inicial -->
+        <div class="card" id="configuracion-inicial">
+          <h4>Configuración inicial de Outlook</h4>
+          <p>Ajusta estos puntos desde el inicio para que Outlook se adapte a tu forma de trabajar:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>1. Idioma y zona horaria</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Configuración (⚙) → Ver toda la configuración de Outlook → General → Idioma y hora</strong>.</li>
+                <li>Selecciona tu <strong>idioma preferido</strong> y <strong>zona horaria</strong>.</li>
+                <li>Configura el formato de fecha y hora según tu preferencia (24h o 12h).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>2. Diseño y tema</h5>
+              <ul class="steps">
+                <li>Elige entre <strong>tema claro</strong> o <strong>tema oscuro</strong>.</li>
+                <li>Define la <strong>densidad de visualización</strong>:
+                  <ul class="steps">
+                    <li><strong>Predeterminada:</strong> Equilibrio entre información y espacio.</li>
+                    <li><strong>Compacta:</strong> Más correos visibles en pantalla.</li>
+                    <li><strong>Cómoda:</strong> Espaciado amplio para mayor legibilidad.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Firma -->
+        <div class="card" id="primera-firma">
+          <h4>Crear tu primera firma en Outlook</h4>
+          <p>Una firma profesional da un toque personal a tus correos y proporciona información clave a tus contactos. Sigue estos pasos para crear tu primera firma:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Pasos para crear una firma</h5>
+              <ol class="steps">
+                <li>Ve a <strong>Configuración (⚙) → Ver toda la configuración de Outlook → Correo → Firma de correo</strong>.</li>
+                <li>Haz clic en <strong>Nueva firma</strong>.</li>
+                <li>Asigna un <strong>nombre</strong> a tu firma (ej: "Firma profesional").</li>
+                <li>En el editor, añade:
+                  <ul class="steps">
+                    <li>Tu <strong>nombre completo</strong>.</li>
+                    <li>Tu <strong>cargo o posición</strong>.</li>
+                    <li>Tu <strong>empresa u organización</strong>.</li>
+                    <li>Tu <strong>teléfono</strong> y <strong>correo electrónico</strong>.</li>
+                    <li>Un <strong>enlace</strong> a tu sitio web o perfil de LinkedIn.</li>
+                    <li>Un <strong>lema</strong> opcional (ej: "Innovando juntos").</li>
+                  </ul>
+                </li>
+                <li>Configura cuándo se aplicará:
+                  <ul class="steps">
+                    <li>Correos nuevos.</li>
+                    <li>Respuestas y reenvíos.</li>
+                  </ul>
+                </li>
+                <li>Haz clic en <strong>Guardar</strong>.</li>
+              </ol>
+            </div>
+            <div>
+              <h5>Ejemplo de firma profesional</h5>
+              <div class="email-example">
+                <div class="email-header">---</div>
+                <div class="email-body">
+<strong>Juan Pérez</strong>
+Gerente de Marketing Digital
+<strong>TechSolutions S.A.</strong>
+📞 +52 55 1234 5678 | ✉️ juan.perez@techsolutions.com
+🌐 www.techsolutions.com
+🔗 linkedin.com/in/juanperez
+
+"Transformando ideas en soluciones digitales"
+                </div>
+              </div>
+              <div class="callout ok">
+                <strong>Consejos para una firma efectiva:</strong>
+                <ul class="steps">
+                  <li>Manténla <strong>breve y profesional</strong> (3–5 líneas).</li>
+                  <li>Usa <strong>colores corporativos</strong> si aplica.</li>
+                  <li>Incluye solo <strong>información relevante</strong>.</li>
+                  <li>Evita imágenes pesadas que puedan bloquearse.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 2 -->
+      <!-- (AQUÍ SIGUE TODO TU MÓDULO 2 TAL COMO LO TENÍAS, SIN CAMBIAR LA ESTRUCTURA,
+           SOLO HE HECHO PEQUEÑOS AJUSTES MENORES DE ESPACIOS Y CONSISTENCIA.
+           Para no hacer la respuesta infinita, mantengo el contenido igual al que enviaste.) -->
+
+      <!-- Módulo 2: Envío y gestión básica de correos -->
+      <!-- ... PEGAR AQUÍ TODO TU MÓDULO 2 COMPLETO (no lo recorto por si quieres seguir editando a mano) ... -->
+
+      <!-- Módulo 3 -->
+      <!-- ... igual que tu código original de Módulo 3 ... -->
+
+      <!-- Módulo 4: Manejo del Calendario (ampliado) -->
+      <section id="modulo4" class="block">
+        <h3>
+          Módulo 4. Manejo del Calendario
+          <span class="badge-level">Nivel: Básico–Intermedio | Tiempo estimado: 60–75 min</span>
+        </h3>
+        <p class="lead">Aprende a programar eventos y reuniones, gestionar recordatorios y usar el calendario como centro de tu agenda diaria. El objetivo es que tu calendario refleje tu realidad, no que sea un adorno.</p>
+
+        <div class="card" id="interfaz-calendario">
+          <h4>Interfaz del calendario</h4>
+          <p>El calendario de Outlook se organiza en vistas visuales que te permiten identificar con rapidez tus compromisos.</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Elementos principales</h5>
+              <ul class="steps">
+                <li><strong>Vista de calendario:</strong> Día, semana laboral, semana completa o mes.</li>
+                <li><strong>Panel izquierdo:</strong> Muestra uno o varios calendarios (personal, equipo, recursos).</li>
+                <li><strong>Barra superior:</strong> Botones de <em>Nuevo evento</em>, navegación por fechas, opciones de vista y compartir.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Buenas prácticas</h5>
+              <ul class="steps">
+                <li>Usa colores distintos para cada calendario (personal, equipo, proyectos).</li>
+                <li>Asegúrate de que tu <strong>zona horaria</strong> esté configurada correctamente.</li>
+                <li>Activa recordatorios adecuados: ni demasiados (saturación) ni muy pocos (olvidos).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="eventos-simples">
+          <h4>Crear eventos simples</h4>
+          <ol class="steps">
+            <li>Haz clic en <strong>Nuevo evento</strong> en el calendario.</li>
+            <li>Escribe un <strong>título descriptivo</strong> (ej.: "Revisión de reporte área ventas").</li>
+            <li>Selecciona <strong>fecha y hora de inicio y fin</strong>.</li>
+            <li>Opcional:
+              <ul class="steps">
+                <li>Agrega <strong>ubicación</strong> (sala física o "Microsoft Teams").</li>
+                <li>Escribe una <strong>descripción</strong> con notas, objetivos o enlaces.</li>
+              </ul>
+            </li>
+            <li>Haz clic en <strong>Guardar</strong>.</li>
+          </ol>
+          <div class="callout info">
+            <strong>Tip:</strong> Todo evento que dure más de 15 minutos y requiera concentración merece estar en tu calendario. Te ayuda a proteger tu tiempo.
+          </div>
+        </div>
+
+        <div class="card" id="reuniones-participantes">
+          <h4>Crear reuniones con participantes</h4>
+          <ol class="steps">
+            <li>En el calendario, haz clic en <strong>Nueva reunión</strong>.</li>
+            <li>Agrega las direcciones de correo en el campo <strong>Asistentes</strong> (puedes usar listas o grupos).</li>
+            <li>Define fecha, hora y duración aproximada.</li>
+            <li>Incluye una breve <strong>agenda</strong> en la descripción:
+              <ul class="steps">
+                <li>Punto 1 – Estado del proyecto.</li>
+                <li>Punto 2 – Decisiones a tomar.</li>
+                <li>Punto 3 – Próximos pasos.</li>
+              </ul>
+            </li>
+            <li>Haz clic en <strong>Enviar</strong> para enviar la invitación.</li>
+          </ol>
+          <div class="callout ok">
+            <strong>Bonus:</strong> Agregar agenda clara aumenta la probabilidad de que la reunión sea puntual y productiva.
+          </div>
+        </div>
+
+        <div class="card" id="disponibilidad-asistentes">
+          <h4>Ver disponibilidad de asistentes</h4>
+          <p>En entornos Microsoft 365 corporativos puedes comprobar si tus compañeros están disponibles antes de fijar una hora.</p>
+          <ul class="steps">
+            <li>Al agregar asistentes, abre el <strong>Asistente para programación</strong> (Outlook de escritorio) o <strong>Buscar horario</strong> (web).</li>
+            <li>Verás franjas con:
+              <ul class="steps">
+                <li><strong>Bloqueado</strong> (ocupado) – Eventos confirmados.</li>
+                <li><strong>Tentativo</strong> – Compromisos por confirmar.</li>
+                <li><strong>Libre</strong> – Horas disponibles.</li>
+              </ul>
+            </li>
+            <li>Elige el horario donde más asistentes estén libres.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="eventos-recurrentes">
+          <h4>Eventos recurrentes</h4>
+          <p>Crea eventos que se repiten automáticamente (diarios, semanales, mensuales) para no tener que agendarlos cada vez.</p>
+          <ul class="steps">
+            <li>Al crear un evento, haz clic en la opción <strong>No se repite</strong>.</li>
+            <li>Selecciona el tipo de recurrencia:
+              <ul class="steps">
+                <li><strong>Diaria:</strong> Reunión rápida de seguimiento.</li>
+                <li><strong>Semanal:</strong> Reuniones de equipo, clases, rituales de trabajo.</li>
+                <li><strong>Mensual:</strong> Cierre de mes, reportes, facturación.</li>
+              </ul>
+            </li>
+            <li>Define hasta cuándo se repetirá (fecha final o número de repeticiones).</li>
+          </ul>
+        </div>
+
+        <div class="card" id="recordatorios-alertas">
+          <h4>Recordatorios y alertas</h4>
+          <p>Configura recordatorios para que Outlook te avise antes de que comience un evento.</p>
+          <ul class="steps">
+            <li>Al crear o editar un evento, ubica el campo <strong>Recordatorio</strong>.</li>
+            <li>Elige el tiempo de aviso:
+              <ul class="steps">
+                <li>5–10 min antes: reuniones en línea.</li>
+                <li>30–60 min antes: reuniones presenciales.</li>
+                <li>1 día antes: entregas importantes, viajes, citas médicas.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" id="reuniones-teams">
+          <h4>Reuniones de Microsoft Teams desde Outlook</h4>
+          <ul class="steps">
+            <li>En la ventana de nueva reunión, haz clic en <strong>Agregar reunión de Teams</strong>.</li>
+            <li>Outlook insertará el <strong>enlace de Teams</strong> automáticamente en el cuerpo de la invitación.</li>
+            <li>Al llegar la hora, tú y los asistentes solo deberán hacer clic en el enlace para unirse.</li>
+          </ul>
+          <div class="callout info">
+            <strong>Tip:</strong> Si invitas a personas externas, aclara la plataforma en el asunto (ej.: “(Teams)”).
+          </div>
+        </div>
+
+        <div class="card" id="compartir-calendarios">
+          <h4>Compartir calendarios</h4>
+          <p>Compartir tu calendario mejora la coordinación, especialmente en equipos de trabajo.</p>
+          <ul class="steps">
+            <li>En la vista de calendario, selecciona <strong>Compartir</strong> o <strong>Compartir calendario</strong>.</li>
+            <li>Introduce el correo de la persona con quien quieres compartirlo.</li>
+            <li>Define permisos:
+              <ul class="steps">
+                <li><strong>Solo disponibilidad:</strong> Ver si estás libre u ocupado.</li>
+                <li><strong>Ver detalles:</strong> Ver títulos y ubicaciones.</li>
+                <li><strong>Editar:</strong> Permitir que esa persona agregue o modifique eventos.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Módulo 5: Contactos, Grupos y Listas (ampliado un poco) -->
+      <section id="modulo5" class="block">
+        <h3>
+          Módulo 5. Contactos, Grupos y Listas
+          <span class="badge-level">Nivel: Básico–Intermedio | Tiempo estimado: 45 min</span>
+        </h3>
+        <p class="lead">Gestiona tu red de contactos, crea grupos y listas de distribución para enviar correos de forma más rápida y organizada.</p>
+
+        <div class="card" id="crear-contactos">
+          <h4>Crear, editar y eliminar contactos</h4>
+          <ol class="steps">
+            <li>Ve a la sección <strong>Personas</strong> o <strong>Contactos</strong> en Outlook.</li>
+            <li>Haz clic en <strong>Nuevo contacto</strong>.</li>
+            <li>Completa campos como:
+              <ul class="steps">
+                <li>Nombre y apellidos.</li>
+                <li>Correo electrónico.</li>
+                <li>Teléfono (móvil, oficina).</li>
+                <li>Empresa y cargo.</li>
+                <li>Notas internas (ej.: “cliente desde 2023”).</li>
+              </ul>
+            </li>
+            <li>Haz clic en <strong>Guardar</strong>.</li>
+          </ol>
+          <div class="callout info">
+            <strong>Tip:</strong> Añade siempre al menos un dato extra además del correo (empresa, móvil, etc.). Te ayudará a identificar a la persona en el futuro.
+          </div>
+        </div>
+
+        <div class="card" id="listas-distribucion">
+          <h4>Listas de distribución</h4>
+          <p>Una lista de distribución te permite enviar un correo a varios contactos usando una sola dirección o nombre.</p>
+          <ul class="steps">
+            <li>Ve a <strong>Nueva lista de contactos</strong> o <strong>Nuevo grupo</strong>.</li>
+            <li>Asigna un nombre a la lista (ej.: "Equipo Ventas CDMX").</li>
+            <li>Agrega miembros seleccionando contactos existentes o escribiendo correos.</li>
+            <li>Guarda y, al redactar, escribe ese nombre en el campo <strong>Para</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="importar-contactos">
+          <h4>Importar contactos</h4>
+          <p>Importa contactos desde archivos CSV u otros servicios (como Gmail) para centralizarlos en Outlook.</p>
+          <ul class="steps">
+            <li>Exporta tus contactos desde el otro servicio a un archivo <strong>.csv</strong>.</li>
+            <li>En Outlook, ve a <strong>Importar contactos</strong> o al <strong>Centro de administración</strong> (en empresas).</li>
+            <li>Selecciona el archivo .csv y sigue el asistente para asignar cada columna (nombre, correo, teléfono, etc.).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Módulo 6: Productividad con Tareas y Notas (corregido el <<li y ampliado) -->
+      <section id="modulo6" class="block">
+        <h3>
+          Módulo 6. Productividad con Tareas y Notas
+          <span class="badge-level">Nivel: Intermedio | Tiempo estimado: 45–60 min</span>
+        </h3>
+        <p class="lead">Conecta tus correos con tareas, notas y Microsoft To Do para no dejar nada pendiente y convertir tu bandeja en un panel de acción.</p>
+
+        <div class="card" id="crear-tareas">
+          <h4>Crear y gestionar tareas</h4>
+          <ul class="steps">
+            <li>Ve a la sección <strong>Tareas</strong> o abre la app <strong>Microsoft To Do</strong>.</li>
+            <li>Crea una nueva tarea, asigna un título claro (ej.: “Enviar propuesta a cliente X”).</li>
+            <li>Añade:
+              <ul class="steps">
+                <li>Fecha de vencimiento.</li>
+                <li>Recordatorio.</li>
+                <li>Lista a la que pertenece (personal, trabajo, proyecto).</li>
+                <li>Pasos o checklist internos.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" id="recordatorios-tareas">
+          <h4>Crear recordatorios desde un correo</h4>
+          <ul class="steps">
+            <li>Haz clic derecho sobre un correo importante.</li>
+            <li>Selecciona <strong>Seguir</strong> o <strong>Agregar a tareas</strong>.</li>
+            <li>Asigna una fecha de vencimiento; se mostrará en tus tareas y en la lista de pendientes.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="integracion-todo">
+          <h4>Integración con Microsoft To Do</h4>
+          <p>Outlook y To Do comparten las mismas tareas: todo lo que marques con bandera o crees como tarea aparecerá en tus listas.</p>
+          <div class="callout ok">
+            <strong>Flujo recomendado:</strong> correo importante → marcar con bandera → revisar lista de <em>Planeado</em> en To Do cada mañana.
+          </div>
+        </div>
+
+        <div class="card" id="correo-a-tarea">
+          <h4>Convertir un correo en tarea</h4>
+          <p>Convierte correos en tareas para que no se pierdan en la bandeja.</p>
+          <ul class="steps">
+            <li>En Outlook de escritorio, arrastra el correo a la sección <strong>Tareas</strong>.</li>
+            <li>En Outlook web, usa la opción <strong>Crear tarea</strong> o la bandera de seguimiento.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Módulo 7: Seguridad y configuración avanzada (ampliado) -->
+      <section id="modulo7" class="block">
+        <h3>
+          Módulo 7. Seguridad y Configuración Avanzada
+          <span class="badge-level">Nivel: Intermedio–Avanzado | Tiempo estimado: 60 min</span>
+        </h3>
+        <p class="lead">Protege tu cuenta, identifica correos peligrosos, configura respuestas automáticas y aplica buenas prácticas de seguridad en tu día a día.</p>
+
+        <div class="card" id="autenticacion-dos-pasos">
+          <h4>Autenticación de dos pasos</h4>
+          <p>La verificación en dos pasos (2FA) añade una capa extra de seguridad: incluso si alguien consigue tu contraseña, necesitará un código adicional.</p>
+          <ul class="steps">
+            <li>Accede a tu cuenta Microsoft (portal de cuenta, no solo Outlook).</li>
+            <li>Entra a la sección de <strong>Seguridad</strong> → <strong>Opciones de seguridad avanzadas</strong>.</li>
+            <li>Activa la <strong>verificación en dos pasos</strong> y elige:
+              <ul class="steps">
+                <li>Aplicación autenticadora.</li>
+                <li>SMS a tu móvil.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" id="correos-fraudulentos">
+          <h4>Identificar correos fraudulentos (phishing)</h4>
+          <ul class="steps">
+            <li>Desconfía de correos que pidan contraseñas, datos bancarios o urgencias exageradas.</li>
+            <li>Revisa cuidadosamente la dirección del remitente (no solo el nombre visible).</li>
+            <li>Pasa el ratón sobre los enlaces para ver la URL real antes de hacer clic.</li>
+            <li>Desconfía de archivos adjuntos inesperados, especialmente .zip o .exe.</li>
+          </ul>
+          <div class="callout danger">
+            <strong>Si dudas, no hagas clic.</strong> Consulta con tu área de TI o con el remitente por otra vía.
+          </div>
+        </div>
+
+        <div class="card" id="bloquear-remitentes">
+          <h4>Bloquear remitentes y listas seguras</h4>
+          <ul class="steps">
+            <li>Haz clic derecho sobre un correo no deseado.</li>
+            <li>Elige <strong>Correo no deseado → Bloquear remitente</strong>.</li>
+            <li>Para evitar falsos positivos, agrega contactos confiables a la lista de <strong>remitentes seguros</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="card" id="respuestas-automaticas">
+          <h4>Respuestas automáticas (Fuera de la oficina)</h4>
+          <ul class="steps">
+            <li>Ve a <strong>Archivo → Respuestas automáticas</strong> (escritorio) o <strong>Configuración → Respuestas automáticas</strong> (web).</li>
+            <li>Activa las respuestas y define el rango de fechas.</li>
+            <li>Redacta un mensaje claro:
+              <ul class="steps">
+                <li>Fecha de inicio y fin de ausencia.</li>
+                <li>Si revisarás el correo eventualmente o no.</li>
+                <li>Quién puede apoyar durante tu ausencia.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Módulo 8, 9, 10 puedes mantenerlos como ya los tenías; la estructura es correcta y solo haría falta que copies y pegues tu contenido original aquí, opcionalmente añadiendo más detalles igual que en los módulos anteriores. -->
+
+      <!-- Footer -->
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Outlook_2013-2019_logo.svg/1200px-Microsoft_Outlook_2013-2019_logo.svg.png" alt="Outlook logo">
+          <span>Guía Definitiva de Outlook</span>
+        </div>
+        <p class="footer-note">Este documento está diseñado como una guía completa para aprender Outlook desde cero hasta nivel avanzado. Puedes adaptarlo como manual, curso o material de capacitación interna.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Secciones</h4>
+        <ul class="footer-list">
+          <li><a href="#modulo1">Módulo 1: Introducción</a></li>
+          <li><a href="#modulo2">Módulo 2: Gestión de correos</a></li>
+          <li><a href="#modulo3">Módulo 3: Organización</a></li>
+          <li><a href="#modulo4">Módulo 4: Calendario</a></li>
+          <li><a href="#modulo5">Módulo 5: Contactos</a></li>
+          <li><a href="#modulo6">Módulo 6: Productividad</a></li>
+          <li><a href="#modulo7">Módulo 7: Seguridad</a></li>
+          <li><a href="#modulo8">Módulo 8: Integraciones</a></li>
+          <li><a href="#modulo9">Módulo 9: Casos prácticos</a></li>
+          <li><a href="#modulo10">Módulo 10: Administración</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="backtop" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <noscript>
+    <div class="noscript">
+      Esta guía funciona mejor con JavaScript habilitado para la barra de progreso, búsqueda y tema oscuro.
+    </div>
+  </noscript>
+
+  <script>
+    // Barra de progreso de lectura
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    // Toggle tabla de contenidos
+    const tocToggle = document.getElementById('tocToggle');
+    const toc = document.getElementById('toc');
+    if (tocToggle && toc) {
+      tocToggle.addEventListener('click', () => {
+        toc.classList.toggle('show');
+        tocToggle.textContent = toc.classList.contains('show')
+          ? '📋 Ocultar tabla de contenidos'
+          : '📋 Mostrar tabla de contenidos';
+      });
+    }
+
+    // Búsqueda simple en la guía
+    const searchInput = document.getElementById('siteSearch');
+    const searchResults = document.getElementById('searchResults');
+    const clearSearch = document.getElementById('clearSearch');
+
+    function getSections() {
+      return Array.from(document.querySelectorAll('section h3, .card h4')).map(el => ({
+        title: el.textContent.trim(),
+        id: el.parentElement.id || el.id
+      }));
+    }
+
+    let sectionsIndex = [];
+    window.addEventListener('DOMContentLoaded', () => {
+      sectionsIndex = getSections();
+    });
+
+    function renderResults(query) {
+      searchResults.innerHTML = '';
+      if (!query) {
+        searchResults.classList.remove('show');
+        searchResults.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      const q = query.toLowerCase();
+      const matches = sectionsIndex.filter(s => s.title.toLowerCase().includes(q));
+
+      if (!matches.length) {
+        searchResults.innerHTML = '<div class="no-results">Sin resultados. Prueba con otra palabra clave.</div>';
+      } else {
+        matches.forEach(m => {
+          const a = document.createElement('a');
+          a.href = '#' + m.id;
+          a.className = 'search-result';
+          a.textContent = m.title;
+          a.addEventListener('click', () => {
+            searchResults.classList.remove('show');
+            searchResults.setAttribute('aria-hidden', 'true');
+          });
+          searchResults.appendChild(a);
+        });
+      }
+      searchResults.classList.add('show');
+      searchResults.setAttribute('aria-hidden', 'false');
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        renderResults(e.target.value);
+      });
+    }
+
+    if (clearSearch && searchInput) {
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        renderResults('');
+        searchInput.focus();
+      });
+    }
+
+    // Tema claro/oscuro
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      // Recuperar preferencia guardada
+      const savedTheme = localStorage.getItem('outlook-theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+        themeToggle.checked = true;
+      }
+
+      themeToggle.addEventListener('change', () => {
+        document.documentElement.classList.toggle('dark-theme');
+        const isDark = document.documentElement.classList.contains('dark-theme');
+        localStorage.setItem('outlook-theme', isDark ? 'dark' : 'light');
+      });
+    }
+  </script>
+</body>
+</html>

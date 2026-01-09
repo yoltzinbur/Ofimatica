@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ofimática | Editores de imagen (Windows & macOS)</title>
+  <link rel="stylesheet" href="aurora.css">
+  <meta name="description" content="Editores de imagen incluidos en Windows y macOS: Paint, Fotos, Recortes, Vista Previa y Fotos (macOS).">
+  <style>
+    /* ===== Enlaces de ancla en títulos ===== */
+    .anchor-link{margin-left:.4rem;opacity:.55;text-decoration:none;font-weight:800}
+    .anchor-link:hover{opacity:1}
+    /* ===== Botón copiar atajos ===== */
+    .copy-btn{appearance:none;border:1px solid #cfe2ff;background:#eef6ff;color:#0a2a6a;border-radius:8px;padding:6px 10px;font-weight:700;font-size:.8rem;cursor:pointer}
+    .copy-btn:hover{background:#dff0ff}
+    .cmd{position:relative}
+    .cmd .copy-btn{margin-left:auto}
+    /* ===== TOC flotante (desktop) ===== */
+    .toc-float{position:fixed;right:24px;top:120px;display:none;flex-direction:column;gap:10px;background:#fff;border:1px solid #e6edf7;border-radius:12px;padding:10px 12px;box-shadow:0 4px 18px rgba(10,42,106,.06);z-index:40}
+    .toc-float a{white-space:nowrap;font-weight:600;color:#0a2a6a;text-decoration:none;border-radius:8px;padding:6px 10px;border:1px solid transparent}
+    .toc-float a:hover{background:#eef6ff;border-color:#cfe2ff}
+    @media(min-width:1100px){.toc-float{display:flex}}
+    /* ===== Toast de copiado ===== */
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0a2a6a;color:#fff;padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:0 6px 24px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+    .cta-button.secondary {
+      background-color: #f4f6fa;
+      color: #185ABD;
+      border: 1px solid #185ABD;
+      margin-left: 10px;
+    }
+    .cta-button.secondary:hover {
+      background-color: #185ABD;
+      color: #fff;
+    }
+
+    /* ===== Tutorial: pasos, badges y tips ===== */
+    .steps{ margin:.5rem 0 0; padding-left:1.2rem; }
+    .steps li+li{ margin-top:.25rem; }
+    .tips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:.6rem; align-items:center; }
+    .badge{ background:#eef6ff; color:#185ABD; border:1px solid #cfe2ff; border-radius:999px; padding:2px 8px; font-weight:700; font-size:.78rem; }
+    .pill{ background:#f7f9fc; border:1px solid #e6edf7; border-radius:999px; padding:2px 10px; font-size:.8rem; }
+
+    /* Mejor legibilidad al seleccionar texto */
+    ::selection { background: #cfe2ff; color: #0a2a6a; }
+    ::-moz-selection { background: #cfe2ff; color: #0a2a6a; }
+
+    /* Asegurar el ícono del logo como imagen de fondo */
+    .logo-icon{
+      background-image:url('https://cdn-icons-png.flaticon.com/512/1794/1794635.png');
+      background-size:70% auto;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    /* ===== Apartado: Editores — extras ===== */
+    /* ===== Logos en las tarjetas (opcional) ===== */
+    .card-logo{
+      position:absolute; top:10px; left:10px;
+      width:28px; height:28px; object-fit:contain;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,.12));
+      opacity:.92;
+      z-index:2;
+    }
+    /* Oculta si no se ha asignado src */
+    .card-logo[src=""], .card-logo:not([src]){ display:none; }
+    /* Contenedor preparado para el logo */
+    .tutorial-image{ position:relative; }
+    .kbd{display:inline-block;padding:.12rem .38rem;border:1px solid #c9d4ea;border-bottom-width:2px;border-radius:6px;background:#f7f9fc;font:600 12px/1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;box-shadow:0 1px 0 #e3eaf6}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
+    .panel{background:#fff;border:1px solid #e6edf7;border-radius:14px;padding:18px 18px 14px;box-shadow:0 1px 0 rgba(10,42,106,.04)}
+    .panel h3{margin:.25rem 0 .75rem;font-size:1.1rem}
+    .cmd-list{display:grid;gap:10px}
+    .cmd{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px dashed #e3eaf6;background:#fbfdff;border-radius:10px;padding:10px 12px}
+    .cmd small{opacity:.7}
+    .more-wrap{margin-top:10px}
+    .more-btn{appearance:none;border:1px solid #cfe2ff;background:#eef6ff;color:#0a2a6a;border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer}
+    .more-btn:hover{background:#dff0ff}
+    .hidden{display:none}
+    /* Tabla comparativa */
+    .compare{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e6edf7;border-radius:14px;overflow:hidden;background:#fff}
+    .compare th,.compare td{padding:12px 14px;text-align:left;border-top:1px solid #eef2f8}
+    .compare thead th{background:#f7f9fd;border-top:none;font-size:.95rem}
+    .compare tbody tr:nth-child(even){background:#fbfdff}
+    .badge-ok{background:#e9f7ef;color:#0a7a3f;border:1px solid #b8ebce;border-radius:999px;padding:2px 8px;font-weight:700;font-size:.78rem}
+    .badge-mid{background:#fff7e6;color:#8a5a00;border:1px solid #ffe1b3;border-radius:999px;padding:2px 8px;font-weight:700;font-size:.78rem}
+    .badge-no{background:#feecec;color:#b42318;border:1px solid #ffd0d0;border-radius:999px;padding:2px 8px;font-weight:700;font-size:.78rem}
+    /* FAQ */
+    .faq details{border:1px solid #e6edf7;border-radius:12px;padding:12px 14px;background:#fff}
+    .faq details+details{margin-top:10px}
+    .faq summary{cursor:pointer;font-weight:700}
+
+    /* ===== FAB scroll top (fallback styles if aurora.css not present) ===== */
+    .fab-scroll-top{position:fixed;right:20px;bottom:24px;display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid #e6edf7;background:#0a2a6a;color:#fff;font-weight:800;font-size:18px;box-shadow:0 6px 18px rgba(10,42,106,.22);cursor:pointer;z-index:60}
+    .fab-scroll-top.show{display:inline-flex}
+    .fab-scroll-top:hover{filter:brightness(1.05)}
+
+    /* ===== Print optimizations for PDF export ===== */
+    @media print{
+      .header, .toc-float, .fab-scroll-top, .search-overlay, #progressBar{ display:none !important; }
+      body{ background:#fff !important; color:#000 !important; }
+      a{ color:#000; text-decoration:none; }
+      .section{ page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso -->
+  <div id="progressBar" class="progress-bar"></div>
+
+  <!-- Header -->
+  <header class="header" id="topHeader">
+    <div class="header-container">
+      <a class="logo" href="bloc.html" aria-label="Volver a Bloc de notas">
+        <span class="logo-icon" style="background-image:url('https://cdn-icons-png.flaticon.com/512/1794/1794635.png');background-size:70% auto;background-position:center;background-repeat:no-repeat;"></span>
+        <span>Ofimática</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav-item active" href="../Index.php">Office</a>
+        <a class="nav-item" href="bloc.html">Bloc de Notas</a>
+        <a class="nav-item active" href="editores.html">Editores de imagen</a>
+        <button id="openSearch" class="toc-btn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">
+          <span class="toc-dot"></span> Buscar (Ctrl/Cmd + K)
+        </button>
+        <button id="themeToggle" class="toc-btn" type="button" aria-pressed="false">🌙 Tema</button>
+        <button id="printBtn" class="toc-btn" type="button" title="Descargar versión PDF">🖨️ PDF</button>
+      </nav>
+
+      <div class="office-suite-nav" aria-label="Suite">
+        <a href="https://www.apple.com/macos/" target="_blank" title="Ir al sitio oficial de macOS" style="margin-left:10px">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Logo macOS" style="width:28px;height:28px;vertical-align:middle;filter:drop-shadow(0 0 1px #00000030)">
+        </a>
+        <a href="https://www.microsoft.com/windows" target="_blank" title="Ir al sitio oficial de Windows" style="margin-left:8px">
+          <img src="https://images.seeklogo.com/logo-png/40/2/windows-11-icon-logo-png_seeklogo-406208.png" alt="Logo Windows" style="width:28px;height:28px;vertical-align:middle;filter:drop-shadow(0 0 1px #00000030)">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Editores de imagen en Windows y macOS</h1>
+      <p>Herramientas integradas para ediciones rápidas: recortar, anotar, ajustar luz/color y exportar formatos comunes.</p>
+      <a href="#windows" class="cta-button"><span class="icon-arrow-right"></span> Ir a Windows</a>
+      <a href="#macos" class="cta-button secondary"><span class="icon-arrow-right"></span> Ir a macOS</a>
+    </div>
+  </section>
+
+  <!-- Windows -->
+  <section id="windows" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Windows — Paint, Fotos y Recortes</h2>
+        <p>Edición básica, anotaciones y ajustes rápidos sin instalar nada más.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Paint -->
+        <article id="paint" class="card tutorial-card">
+          <div class="card-icon">W</div>
+          <div class="tutorial-image">
+            <img id="logo-paint" class="card-logo" loading="lazy" alt="Logo Paint" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;rect rx='12' width='64' height='64' fill='%23185ABD'/&gt;&lt;text x='32' y='42' font-family='Inter, Arial, sans-serif' font-size='32' fill='white' text-anchor='middle'&gt;P&lt;/text&gt;&lt;/svg&gt;">
+            <img src="https://cdn.mos.cms.futurecdn.net/J6Arg4jq3VHFcz2ZdY5KT4.jpg" class="card-img" alt="Vista Paint" loading="lazy" style="width:100%;height:auto;border-radius:12px;border:1px solid #E5EAF2">
+          </div>
+          <div class="tutorial-content">
+            <h3>Paint</h3>
+            <p>Ideal para dibujos rápidos, recortes y anotaciones simples.</p>
+
+            <ol class="steps">
+              <li>Abre <strong>Paint</strong> y carga tu imagen (Archivo → Abrir).</li>
+              <li>Usa <em>Selección de forma libre</em> para recortar lo necesario.</li>
+              <li>Pega en un lienzo nuevo y ajusta el tamaño del lienzo si hace falta.</li>
+              <li>Agrega texto o formas desde la barra de herramientas.</li>
+              <li>Archivo → <strong>Guardar como</strong> → <strong>PNG</strong> si quieres fondo transparente.</li>
+            </ol>
+            <div class="tips">
+              <span class="badge">Windows</span>
+              <span class="badge">Tiempo: 10 s</span>
+              <span class="pill">Atajo: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> “Guardar como…”</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fotos (Windows) -->
+        <article id="fotos-win" class="card tutorial-card">
+          <div class="card-icon">W</div>
+          <div class="tutorial-image">
+            <img id="logo-fotos-win" class="card-logo" loading="lazy" alt="Logo Fotos de Windows" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;rect rx='12' width='64' height='64' fill='%230078D4'/&gt;&lt;text x='32' y='42' font-family='Inter, Arial, sans-serif' font-size='28' fill='white' text-anchor='middle'&gt;Ph&lt;/text&gt;&lt;/svg&gt;">
+            <img src="https://blogs.windows.com/wp-content/uploads/prod/sites/44/2021/09/Dark-Mode-Photos-collection.png"
+                 class="card-img"
+                 alt="Fotos de Windows — colección en modo oscuro"
+                 loading="lazy"
+                 style="width:100%;height:auto;border-radius:12px;border:1px solid #E5EAF2">
+          </div>
+          <div class="tutorial-content">
+            <h3>Fotos (Editor)</h3>
+            <p>Ajusta luz, color, recorta, endereza, aplica filtros y marca con tinta.</p>
+
+            <ol class="steps">
+              <li>Abre la imagen en <strong>Fotos</strong> y pulsa <strong>Editar</strong>.</li>
+              <li>Usa <em>Recortar</em> y la cuadrícula para enderezar.</li>
+              <li>Ve a <em>Ajustes</em> y mueve exposición/sombras/saturación.</li>
+              <li>En <em>Dibujar</em>, anota con lápiz o resaltador.</li>
+              <li>Pulsa <strong>Guardar copia</strong> o <strong>Exportar</strong> y elige calidad.</li>
+            </ol>
+            <div class="tips">
+              <span class="badge">Windows</span>
+              <span class="badge">Tiempo: 15 s</span>
+              <span class="pill">Pro: exporta a JPG calidad 80–90 para buen balance</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Recortes (Snipping Tool) -->
+        <article id="recortes" class="card tutorial-card">
+          <div class="card-icon">W</div>
+          <div class="tutorial-image">
+            <img id="logo-recortes" class="card-logo" loading="lazy" alt="Logo Herramienta Recortes" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;rect rx='12' width='64' height='64' fill='%23FF6B6B'/&gt;&lt;text x='32' y='42' font-family='Inter, Arial, sans-serif' font-size='28' fill='white' text-anchor='middle'&gt;✂︎&lt;/text&gt;&lt;/svg&gt;">
+            <img
+              src="https://imagenes.20minutos.es/files/image_640_360/uploads/imagenes/2023/01/04/herramientas-recortes-de-windows-11.jpeg"
+              class="card-img"
+              alt="Herramienta Recortes de Windows 11"
+              loading="lazy"
+              style="width:100%;height:auto;border-radius:12px;border:1px solid #E5EAF2"
+            >
+          </div>
+          <div class="tutorial-content">
+            <h3>Herramienta Recortes</h3>
+            <p>Captura de pantalla con recorte libre, ventana o pantalla completa y anotaciones.</p>
+
+            <ol class="steps">
+              <li>Presiona <strong>Win + Shift + S</strong> y elige el tipo de recorte.</li>
+              <li>Arrastra para capturar; se abrirá el editor de Recortes.</li>
+              <li>Anota con bolígrafo, resaltador o recorta de nuevo.</li>
+              <li>Haz clic en <strong>Guardar</strong> y elige PNG/JPG.</li>
+            </ol>
+            <div class="tips">
+              <span class="badge">Windows</span>
+              <span class="badge">Tiempo: 5 s</span>
+              <span class="pill">Tip: pega directo con <kbd>Ctrl</kbd> + <kbd>V</kbd> en tu app</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- macOS -->
+  <section id="macos" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>macOS — Vista Previa (Preview) y Fotos</h2>
+        <p>Ediciones rápidas con <strong>Marcación</strong>, recortes, exportaciones y ajustes de color.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Vista Previa -->
+        <article id="preview" class="card tutorial-card">
+          <div class="card-icon"></div>
+          <div class="tutorial-image">
+            <img id="logo-preview" class="card-logo" loading="lazy" alt="Logo Preview (Vista Previa)" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;rect rx='12' width='64' height='64' fill='%23212B36'/&gt;&lt;text x='32' y='42' font-family='Inter, Arial, sans-serif' font-size='28' fill='white' text-anchor='middle'&gt;Pr&lt;/text&gt;&lt;/svg&gt;">
+            <img
+              src="https://help.apple.com/assets/67DB84F9F6C93CDC0B001142/67DB84FD38229C640702B83B/es_419/9d2b5b76af1d9e0966aee99e35d90532.png"
+              class="card-img"
+              alt="Vista Previa (Preview) de macOS — Marcación"
+              loading="lazy"
+              style="width:100%;height:auto;border-radius:12px;border:1px solid #E5EAF2"
+            >
+          </div>
+          <div class="tutorial-content">
+            <h3>Vista Previa (Marcación)</h3>
+            <p>Firmas, anotaciones, flechas, formas, recorte y exportación a múltiples formatos.</p>
+
+            <ol class="steps">
+              <li>Abre la imagen/PDF en <strong>Preview</strong>.</li>
+              <li>Pulsa el botón <strong>Marcación</strong> para mostrar herramientas.</li>
+              <li>Dibuja flechas, añade formas/texto o firma (trackpad/cámara).</li>
+              <li>Usa <em>Ajustar tamaño</em> para redimensionar/comprimir.</li>
+              <li><strong>Archivo → Exportar…</strong> (PNG/JPG/HEIC/PDF).</li>
+            </ol>
+            <div class="tips">
+              <span class="badge">macOS</span>
+              <span class="badge">Tiempo: 12 s</span>
+              <span class="pill">Pro: “Exportar como PDF” con calidad ajustable</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fotos (macOS) -->
+        <article id="fotos-mac" class="card tutorial-card">
+          <div class="card-icon"></div>
+          <div class="tutorial-image">
+            <img
+              src="https://images.wondershare.com/pdfelement/macos-10-14/crop-images-in-preview.jpg"
+              class="card-img"
+              alt="Editor Fotos en macOS — vista"
+              loading="lazy"
+              style="width:100%;height:auto;border-radius:12px;border:1px solid #E5EAF2"
+            >
+          </div>
+          <div class="tutorial-content">
+            <h3>Fotos (Editor)</h3>
+            <p>Ajusta exposición, sombras, saturación, aplica filtros y recorta con guías.</p>
+
+            <ol class="steps">
+              <li>Abre la foto en <strong>Fotos</strong> (macOS) y pulsa <strong>Editar</strong>.</li>
+              <li>Recorta y endereza con la cuadrícula.</li>
+              <li>En <em>Ajustar</em>, mueve exposición, luces y color.</li>
+              <li>Aplica un filtro si lo necesitas (intensidad ajustable).</li>
+              <li><strong>Hecho</strong> y luego <strong>Exportar</strong> para elegir formato/calidad.</li>
+            </ol>
+            <div class="tips">
+              <span class="badge">macOS</span>
+              <span class="badge">Tiempo: 15 s</span>
+              <span class="pill">Atajo: <kbd>⌘</kbd> + <kbd>P</kbd> → “Guardar como PDF”</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apartado: Atajos avanzados y comparativa -->
+  <section id="atajos" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Atajos avanzados de los editores</h2>
+        <p>Comandos útiles para recortar, anotar y exportar más rápido en Windows y macOS.</p>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Windows — Notepad/Fotos/Recortes</h3>
+          <div class="cmd-list">
+            <div class="cmd" data-copy="Win + Shift + S"><span>Captura de recorte</span><span><span class="kbd">Win</span> + <span class="kbd">Shift</span> + <span class="kbd">S</span></span></div>
+            <div class="cmd" data-copy="Ctrl + F"><span>Buscar / Reemplazar (Notepad)</span><span><span class="kbd">Ctrl</span> + <span class="kbd">F</span> / <span class="kbd">H</span></span></div>
+            <div class="cmd" data-copy="Ctrl + Shift + S"><span>Guardar como…</span><span><span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">S</span></span></div>
+            <div class="cmd"><span>Marcado (Fotos)</span><span><small>Abrir foto → <em>Editar</em> → <em>Dibujar</em></small></span></div>
+            <div id="win-more" class="hidden">
+              <div class="cmd" data-copy="Ctrl + +"><span>Zoom +/-</span><span><span class="kbd">Ctrl</span> + <span class="kbd">+</span> / <span class="kbd">−</span></span></div>
+              <div class="cmd" data-copy="Ctrl + Z"><span>Deshacer / Rehacer</span><span><span class="kbd">Ctrl</span> + <span class="kbd">Z</span> / <span class="kbd">Y</span></span></div>
+              <div class="cmd" data-copy="Ctrl + P"><span>Imprimir / PDF</span><span><span class="kbd">Ctrl</span> + <span class="kbd">P</span></span></div>
+            </div>
+            <div class="more-wrap">
+              <button class="more-btn" data-target="#win-more">Mostrar más</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>macOS — TextEdit/Preview/Fotos</h3>
+          <div class="cmd-list">
+            <div class="cmd"><span>Marcación (Preview)</span><span><small>Herramienta <em>Marcado</em> en barra de herramientas</small></span></div>
+            <div class="cmd" data-copy="⌘ + F"><span>Buscar (TextEdit)</span><span><span class="kbd">⌘</span> + <span class="kbd">F</span></span></div>
+            <div class="cmd" data-copy="⌘ + ⌥ + T"><span>Texto sin formato (TextEdit)</span><span><span class="kbd">⌘</span> + <span class="kbd">⌥</span> + <span class="kbd">T</span></span></div>
+            <div class="cmd" data-copy="⌘ + P"><span>Exportar PDF</span><span><span class="kbd">⌘</span> + <span class="kbd">P</span> → <small>Guardar como PDF</small></span></div>
+            <div id="mac-more" class="hidden">
+              <div class="cmd" data-copy="⌘ + A"><span>Seleccionar todo</span><span><span class="kbd">⌘</span> + <span class="kbd">A</span></span></div>
+              <div class="cmd" data-copy="⌘ + Z"><span>Deshacer / Rehacer</span><span><span class="kbd">⌘</span> + <span class="kbd">Z</span> / <span class="kbd">⇧</span> + <span class="kbd">⌘</span> + <span class="kbd">Z</span></span></div>
+              <div class="cmd"><span>Modo oscuro (sistema)</span><span><small>Ajustes → Pantalla y brillo → Apariencia: Oscuro</small></span></div>
+            </div>
+            <div class="more-wrap">
+              <button class="more-btn" data-target="#mac-more">Mostrar más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:26px">
+        <h2 id="compare">Comparativa rápida (funciones)</h2>
+        <p>Qué puede hacer cada editor integrado.</p>
+      </div>
+      <div class="panel">
+        <div style="overflow:auto">
+          <table class="compare" aria-label="Comparativa de funciones">
+            <thead>
+              <tr>
+                <th>Función</th>
+                <th>Paint</th>
+                <th>Fotos (Win)</th>
+                <th>Recortes</th>
+                <th>Preview (macOS)</th>
+                <th>Fotos (macOS)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Recortar/Enderezar</td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-mid">Básico</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td></tr>
+              <tr><td>Anotar/Marcación</td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-mid">Limitado</span></td></tr>
+              <tr><td>Ajuste luz/color</td><td><span class="badge-no">No</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-no">No</span></td><td><span class="badge-mid">Básico</span></td><td><span class="badge-ok">Sí</span></td></tr>
+              <tr><td>Soporte transparencia (PNG)</td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-no">No</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-ok">Sí</span></td></tr>
+              <tr><td>Exportar a PDF</td><td><span class="badge-no">No</span></td><td><span class="badge-mid">Vía imprimir</span></td><td><span class="badge-no">No</span></td><td><span class="badge-ok">Sí</span></td><td><span class="badge-mid">Vía imprimir</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:26px">
+        <h2>Preguntas rápidas</h2>
+      </div>
+      <div class="faq grid-2">
+        <details>
+          <summary>¿Cómo exporto a JPG con calidad controlada en Windows?</summary>
+          En <strong>Fotos</strong> pulsa <em>Editar</em> → <em>Guardar copia</em> / <em>Exportar</em> y elige el deslizador de calidad.
+        </details>
+        <details>
+          <summary>¿Dónde firmo un PDF en macOS?</summary>
+          Abre el PDF en <strong>Preview</strong> → botón <em>Marcación</em> → icono <em>Firma</em> (trackpad/cámara) y arrástrala al documento.
+        </details>
+      </div>
+
+      <div class="section-title" style="margin-top:26px">
+        <h2 id="tips">Tips pro (rápidos)</h2>
+        <p>Consejos para ir más rápido y con mejor calidad sin apps extra.</p>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Windows</h3>
+          <ul class="feature-list">
+            <li>En <strong>Fotos</strong>, usa <em>Editar &gt; Dibujar</em> para anotar con lápiz, luego <em>Guardar copia</em> para no perder el original.</li>
+            <li>En <strong>Recortes</strong>, tras capturar con <span class="kbd">Win</span>+<span class="kbd">Shift</span>+<span class="kbd">S</span>, presiona <span class="kbd">Ctrl</span>+<span class="kbd">V</span> en cualquier app para pegar al instante.</li>
+            <li>En <strong>Paint</strong>, exporta a <strong>PNG</strong> si necesitas fondo transparente.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>macOS</h3>
+          <ul class="feature-list">
+            <li>En <strong>Preview</strong>, usa <em>Herramienta Marcado</em> para flechas, formas y firmas con trackpad o cámara.</li>
+            <li>En <strong>Fotos</strong>, la edición es no destructiva: puedes volver al original cuando quieras.</li>
+            <li>Para PDFs con imágenes, usa <strong>Archivo &gt; Exportar como PDF</strong> desde Preview y ajusta la calidad.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer básico -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h4>Contenido</h4>
+        <ul>
+          <li><a href="#windows">Windows</a></li>
+          <li><a href="#macos">macOS</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="bloc.html">Bloc de notas</a></li>
+          <li><a href="editores.html">Editores de imagen</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Atajos rápidos</h4>
+        <ul>
+          <li>Ctrl/Cmd + K — Abrir buscador</li>
+          <li>Esc — Cerrar buscador</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <span>© 2025 Ofimática</span>
+      <div class="footer-badges">
+        <span class="badge">Windows</span>
+        <span class="badge">macOS</span>
+        <span class="badge">Edición</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Overlay de búsqueda -->
+  <div id="searchOverlay" class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-modal">
+      <div class="search-head">
+        <span id="searchTitle">Buscar en esta página</span>
+        <button class="search-close" id="closeSearch" type="button">Cerrar</button>
+      </div>
+      <div class="search-field">
+        <input id="searchInput" type="search" placeholder="Ej.: recortar, marcación, exportar..." autocomplete="off"/>
+        <span class="search-stats" id="searchStats">0 resultados</span>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox" aria-label="Resultados"></div>
+    </div>
+  </div>
+
+  <nav class="toc-float" aria-label="Índice rápido">
+    <a href="#windows">Windows</a>
+    <a href="#macos">macOS</a>
+    <a href="#atajos">Atajos</a>
+    <a href="#tips">Tips</a>
+  </nav>
+  <div id="copyToast" class="toast" role="status" aria-live="polite">Copiado</div>
+
+  <script>
+    // Añadir enlaces de ancla en h2
+    document.querySelectorAll('.section .section-title h2').forEach(h=>{
+      const id = h.id || h.textContent.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^\w\-áéíóúñ]/gi,'');
+      if(!h.id) h.id = id;
+      const a = document.createElement('a');
+      a.className = 'anchor-link';
+      a.href = '#' + id;
+      a.textContent = '#';
+      h.appendChild(a);
+    });
+
+    // Botones "Copiar" en atajos
+    const toast = document.getElementById('copyToast');
+    function showToast(msg='Copiado'){
+      if(!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1100);
+    }
+    document.querySelectorAll('.cmd[data-copy]').forEach(cmd=>{
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.type = 'button';
+      btn.textContent = 'Copiar';
+      btn.addEventListener('click', async ()=>{
+        try{
+          await navigator.clipboard.writeText(cmd.getAttribute('data-copy'));
+          showToast('Atajo copiado');
+        }catch(e){
+          showToast('No se pudo copiar');
+        }
+      });
+      cmd.appendChild(btn);
+    });
+  </script>
+  <script>
+    // Header shrink + progress
+    const header = document.getElementById('topHeader');
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 6);
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+
+    // Búsqueda local
+    const SEARCH_INDEX = [
+      { id: 'windows',   title: 'Windows — Paint, Fotos y Recortes', snippet: 'Recortar, anotar, filtros, exportación PNG/JPG.', badge: 'Windows', href: '#windows' },
+      { id: 'paint',     title: 'Paint (Windows)', snippet: 'Pinceles, formas, texto, transparencia PNG.', badge: 'Paint', href: '#paint' },
+      { id: 'fotos-win', title: 'Fotos (Windows)', snippet: 'Ajustes de luz/color, marcado, exportación.', badge: 'Fotos', href: '#fotos-win' },
+      { id: 'recortes',  title: 'Herramienta Recortes', snippet: 'Win + Shift + S, anotaciones y guardado.', badge: 'Recortes', href: '#recortes' },
+      { id: 'macos',     title: 'macOS — Preview y Fotos', snippet: 'Marcación, firmas, exportar HEIC/PNG/JPG.', badge: 'macOS', href: '#macos' },
+      { id: 'preview',   title: 'Vista Previa (Marcación)', snippet: 'Firmas, flechas, redimensionar y comprimir.', badge: 'Preview', href: '#preview' },
+      { id: 'fotos-mac', title: 'Fotos (macOS)', snippet: 'Edición no destructiva, filtros y recorte.', badge: 'Fotos', href: '#fotos-mac' }
+      ,{ id: 'atajos',   title: 'Atajos avanzados', snippet: 'Windows/macOS: recortar, anotar, exportar, PDF.', badge: 'Guía', href: '#atajos' }
+      ,{ id: 'compare',  title: 'Comparativa rápida', snippet: 'Qué puede hacer cada editor integrado.', badge: 'Tabla', href: '#compare' }
+      ,{ id: 'faq',      title: 'Preguntas rápidas', snippet: 'Firmas, exportación a JPG/PDF y más.', badge: 'FAQ', href: '#atajos' }
+    ];
+
+    const overlay = document.getElementById('searchOverlay');
+    const openBtn = document.getElementById('openSearch');
+    const closeBtn = document.getElementById('closeSearch');
+    const input = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    const stats = document.getElementById('searchStats');
+
+    function openSearch() {
+      overlay.classList.add('open');
+      document.body.classList.add('noscroll');
+      setTimeout(() => input.focus(), 50);
+      renderResults(SEARCH_INDEX);
+    }
+    function closeSearch() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('noscroll');
+      input.value = '';
+      results.innerHTML = '';
+      stats.textContent = '0 resultados';
+    }
+    openBtn.addEventListener('click', openSearch);
+    closeBtn.addEventListener('click', closeSearch);
+    overlay.addEventListener('click', (e) => { if(e.target === overlay) closeSearch(); });
+    window.addEventListener('keydown', (e) => {
+      const meta = navigator.platform.includes('Mac') ? e.metaKey : e.ctrlKey;
+      if (meta && e.key.toLowerCase() === 'k') { e.preventDefault(); openSearch(); }
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeSearch();
+    });
+
+    function highlight(text, q){
+      if(!q) return text;
+      return text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')+')','ig'), '<mark>$1</mark>');
+    }
+    function renderResults(list, q=''){
+      results.innerHTML = '';
+      if (!list.length){ stats.textContent = '0 resultados'; return; }
+      stats.textContent = list.length + ' resultados';
+      const group = document.createElement('div');
+      group.className = 'result-group';
+      group.textContent = 'Secciones';
+      results.appendChild(group);
+      list.forEach((item, idx) => {
+        const a = document.createElement('a');
+        a.className = 'result-item';
+        a.href = item.href;
+        a.innerHTML = `
+          <div class="result-ico">✎</div>
+          <div>
+            <div class="result-title">${highlight(item.title, q)}</div>
+            <div class="result-snippet">${highlight(item.snippet, q)}</div>
+          </div>
+          <div class="result-badge">${item.badge}</div>
+        `;
+        a.addEventListener('click', () => closeSearch());
+        results.appendChild(a);
+        if(idx===0) a.setAttribute('aria-selected','true');
+      });
+    }
+
+    // Buscar al teclear
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      const filtered = !q ? SEARCH_INDEX : SEARCH_INDEX.filter(item =>
+        item.title.toLowerCase().includes(q) || item.snippet.toLowerCase().includes(q) || item.badge.toLowerCase().includes(q)
+      );
+      renderResults(filtered, q);
+    });
+    // Tema claro/oscuro persistente
+    (function(){
+      const btn = document.getElementById('themeToggle');
+      if(!btn) return;
+      const KEY = 'ofimatica-theme';
+      function apply(t){
+        document.body.classList.toggle('theme-dark', t==='dark');
+        btn.setAttribute('aria-pressed', String(t==='dark'));
+        btn.textContent = t==='dark' ? '☀️ Tema' : '🌙 Tema';
+      }
+      let saved = localStorage.getItem(KEY);
+      if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      apply(saved);
+      btn.addEventListener('click', ()=> {
+        const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+        localStorage.setItem(KEY, next);
+        apply(next);
+      });
+    })();
+
+    // Botón PDF (imprimir)
+    document.getElementById('printBtn')?.addEventListener('click', ()=> window.print());
+  </script>
+
+  <!-- Botón volver arriba (fuera de <script>) -->
+  <button id="backToTop" class="fab-scroll-top" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+  <script>
+    // FAB scroll top
+    (function(){
+      const btn = document.getElementById('backToTop');
+      if(!btn) return;
+      const toggle = () => btn.classList.toggle('show', window.scrollY > 600);
+      window.addEventListener('scroll', toggle, {passive:true});
+      toggle();
+      btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    })();
+  </script>
+
+  <script>
+    // Navegación sin persistir hash en recarga
+    try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const navEntry = performance.getEntriesByType('navigation')[0];
+      const reloaded = navEntry && navEntry.type === 'reload';
+      if (reloaded && location.hash) {
+        history.replaceState(null, '', location.pathname + location.search);
+        window.scrollTo(0, 0);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const href = a.getAttribute('href');
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', location.pathname + location.search);
+          }
+        });
+      });
+    } catch (_) {}
+  </script>
+  <script>
+    // ===== Asignar logos (reemplaza las URLs por las tuyas) =====
+    const LOGOS = {
+      paint: '',          // p.ej. 'https://upload.wikimedia.org/.../mspaint.svg'
+      fotosWin: '',       // p.ej. 'https://.../photos-win.svg'
+      recortes: '',       // p.ej. 'https://.../snipping-tool.svg'
+      preview: '',        // p.ej. 'https://.../preview-macos.svg'
+      fotosMac: ''        // p.ej. 'https://.../photos-macos.svg'
+    };
+    const byId = id => document.getElementById(id);
+    // Logos ya embebidos como data-URIs en los src de cada &lt;img&gt;;
+    // Deja estas líneas comentadas si no deseas sobrescribirlos.
+    // if(byId('logo-paint'))      byId('logo-paint').src      = LOGOS.paint;
+    // if(byId('logo-fotos-win'))  byId('logo-fotos-win').src  = LOGOS.fotosWin;
+    // if(byId('logo-recortes'))   byId('logo-recortes').src   = LOGOS.recortes;
+    // if(byId('logo-preview'))    byId('logo-preview').src    = LOGOS.preview;
+    // if(byId('logo-fotos-mac'))  byId('logo-fotos-mac').src  = LOGOS.fotosMac;
+  </script>
+</body>
+  <script>
+    document.querySelectorAll('.more-btn').forEach(btn=>{
+      btn.setAttribute('aria-expanded','false');
+      btn.addEventListener('click',()=>{
+        const target = document.querySelector(btn.dataset.target);
+        if(!target) return;
+        const willOpen = target.classList.contains('hidden');
+        target.classList.toggle('hidden');
+        btn.textContent = willOpen ? 'Mostrar menos' : 'Mostrar más';
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+    });
+  </script>
+</html>

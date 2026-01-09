@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732221.png" />
+  <title>Guía Completa de Microsoft Teams 2025 | Aprende desde Cero hasta Avanzado</title>
+  <style>
+    :root {
+      --teams-purple: #6264A7;
+      --accent: #4B53BC;
+      --bg: #F7F9FC;
+      --bg-2: #EEF2F8;
+      --card: #FFFFFF;
+      --border: #E5EAF2;
+      --txt: #1F2937;
+      --txt-2: #4B5563;
+      --txt-3: #6B7280;
+      --ok: #107C10;
+      --warn: #FF8C00;
+      --danger: #D13438;
+      --info: #0078D4;
+      --ff: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --fs-hero: clamp(2rem, 1.2rem + 2.5vw, 3rem);
+      --fs-xl: clamp(1.5rem, 1rem + 1.6vw, 2.2rem);
+      --fs-lg: clamp(1.1rem, .95rem + .6vw, 1.35rem);
+      --fs: 1rem;
+      --fs-sm: .94rem;
+      --fs-xs: .84rem;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --speed: 180ms;
+      --container: 1180px;
+      --sd4: 0 2px 6px rgba(0,0,0,.06);
+      --sd8: 0 6px 15px rgba(0,0,0,.08);
+      --sd16: 0 14px 34px rgba(0,0,0,.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      font-size: var(--fs);
+      line-height: 1.65;
+      color: var(--txt);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 22px; }
+    .progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 1000; }
+    .progress .bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teams-purple), var(--accent)); transition: width 0.3s ease; }
+    header { position: sticky; top: 0; z-index: 900; background: color-mix(in srgb, var(--card) 85%, transparent); backdrop-filter: saturate(160%) blur(16px); border-bottom: 1px solid var(--border); box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+    .nav { display: flex; align-items: center; justify-content: space-between; max-width: var(--container); margin: 0 auto; padding: 12px 22px; gap: 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--teams-purple); font-weight: 700; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--teams-purple), var(--accent)); box-shadow: var(--sd8); padding: 6px; }
+    .brand h1 { font-size: 1.1rem; white-space: nowrap; }
+    .search { position: relative; flex: 1; max-width: 500px; margin: 0 20px; }
+    .searchbox { position: relative; display: flex; align-items: center; background: var(--bg-2); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; transition: all var(--speed); box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+    .searchbox:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--accent); }
+    .search .icon { width: 18px; height: 18px; color: var(--txt-3); }
+    #siteSearch { border: 0; background: transparent; width: 100%; padding: 0 8px; outline: none; color: var(--txt); }
+    #siteSearch::placeholder { color: var(--txt-3); }
+    .clear-btn { background: none; border: 0; color: var(--txt-3); cursor: pointer; padding: 2px; border-radius: 4px; font-size: 1.2rem; line-height: 1; }
+    .clear-btn:hover { color: var(--txt-2); }
+    .results { position: absolute; top: 100%; left: 0; right: 0; background: var(--card); border: 1px solid var(--border); border-radius: 14px; margin-top: 8px; box-shadow: var(--sd16); max-height: 300px; overflow: auto; display: none; }
+    .results.show { display: block; }
+    .search-result { display: block; padding: 10px 14px; color: var(--txt); text-decoration: none; border-bottom: 1px solid var(--border); transition: background var(--speed); }
+    .search-result:hover { background: var(--bg-2); }
+    .no-results { padding: 10px 14px; color: var(--txt-3); font-style: italic; }
+    .actions { display: flex; align-items: center; gap: 12px; }
+    .theme-switch { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: .9rem; transition: all var(--speed); }
+    .theme-switch:hover { border-color: var(--accent); }
+    .theme-switch .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); position: relative; overflow: hidden; }
+    .hamb { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); }
+    .hamb span { width: 20px; height: 2px; background: var(--txt); border-radius: 1px; transition: all var(--speed); }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(2) { opacity: 0; }
+    #menuToggle:checked ~ .actions .hamb span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .navlinks { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; margin-top: 12px; display: none; }
+    #menuToggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 8px 14px; border-radius: 999px; color: var(--txt); border: 1px solid transparent; transition: all var(--speed); }
+    .navlinks a:hover { background: var(--card); border-color: var(--border); text-decoration: none; }
+    .toc-toggle { display: none; margin-bottom: 16px; padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font-size: .9rem; transition: all var(--speed); align-self: flex-start; }
+    .toc-toggle:hover { background: var(--bg-2); border-color: var(--accent); }
+    .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 32px; max-width: var(--container); margin: 32px auto; padding: 0 22px; }
+    @media (max-width: 1024px) { .wrap { grid-template-columns: 1fr; } }
+    .toc { position: sticky; top: 100px; align-self: start; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--sd4); height: 80vh; overflow-y: auto; }
+    .toc h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--teams-purple); }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc li { margin: .5rem 0; }
+    .toc a { color: var(--txt-2); font-size: .9rem; display: block; padding: 4px 0; border-left: 2px solid transparent; padding-left: 8px; transition: all var(--speed); }
+    .toc a:hover { color: var(--txt); border-left-color: var(--accent); text-decoration: none; }
+    @media (max-width: 1024px) {
+      .toc-toggle { display: block; }
+      .toc { display: none; position: relative; top: 0; margin-bottom: 24px; }
+      .toc.show { display: block; }
+    }
+    main { min-height: 80vh; }
+    .hero { background: linear-gradient(135deg, var(--teams-purple), var(--accent)); color: #fff; padding: 64px 32px; border-radius: 14px; margin-bottom: 32px; text-align: center; }
+    .hero h2 { font-size: var(--fs-hero); font-weight: 300; margin-bottom: 16px; }
+    .hero p { font-size: var(--fs-lg); opacity: .95; max-width: 800px; margin: 0 auto 24px; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 600; background: var(--accent); color: #fff; border: 1px solid transparent; transition: all var(--speed); text-decoration: none; }
+    .btn:hover { background: color-mix(in srgb, var(--accent), black 10%); transform: translateY(-2px); box-shadow: var(--sd8); text-decoration: none; }
+    .btn-outline { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
+    .block { margin-bottom: 64px; }
+    .block h3 { font-size: var(--fs-xl); font-weight: 300; color: var(--teams-purple); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .lead { font-size: var(--fs-lg); color: var(--txt-2); margin-bottom: 32px; max-width: 900px; }
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; box-shadow: var(--sd4); transition: all var(--speed); }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--sd8); border-color: var(--accent); }
+    .card h4 { font-size: 1.25rem; margin-bottom: 12px; color: var(--teams-purple); }
+    .muted { color: var(--txt-3); font-size: .9rem; }
+    .steps { list-style: none; padding-left: 0; }
+    .steps li { position: relative; padding-left: 28px; margin-bottom: 12px; }
+    .steps li:before { content: ""; position: absolute; left: 0; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+    .steps ol { list-style: decimal; padding-left: 20px; margin-top: 8px; }
+    .steps ol li { margin-bottom: 8px; padding-left: 4px; }
+    .steps ol li:before { display: none; }
+    .callout { padding: 16px; border-radius: 10px; margin: 20px 0; border-left: 4px solid var(--info); background: rgba(0,120,212,.05); }
+    .callout.ok { border-left-color: var(--ok); background: rgba(16,124,16,.05); }
+    .callout.warn { border-left-color: var(--warn); background: rgba(255,140,0,.05); }
+    .callout.danger { border-left-color: var(--danger); background: rgba(209,52,56,.05); }
+    .callout.info { border-left-color: var(--info); background: rgba(0,120,212,.05); }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background: var(--bg-2); font-weight: 600; }
+    tr:nth-child(even) { background: var(--bg-2); }
+    .code { background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; font-size: .9rem; overflow-x: auto; margin: 20px 0; }
+    code { background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: .85rem; }
+    footer { background: var(--bg-2); border-top: 1px solid var(--border); margin-top: 80px; padding: 40px 0; }
+    .footer-inner { max-width: var(--container); margin: 0 auto; padding: 0 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    .footer-brand { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .footer-brand img { width: 24px; height: 24px; }
+    .footer-note { color: var(--txt-2); font-size: .9rem; margin-bottom: 16px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); text-decoration: none; transition: all var(--speed); }
+    .footer-social a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+    .footer-title { font-weight: 600; margin-bottom: 12px; color: var(--teams-purple); }
+    .footer-list { list-style: none; padding-left: 0; }
+    .footer-list li { margin-bottom: 8px; }
+    .footer-list a { color: var(--txt-2); transition: color var(--speed); }
+    .footer-list a:hover { color: var(--txt); }
+    .backtop { position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; text-decoration: none; box-shadow: var(--sd8); transition: all var(--speed); z-index: 100; }
+    .backtop:hover { transform: translateY(-2px); box-shadow: var(--sd16); text-decoration: none; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .skip { position: absolute; top: -40px; left: 6px; background: var(--accent); color: #fff; padding: 8px; border-radius: 4px; z-index: 1000; transition: top 0.3s; }
+    .skip:focus { top: 6px; }
+    .noscript { background: var(--warn); color: #fff; padding: 12px; text-align: center; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #151A24; --bg-2: #1B2230; --card: #1F2633; --border: #2B3240; --txt: #E6E8EE; --txt-2: #CDD3E1; --txt-3: #AAB3C7; }
+    }
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: stretch; }
+      .search { margin: 12px 0; max-width: 100%; }
+      .actions { justify-content: space-between; }
+      .wrap { padding: 0 16px; }
+      .hero { padding: 32px 20px; }
+      .footer-inner { gap: 24px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    .img-frame {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--sd4);
+      margin: 20px 0;
+      overflow: hidden;
+      text-align: center;
+      transition: transform var(--speed);
+    }
+    .img-frame:hover {
+      transform: scale(1.02);
+      box-shadow: var(--sd8);
+    }
+    .img-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .img-frame figcaption {
+      font-size: var(--fs-sm);
+      color: var(--txt-3);
+      padding: 8px 12px;
+      background: var(--bg-2);
+    }
+    .keyboard-shortcut {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-family: monospace;
+      font-size: .85rem;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .feature-item {
+      background: var(--bg-2);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+    .feature-item h5 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--teams-purple);
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body id="top">
+  <a class="skip" href="#inicio">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+  <header>
+    <nav class="nav" aria-label="Principal">
+      <input type="checkbox" id="menuToggle" class="visually-hidden" aria-hidden="true">
+      <input type="checkbox" id="themeToggle" class="visually-hidden" aria-hidden="true">
+      <div class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Logotipo de Microsoft Teams" width="38" height="38">
+        <h1>Guía Completa de Microsoft Teams 2025</h1>
+      </div>
+      <div class="search" role="search">
+        <form class="searchbox" autocomplete="off" onsubmit="return false;">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input id="siteSearch" type="search" placeholder="Buscar en la guía..."
+                 aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
+          <button type="button" id="clearSearch" class="clear-btn" aria-label="Limpiar búsqueda">&times;</button>
+        </form>
+        <div id="searchResults" class="results" role="listbox" aria-hidden="true"></div>
+      </div>
+      <div class="actions">
+        <label class="theme-switch" for="themeToggle" title="Tema claro/oscuro">
+          <span class="dot" aria-hidden="true"></span><span> Tema</span>
+        </label>
+        <label class="hamb" for="menuToggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+      <div id="primaryNav" class="navlinks" role="navigation" aria-label="Secciones">
+        <a href="index.php">Inicio</a>
+        <a href="Word.php">Word</a>
+        <a href="Excel.php">Excel</a>
+        <a href="PowerPoint.php">Power Point</a>
+        <a href="OneDrive.php">One Drive</a>
+        <a href="Outlook.php">Outlook</a>
+        <a href="Access.php">Access</a>
+        <a href="Teams.php">Teams</a>
+      </div>
+    </nav>
+  </header>
+  <div class="wrap">
+    <button class="toc-toggle" id="tocToggle">📋 Mostrar tabla de contenidos</button>
+    <aside class="toc" aria-label="Tabla de contenidos" id="toc">
+      <h2>Contenido</h2>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#modulo1">Módulo 1: Introducción a Microsoft Teams</a></li>
+        <li><a href="#modulo2">Módulo 2: Chat y Mensajería Básica</a></li>
+        <li><a href="#modulo3">Módulo 3: Equipos y Canales</a></li>
+        <li><a href="#modulo4">Módulo 4: Reuniones en Teams</a></li>
+        <li><a href="#modulo5">Módulo 5: Archivos y Trabajo Colaborativo</a></li>
+        <li><a href="#modulo6">Módulo 6: Colaboración Avanzada</a></li>
+        <li><a href="#modulo7">Módulo 7: Personalización y Productividad</a></li>
+        <li><a href="#modulo8">Módulo 8: Aplicaciones y Automatización</a></li>
+        <li><a href="#modulo9">Módulo 9: Seguridad y Roles</a></li>
+        <li><a href="#modulo10">Módulo 10: Casos de Uso Prácticos</a></li>
+      </ul>
+    </aside>
+    <main>
+      <!-- Sección de Inicio -->
+      <section class="hero" id="inicio">
+        <h2>Guía Completa de Microsoft Teams 2025</h2>
+        <p>Domina <strong>Microsoft Teams 2025</strong> con esta guía detallada: desde lo básico hasta funciones avanzadas, colaboración en tiempo real, integración con Microsoft 365, automatización y más. Incluye ejemplos prácticos, imágenes, consejos y tutoriales paso a paso.</p>
+        <div class="actions">
+          <a class="btn" href="#modulo1">Comenzar Aprendizaje</a>
+          <a class="btn btn-outline" href="#modulo10">Ver Casos Prácticos</a>
+        </div>
+        <figure class="img-frame">
+          <img src="https://via.placeholder.com/800x450/6264A7/FFFFFF?text=Microsoft+Teams+2025" alt="Interfaz de Microsoft Teams 2025 mostrando chat, equipos y reuniones">
+          <figcaption>Microsoft Teams 2025: la plataforma unificada para comunicación, colaboración y productividad en equipos.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Módulo 1: Introducción a Microsoft Teams -->
+      <section id="modulo1" class="block">
+        <h3>🟦 Módulo 1 – Introducción a Microsoft Teams</h3>
+        <p class="lead">
+          Microsoft Teams es la plataforma unificada de comunicación y colaboración de Microsoft 365.
+          En este módulo, aprenderás qué es Teams, sus versiones, cómo acceder y los primeros pasos para configurar tu perfil y organización.
+        </p>
+
+        <!-- ¿Qué es Microsoft Teams? -->
+        <div class="card">
+          <h4>¿Qué es Microsoft Teams?</h4>
+          <p>Teams es una herramienta que combina:</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h5>Chat y mensajería</h5>
+              <p>Comunicación individual y grupal con texto, voz y video.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Reuniones en línea</h5>
+              <p>Videollamadas, audiollamadas y webinars con hasta 10,000 participantes.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Colaboración en archivos</h5>
+              <p>Edición en tiempo real de documentos de Word, Excel, PowerPoint y más.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Integración con Microsoft 365</h5>
+              <p>Conexión nativa con OneDrive, SharePoint, Outlook, Planner y otras apps.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Extensibilidad</h5>
+              <p>Apps de terceros, bots, conectores y automatizaciones con Power Automate.</p>
+            </div>
+            <div class="feature-item">
+              <h5>Seguridad empresarial</h5>
+              <p>Cumplimiento normativo, cifrado de datos y control de acceso avanzado.</p>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/6264A7/FFFFFF?text=Interfaz+de+Microsoft+Teams" alt="Interfaz de Microsoft Teams mostrando chat, equipos y calendario">
+            <figcaption>Interfaz principal de Microsoft Teams, con acceso a chat, equipos, calendario, llamadas y archivos.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Relación con Microsoft 365 -->
+        <div class="card">
+          <h4>Relación con Microsoft 365</h4>
+          <p>Teams está integrado con el ecosistema de Microsoft 365:</p>
+          <div class="grid grid-2">
+            <div>
+              <ul class="steps">
+                <li><strong>OneDrive:</strong> Almacenamiento personal de archivos y sincronización.</li>
+                <li><strong>SharePoint:</strong> Gestión de documentos y sitios de equipo.</li>
+                <li><strong>Outlook:</strong> Sincronización de calendarios y contactos.</li>
+                <li><strong>Office Online:</strong> Edición colaborativa de Word, Excel y PowerPoint.</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="steps">
+                <li><strong>Planner:</strong> Gestión visual de tareas y proyectos.</li>
+                <li><strong>Power Automate:</strong> Automatización de flujos de trabajo.</li>
+                <li><strong>Power BI:</strong> Visualización de datos y dashboards.</li>
+                <li><strong>Yammer:</strong> Red social corporativa para comunicación interna.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Dato clave:</strong> Teams es el <strong>centro de productividad</strong> de Microsoft 365, unificando herramientas dispersas en una sola interfaz.
+          </div>
+        </div>
+
+        <!-- Versiones de Teams -->
+        <div class="card">
+          <h4>Versiones de Microsoft Teams</h4>
+          <p>Teams está disponible en diferentes versiones según el tipo de usuario:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Teams Free</h5>
+              <ul class="steps">
+                <li>Para uso personal o pequeños equipos.</li>
+                <li>Límite de 100 participantes en reuniones.</li>
+                <li>Almacenamiento de 5 GB por usuario.</li>
+                <li>Sin integración con Microsoft 365.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Teams para Educación</h5>
+              <ul class="steps">
+                <li>Diseñado para escuelas y universidades.</li>
+                <li>Clases virtuales con hasta 300 estudiantes.</li>
+                <li>Integración con Classroom, Assignments y OneNote.</li>
+                <li>Herramientas de seguridad para menores.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Teams para Empresas</h5>
+              <ul class="steps">
+                <li>Incluido en planes de Microsoft 365 Business.</li>
+                <li>Reuniones con hasta 1,000 participantes.</li>
+                <li>Almacenamiento de 1 TB por usuario.</li>
+                <li>Administración centralizada y cumplimiento normativo.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Teams para Grandes Empresas</h5>
+              <ul class="steps">
+                <li>Parte de Microsoft 365 Enterprise.</li>
+                <li>Eventos en vivo con hasta 10,000 asistentes.</li>
+                <li>Avanzadas opciones de seguridad y gobernanza.</li>
+                <li>Integración con Azure AD y herramientas de TI.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formas de acceder a Teams -->
+        <div class="card">
+          <h4>Formas de acceder a Teams</h4>
+          <p>Puedes usar Teams en diferentes dispositivos y plataformas:</p>
+          <div class="grid grid-3">
+            <div class="feature-item">
+              <h5>Aplicación de escritorio</h5>
+              <p>Windows 10/11 y macOS. Descarga desde <a href="https://www.microsoft.com/es-es/microsoft-teams/download-app" target="_blank">teams.microsoft.com/downloads</a>.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/300x200/6264A7/FFFFFF?text=Teams+Desktop" alt="Aplicación de escritorio de Teams">
+              </figure>
+            </div>
+            <div class="feature-item">
+              <h5>Aplicación web</h5>
+              <p>Accede desde cualquier navegador en <a href="https://teams.microsoft.com" target="_blank">teams.microsoft.com</a>. Compatible con Chrome, Edge, Firefox y Safari.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/300x200/6264A7/FFFFFF?text=Teams+Web" alt="Versión web de Teams">
+              </figure>
+            </div>
+            <div class="feature-item">
+              <h5>Aplicación móvil</h5>
+              <p>Disponible para iOS y Android. Descarga desde App Store o Google Play. Ideal para estar conectado en movimiento.</p>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/300x200/6264A7/FFFFFF?text=Teams+Mobile" alt="Aplicación móvil de Teams">
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa la <strong>aplicación de escritorio</strong> para mejor rendimiento y acceso a todas las funciones.
+          </div>
+        </div>
+
+        <!-- Primeros pasos en Teams -->
+        <div class="card">
+          <h4>Primeros pasos en Teams</h4>
+          <p>Configura tu perfil y organización en Teams:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Iniciar sesión</h5>
+              <ul class="steps">
+                <li>Usa tu cuenta de Microsoft 365 (ej: <code>tunombre@tuempresa.com</code>).</li>
+                <li>Si no tienes cuenta, regístrate en <a href="https://signup.microsoft.com/" target="_blank">signup.microsoft.com</a>.</li>
+                <li>Descarga la aplicación o accede desde el navegador.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Configurar perfil</h5>
+              <ul class="steps">
+                <li>Haz clic en tu foto de perfil (esquina superior derecha).</li>
+                <li>Edita tu nombre, foto y estado (ej: "Disponible", "Ocupado").</li>
+                <li>Configura tu idioma y zona horaria.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Perfil+de+Teams" alt="Configuración de perfil en Teams">
+                <figcaption>Ejemplo de configuración de perfil en Teams, mostrando cómo editar foto, nombre y estado.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div>
+              <h5>Unirse a un equipo</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Equipos</strong> en la barra lateral.</li>
+                <li>Selecciona <strong>Unirse a un equipo o crear uno</strong>.</li>
+                <li>Ingresa el código del equipo (si tienes uno) o busca equipos públicos.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Crear un equipo</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Crear equipo</strong>.</li>
+                <li>Elige entre:
+                  <ul class="steps">
+                    <li><strong>Equipo desde cero</strong> (personalizado).</li>
+                    <li><strong>Plantilla</strong> (ej: "Gestión de proyectos", "Departamento").</li>
+                  </ul>
+                </li>
+                <li>Asigna un nombre y descripción al equipo.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 2: Chat y Mensajería Básica -->
+      <section id="modulo2" class="block">
+        <h3>💬 Módulo 2 – Chat y Mensajería Básica</h3>
+        <p class="lead">
+          Aprende a comunicarte de manera efectiva con chats individuales, grupales y mensajes con formato.
+          Este módulo cubre todo lo que necesitas para enviar mensajes, compartir archivos y organizar conversaciones.
+        </p>
+
+        <!-- Chat individual y grupal -->
+        <div class="card">
+          <h4>Chat individual y grupal</h4>
+          <p>Inicia conversaciones con una o varias personas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Iniciar un chat individual</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Chat</strong> en la barra lateral.</li>
+                <li>Selecciona <strong>Nuevo chat</strong> (icono de lápiz).</li>
+                <li>Escribe el nombre de la persona y presiona <span class="keyboard-shortcut">Enter</span>.</li>
+                <li>Comienza a escribir tu mensaje en el campo de texto.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Iniciar un chat grupal</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Nuevo chat</strong> y luego en el icono de <strong>agregar personas</strong>.</li>
+                <li>Añade los nombres de los participantes (máximo 250 personas).</li>
+                <li>Asigna un nombre al grupo para identificarlo fácilmente.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Chat+Grupal" alt="Chat grupal en Teams">
+                <figcaption>Ejemplo de chat grupal en Teams, mostrando cómo añadir participantes y asignar un nombre.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa <strong>@mención</strong> para notificar a alguien en un chat grupal (ej: "@Ana, ¿puedes revisar esto?").
+          </div>
+        </div>
+
+        <!-- Formato de mensajes -->
+        <div class="card">
+          <h4>Formato de mensajes</h4>
+          <p>Personaliza tus mensajes con formato y elementos multimedia:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Formato básico</h5>
+              <ul class="steps">
+                <li>Usa los botones de formato en la barra de herramientas:
+                  <ul class="steps">
+                    <li><strong>Negrita</strong> (<span class="keyboard-shortcut">Ctrl + B</span>).</li>
+                    <li><em>Cursiva</em> (<span class="keyboard-shortcut">Ctrl + I</span>).</li>
+                    <li><u>Subrayado</u> (<span class="keyboard-shortcut">Ctrl + U</span>).</li>
+                    <li><s>Tachado</s>.</li>
+                  </ul>
+                </li>
+                <li>Cambia el color del texto con el selector de colores.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Elementos multimedia</h5>
+              <ul class="steps">
+                <li>Añade emojis, GIFs o stickers con el icono de <strong>emoji</strong>.</li>
+                <li>Adjunta archivos arrastrándolos al chat o con el icono de <strong>clip</strong>.</li>
+                <li>Comparte enlaces (Teams generará una vista previa automática).</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Formato+de+Mensajes" alt="Formato de mensajes en Teams">
+                <figcaption>Ejemplo de formato de mensajes en Teams, mostrando opciones para texto, emojis y archivos adjuntos.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Archivos adjuntos y OneDrive -->
+        <div class="card">
+          <h4>Archivos adjuntos y OneDrive</h4>
+          <p>Comparte y gestiona archivos directamente en los chats:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Adjuntar archivos</h5>
+              <ul class="steps">
+                <li>Haz clic en el icono de <strong>clip</strong> en el campo de mensaje.</li>
+                <li>Selecciona <strong>Archivo</strong> para subir desde tu equipo.</li>
+                <li>O elige <strong>OneDrive</strong> para compartir archivos de la nube.</li>
+                <li>Los archivos se guardan automáticamente en OneDrive o SharePoint.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar archivos</h5>
+              <ul class="steps">
+                <li>Ve a la pestaña <strong>Archivos</strong> en la parte superior del chat.</li>
+                <li>Edita archivos directamente en Teams con Office Online.</li>
+                <li>Descarga, elimina o comparte archivos con otros.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Archivos+en+Teams" alt="Archivos adjuntos en Teams">
+                <figcaption>Ejemplo de gestión de archivos en Teams, mostrando cómo adjuntar, editar y compartir documentos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa <strong>OneDrive</strong> para archivos grandes (>10 MB) y evita saturar el chat.
+          </div>
+        </div>
+
+        <!-- Búsqueda y organización de chats -->
+        <div class="card">
+          <h4>Búsqueda y organización de chats</h4>
+          <p>Encuentra mensajes antiguos y organiza tus conversaciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Buscar mensajes</h5>
+              <ul class="steps">
+                <li>Usa la barra de búsqueda en la parte superior (<span class="keyboard-shortcut">Ctrl + E</span>).</li>
+                <li>Filtra por:
+                  <ul class="steps">
+                    <li>Palabras clave.</li>
+                    <li>Nombre de persona.</li>
+                    <li>Tipo de archivo.</li>
+                    <li>Fecha.</li>
+                  </ul>
+                </li>
+                <li>Usa comillas para buscar frases exactas (ej: "reunión de proyecto").</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Organizar chats</h5>
+              <ul class="steps">
+                <li>Fija chats importantes haciendo clic en los <strong>tres puntos</strong> → <strong>Fijar</strong>.</li>
+                <li>Silencia notificaciones con <strong>Silenciar</strong>.</li>
+                <li>Oculta chats con <strong>Ocultar</strong> (puedes recuperarlos en <strong>Chats ocultos</strong>).</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Organizar+Chats" alt="Organizar chats en Teams">
+                <figcaption>Ejemplo de cómo fijar, silenciar y ocultar chats en Teams para mantener el orden.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 3: Equipos y Canales -->
+      <section id="modulo3" class="block">
+        <h3>👥 Módulo 3 – Equipos y Canales</h3>
+        <p class="lead">
+          Los equipos y canales son el corazón de la colaboración en Teams.
+          Aprende a crear equipos, configurar canales, publicar mensajes y gestionar notificaciones para organizar el trabajo en grupo.
+        </p>
+
+        <!-- Crear y gestionar equipos -->
+        <div class="card">
+          <h4>Crear y gestionar equipos</h4>
+          <p>Organiza a tu equipo en un espacio de trabajo dedicado:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear un equipo</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Equipos</strong> → <strong>Unirse a un equipo o crear uno</strong>.</li>
+                <li>Selecciona <strong>Crear equipo</strong>.</li>
+                <li>Elige el tipo de equipo:
+                  <ul class="steps">
+                    <li><strong>Clase</strong> (para educación).</li>
+                    <li><strong>Comunidad profesional</strong> (para redes internas).</li>
+                    <li><strong>Otros</strong> (para proyectos o departamentos).</li>
+                  </ul>
+                </li>
+                <li>Asigna un nombre y descripción.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar miembros</h5>
+              <ul class="steps">
+                <li>Añade miembros con <strong>Agregar miembros</strong> (correo o nombre).</li>
+                <li>Asigna roles:
+                  <ul class="steps">
+                    <li><strong>Propietario</strong> (control total).</li>
+                    <li><strong>Miembro</strong> (participación estándar).</li>
+                    <li><strong>Invitado</strong> (acceso limitado).</li>
+                  </ul>
+                </li>
+                <li>Elimina miembros si es necesario.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Gestionar+Equipos" alt="Gestionar equipos en Teams">
+                <figcaption>Ejemplo de cómo crear un equipo y gestionar miembros en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canales: estándar y privados -->
+        <div class="card">
+          <h4>Canales: estándar y privados</h4>
+          <p>Organiza las conversaciones por temas o proyectos dentro de un equipo:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear un canal estándar</h5>
+              <ul class="steps">
+                <li>Ve al equipo y haz clic en <strong>...</strong> → <strong>Agregar canal</strong>.</li>
+                <li>Asigna un nombre (ej: "Marketing", "Desarrollo").</li>
+                <li>Escribe una descripción opcional.</li>
+                <li>Todos los miembros del equipo tendrán acceso.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Crear un canal privado</h5>
+              <ul class="steps">
+                <li>Selecciona <strong>Privado</strong> al crear el canal.</li>
+                <li>Añade solo a los miembros que necesiten acceso.</li>
+                <li>Útil para temas confidenciales o grupos específicos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Canales+Privados" alt="Canales privados en Teams">
+                <figcaption>Ejemplo de creación de canales estándar y privados en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Nota:</strong> Los canales privados solo son visibles para los miembros añadidos.
+          </div>
+        </div>
+
+        <!-- Publicar y responder en canales -->
+        <div class="card">
+          <h4>Publicar y responder en canales</h4>
+          <p>Comparte información y colabora en los canales:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Publicar un mensaje</h5>
+              <ul class="steps">
+                <li>Ve al canal y escribe en el campo <strong>Iniciar una nueva publicación</strong>.</li>
+                <li>Usa formato (negrita, listas, @menciones).</li>
+                <li>Adjunta archivos o enlaces si es necesario.</li>
+                <li>Publica con el botón <strong>Enviar</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Responder a un mensaje</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Responder</strong> bajo el mensaje original.</li>
+                <li>Tu respuesta se agrupará en un hilo para mantener el orden.</li>
+                <li>Usa <strong>Me gusta</strong> o emojis para reaccionar rápidamente.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Publicar+en+Canales" alt="Publicar en canales de Teams">
+                <figcaption>Ejemplo de cómo publicar y responder en canales de Teams, mostrando hilos de conversación.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notificaciones y ajustes -->
+        <div class="card">
+          <h4>Notificaciones y ajustes</h4>
+          <p>Controla qué notificaciones recibes y cómo:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configurar notificaciones</h5>
+              <ul class="steps">
+                <li>Haz clic en tu foto de perfil → <strong>Configuración</strong> → <strong>Notificaciones</strong>.</li>
+                <li>Ajusta las notificaciones para:
+                  <ul class="steps">
+                    <li>Mensajes y @menciones.</li>
+                    <li>Reacciones y respuestas.</li>
+                    <li>Actividad en canales.</li>
+                  </ul>
+                </li>
+                <li>Elige entre <strong>Banner y correo</strong> o solo <strong>Banner</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Silenciar canales</h5>
+              <ul class="steps">
+                <li>Ve al canal y haz clic en <strong>...</strong> → <strong>Silenciar</strong>.</li>
+                <li>Elige silenciar por <strong>12 horas</strong>, <strong>hasta que yo lo reactive</strong> o <strong>siempre</strong>.</li>
+                <li>Los canales silenciados mostrarán un icono de campana.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Notificaciones+en+Teams" alt="Notificaciones en Teams">
+                <figcaption>Ejemplo de configuración de notificaciones y cómo silenciar canales en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa <strong>@canal</strong> para notificar a todos los miembros de un canal (ej: "@Marketing, recordatorio de reunión").
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 4: Reuniones en Teams -->
+      <section id="modulo4" class="block">
+        <h3>🎥 Módulo 4 – Reuniones en Teams</h3>
+        <p class="lead">
+          Programa, únete y gestiona reuniones en Teams con controles avanzados.
+          Desde reuniones rápidas hasta webinars con cientos de participantes, este módulo te prepara para cualquier escenario.
+        </p>
+
+        <!-- Programar una reunión -->
+        <div class="card">
+          <h4>Programar una reunión</h4>
+          <p>Organiza reuniones desde Teams o Outlook:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Desde Teams</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Calendario</strong> en la barra lateral.</li>
+                <li>Haz clic en <strong>Nueva reunión</strong>.</li>
+                <li>Asigna un título, fecha, hora y duración.</li>
+                <li>Añade participantes (internos o externos).</li>
+                <li>Configura opciones como <strong>Lobby</strong> o <strong>Grabación automática</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Desde Outlook</h5>
+              <ul class="steps">
+                <li>Abre Outlook y crea un nuevo evento.</li>
+                <li>Haz clic en <strong>Agregar una reunión de Teams</strong>.</li>
+                <li>Los detalles de la reunión se sincronizarán con Teams.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Programar+Reunión" alt="Programar reunión en Teams">
+                <figcaption>Ejemplo de cómo programar una reunión en Teams desde el calendario.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unirse a una reunión -->
+        <div class="card">
+          <h4>Unirse a una reunión</h4>
+          <p>Participa en reuniones programadas o instantáneas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Desde el enlace</h5>
+              <ul class="steps">
+                <li>Haz clic en el enlace de la reunión (enviado por correo o chat).</li>
+                <li>Elige unirte con <strong>audio y video</strong> o solo audio.</li>
+                <li>Configura tu micrófono y cámara antes de entrar.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Desde el calendario</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Calendario</strong> en Teams.</li>
+                <li>Haz clic en la reunión programada y selecciona <strong>Unirse</strong>.</li>
+                <li>Si la reunión aún no ha comenzado, verás la opción <strong>Unirse ahora</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Unirse+a+Reunión" alt="Unirse a reunión en Teams">
+                <figcaption>Ejemplo de cómo unirse a una reunión desde el calendario de Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Consejo:</strong> Usa la opción <strong>Unirse con el navegador</strong> si no puedes instalar la aplicación.
+          </div>
+        </div>
+
+        <!-- Controles durante la reunión -->
+        <div class="card">
+          <h4>Controles durante la reunión</h4>
+          <p>Gestiona tu participación con estas herramientas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Controles básicos</h5>
+              <ul class="steps">
+                <li><strong>Micrófono:</strong> Actívalo o siléncialo (<span class="keyboard-shortcut">Ctrl + Shift + M</span>).</li>
+                <li><strong>Cámara:</strong> Enciéndela o apágala (<span class="keyboard-shortcut">Ctrl + Shift + O</span>).</li>
+                <li><strong>Compartir pantalla:</strong> Comparte tu escritorio o una ventana específica.</li>
+                <li><strong>Chat:</strong> Envía mensajes a todos los participantes.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Controles avanzados</h5>
+              <ul class="steps">
+                <li><strong>Grabación:</strong> Inicia o detén la grabación (requiere permiso).</li>
+                <li><strong>Fondo virtual:</strong> Desenfoca tu fondo o elige una imagen.</li>
+                <li><strong>Reacciones:</strong> Usa emojis para interactuar sin interrumpir.</li>
+                <li><strong>Lista de participantes:</strong> Ve quién está en la reunión y gestiona sus permisos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Controles+de+Reunión" alt="Controles de reunión en Teams">
+                <figcaption>Ejemplo de controles durante una reunión en Teams, mostrando opciones para micrófono, cámara y compartir pantalla.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones para organizadores -->
+        <div class="card">
+          <h4>Opciones para organizadores</h4>
+          <p>Configura y gestiona reuniones como organizador:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configuración de la reunión</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Opciones de reunión</strong> antes de iniciar.</li>
+                <li>Configura:
+                  <ul class="steps">
+                    <li>Quién puede presentar (<strong>Solo yo</strong> o <strong>Todos</strong>).</li>
+                    <li>Si los participantes entran directamente o pasan por el <strong>lobby</strong>.</li>
+                    <li>Si se permite la grabación.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar participantes</h5>
+              <ul class="steps">
+                <li>Silencia a todos los participantes con <strong>Silenciar a todos</strong>.</li>
+                <li>Expulsa a participantes si es necesario.</li>
+                <li>Asigna el rol de <strong>presentador</strong> a otros miembros.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Opciones+de+Reunión" alt="Opciones de reunión en Teams">
+                <figcaption>Ejemplo de opciones para organizadores en Teams, mostrando cómo gestionar participantes y configurar permisos.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> Siempre configura el <strong>lobby</strong> para reuniones con invitados externos.
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 5: Archivos y Trabajo Colaborativo -->
+      <section id="modulo5" class="block">
+        <h3>📁 Módulo 5 – Archivos y Trabajo Colaborativo</h3>
+        <p class="lead">
+          Colabora en tiempo real con archivos de Office, gestiona versiones y comparte documentos de manera segura.
+          Este módulo te enseña a trabajar con archivos en Teams como un profesional.
+        </p>
+
+        <!-- Archivos en canales y chats -->
+        <div class="card">
+          <h4>Archivos en canales y chats</h4>
+          <p>Accede y gestiona archivos compartidos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Archivos en canales</h5>
+              <ul class="steps">
+                <li>Ve al canal y haz clic en la pestaña <strong>Archivos</strong>.</li>
+                <li>Los archivos se guardan en SharePoint (para equipos) o OneDrive (para chats).</li>
+                <li>Edita directamente en Teams con Office Online.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Archivos en chats</h5>
+              <ul class="steps">
+                <li>Ve al chat y haz clic en la pestaña <strong>Archivos</strong>.</li>
+                <li>Los archivos adjuntos se organizan por fecha.</li>
+                <li>Usa <strong>Abrir en OneDrive</strong> para gestionar versiones.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Archivos+en+Canales" alt="Archivos en canales de Teams">
+                <figcaption>Ejemplo de cómo acceder a archivos en canales y chats de Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edición colaborativa -->
+        <div class="card">
+          <h4>Edición colaborativa</h4>
+          <p>Trabaja en tiempo real con otros usuarios:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Editar en Teams</h5>
+              <ul class="steps">
+                <li>Abre un archivo de Word, Excel o PowerPoint.</li>
+                <li>Edita directamente en Teams (se guardan cambios automáticamente).</li>
+                <li>Ve los cambios de otros usuarios en tiempo real (cursores con nombres).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Control de versiones</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>...</strong> → <strong>Versiones</strong>.</li>
+                <li>Restaura versiones anteriores si es necesario.</li>
+                <li>Comparte enlaces a versiones específicas.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Edición+Colaborativa" alt="Edición colaborativa en Teams">
+                <figcaption>Ejemplo de edición colaborativa en Teams, mostrando cómo trabajar en tiempo real con otros usuarios.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout ok">
+            <strong>Consejo:</strong> Usa <strong>comentarios</strong> en los archivos para discutir cambios sin modificar el contenido.
+          </div>
+        </div>
+
+        <!-- Compartir y sincronizar archivos -->
+        <div class="card">
+          <h4>Compartir y sincronizar archivos</h4>
+          <p>Gestiona el acceso y la sincronización de archivos:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Compartir archivos</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>...</strong> → <strong>Compartir</strong>.</li>
+                <li>Elige si permitir <strong>edición</strong> o solo <strong>visualización</strong>.</li>
+                <li>Envía el enlace por correo o chat.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Sincronizar con OneDrive</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>Sincronizar</strong> para trabajar localmente.</li>
+                <li>Los cambios se sincronizarán automáticamente.</li>
+                <li>Usa el icono de OneDrive en la barra de tareas para gestionar la sincronización.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Compartir+Archivos" alt="Compartir archivos en Teams">
+                <figcaption>Ejemplo de cómo compartir y sincronizar archivos en Teams con OneDrive.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 6: Colaboración Avanzada -->
+      <section id="modulo6" class="block">
+        <h3>🔗 Módulo 6 – Colaboración Avanzada</h3>
+        <p class="lead">
+          Lleva la colaboración al siguiente nivel con pestañas, Planner, OneNote y organización avanzada de canales.
+          Ideal para equipos que necesitan gestionar proyectos complejos.
+        </p>
+
+        <!-- Pestañas en canales -->
+        <div class="card">
+          <h4>Pestañas en canales</h4>
+          <p>Añade herramientas y servicios como pestañas:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Agregar pestañas</h5>
+              <ul class="steps">
+                <li>Haz clic en <strong>+</strong> junto a las pestañas existentes.</li>
+                <li>Elige entre:
+                  <ul class="steps">
+                    <li><strong>Documentos</strong> (Word, Excel, PowerPoint).</li>
+                    <li><strong>Planner</strong> (gestión de tareas).</li>
+                    <li><strong>OneNote</strong> (bloc de notas).</li>
+                    <li><strong>Sitio de SharePoint</strong>.</li>
+                    <li><strong>Aplicaciones de terceros</strong> (Trello, Asana, etc.).</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5>Configurar pestañas</h5>
+              <ul class="steps">
+                <li>Asigna un nombre descriptivo a la pestaña.</li>
+                <li>Configura permisos (ej: solo ciertos miembros pueden editar).</li>
+                <li>Reorganiza pestañas arrastrándolas.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Pestañas+en+Teams" alt="Pestañas en canales de Teams">
+                <figcaption>Ejemplo de cómo añadir y configurar pestañas en canales de Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planner y gestión de tareas -->
+        <div class="card">
+          <h4>Planner y gestión de tareas</h4>
+          <p>Organiza tareas visualmente con Planner:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear un plan</h5>
+              <ul class="steps">
+                <li>Añade una pestaña de <strong>Planner</strong> al canal.</li>
+                <li>Crea <strong>cubetas</strong> para categorizar tareas (ej: "Por hacer", "En progreso", "Hecho").</li>
+                <li>Añade tareas con fechas límite y asignadas a miembros.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar tareas</h5>
+              <ul class="steps">
+                <li>Arrastra tareas entre cubetas para actualizar su estado.</li>
+                <li>Usa la vista de <strong>Gráfico</strong> para ver el progreso.</li>
+                <li>Filtra tareas por miembro o fecha.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Planner+en+Teams" alt="Planner en Teams">
+                <figcaption>Ejemplo de cómo usar Planner en Teams para gestionar tareas visualmente.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- OneNote en Teams -->
+        <div class="card">
+          <h4>OneNote en Teams</h4>
+          <p>Toma notas colaborativas con OneNote:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Añadir OneNote</h5>
+              <ul class="steps">
+                <li>Agrega una pestaña de <strong>OneNote</strong> al canal.</li>
+                <li>Elige entre crear un <strong>nuevo bloc</strong> o usar uno existente.</li>
+                <li>OneNote se sincroniza automáticamente con todos los miembros.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Tomar notas</h5>
+              <ul class="steps">
+                <li>Usa secciones y páginas para organizar notas.</li>
+                <li>Inserta imágenes, tablas o dibujos.</li>
+                <li>Etiqueta notas con <strong>importante</strong> o <strong>tarea</strong>.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=OneNote+en+Teams" alt="OneNote en Teams">
+                <figcaption>Ejemplo de cómo usar OneNote en Teams para tomar notas colaborativas.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 7: Personalización y Productividad -->
+      <section id="modulo7" class="block">
+        <h3>⚙️ Módulo 7 – Personalización y Productividad</h3>
+        <p class="lead">
+          Ajusta Teams a tu flujo de trabajo con notificaciones personalizadas, atajos de teclado y búsqueda global.
+          Optimiza tu productividad con estas herramientas avanzadas.
+        </p>
+
+        <!-- Notificaciones y estados -->
+        <div class="card">
+          <h4>Notificaciones y estados</h4>
+          <p>Controla cuándo y cómo recibes notificaciones:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configurar notificaciones</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Configuración</strong> → <strong>Notificaciones</strong>.</li>
+                <li>Ajusta notificaciones para:
+                  <ul class="steps">
+                    <li>Mensajes y @menciones.</li>
+                    <li>Reacciones y respuestas.</li>
+                    <li>Llamadas y reuniones.</li>
+                  </ul>
+                </li>
+                <li>Elige entre <strong>Banner</strong>, <strong>Correo</strong> o <strong>Ninguno</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Estados y disponibilidad</h5>
+              <ul class="steps">
+                <li>Cambia tu estado haciendo clic en tu foto de perfil.</li>
+                <li>Opciones:
+                  <ul class="steps">
+                    <li><strong>Disponible</strong> (verde).</li>
+                    <li><strong>Ocupado</strong> (rojo).</li>
+                    <li><strong>No molestar</strong> (rojo con raya).</li>
+                    <li><strong>Ausente</strong> (amarillo).</li>
+                    <li><strong>Invisible</strong> (apareces desconectado).</li>
+                  </ul>
+                </li>
+                <li>Configura un mensaje de estado personalizado.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Notificaciones+y+Estados" alt="Notificaciones y estados en Teams">
+                <figcaption>Ejemplo de cómo configurar notificaciones y cambiar estados en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Atajos de teclado -->
+        <div class="card">
+          <h4>Atajos de teclado</h4>
+          <p>Acela tu trabajo con estos atajos:</p>
+          <div class="grid grid-2">
+            <div>
+              <table>
+                <thead>
+                  <tr><th>Atajo</th><th>Función</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + E</span></td><td>Buscar</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + N</span></td><td>Nuevo chat</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Shift + M</span></td><td>Silenciar micrófono</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Shift + O</span></td><td>Apagar cámara</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + ,</span></td><td>Abrir configuración</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr><th>Atajo</th><th>Función</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + .</span></td><td>Abrir emojis</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + Shift + P</span></td><td>Abrir comandos</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Alt + Shift + D</span></td><td>Marcar como leído</td></tr>
+                  <tr><td><span class="keyboard-shortcut">Ctrl + /</span></td><td>Ver todos los atajos</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figure class="img-frame">
+            <img src="https://via.placeholder.com/800x450/6264A7/FFFFFF?text=Atajos+de+Teclado" alt="Atajos de teclado en Teams">
+            <figcaption>Infografía con los atajos de teclado más útiles en Teams.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Búsqueda global -->
+        <div class="card">
+          <h4>Búsqueda global</h4>
+          <p>Encuentra mensajes, archivos o personas rápidamente:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Buscar en Teams</h5>
+              <ul class="steps">
+                <li>Usa la barra de búsqueda en la parte superior (<span class="keyboard-shortcut">Ctrl + E</span>).</li>
+                <li>Filtra por:
+                  <ul class="steps">
+                    <li>Mensajes.</li>
+                    <li>Personas.</li>
+                    <li>Archivos.</li>
+                    <li>Canales.</li>
+                  </ul>
+                </li>
+                <li>Usa operadores como <code>de:</code> o <code>en:</code> para afinar la búsqueda.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Filtros avanzados</h5>
+              <ul class="steps">
+                <li>Filtra por fecha (ej: "esta semana", "este mes").</li>
+                <li>Busca en chats o canales específicos.</li>
+                <li>Guarda búsquedas frecuentes para acceso rápido.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Búsqueda+Global" alt="Búsqueda global en Teams">
+                <figcaption>Ejemplo de búsqueda global en Teams, mostrando cómo filtrar por mensajes, archivos y personas.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 8: Aplicaciones y Automatización -->
+      <section id="modulo8" class="block">
+        <h3>🤖 Módulo 8 – Aplicaciones y Automatización</h3>
+        <p class="lead">
+          Extiende las funcionalidades de Teams con aplicaciones de terceros, bots y automatizaciones.
+          Integra herramientas como Trello, Asana o Power Automate para optimizar tus flujos de trabajo.
+        </p>
+
+        <!-- Aplicaciones de terceros -->
+        <div class="card">
+          <h4>Aplicaciones de terceros</h4>
+          <p>Añade apps para mejorar la productividad:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Instalar aplicaciones</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Apps</strong> en la barra lateral.</li>
+                <li>Busca aplicaciones como:
+                  <ul class="steps">
+                    <li><strong>Trello</strong> (gestión de proyectos).</li>
+                    <li><strong>Asana</strong> (tareas).</li>
+                    <li><strong>Zoom</strong> (videoconferencia).</li>
+                    <li><strong>Mural</strong> (pizarras virtuales).</li>
+                  </ul>
+                </li>
+                <li>Añádelas como pestañas en canales o chats.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar aplicaciones</h5>
+              <ul class="steps">
+                <li>Configura permisos para cada app.</li>
+                <li>Actualiza o elimina apps desde <strong>Administrar tus apps</strong>.</li>
+                <li>Usa apps en chats con comandos (ej: "/trello create").</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Aplicaciones+en+Teams" alt="Aplicaciones en Teams">
+                <figcaption>Ejemplo de cómo instalar y gestionar aplicaciones de terceros en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bots y conectores -->
+        <div class="card">
+          <h4>Bots y conectores</h4>
+          <p>Automatiza tareas con bots y conectores:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Usar bots</h5>
+              <ul class="steps">
+                <li>Busca bots en <strong>Apps</strong> (ej: <strong>Who</strong>, <strong>Poll</strong>).</li>
+                <li>Añade bots a chats o canales.</li>
+                <li>Interactúa con comandos (ej: "@Poll ¿Qué prefieren, opción A o B?").</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Configurar conectores</h5>
+              <ul class="steps">
+                <li>Añade conectores a canales (ej: <strong>Twitter</strong>, <strong>GitHub</strong>).</li>
+                <li>Configura qué notificaciones recibir (ej: nuevos tweets, commits).</li>
+                <li>Los conectores publican actualizaciones automáticamente en el canal.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Bots+y+Conectores" alt="Bots y conectores en Teams">
+                <figcaption>Ejemplo de cómo usar bots y conectores en Teams para automatizar tareas.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Power Automate -->
+        <div class="card">
+          <h4>Power Automate</h4>
+          <p>Crea flujos de trabajo automatizados:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear un flujo</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Power Automate</strong> en <strong>Apps</strong>.</li>
+                <li>Elige una plantilla o crea un flujo desde cero.</li>
+                <li>Ejemplos:
+                  <ul class="steps">
+                    <li>Guardar archivos adjuntos de chats en OneDrive.</li>
+                    <li>Enviar notificaciones cuando se cree una tarea en Planner.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar flujos</h5>
+              <ul class="steps">
+                <li>Monitorea el historial de ejecuciones.</li>
+                <li>Edita o desactiva flujos según sea necesario.</li>
+                <li>Comparte flujos con otros miembros del equipo.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Power+Automate" alt="Power Automate en Teams">
+                <figcaption>Ejemplo de cómo crear flujos automatizados con Power Automate en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 9: Seguridad y Roles -->
+      <section id="modulo9" class="block">
+        <h3>🔒 Módulo 9 – Seguridad y Roles</h3>
+        <p class="lead">
+          Protege la información de tu organización con roles, permisos y canales privados.
+          Aprende a gestionar invitados y cumplir con normativas de seguridad.
+        </p>
+
+        <!-- Roles y permisos -->
+        <div class="card">
+          <h4>Roles y permisos</h4>
+          <p>Asigna roles para controlar el acceso:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Roles en Teams</h5>
+              <ul class="steps">
+                <li><strong>Propietario:</strong> Control total sobre el equipo.</li>
+                <li><strong>Miembro:</strong> Participación estándar.</li>
+                <li><strong>Invitado:</strong> Acceso limitado (solo a canales específicos).</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar permisos</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Configuración del equipo</strong> → <strong>Miembros</strong>.</li>
+                <li>Cambia roles haciendo clic en <strong>...</strong> junto al nombre.</li>
+                <li>Configura permisos para:
+                  <ul class="steps">
+                    <li>Crear canales.</li>
+                    <li>Añadir apps.</li>
+                    <li>Editar configuración.</li>
+                  </ul>
+                </li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Roles+y+Permisos" alt="Roles y permisos en Teams">
+                <figcaption>Ejemplo de cómo gestionar roles y permisos en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Invitar usuarios externos -->
+        <div class="card">
+          <h4>Invitar usuarios externos</h4>
+          <p>Colabora con personas fuera de tu organización:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Añadir invitados</h5>
+              <ul class="steps">
+                <li>Ve a <strong>Miembros</strong> del equipo y haz clic en <strong>Agregar miembros</strong>.</li>
+                <li>Ingresa el correo del invitado (ej: <code>usuario@gmail.com</code>).</li>
+                <li>Asigna el rol de <strong>Invitado</strong>.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar invitados</h5>
+              <ul class="steps">
+                <li>Los invitados verán un icono de <strong>externo</strong> junto a su nombre.</li>
+                <li>Puedes restringir su acceso a canales específicos.</li>
+                <li>Elimina invitados cuando ya no sean necesarios.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Invitados+en+Teams" alt="Invitados en Teams">
+                <figcaption>Ejemplo de cómo añadir y gestionar usuarios externos en Teams.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="callout warn">
+            <strong>Importante:</strong> Los invitados deben aceptar una invitación por correo antes de unirse.
+          </div>
+        </div>
+
+        <!-- Canales privados y seguridad -->
+        <div class="card">
+          <h4>Canales privados y seguridad</h4>
+          <p>Protege información sensible con canales privados:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Crear canales privados</h5>
+              <ul class="steps">
+                <li>Al crear un canal, selecciona <strong>Privado</strong>.</li>
+                <li>Añade solo a los miembros que necesiten acceso.</li>
+                <li>Los canales privados tienen su propio sitio de SharePoint.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Gestionar seguridad</h5>
+              <ul class="steps">
+                <li>Configura políticas de retención de datos.</li>
+                <li>Usa <strong>eDiscovery</strong> para cumplimiento legal.</li>
+                <li>Aplica etiquetas de confidencialidad a archivos.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Canales+Privados" alt="Canales privados en Teams">
+                <figcaption>Ejemplo de cómo crear y gestionar canales privados en Teams para información sensible.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulo 10: Casos de Uso Prácticos -->
+      <section id="modulo10" class="block">
+        <h3>📚 Módulo 10 – Casos de Uso Prácticos</h3>
+        <p class="lead">
+          Pon en práctica lo aprendido con ejercicios reales.
+          Desde gestionar un proyecto hasta organizar un evento virtual, estos casos te ayudarán a consolidar tus conocimientos.
+        </p>
+
+        <!-- Gestionar un proyecto -->
+        <div class="card">
+          <h4>Gestionar un proyecto</h4>
+          <p>Organiza un proyecto desde cero:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Pasos clave</h5>
+              <ul class="steps">
+                <li>Crea un <strong>equipo</strong> para el proyecto.</li>
+                <li>Añade canales por áreas (ej: "Diseño", "Desarrollo", "Marketing").</li>
+                <li>Configura pestañas con:
+                  <ul class="steps">
+                    <li><strong>Planner</strong> para tareas.</li>
+                    <li><strong>OneNote</strong> para notas.</li>
+                    <li><strong>SharePoint</strong> para documentos.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5>Reuniones y seguimiento</h5>
+              <ul class="steps">
+                <li>Programa reuniones semanales de seguimiento.</li>
+                <li>Usa <strong>@menciones</strong> para asignar responsabilidades.</li>
+                <li>Graba las reuniones para revisarlas después.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Gestionar+Proyecto" alt="Gestionar proyecto en Teams">
+                <figcaption>Ejemplo de cómo gestionar un proyecto en Teams con canales, pestañas y reuniones.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organizar un evento virtual -->
+        <div class="card">
+          <h4>Organizar un evento virtual</h4>
+          <p>Prepara un webinar o evento en línea:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Configuración del evento</h5>
+              <ul class="steps">
+                <li>Programa el evento en <strong>Calendario</strong>.</li>
+                <li>Configura:
+                  <ul class="steps">
+                    <li>Registro de asistentes.</li>
+                    <li>Lobby para controlar el acceso.</li>
+                    <li>Grabación automática.</li>
+                  </ul>
+                </li>
+                <li>Envía el enlace de registro a los invitados.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Durante el evento</h5>
+              <ul class="steps">
+                <li>Usa <strong>modo Presentador</strong> para controlar la reunión.</li>
+                <li>Comparte pantalla o usa pizarra virtual.</li>
+                <li>Responde preguntas del chat o Q&A.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Evento+Virtual" alt="Evento virtual en Teams">
+                <figcaption>Ejemplo de cómo organizar un evento virtual en Teams, desde la configuración hasta la ejecución.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crear un formulario de retroalimentación -->
+        <div class="card">
+          <h4>Crear un formulario de retroalimentación</h4>
+          <p>Recopila opiniones con Microsoft Forms:</p>
+          <div class="grid grid-2">
+            <div>
+              <h5>Pasos para crear el formulario</h5>
+              <ul class="steps">
+                <li>Añade la app <strong>Forms</strong> a un canal.</li>
+                <li>Crea un nuevo formulario con preguntas:
+                  <ul class="steps">
+                    <li>Opción múltiple.</li>
+                    <li>Texto abierto.</li>
+                    <li>Escala de calificación.</li>
+                  </ul>
+                </li>
+                <li>Configura si las respuestas son anónimas.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Compartir y analizar resultados</h5>
+              <ul class="steps">
+                <li>Comparte el enlace del formulario en el canal.</li>
+                <li>Revisa las respuestas en tiempo real.</li>
+                <li>Exporta resultados a Excel para análisis.</li>
+              </ul>
+              <figure class="img-frame">
+                <img src="https://via.placeholder.com/600x350/6264A7/FFFFFF?text=Formulario+de+Retroalimentación" alt="Formulario de retroalimentación en Teams">
+                <figcaption>Ejemplo de cómo crear y compartir un formulario de retroalimentación en Teams con Microsoft Forms.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" width="24" height="24" alt="Microsoft Teams">
+          <span>Guía Completa de Microsoft Teams 2025</span>
+        </div>
+        <p class="footer-note">Domina Teams con ejemplos prácticos, desde lo básico hasta funciones avanzadas, colaboración en tiempo real y automatización.</p>
+        <div class="footer-social" aria-label="Redes sociales">
+          <a href="#" aria-label="Twitter/X" title="Twitter/X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" aria-label="YouTube" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Módulos</div>
+        <ul class="footer-list">
+          <li><a href="#modulo1">1. Introducción a Teams</a></li>
+          <li><a href="#modulo2">2. Chat y Mensajería</a></li>
+          <li><a href="#modulo3">3. Equipos y Canales</a></li>
+          <li><a href="#modulo4">4. Reuniones</a></li>
+          <li><a href="#modulo5">5. Archivos Colaborativos</a></li>
+          <li><a href="#modulo6">6. Colaboración Avanzada</a></li>
+          <li><a href="#modulo7">7. Productividad</a></li>
+          <li><a href="#modulo8">8. Aplicaciones</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Recursos</div>
+        <ul class="footer-list">
+          <li><a href="https://support.microsoft.com/es-es/teams" target="_blank">Soporte de Microsoft</a></li>
+          <li><a href="https://www.microsoft.com/es-es/microsoft-teams" target="_blank">Microsoft Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Contacto</div>
+        <ul class="footer-list">
+          <li><a href="mailto:info@teamsguia.com">info@teamsguia.com</a></li>
+          <li>© 2025 Guía de Microsoft Teams</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <a class="backtop" href="#top" aria-label="Volver arriba">↑</a>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchData = [
+        { title: "Introducción a Microsoft Teams", href: "#modulo1", description: "Interfaz, versiones y primeros pasos con Teams." },
+        { title: "Chat y Mensajería Básica", href: "#modulo2", description: "Chats individuales, grupales, formato de mensajes y archivos." },
+        { title: "Equipos y Canales", href: "#modulo3", description: "Crear equipos, canales, publicaciones y notificaciones." },
+        { title: "Reuniones en Teams", href: "#modulo4", description: "Programar, unirse y gestionar reuniones con controles avanzados." },
+        { title: "Archivos y Trabajo Colaborativo", href: "#modulo5", description: "Edición en tiempo real, control de versiones y compartir archivos." },
+        { title: "Colaboración Avanzada", href: "#modulo6", description: "Pestañas, Planner, OneNote y organización de canales." },
+        { title: "Personalización y Productividad", href: "#modulo7", description: "Notificaciones, estados, atajos y búsqueda global." },
+        { title: "Aplicaciones y Automatización", href: "#modulo8", description: "Apps, bots, conectores y Power Automate." },
+        { title: "Seguridad y Roles", href: "#modulo9", description: "Roles, invitados, canales privados y cumplimiento." },
+        { title: "Casos de Uso Prácticos", href: "#modulo10", description: "Ejercicios y proyectos reales para consolidar el aprendizaje." }
+      ];
+
+      // Funcionalidad de búsqueda
+      const searchInput = document.getElementById('siteSearch');
+      const searchResults = document.getElementById('searchResults');
+      const clearSearch = document.getElementById('clearSearch');
+
+      function showSearchResults(query) {
+        searchResults.innerHTML = '';
+        if (!query) {
+          searchResults.classList.remove('show');
+          return;
+        }
+        const filtered = searchData.filter(item =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.description.toLowerCase().includes(query.toLowerCase())
+        );
+        if (filtered.length > 0) {
+          filtered.forEach(item => {
+            const resultItem = document.createElement('a');
+            resultItem.href = item.href;
+            resultItem.className = 'search-result';
+            resultItem.innerHTML = `
+              <strong>${item.title}</strong>
+              <p>${item.description}</p>
+            `;
+            searchResults.appendChild(resultItem);
+          });
+          searchResults.classList.add('show');
+        } else {
+          const noResults = document.createElement('div');
+          noResults.className = 'no-results';
+          noResults.textContent = 'No se encontraron resultados.';
+          searchResults.appendChild(noResults);
+          searchResults.classList.add('show');
+        }
+      }
+
+      searchInput.addEventListener('input', () => {
+        showSearchResults(searchInput.value);
+      });
+
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        searchResults.classList.remove('show');
+        searchInput.focus();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+          searchResults.classList.remove('show');
+        }
+      });
+
+      // Barra de progreso
+      window.addEventListener('scroll', function() {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset;
+        const trackLength = docHeight - winHeight;
+        const progress = Math.floor(scrollTop / trackLength * 100);
+        document.getElementById('progressBar').style.width = progress + '%';
+      });
+
+      // Tema oscuro/claro
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('change', function() {
+        document.body.classList.toggle('theme-dark', this.checked);
+        localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+      });
+      if (localStorage.getItem('theme') === 'dark') {
+        themeToggle.checked = true;
+        document.body.classList.add('theme-dark');
+      }
+
+      // Botón de volver arriba
+      const backTop = document.querySelector('.backtop');
+      window.addEventListener('scroll', function() {
+        backTop.style.display = window.pageYOffset > 300 ? 'grid' : 'none';
+      });
+
+      // Navegación suave
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Toggle de tabla de contenidos
+      const tocToggle = document.getElementById('tocToggle');
+      const toc = document.getElementById('toc');
+      tocToggle.addEventListener('click', function() {
+        toc.classList.toggle('show');
+        const isExpanded = toc.classList.contains('show');
+        tocToggle.textContent = isExpanded ? '📋 Ocultar tabla de contenidos' : '📋 Mostrar tabla de contenidos';
+      });
+
+      if (window.innerWidth <= 1024) {
+        toc.classList.remove('show');
+      }
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 1024) {
+          toc.classList.remove('show');
+          tocToggle.textContent = '📋 Mostrar tabla de contenidos';
+        } else {
+          toc.classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
